@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "DeliveryViewController.h"
+#import "AnalyticsViewController.h"
+#import "SettingsViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +20,54 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    DeliveryViewController *deliveryVC = [[DeliveryViewController alloc]init];
+    AnalyticsViewController *analyticsVC = [[AnalyticsViewController alloc]init];
+    SettingsViewController *settingsVC = [[SettingsViewController alloc]init];
+    
+    deliveryVC.title = @"Delivery";
+    analyticsVC.title = @"Analytics";
+    settingsVC.title = @"Settings";
+    
+    /* TODO */
+    /*
+    deliveryVC.tabBarItem.image = [UIImage imageNamed:@"deliveryIcon"];
+    analyticsVC.tabBarItem.image = [UIImage imageNamed:@"analyticsIcon"];
+    settingsVC.tabBarItem.image = [UIImage imageNamed:@"settingsIcon"];
+    */
+    
+    
+    NSArray *viewControllers = @[deliveryVC, analyticsVC, settingsVC];
+    MHTabBarController *tabBarController = [[MHTabBarController alloc]init];
+    
+    tabBarController.delegate = self;
+    tabBarController.viewControllers = viewControllers;
+    
+    /* Uncomment this to select Tab 2 */
+    //tabBarController.selectedIndex = 1;
+    
+    /* Uncomment this to select Tab 3 */
+    //tabBarController.selectedIndex = 2;
+    
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    self.window.rootViewController = tabBarController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
+}
+
+-(BOOL)mh_tabBarController:(MHTabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController atIndex:(NSUInteger)index
+{
+    NSLog(@"mh_tabBarController %@ shouldSelectViewController %@ at index %lu", tabBarController, viewController, index);
+    
+    // Uncomment this to prevent "Tab 3" from being selected.
+    //return (index != 2);
+    
+    return YES;
+}
+
+-(void)mh_tabBarController:(MHTabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController atIndex:(NSUInteger)index
+{
+    NSLog(@"mh_tabBarController %@ didSelectViewController %@ at index %lu", tabBarController, viewController, index);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

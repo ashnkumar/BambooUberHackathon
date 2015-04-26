@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6C762DDE-867F-465D-AE5B-4F44DC4911C8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D02F5FD3A0AE4CFB073268FB3081B29CBBCC0633</key>
+		<string>https://github.com/ashnkumar/CashwinUberHackathon.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>uberhxthon/uberhxthon.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D02F5FD3A0AE4CFB073268FB3081B29CBBCC0633</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ashnkumar/CashwinUberHackathon.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D02F5FD3A0AE4CFB073268FB3081B29CBBCC0633</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D02F5FD3A0AE4CFB073268FB3081B29CBBCC0633</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ObjC</string>
+		</dict>
+	</array>
+</dict>
+</plist>

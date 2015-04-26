@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "DeliveryViewController.h"
+#include "AnalyticsViewController.h"
+#include "SettingsViewController.h"
+#include "MHTabBarController.h"
 
 @interface ViewController : UIViewController
 
