@@ -138,6 +138,8 @@
 		B2202E1C1AED96680099F6B7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B2202E211AEDA0CF0099F6B7 /* MHTabBarController.h */,
+				B2202E221AEDA0CF0099F6B7 /* MHTabBarController.m */,
 				B2202E131AED963B0099F6B7 /* DeliveryViewController.h */,
 				B2202E141AED963B0099F6B7 /* DeliveryViewController.m */,
 				B2202E161AED96520099F6B7 /* AnalyticsViewController.h */,
@@ -146,8 +148,6 @@
 				B2202E1A1AED965F0099F6B7 /* SettingsViewController.m */,
 				B2202DF41AED93730099F6B7 /* ViewController.h */,
 				B2202DF51AED93730099F6B7 /* ViewController.m */,
-				B2202E211AEDA0CF0099F6B7 /* MHTabBarController.h */,
-				B2202E221AEDA0CF0099F6B7 /* MHTabBarController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";

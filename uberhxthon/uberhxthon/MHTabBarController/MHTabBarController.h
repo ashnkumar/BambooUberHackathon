@@ -19,6 +19,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
+/* CASHWIN NOTES
+    This custom class recreates the tabbarviewcontroller's functionality but places the tab bar on top of the screen. Apple's predefined tabbar only allows it to be on the bottom of the screen.
+*/
+
 #import <UIKit/UIKit.h>
 
 @protocol MHTabBarControllerDelegate;
