@@ -10,6 +10,7 @@
 #import "DeliveryViewController.h"
 #import "AnalyticsViewController.h"
 #import "SettingsViewController.h"
+#import "LeftmostViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,10 +24,12 @@
     DeliveryViewController *deliveryVC = [[DeliveryViewController alloc]init];
     AnalyticsViewController *analyticsVC = [[AnalyticsViewController alloc]init];
     SettingsViewController *settingsVC = [[SettingsViewController alloc]init];
+    LeftmostViewController *leftVC = [[LeftmostViewController alloc]init];
     
     deliveryVC.title = @"DELIVERY";
     analyticsVC.title = @"ANALYTICS";
     settingsVC.title = @"SETTINGS";
+    leftVC.title = @"DUMMY";
     
     /* TODO */
     /*
@@ -36,7 +39,7 @@
     */
     
     
-    NSArray *viewControllers = @[deliveryVC, analyticsVC, settingsVC];
+    NSArray *viewControllers = @[leftVC, deliveryVC, analyticsVC, settingsVC];
     MHTabBarController *tabBarController = [[MHTabBarController alloc]init];
     
     tabBarController.delegate = self;

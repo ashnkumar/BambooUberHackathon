@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  LeftmostViewController.h
 //  uberhxthon
 //
 //  Created by Catherine Jue on 4/26/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface LeftmostViewController : UIViewController
 
 @end
-

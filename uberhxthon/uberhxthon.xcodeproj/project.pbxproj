@@ -21,6 +21,8 @@
 		B2202E251AEDA4CB0099F6B7 /* DeliveryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202E241AEDA4CB0099F6B7 /* DeliveryView.xib */; };
 		B2202E271AEDA50A0099F6B7 /* AnalyticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202E261AEDA50A0099F6B7 /* AnalyticsView.xib */; };
 		B2202E291AEDA51F0099F6B7 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202E281AEDA51F0099F6B7 /* SettingsView.xib */; };
+		B2202E2E1AEDBD7C0099F6B7 /* LeftmostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E2D1AEDBD7C0099F6B7 /* LeftmostViewController.m */; };
+		B256A4D91AEDC7520051B8EC /* LeftmostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B256A4D81AEDC7520051B8EC /* LeftmostView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,9 @@
 		B2202E241AEDA4CB0099F6B7 /* DeliveryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryView.xib; sourceTree = "<group>"; };
 		B2202E261AEDA50A0099F6B7 /* AnalyticsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnalyticsView.xib; sourceTree = "<group>"; };
 		B2202E281AEDA51F0099F6B7 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		B2202E2C1AEDBD7C0099F6B7 /* LeftmostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftmostViewController.h; sourceTree = "<group>"; };
+		B2202E2D1AEDBD7C0099F6B7 /* LeftmostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftmostViewController.m; sourceTree = "<group>"; };
+		B256A4D81AEDC7520051B8EC /* LeftmostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftmostView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +145,8 @@
 			children = (
 				B2202E211AEDA0CF0099F6B7 /* MHTabBarController.h */,
 				B2202E221AEDA0CF0099F6B7 /* MHTabBarController.m */,
+				B2202E2C1AEDBD7C0099F6B7 /* LeftmostViewController.h */,
+				B2202E2D1AEDBD7C0099F6B7 /* LeftmostViewController.m */,
 				B2202E131AED963B0099F6B7 /* DeliveryViewController.h */,
 				B2202E141AED963B0099F6B7 /* DeliveryViewController.m */,
 				B2202E161AED96520099F6B7 /* AnalyticsViewController.h */,
@@ -162,6 +169,7 @@
 		B2202E1E1AED96770099F6B7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B256A4D81AEDC7520051B8EC /* LeftmostView.xib */,
 				B2202E241AEDA4CB0099F6B7 /* DeliveryView.xib */,
 				B2202E261AEDA50A0099F6B7 /* AnalyticsView.xib */,
 				B2202E281AEDA51F0099F6B7 /* SettingsView.xib */,
@@ -263,6 +271,7 @@
 				B2202E251AEDA4CB0099F6B7 /* DeliveryView.xib in Resources */,
 				B2202DF91AED93730099F6B7 /* Main.storyboard in Resources */,
 				B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */,
+				B256A4D91AEDC7520051B8EC /* LeftmostView.xib in Resources */,
 				B2202E291AEDA51F0099F6B7 /* SettingsView.xib in Resources */,
 				B2202DFB1AED93730099F6B7 /* Images.xcassets in Resources */,
 				B2202E271AEDA50A0099F6B7 /* AnalyticsView.xib in Resources */,
@@ -283,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2202E2E1AEDBD7C0099F6B7 /* LeftmostViewController.m in Sources */,
 				B2202DF61AED93730099F6B7 /* ViewController.m in Sources */,
 				B2202DF31AED93720099F6B7 /* AppDelegate.m in Sources */,
 				B2202E151AED963B0099F6B7 /* DeliveryViewController.m in Sources */,
@@ -486,6 +496,7 @@
 				B2202E0F1AED93740099F6B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2202E101AED93740099F6B7 /* Build configuration list for PBXNativeTarget "uberhxthonTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +505,7 @@
 				B2202E121AED93740099F6B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

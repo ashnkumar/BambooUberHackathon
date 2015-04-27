@@ -113,8 +113,8 @@ static const NSInteger TagOffset = 1000;
 	for (UIViewController *viewController in self.viewControllers)
 	{
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton *logoButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		button.tag = TagOffset + index;
-		button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
         
         /* CASHWIN NOTES
          Commented out styling of original coder -Cat
@@ -127,12 +127,25 @@ static const NSInteger TagOffset = 1000;
 		button.imageEdgeInsets = viewController.tabBarItem.imageInsets;
          */
         
-		[button setTitle:viewController.tabBarItem.title forState:UIControlStateNormal];
-		[button setImage:viewController.tabBarItem.image forState:UIControlStateNormal];
+        if (index == 2)
+        {
+            logoButton.titleLabel.font = [UIFont boldSystemFontOfSize:30];
+            [logoButton setTitle:@"CASHWIN" forState:UIControlStateNormal];
+            [logoButton setImage:[UIImage imageNamed:@"cashwinlogo"] forState:UIControlStateNormal];
+            [logoButton setBackgroundColor:[UIColor colorWithRed:118.0/255.0 green:171.0/255.0 blue:233/255.0 alpha:1.0]];
+            
+            [self deselectTabButton:logoButton];
+            [tabButtonsContainerView addSubview:logoButton];
+        }
+        
 
+        button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+        [button setTitle:viewController.tabBarItem.title forState:UIControlStateNormal];
+        [button setImage:viewController.tabBarItem.image forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(tabButtonPressed:) forControlEvents:UIControlEventTouchDown];
+        
+        
         [button setBackgroundColor:[UIColor colorWithRed:118.0/255.0 green:171.0/255.0 blue:233/255.0 alpha:1.0]];
-
-		[button addTarget:self action:@selector(tabButtonPressed:) forControlEvents:UIControlEventTouchDown];
 
 		[self deselectTabButton:button];
 		[tabButtonsContainerView addSubview:button];
@@ -157,15 +170,16 @@ static const NSInteger TagOffset = 1000;
     /*
      CASHWIN NOTES
      Changed CGRectMake to 20.0f from 0.0f & set height of buttons to tabbarheight - 20 to account for status bar -Cat
+     Changed the width of each tab button to include the logo button in making the rect -Cat
      */
-	CGRect rect = CGRectMake(0.0f, 20.0f, floorf(self.view.bounds.size.width / count), self.tabBarHeight - 20.0f);
+	CGRect rect = CGRectMake(0.0f, 20.0f, floorf(self.view.bounds.size.width / (count + 1)), self.tabBarHeight - 20.0f);
 
 	indicatorImageView.hidden = YES;
 
 	NSArray *buttons = [tabButtonsContainerView subviews];
 	for (UIButton *button in buttons)
 	{
-		if (index == count - 1)
+		if (index == count - 1 + 1)
 			rect.size.width = self.view.bounds.size.width - rect.origin.x;
 
 		button.frame = rect;
@@ -262,7 +276,7 @@ static const NSInteger TagOffset = 1000;
 		UIButton *toButton;
 		if (_selectedIndex != NSNotFound)
 		{
-			toButton = (UIButton *)[tabButtonsContainerView viewWithTag:TagOffset + _selectedIndex];
+            toButton = (UIButton *)[tabButtonsContainerView viewWithTag:TagOffset + _selectedIndex];
 			[self selectTabButton:toButton];
 			toViewController = self.selectedViewController;
 		}
