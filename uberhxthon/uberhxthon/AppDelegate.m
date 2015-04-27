@@ -24,9 +24,9 @@
     AnalyticsViewController *analyticsVC = [[AnalyticsViewController alloc]init];
     SettingsViewController *settingsVC = [[SettingsViewController alloc]init];
     
-    deliveryVC.title = @"Delivery";
-    analyticsVC.title = @"Analytics";
-    settingsVC.title = @"Settings";
+    deliveryVC.title = @"DELIVERY";
+    analyticsVC.title = @"ANALYTICS";
+    settingsVC.title = @"SETTINGS";
     
     /* TODO */
     /*

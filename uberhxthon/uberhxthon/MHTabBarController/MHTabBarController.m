@@ -36,10 +36,11 @@ static const NSInteger TagOffset = 1000;
 	[super viewDidLoad];
 
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
+    
 	CGRect rect = CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.tabBarHeight);
 	tabButtonsContainerView = [[UIView alloc] initWithFrame:rect];
 	tabButtonsContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    tabButtonsContainerView.backgroundColor = [UIColor colorWithRed:118.0/255.0 green:171.0/255.0 blue:233/255.0 alpha:1.0];
 	[self.view addSubview:tabButtonsContainerView];
 
 	rect.origin.y = self.tabBarHeight;
@@ -48,8 +49,14 @@ static const NSInteger TagOffset = 1000;
 	contentContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self.view addSubview:contentContainerView];
 
-	indicatorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MHTabBarIndicator"]];
+    /* TODO:
+     Add image of thin white rectangle to place under corresponding icon
+     */
+     
+	/*
+     indicatorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TabBarIndicator"]];
 	[self.view addSubview:indicatorImageView];
+     */
 
 	[self reloadTabButtons];
 }
@@ -97,19 +104,33 @@ static const NSInteger TagOffset = 1000;
 
 - (void)addTabButtons
 {
+    /*
+        CASHWIN NOTES:
+     Here is where the tabs get added - can add the center logo here. -Cat
+     */
+    
 	NSUInteger index = 0;
 	for (UIViewController *viewController in self.viewControllers)
 	{
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 		button.tag = TagOffset + index;
 		button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-		button.titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+        
+        /* CASHWIN NOTES
+         Commented out styling of original coder -Cat
+         */
+        
+		/*button.titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
 
 		UIOffset offset = viewController.tabBarItem.titlePositionAdjustment;
 		button.titleEdgeInsets = UIEdgeInsetsMake(offset.vertical, offset.horizontal, 0.0f, 0.0f);
 		button.imageEdgeInsets = viewController.tabBarItem.imageInsets;
+         */
+        
 		[button setTitle:viewController.tabBarItem.title forState:UIControlStateNormal];
 		[button setImage:viewController.tabBarItem.image forState:UIControlStateNormal];
+
+        [button setBackgroundColor:[UIColor colorWithRed:118.0/255.0 green:171.0/255.0 blue:233/255.0 alpha:1.0]];
 
 		[button addTarget:self action:@selector(tabButtonPressed:) forControlEvents:UIControlEventTouchDown];
 
@@ -133,7 +154,11 @@ static const NSInteger TagOffset = 1000;
 	NSUInteger index = 0;
 	NSUInteger count = [self.viewControllers count];
 
-	CGRect rect = CGRectMake(0.0f, 0.0f, floorf(self.view.bounds.size.width / count), self.tabBarHeight);
+    /*
+     CASHWIN NOTES
+     Changed CGRectMake to 20.0f from 0.0f & set height of buttons to tabbarheight - 20 to account for status bar -Cat
+     */
+	CGRect rect = CGRectMake(0.0f, 20.0f, floorf(self.view.bounds.size.width / count), self.tabBarHeight - 20.0f);
 
 	indicatorImageView.hidden = YES;
 
@@ -203,6 +228,7 @@ static const NSInteger TagOffset = 1000;
 	[self setSelectedIndex:newSelectedIndex animated:NO];
 }
 
+
 - (void)setSelectedIndex:(NSUInteger)newSelectedIndex animated:(BOOL)animated
 {
 	NSAssert(newSelectedIndex < [self.viewControllers count], @"View controller index out of bounds");
@@ -256,6 +282,11 @@ static const NSInteger TagOffset = 1000;
 		}
 		else if (animated)
 		{
+            
+            /*
+                TODO:
+                Remove right/left swiping animation from switching tabs
+             */
 			CGRect rect = contentContainerView.bounds;
 			if (oldSelectedIndex < newSelectedIndex)
 				rect.origin.x = rect.size.width;
@@ -334,17 +365,30 @@ static const NSInteger TagOffset = 1000;
 {
 	[button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 
-	UIImage *image = [[UIImage imageNamed:@"MHTabBarActiveTab"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+	/* CASHWIN NOTES
+     Commented out button styling of original coder -Cat
+     */
+    
+    /*
+    UIImage *image = [[UIImage imageNamed:@"MHTabBarActiveTab"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
 	[button setBackgroundImage:image forState:UIControlStateNormal];
 	[button setBackgroundImage:image forState:UIControlStateHighlighted];
 	
 	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[button setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.5f] forState:UIControlStateNormal];
+     */
+    
 }
 
 - (void)deselectTabButton:(UIButton *)button
 {
-	[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    /* CASHWIN NOTES
+     Commented out button styling of original coder -Cat
+     */
+    
+    
+    /*
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 
 	UIImage *image = [[UIImage imageNamed:@"MHTabBarInactiveTab"] stretchableImageWithLeftCapWidth:1 topCapHeight:0];
 	[button setBackgroundImage:image forState:UIControlStateNormal];
@@ -352,11 +396,25 @@ static const NSInteger TagOffset = 1000;
 
 	[button setTitleColor:[UIColor colorWithRed:175/255.0f green:85/255.0f blue:58/255.0f alpha:1.0f] forState:UIControlStateNormal];
 	[button setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateNormal];
+     */
+    
+    /*
+     TODO:
+     CASHWIN NOTES:
+     Temporary (shouldn't be needed) because currently setting selected tab's font to red
+     */
+    
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
 }
 
 - (CGFloat)tabBarHeight
 {
-	return 44.0f;
+    /*
+    CASHWIN NOTES:
+     Added 30 to the tabBarHeight to account for status bar (original code designed for iOS 5) -Cat
+     */
+	return 74.0f;
 }
 
 @end
