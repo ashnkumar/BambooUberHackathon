@@ -86,6 +86,161 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4239E7DB1AF2B9B100513C9A /* DeliveryView */ = {
+			isa = PBXGroup;
+			children = (
+				4239E7DE1AF2B9C900513C9A /* Controllers */,
+				4239E7DD1AF2B9C400513C9A /* Views */,
+				4239E7DC1AF2B9BE00513C9A /* Models */,
+			);
+			name = DeliveryView;
+			sourceTree = "<group>";
+		};
+		4239E7DC1AF2B9BE00513C9A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4239E7DD1AF2B9C400513C9A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2202E241AEDA4CB0099F6B7 /* DeliveryView.xib */,
+			);
+			name = Views;
+			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/DeliveryView/Views;
+			sourceTree = "<absolute>";
+		};
+		4239E7DE1AF2B9C900513C9A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B2202E131AED963B0099F6B7 /* DeliveryViewController.h */,
+				B2202E141AED963B0099F6B7 /* DeliveryViewController.m */,
+			);
+			name = Controllers;
+			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/DeliveryView/Controllers;
+			sourceTree = "<absolute>";
+		};
+		4239E7DF1AF2B9E900513C9A /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				4239E7E21AF2B9F700513C9A /* Controllers */,
+				4239E7E11AF2B9F300513C9A /* Views */,
+				4239E7E01AF2B9EE00513C9A /* Models */,
+			);
+			name = SettingsView;
+			sourceTree = "<group>";
+		};
+		4239E7E01AF2B9EE00513C9A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4239E7E11AF2B9F300513C9A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2202E281AEDA51F0099F6B7 /* SettingsView.xib */,
+			);
+			name = Views;
+			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/SettingsView/Views;
+			sourceTree = "<absolute>";
+		};
+		4239E7E21AF2B9F700513C9A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B2202E191AED965F0099F6B7 /* SettingsViewController.h */,
+				B2202E1A1AED965F0099F6B7 /* SettingsViewController.m */,
+			);
+			name = Controllers;
+			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/SettingsView/Controllers;
+			sourceTree = "<absolute>";
+		};
+		4239E7E31AF2BA0F00513C9A /* AnalyticsView */ = {
+			isa = PBXGroup;
+			children = (
+				4239E7E61AF2BA2700513C9A /* Controllers */,
+				4239E7E51AF2BA2300513C9A /* Views */,
+				4239E7E41AF2BA1C00513C9A /* Models */,
+			);
+			name = AnalyticsView;
+			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/AnalyticsView;
+			sourceTree = "<absolute>";
+		};
+		4239E7E41AF2BA1C00513C9A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4239E7E51AF2BA2300513C9A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2202E261AEDA50A0099F6B7 /* AnalyticsView.xib */,
+			);
+			name = Views;
+			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/AnalyticsView/Views;
+			sourceTree = "<absolute>";
+		};
+		4239E7E61AF2BA2700513C9A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B2202E161AED96520099F6B7 /* AnalyticsViewController.h */,
+				B2202E171AED96520099F6B7 /* AnalyticsViewController.m */,
+			);
+			name = Controllers;
+			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/AnalyticsView/Controllers;
+			sourceTree = "<absolute>";
+		};
+		4239E7E71AF2BA5800513C9A /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B2202E211AEDA0CF0099F6B7 /* MHTabBarController.h */,
+				B2202E221AEDA0CF0099F6B7 /* MHTabBarController.m */,
+			);
+			name = TabBar;
+			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/TabBar;
+			sourceTree = "<absolute>";
+		};
+		4239E7E81AF2BD9900513C9A /* LeftMostView */ = {
+			isa = PBXGroup;
+			children = (
+				4239E7EB1AF2BDB400513C9A /* Controllers */,
+				4239E7EA1AF2BDAB00513C9A /* Views */,
+				4239E7E91AF2BDA300513C9A /* Models */,
+			);
+			name = LeftMostView;
+			sourceTree = "<group>";
+		};
+		4239E7E91AF2BDA300513C9A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4239E7EA1AF2BDAB00513C9A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B256A4D81AEDC7520051B8EC /* LeftmostView.xib */,
+			);
+			name = Views;
+			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/LeftMostView/Views;
+			sourceTree = "<absolute>";
+		};
+		4239E7EB1AF2BDB400513C9A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B2202E2C1AEDBD7C0099F6B7 /* LeftmostViewController.h */,
+				B2202E2D1AEDBD7C0099F6B7 /* LeftmostViewController.m */,
+			);
+			name = Controllers;
+			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/LeftMostView/Controllers;
+			sourceTree = "<absolute>";
+		};
 		B2202DE11AED93710099F6B7 = {
 			isa = PBXGroup;
 			children = (
@@ -107,9 +262,13 @@
 		B2202DEC1AED93710099F6B7 /* uberhxthon */ = {
 			isa = PBXGroup;
 			children = (
+				4239E7E81AF2BD9900513C9A /* LeftMostView */,
+				4239E7E71AF2BA5800513C9A /* TabBar */,
+				4239E7E31AF2BA0F00513C9A /* AnalyticsView */,
+				4239E7DF1AF2B9E900513C9A /* SettingsView */,
+				4239E7DB1AF2B9B100513C9A /* DeliveryView */,
 				B2202E1F1AED96900099F6B7 /* Globals */,
 				B2202E1E1AED96770099F6B7 /* Views */,
-				B2202E1D1AED96710099F6B7 /* Models */,
 				B2202E1C1AED96680099F6B7 /* ViewControllers */,
 				B2202DFA1AED93730099F6B7 /* Images.xcassets */,
 				B2202DED1AED93720099F6B7 /* Supporting Files */,
@@ -147,36 +306,15 @@
 		B2202E1C1AED96680099F6B7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B2202E211AEDA0CF0099F6B7 /* MHTabBarController.h */,
-				B2202E221AEDA0CF0099F6B7 /* MHTabBarController.m */,
-				B2202E2C1AEDBD7C0099F6B7 /* LeftmostViewController.h */,
-				B2202E2D1AEDBD7C0099F6B7 /* LeftmostViewController.m */,
-				B2202E131AED963B0099F6B7 /* DeliveryViewController.h */,
-				B2202E141AED963B0099F6B7 /* DeliveryViewController.m */,
-				B2202E161AED96520099F6B7 /* AnalyticsViewController.h */,
-				B2202E171AED96520099F6B7 /* AnalyticsViewController.m */,
-				B2202E191AED965F0099F6B7 /* SettingsViewController.h */,
-				B2202E1A1AED965F0099F6B7 /* SettingsViewController.m */,
 				B2202DF41AED93730099F6B7 /* ViewController.h */,
 				B2202DF51AED93730099F6B7 /* ViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		B2202E1D1AED96710099F6B7 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		B2202E1E1AED96770099F6B7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B256A4D81AEDC7520051B8EC /* LeftmostView.xib */,
-				B2202E241AEDA4CB0099F6B7 /* DeliveryView.xib */,
-				B2202E261AEDA50A0099F6B7 /* AnalyticsView.xib */,
-				B2202E281AEDA51F0099F6B7 /* SettingsView.xib */,
 				B2202DF71AED93730099F6B7 /* Main.storyboard */,
 				B2202DFC1AED93740099F6B7 /* LaunchScreen.xib */,
 			);
