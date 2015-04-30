@@ -53,10 +53,11 @@
     self.mapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    
+
     if (IS_OS_8_OR_LATER) {
         [self.locationManager requestAlwaysAuthorization];
     }
+ 
     
     // Don't do anything yet when user location updates
 //    [self.locationManager startUpdatingLocation];
