@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeliveryViewController">
             <connections>
+                <outlet property="mapView" destination="qis-fs-cfi" id="LTG-Ru-cQU"/>
                 <outlet property="view" destination="iN0-l3-epB" id="R6I-p1-ybf"/>
             </connections>
         </placeholder>
@@ -14,14 +15,25 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivery View" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Z3-SF-0d8">
-                    <rect key="frame" x="273" y="244" width="102" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qis-fs-cfi">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="620"/>
+                </mapView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qis-fs-cfi" secondAttribute="bottom" id="ESm-Pp-0vd"/>
+                <constraint firstAttribute="bottom" secondItem="qis-fs-cfi" secondAttribute="bottom" id="J5f-wj-ndf"/>
+                <constraint firstAttribute="trailing" secondItem="qis-fs-cfi" secondAttribute="trailing" id="NOG-vR-0al"/>
+                <constraint firstItem="qis-fs-cfi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SVi-kk-zKv"/>
+                <constraint firstAttribute="bottom" secondItem="qis-fs-cfi" secondAttribute="bottom" id="djj-XY-TeU"/>
+                <constraint firstItem="qis-fs-cfi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fnl-eW-Itv"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ESm-Pp-0vd"/>
+                    <exclude reference="J5f-wj-ndf"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

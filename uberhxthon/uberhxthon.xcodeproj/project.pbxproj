@@ -23,6 +23,7 @@
 		B2202E291AEDA51F0099F6B7 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202E281AEDA51F0099F6B7 /* SettingsView.xib */; };
 		B2202E2E1AEDBD7C0099F6B7 /* LeftmostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E2D1AEDBD7C0099F6B7 /* LeftmostViewController.m */; };
 		B256A4D91AEDC7520051B8EC /* LeftmostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B256A4D81AEDC7520051B8EC /* LeftmostView.xib */; };
+		C1F0CF1D1AF1C6EB00D9F02E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		B2202E2C1AEDBD7C0099F6B7 /* LeftmostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftmostViewController.h; sourceTree = "<group>"; };
 		B2202E2D1AEDBD7C0099F6B7 /* LeftmostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftmostViewController.m; sourceTree = "<group>"; };
 		B256A4D81AEDC7520051B8EC /* LeftmostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftmostView.xib; sourceTree = "<group>"; };
+		C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1F0CF1D1AF1C6EB00D9F02E /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +120,7 @@
 		B2202DED1AED93720099F6B7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */,
 				B2202DEE1AED93720099F6B7 /* Info.plist */,
 				B2202DEF1AED93720099F6B7 /* main.m */,
 			);
