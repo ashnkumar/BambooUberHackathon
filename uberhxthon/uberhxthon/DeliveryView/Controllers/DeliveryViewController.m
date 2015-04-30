@@ -8,31 +8,20 @@
 
 #import "DeliveryViewController.h"
 
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+#define METERS_PER_MILE 1609.344
+
 @interface DeliveryViewController ()
 
 @end
 
 @implementation DeliveryViewController
-#define METERS_PER_MILE 1609.344
 
+#pragma mark - View Controller Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.locationManager = [[CLLocationManager alloc]init];
-    self.locationManager.delegate = self;
     
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    [self.locationManager startUpdatingLocation];
-    
-    /*TODO: Currently returning 0,0 for long,lat*/
-    NSLog(@"long: %f, lat: %f", self.locationManager.location.coordinate.longitude, self.locationManager.location.coordinate.latitude);
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self setupMapView];
 }
 
 -(void)viewWillLayoutSubviews {
@@ -42,16 +31,39 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // Set the location to zoom into when the view appears
     CLLocationCoordinate2D zoomLocation;
     
     zoomLocation.latitude = self.locationManager.location.coordinate.latitude;
     zoomLocation.longitude= self.locationManager.location.coordinate.longitude;
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 6.5*METERS_PER_MILE, 6.5*METERS_PER_MILE);
     
-    // 2
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-    
-    // 3
     [self.mapView setRegion:viewRegion animated:YES];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Helpers
+
+- (void)setupMapView
+{
+    self.mapView.delegate = self;
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    
+    if (IS_OS_8_OR_LATER) {
+        [self.locationManager requestAlwaysAuthorization];
+    }
+    
+    // Don't do anything yet when user location updates
+//    [self.locationManager startUpdatingLocation];
+//    [self.mapView setShowsUserLocation:YES];
+    [self.mapView setMapType:MKMapTypeStandard];
+    [self.mapView setZoomEnabled:YES];
+    [self.mapView setScrollEnabled:YES];
 }
 
 #pragma mark - LocationManager Delegate
@@ -60,31 +72,19 @@
     CLLocation* loc = [locations lastObject]; // locations is guaranteed to have at least one object
     float latitude = loc.coordinate.latitude;
     float longitude = loc.coordinate.longitude;
-    NSLog(@"%.8f",latitude);
-    NSLog(@"%.8f",longitude);
+    NSLog(@"Lat: %.8f | Lon: %.8f",latitude, longitude);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
-    NSLog(@"%d", status);
+//    NSLog(@"%d", status);
 }
 
 #pragma mark - MapKit Delegate
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    CLLocationCoordinate2D zoomLocation;
-    
-    zoomLocation.latitude = userLocation.coordinate.latitude;
-    zoomLocation.longitude= userLocation.coordinate.longitude;
-    
-    // 2
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
-    
-    // 3
-    self.mapView.showsUserLocation = YES;
-    [self.mapView setRegion:viewRegion animated:YES];
-
-
+    // Don't do anything yet when user location updates
+    NSLog(@"Did Update User Location");
 }
 
 @end
