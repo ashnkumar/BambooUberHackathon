@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryViewController.m"
-            timestampString = "452056585.635365"
+            timestampString = "452058657.297316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-viewWillLayoutSubviews"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,27 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryViewController.m"
-            timestampString = "452057757.594202"
+            timestampString = "452059074.190591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "-mapViewWillStartLocatingUser:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uberhxthon/DeliveryViewController.m"
-            timestampString = "452057609.860624"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-mapView:didUpdateUserLocation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryViewController.m"
-            timestampString = "452056585.635365"
+            timestampString = "452059074.190591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryViewController.m"
-            timestampString = "452057609.860624"
+            timestampString = "452059074.190591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "-locationManager:didChangeAuthorizationStatus:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryViewController.m"
-            timestampString = "452056609.548415"
+            timestampString = "452058657.297316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>

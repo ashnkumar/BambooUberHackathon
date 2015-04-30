@@ -40,6 +40,20 @@
     self.mapView.frame = self.view.bounds;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    CLLocationCoordinate2D zoomLocation;
+    
+    zoomLocation.latitude = self.locationManager.location.coordinate.latitude;
+    zoomLocation.longitude= self.locationManager.location.coordinate.longitude;
+    
+    // 2
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+    
+    // 3
+    [self.mapView setRegion:viewRegion animated:YES];
+}
+
 #pragma mark - LocationManager Delegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
@@ -58,32 +72,19 @@
 #pragma mark - MapKit Delegate
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    self.mapView.centerCoordinate = userLocation.location.coordinate;
+    CLLocationCoordinate2D zoomLocation;
+    
+    zoomLocation.latitude = userLocation.coordinate.latitude;
+    zoomLocation.longitude= userLocation.coordinate.longitude;
+    
+    // 2
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+    
+    // 3
     self.mapView.showsUserLocation = YES;
-    MKCoordinateRegion region;
-    region.center = mapView.userLocation.coordinate;
-    region.span = MKCoordinateSpanMake(0.1, 0.1);
-    
-    region = [self.mapView regionThatFits:region];
-    [self.mapView setRegion:region animated:YES];
+    [self.mapView setRegion:viewRegion animated:YES];
 
-}
 
-- (void)mapViewWillStartLocatingUser:(MKMapView *)mapView
-{
-    // Check authorization status (with class method)
-    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    
-    // User has never been asked to decide on location authorization
-    if (status == kCLAuthorizationStatusNotDetermined) {
-        NSLog(@"Requesting when in use auth");
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    // User has denied location use (either for this app or for all apps
-    else if (status == kCLAuthorizationStatusDenied) {
-        NSLog(@"Location services denied");
-        // Alert the user and send them to the settings to turn on location
-    }
 }
 
 @end
