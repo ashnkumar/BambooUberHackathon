@@ -25,6 +25,8 @@
         [self.locationManager requestWhenInUseAuthorization];
     }
     [self.locationManager startUpdatingLocation];
+    
+    /*TODO: Currently returning 0,0 for long,lat*/
     NSLog(@"long: %f, lat: %f", self.locationManager.location.coordinate.longitude, self.locationManager.location.coordinate.latitude);
 }
 
@@ -38,17 +40,7 @@
     self.mapView.frame = self.view.bounds;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-// Location Manager Delegate Methods
+#pragma mark - LocationManager Delegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     CLLocation* loc = [locations lastObject]; // locations is guaranteed to have at least one object
@@ -61,9 +53,9 @@
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
     NSLog(@"%d", status);
-
 }
 
+#pragma mark - MapKit Delegate
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     self.mapView.centerCoordinate = userLocation.location.coordinate;
@@ -77,7 +69,6 @@
 
 }
 
-// MKMapViewDelegate Methods
 - (void)mapViewWillStartLocatingUser:(MKMapView *)mapView
 {
     // Check authorization status (with class method)
