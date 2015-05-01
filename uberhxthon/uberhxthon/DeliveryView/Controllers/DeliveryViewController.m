@@ -7,12 +7,14 @@
 //
 
 #import "DeliveryViewController.h"
+#import <SpinKit/RTSpinKitView.h>
 
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 #define METERS_PER_MILE 1609.344
 
 @interface DeliveryViewController ()
-
+@property (strong, nonatomic) UIVisualEffectView *blurEffectView;
+@property (strong, nonatomic) RTSpinKitView *loadingSpinner;
 @end
 
 @implementation DeliveryViewController
@@ -21,7 +23,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupVariables];
+    [self addLoadingView];
     [self setupMapView];
+}
+
+- (void)setupVariables
+{
+    self.loadingSpinner = [[RTSpinKitView alloc]
+                           initWithStyle:RTSpinKitViewStyleBounce
+                           color:[UIColor colorWithRed:118.0/255.0 green:171.0/255.0 blue:233/255.0 alpha:1.0]];
+    
+    NSLog(@"View center: %@", self.view);
+    CGRect newFrame = CGRectMake(500, 300, 20, 20);
+    self.loadingSpinner.frame = newFrame;
 }
 
 -(void)viewWillLayoutSubviews {
@@ -71,6 +86,68 @@
     [self.mapView setScrollEnabled:YES];
 }
 
+
+// Adds a blur loading view to the screen while map is getting ready
+// @TODO: Change this to whatever we want, blur looks a bit funky
+- (void)addLoadingView
+{
+    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        self.blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        self.blurEffectView.frame = self.view.bounds;
+        [self.view addSubview:self.blurEffectView];
+        
+        [self.blurEffectView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
+        NSLayoutConstraint *constraint1 = [NSLayoutConstraint
+                                           constraintWithItem:self.blurEffectView
+                                           attribute:NSLayoutAttributeTop
+                                           relatedBy:NSLayoutRelationEqual
+                                           toItem:self.view
+                                           attribute:NSLayoutAttributeTop
+                                           multiplier:1
+                                           constant:0];
+        
+        NSLayoutConstraint *constraint2 = [NSLayoutConstraint
+                                           constraintWithItem:self.blurEffectView
+                                           attribute:NSLayoutAttributeBottom
+                                           relatedBy:NSLayoutRelationEqual
+                                           toItem:self.view
+                                           attribute:NSLayoutAttributeBottom
+                                           multiplier:1
+                                           constant:0];
+        
+        NSLayoutConstraint *constraint3 = [NSLayoutConstraint
+                                           constraintWithItem:self.blurEffectView
+                                           attribute:NSLayoutAttributeLeading
+                                           relatedBy:NSLayoutRelationEqual
+                                           toItem:self.view
+                                           attribute:NSLayoutAttributeLeading
+                                           multiplier:1
+                                           constant:0];
+        
+        NSLayoutConstraint *constraint4 = [NSLayoutConstraint
+                                           constraintWithItem:self.blurEffectView
+                                           attribute:NSLayoutAttributeTrailing
+                                           relatedBy:NSLayoutRelationEqual
+                                           toItem:self.view
+                                           attribute:NSLayoutAttributeTrailing
+                                           multiplier:1
+                                           constant:0];
+        
+        [self.view addConstraint:constraint1];
+        [self.view addConstraint:constraint2];
+        [self.view addConstraint:constraint3];
+        [self.view addConstraint:constraint4];
+        
+    } else {
+        self.view.backgroundColor = [UIColor blackColor];
+    }
+    
+    // Add the spinner
+    [self.view addSubview:self.loadingSpinner];
+}
+
 #pragma mark - LocationManager Delegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
@@ -83,7 +160,6 @@
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
 //    NSLog(@"%d", status);
-    NSLog(@"Does this work");
 }
 
 #pragma mark - MapKit Delegate
@@ -92,4 +168,24 @@
     // Don't do anything yet when user location updates
 }
 
+- (void)mapViewDidFinishRenderingMap:(MKMapView *)mapView
+                       fullyRendered:(BOOL)fullyRendered
+{
+    [self.blurEffectView removeFromSuperview];
+    [self.loadingSpinner removeFromSuperview];
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
