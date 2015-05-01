@@ -31,12 +31,16 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // Set the location to zoom into when the view appears
     CLLocationCoordinate2D zoomLocation;
     
-    zoomLocation.latitude = self.locationManager.location.coordinate.latitude;
-    zoomLocation.longitude= self.locationManager.location.coordinate.longitude;
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 6.5*METERS_PER_MILE, 6.5*METERS_PER_MILE);
+//    zoomLocation.latitude = self.locationManager.location.coordinate.latitude;
+//    zoomLocation.longitude= self.locationManager.location.coordinate.longitude;
+    
+    // FAKE LOCATION for now in center of SF.
+    zoomLocation.latitude = 37.7316915;
+    zoomLocation.longitude = -122.4409091;
+    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 7.5*METERS_PER_MILE, 7.5*METERS_PER_MILE);
     
     [self.mapView setRegion:viewRegion animated:YES];
 }
@@ -85,7 +89,6 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     // Don't do anything yet when user location updates
-    NSLog(@"Did Update User Location");
 }
 
 @end
