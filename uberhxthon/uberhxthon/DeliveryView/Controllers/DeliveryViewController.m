@@ -83,7 +83,6 @@
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
 //    NSLog(@"%d", status);
-    NSLog(@"Fake it");
 }
 
 #pragma mark - MapKit Delegate
