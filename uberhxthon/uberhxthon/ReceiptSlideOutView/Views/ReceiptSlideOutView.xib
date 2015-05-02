@@ -15,18 +15,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Receipts1" translatesAutoresizingMaskIntoConstraints="NO" id="akB-hM-Oav">
-                    <rect key="frame" x="17" y="37" width="566" height="545"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="566" id="ek7-aP-cQ5"/>
-                        <constraint firstAttribute="height" constant="545" id="qgw-uJ-hTB"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="ek7-aP-cQ5"/>
-                        </mask>
-                    </variation>
-                </imageView>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guu-VX-LxF">
                     <rect key="frame" x="267" y="4" width="67" height="30"/>
                     <state key="normal" title="Touch Me">
@@ -41,13 +29,8 @@
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="guu-VX-LxF" secondAttribute="centerX" id="2bh-cW-ZbZ"/>
                 <constraint firstItem="guu-VX-LxF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="BJY-bt-ut5"/>
-                <constraint firstAttribute="centerX" secondItem="akB-hM-Oav" secondAttribute="centerX" id="OAi-Dp-Z74"/>
-                <constraint firstItem="akB-hM-Oav" firstAttribute="top" secondItem="guu-VX-LxF" secondAttribute="bottom" constant="3" id="uJC-jP-WX7"/>
             </constraints>
             <point key="canvasLocation" x="775" y="615"/>
         </view>
     </objects>
-    <resources>
-        <image name="Receipts1" width="1024" height="768"/>
-    </resources>
 </document>

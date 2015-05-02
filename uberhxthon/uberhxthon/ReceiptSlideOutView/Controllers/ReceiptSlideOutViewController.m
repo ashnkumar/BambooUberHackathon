@@ -8,6 +8,8 @@
 
 #import "ReceiptSlideOutViewController.h"
 
+#import "AppConstants.h"
+
 @interface ReceiptSlideOutViewController ()
 
 @end
@@ -16,7 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [AppConstants mainAppThemeColor];
 }
 
 - (IBAction)btnMovePanelUp:(id)sender
@@ -37,8 +40,6 @@
             break;
     }
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

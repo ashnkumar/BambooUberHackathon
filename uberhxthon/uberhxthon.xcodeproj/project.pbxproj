@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		423234861AF479B50073255A /* ReceiptSlideOutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423234851AF479B50073255A /* ReceiptSlideOutView.xib */; };
 		4232348A1AF47A060073255A /* ReceiptSlideOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423234891AF47A060073255A /* ReceiptSlideOutViewController.m */; };
+		4232348D1AF54D600073255A /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4232348C1AF54D600073255A /* AppConstants.m */; };
 		B2202DF01AED93720099F6B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DEF1AED93720099F6B7 /* main.m */; };
 		B2202DF31AED93720099F6B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DF21AED93720099F6B7 /* AppDelegate.m */; };
 		B2202DF61AED93730099F6B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DF51AED93730099F6B7 /* ViewController.m */; };
@@ -44,6 +45,8 @@
 		423234851AF479B50073255A /* ReceiptSlideOutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReceiptSlideOutView.xib; path = ReceiptSlideOutView/Views/ReceiptSlideOutView.xib; sourceTree = "<group>"; };
 		423234881AF47A060073255A /* ReceiptSlideOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReceiptSlideOutViewController.h; path = ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.h; sourceTree = "<group>"; };
 		423234891AF47A060073255A /* ReceiptSlideOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReceiptSlideOutViewController.m; path = ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m; sourceTree = "<group>"; };
+		4232348B1AF54D600073255A /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConstants.h; path = Globals/AppConstants.h; sourceTree = "<group>"; };
+		4232348C1AF54D600073255A /* AppConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppConstants.m; path = Globals/AppConstants.m; sourceTree = "<group>"; };
 		B2202DEA1AED93710099F6B7 /* uberhxthon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uberhxthon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2202DEE1AED93720099F6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2202DEF1AED93720099F6B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -365,6 +368,8 @@
 			children = (
 				B2202DF11AED93720099F6B7 /* AppDelegate.h */,
 				B2202DF21AED93720099F6B7 /* AppDelegate.m */,
+				4232348B1AF54D600073255A /* AppConstants.h */,
+				4232348C1AF54D600073255A /* AppConstants.m */,
 			);
 			name = Globals;
 			sourceTree = "<group>";
@@ -535,6 +540,7 @@
 				B2202E181AED96520099F6B7 /* AnalyticsViewController.m in Sources */,
 				B2202DF01AED93720099F6B7 /* main.m in Sources */,
 				B2202E231AEDA0CF0099F6B7 /* MHTabBarController.m in Sources */,
+				4232348D1AF54D600073255A /* AppConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

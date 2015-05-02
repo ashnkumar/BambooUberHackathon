@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <SpinKit/RTSpinKitView.h>
 #import "ReceiptSlideOutViewController.h"
+#import "AppConstants.h"
 
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 #define METERS_PER_MILE 1609.344
@@ -78,7 +79,7 @@
 {
     self.loadingSpinner = [[RTSpinKitView alloc]
                            initWithStyle:RTSpinKitViewStyleBounce
-                           color:[UIColor colorWithRed:118.0/255.0 green:171.0/255.0 blue:233/255.0 alpha:1.0]];
+                           color:[AppConstants mainAppThemeColor]];
     
     // @TODO: Figure out how to get spinner in the right place autolayout
     CGRect newFrame = CGRectMake(500, 300, 20, 20);
@@ -137,7 +138,6 @@
     CGPoint velocity = [(UIPanGestureRecognizer *)sender velocityInView:[sender view]];
     
     if([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateBegan) {
-        NSLog(@"Now gesture began");
         //        UIView *childView = nil;
         //
         //        if (velocity.x > 0){

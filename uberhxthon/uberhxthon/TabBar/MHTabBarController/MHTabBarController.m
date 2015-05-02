@@ -22,6 +22,8 @@
 
 #import "MHTabBarController.h"
 
+#import "AppConstants.h"
+
 static const NSInteger TagOffset = 1000;
 
 @implementation MHTabBarController
@@ -40,7 +42,7 @@ static const NSInteger TagOffset = 1000;
 	CGRect rect = CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.tabBarHeight);
 	tabButtonsContainerView = [[UIView alloc] initWithFrame:rect];
 	tabButtonsContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    tabButtonsContainerView.backgroundColor = [UIColor colorWithRed:118.0/255.0 green:171.0/255.0 blue:233/255.0 alpha:1.0];
+    tabButtonsContainerView.backgroundColor = [AppConstants mainAppThemeColor];
 	[self.view addSubview:tabButtonsContainerView];
 
 	rect.origin.y = self.tabBarHeight;
@@ -132,7 +134,7 @@ static const NSInteger TagOffset = 1000;
             logoButton.titleLabel.font = [UIFont boldSystemFontOfSize:30];
             [logoButton setTitle:@"CASHWIN" forState:UIControlStateNormal];
             [logoButton setImage:[UIImage imageNamed:@"cashwinlogo"] forState:UIControlStateNormal];
-            [logoButton setBackgroundColor:[UIColor colorWithRed:118.0/255.0 green:171.0/255.0 blue:233/255.0 alpha:1.0]];
+            [logoButton setBackgroundColor:[AppConstants mainAppThemeColor]];
             
             [self deselectTabButton:logoButton];
             [tabButtonsContainerView addSubview:logoButton];
@@ -145,7 +147,7 @@ static const NSInteger TagOffset = 1000;
         [button addTarget:self action:@selector(tabButtonPressed:) forControlEvents:UIControlEventTouchDown];
         
         
-        [button setBackgroundColor:[UIColor colorWithRed:118.0/255.0 green:171.0/255.0 blue:233/255.0 alpha:1.0]];
+        [button setBackgroundColor:[AppConstants mainAppThemeColor]];
 
 		[self deselectTabButton:button];
 		[tabButtonsContainerView addSubview:button];
