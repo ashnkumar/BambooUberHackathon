@@ -7,12 +7,23 @@
 //
 
 #import "DeliveryViewController.h"
+
+#import <QuartzCore/QuartzCore.h>
 #import <SpinKit/RTSpinKitView.h>
+#import "ReceiptSlideOutViewController.h"
 
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 #define METERS_PER_MILE 1609.344
+#define CORNER_RADIUS 4
+#define SLIDE_TIMING .25
 
-@interface DeliveryViewController ()
+@interface DeliveryViewController () <ReceiptPanelViewControllerDelegate, UIGestureRecognizerDelegate>
+
+@property (nonatomic, strong) ReceiptSlideOutViewController *receiptPanelViewController;
+@property (nonatomic, assign) BOOL showingReceiptPanel;
+@property (nonatomic, assign) BOOL showPanel;
+//@property (nonatomic, assign) CGPoint preVelocity;
+
 @property (strong, nonatomic) UIVisualEffectView *blurEffectView;
 @property (strong, nonatomic) RTSpinKitView *loadingSpinner;
 @end
@@ -20,23 +31,15 @@
 @implementation DeliveryViewController
 
 #pragma mark - View Controller Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setupVariables];
     [self addLoadingView];
     [self setupMapView];
-}
-
-- (void)setupVariables
-{
-    self.loadingSpinner = [[RTSpinKitView alloc]
-                           initWithStyle:RTSpinKitViewStyleBounce
-                           color:[UIColor colorWithRed:118.0/255.0 green:171.0/255.0 blue:233/255.0 alpha:1.0]];
-    
-    NSLog(@"View center: %@", self.view);
-    CGRect newFrame = CGRectMake(500, 300, 20, 20);
-    self.loadingSpinner.frame = newFrame;
+    [self setupReceiptPanelView];
+    [self setupGestures];
 }
 
 -(void)viewWillLayoutSubviews {
@@ -60,9 +63,128 @@
     [self.mapView setRegion:viewRegion animated:YES];
 }
 
+
+- (void)setupGestures
+{
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
+    panRecognizer.minimumNumberOfTouches = 1;
+    panRecognizer.maximumNumberOfTouches = 1;
+    panRecognizer.delegate = self;
+    
+    [self.receiptPanelViewController.view addGestureRecognizer:panRecognizer];
+}
+
+- (void)setupVariables
+{
+    self.loadingSpinner = [[RTSpinKitView alloc]
+                           initWithStyle:RTSpinKitViewStyleBounce
+                           color:[UIColor colorWithRed:118.0/255.0 green:171.0/255.0 blue:233/255.0 alpha:1.0]];
+    
+    // @TODO: Figure out how to get spinner in the right place autolayout
+    CGRect newFrame = CGRectMake(500, 300, 20, 20);
+    self.loadingSpinner.frame = newFrame;
+}
+
+- (void)setupReceiptPanelView
+{
+    self.receiptPanelViewController = [[ReceiptSlideOutViewController alloc] initWithNibName:@"ReceiptSlideOutView" bundle:nil];
+    self.receiptPanelViewController.delegate = self;
+    self.receiptPanelViewController.view.frame = CGRectMake(0, 650, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height);
+    
+    [self.view addSubview:self.receiptPanelViewController.view];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Receipt Panel View
+
+- (void)movePanelToOriginalPosition
+{
+    [UIView animateWithDuration:SLIDE_TIMING delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.receiptPanelViewController.view.frame = CGRectMake(0, 650, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height);
+    } completion:^(BOOL finished) {
+        if (finished) {
+            self.receiptPanelViewController.panelUpButton.tag = 1;
+            self.showingReceiptPanel = NO;
+        }
+    }];
+}
+
+- (void)movePanelUp
+{
+    [UIView animateWithDuration:SLIDE_TIMING
+                          delay:0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+     
+                     animations:^{
+                         self.receiptPanelViewController.view.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height);
+                         
+                     } completion:^(BOOL finished) {
+                         self.receiptPanelViewController.panelUpButton.tag = 0;
+                         self.showingReceiptPanel = YES;
+                     }];
+    
+}
+
+-(void)movePanel:(id)sender
+{
+    [[[(UITapGestureRecognizer *)sender view] layer] removeAllAnimations];
+    
+    CGPoint translatedPoint = [(UIPanGestureRecognizer *)sender translationInView:self.view];
+    CGPoint velocity = [(UIPanGestureRecognizer *)sender velocityInView:[sender view]];
+    
+    if([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateBegan) {
+        NSLog(@"Now gesture began");
+        //        UIView *childView = nil;
+        //
+        //        if (velocity.x > 0){
+        //            if (!_showingRightPanel) {
+        //                childView = [self getLeftView];
+        //            }
+        //        } else {
+        //            if (!_showingLeftPanel) {
+        //                childView = [self getRightView];
+        //            }
+        //        }
+        //
+        //        [self.view sendSubviewToBack:childView];
+        //        [[sender view] bringSubviewToFront:[(UIPanGestureRecognizer *)sender view]];
+    }
+    
+    if([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+        
+        if (!_showPanel) {
+            [self movePanelToOriginalPosition];
+        } else {
+            [self movePanelUp];
+        }
+    }
+    
+    if([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateChanged) {
+        if(velocity.y < 0) {
+            _showPanel = [sender view].center.y < 970;
+        } else {
+            _showPanel = NO;
+        }
+        
+        // @TODO: Depending on where they gesture to, change where menu lands
+        //        _showPanel = abs([sender view].center.y - self.view.frame.size.height/2) > self.view.frame.size.height/2
+        
+        [sender view].center = CGPointMake([sender view].center.x, [sender view].center.y + translatedPoint.y);
+        [(UIPanGestureRecognizer*)sender setTranslation:CGPointMake(0,0) inView:self.view];
+        
+        //        // If you needed to check for a change in direction, you could use this code to do so.
+        //        if(velocity.x*_preVelocity.x + velocity.y*_preVelocity.y > 0) {
+        //            // NSLog(@"same direction");
+        //        } else {
+        //            // NSLog(@"opposite direction");
+        //        }
+        //        
+        //        _preVelocity = velocity;
+    }
 }
 
 #pragma mark - Helpers
@@ -176,14 +298,6 @@
 }
 
 @end
-
-
-
-
-
-
-
-
 
 
 
