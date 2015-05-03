@@ -79,7 +79,7 @@
 {
     self.loadingSpinner = [[RTSpinKitView alloc]
                            initWithStyle:RTSpinKitViewStyleBounce
-                           color:[AppConstants mainAppThemeColor]];
+                           color:[AppConstants cashwinGreen]];
     
     // @TODO: Figure out how to get spinner in the right place autolayout
     CGRect newFrame = CGRectMake(500, 300, 20, 20);

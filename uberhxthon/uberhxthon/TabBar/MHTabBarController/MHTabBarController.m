@@ -298,11 +298,6 @@ static const NSInteger TagOffset = 1000;
 		}
 		else if (animated)
 		{
-            
-            /*
-                TODO:
-                Remove right/left swiping animation from switching tabs
-             */
 			CGRect rect = contentContainerView.bounds;
 			if (oldSelectedIndex < newSelectedIndex)
 				rect.origin.x = rect.size.width;
@@ -311,31 +306,25 @@ static const NSInteger TagOffset = 1000;
 
 			toViewController.view.frame = rect;
 			tabButtonsContainerView.userInteractionEnabled = NO;
-
-			[self transitionFromViewController:fromViewController
-				toViewController:toViewController
-				duration:0.3f
-				options:UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionCurveEaseOut
-				animations:^
-				{
-					CGRect rect = fromViewController.view.frame;
-					if (oldSelectedIndex < newSelectedIndex)
-						rect.origin.x = -rect.size.width;
-					else
-						rect.origin.x = rect.size.width;
-
-					fromViewController.view.frame = rect;
-					toViewController.view.frame = contentContainerView.bounds;
-					[self centerIndicatorOnButton:toButton];
-				}
-				completion:^(BOOL finished)
-				{
-					tabButtonsContainerView.userInteractionEnabled = YES;
-
-					if ([self.delegate respondsToSelector:@selector(mh_tabBarController:didSelectViewController:atIndex:)])
-						[self.delegate mh_tabBarController:self didSelectViewController:toViewController atIndex:newSelectedIndex];
-				}];
-		}
+            
+            [self transitionFromViewController:fromViewController toViewController:toViewController duration:0.3f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                    CGRect rect = fromViewController.view.frame;
+                    if (oldSelectedIndex < newSelectedIndex)
+                        rect.origin.x = -rect.size.width;
+                    else
+                        rect.origin.x = rect.size.width;
+                
+                    fromViewController.view.frame = rect;
+                    toViewController.view.frame = contentContainerView.bounds;
+                    [self centerIndicatorOnButton:toButton];
+            }completion:^(BOOL finished) {
+                tabButtonsContainerView.userInteractionEnabled = YES;
+                
+                if ([self.delegate respondsToSelector:@selector(mh_tabBarController:didSelectViewController:atIndex:)])
+                    [self.delegate mh_tabBarController:self didSelectViewController:toViewController atIndex:newSelectedIndex];
+            }];
+            
+        }
 		else  // not animated
 		{
 			[fromViewController.view removeFromSuperview];

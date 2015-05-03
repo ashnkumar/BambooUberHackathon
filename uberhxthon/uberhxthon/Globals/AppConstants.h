@@ -14,5 +14,6 @@
 
 // Colors
 + (UIColor *)mainAppThemeColor;
++ (UIColor *)cashwinGreen;
 
 @end

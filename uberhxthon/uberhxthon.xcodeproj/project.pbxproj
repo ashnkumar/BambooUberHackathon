@@ -17,16 +17,51 @@
 		B2202DFB1AED93730099F6B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2202DFA1AED93730099F6B7 /* Images.xcassets */; };
 		B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202DFC1AED93740099F6B7 /* LaunchScreen.xib */; };
 		B2202E0A1AED93740099F6B7 /* uberhxthonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E091AED93740099F6B7 /* uberhxthonTests.m */; };
-		B2202E151AED963B0099F6B7 /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E141AED963B0099F6B7 /* DeliveryViewController.m */; };
-		B2202E181AED96520099F6B7 /* AnalyticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E171AED96520099F6B7 /* AnalyticsViewController.m */; };
-		B2202E1B1AED965F0099F6B7 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E1A1AED965F0099F6B7 /* SettingsViewController.m */; };
-		B2202E231AEDA0CF0099F6B7 /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E221AEDA0CF0099F6B7 /* MHTabBarController.m */; };
-		B2202E251AEDA4CB0099F6B7 /* DeliveryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202E241AEDA4CB0099F6B7 /* DeliveryView.xib */; };
-		B2202E271AEDA50A0099F6B7 /* AnalyticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202E261AEDA50A0099F6B7 /* AnalyticsView.xib */; };
-		B2202E291AEDA51F0099F6B7 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202E281AEDA51F0099F6B7 /* SettingsView.xib */; };
-		B2202E2E1AEDBD7C0099F6B7 /* LeftmostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E2D1AEDBD7C0099F6B7 /* LeftmostViewController.m */; };
-		B256A4D91AEDC7520051B8EC /* LeftmostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B256A4D81AEDC7520051B8EC /* LeftmostView.xib */; };
 		C1F0CF1D1AF1C6EB00D9F02E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */; };
+		C1FE9F151AF690F400FCA93E /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F141AF690F400FCA93E /* MHTabBarController.m */; };
+		C1FE9F181AF6913E00FCA93E /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F171AF6913E00FCA93E /* DeliveryViewController.m */; };
+		C1FE9F1B1AF6915400FCA93E /* AnalyticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F1A1AF6915400FCA93E /* AnalyticsViewController.m */; };
+		C1FE9F1E1AF6916900FCA93E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F1D1AF6916900FCA93E /* SettingsViewController.m */; };
+		C1FE9F211AF6918A00FCA93E /* LeftmostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F201AF6918A00FCA93E /* LeftmostViewController.m */; };
+		C1FE9F221AF6918A00FCA93E /* LeftmostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F201AF6918A00FCA93E /* LeftmostViewController.m */; };
+		C1FE9F241AF691B700FCA93E /* LeftmostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F231AF691B700FCA93E /* LeftmostView.xib */; };
+		C1FE9F251AF691B700FCA93E /* LeftmostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F231AF691B700FCA93E /* LeftmostView.xib */; };
+		C1FE9F271AF691C400FCA93E /* AnalyticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F261AF691C400FCA93E /* AnalyticsView.xib */; };
+		C1FE9F281AF691C400FCA93E /* AnalyticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F261AF691C400FCA93E /* AnalyticsView.xib */; };
+		C1FE9F2A1AF691D300FCA93E /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F291AF691D300FCA93E /* SettingsView.xib */; };
+		C1FE9F2B1AF691D300FCA93E /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F291AF691D300FCA93E /* SettingsView.xib */; };
+		C1FE9F2D1AF691EC00FCA93E /* DeliveryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F2C1AF691EC00FCA93E /* DeliveryView.xib */; };
+		C1FE9F2E1AF691EC00FCA93E /* DeliveryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F2C1AF691EC00FCA93E /* DeliveryView.xib */; };
+		C1FE9F351AF698AC00FCA93E /* Bamboo_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F2F1AF698AC00FCA93E /* Bamboo_Logo.png */; };
+		C1FE9F361AF698AC00FCA93E /* Bamboo_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F2F1AF698AC00FCA93E /* Bamboo_Logo.png */; };
+		C1FE9F371AF698AC00FCA93E /* Car_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F301AF698AC00FCA93E /* Car_Icon.png */; };
+		C1FE9F381AF698AC00FCA93E /* Car_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F301AF698AC00FCA93E /* Car_Icon.png */; };
+		C1FE9F391AF698AC00FCA93E /* Merchant_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F311AF698AC00FCA93E /* Merchant_Icon.png */; };
+		C1FE9F3A1AF698AC00FCA93E /* Merchant_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F311AF698AC00FCA93E /* Merchant_Icon.png */; };
+		C1FE9F3B1AF698AC00FCA93E /* Metrics_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F321AF698AC00FCA93E /* Metrics_Icon.png */; };
+		C1FE9F3C1AF698AC00FCA93E /* Metrics_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F321AF698AC00FCA93E /* Metrics_Icon.png */; };
+		C1FE9F3D1AF698AC00FCA93E /* Receipt_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F331AF698AC00FCA93E /* Receipt_Icon.png */; };
+		C1FE9F3E1AF698AC00FCA93E /* Receipt_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F331AF698AC00FCA93E /* Receipt_Icon.png */; };
+		C1FE9F3F1AF698AC00FCA93E /* Request_PickUp_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F341AF698AC00FCA93E /* Request_PickUp_Button.png */; };
+		C1FE9F401AF698AC00FCA93E /* Request_PickUp_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F341AF698AC00FCA93E /* Request_PickUp_Button.png */; };
+		C1FE9F481AF698CF00FCA93E /* Logo_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F431AF698CF00FCA93E /* Logo_2x.png */; };
+		C1FE9F491AF698CF00FCA93E /* Logo_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F431AF698CF00FCA93E /* Logo_2x.png */; };
+		C1FE9F4A1AF698CF00FCA93E /* Merchant_Icon_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F441AF698CF00FCA93E /* Merchant_Icon_2x.png */; };
+		C1FE9F4B1AF698CF00FCA93E /* Merchant_Icon_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F441AF698CF00FCA93E /* Merchant_Icon_2x.png */; };
+		C1FE9F4C1AF698CF00FCA93E /* Metrics_Icon_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F451AF698CF00FCA93E /* Metrics_Icon_2x.png */; };
+		C1FE9F4D1AF698CF00FCA93E /* Metrics_Icon_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F451AF698CF00FCA93E /* Metrics_Icon_2x.png */; };
+		C1FE9F4E1AF698CF00FCA93E /* Receipt_Icon_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F461AF698CF00FCA93E /* Receipt_Icon_2x.png */; };
+		C1FE9F4F1AF698CF00FCA93E /* Receipt_Icon_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F461AF698CF00FCA93E /* Receipt_Icon_2x.png */; };
+		C1FE9F501AF698CF00FCA93E /* Request_PickUp_Button_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F471AF698CF00FCA93E /* Request_PickUp_Button_2x.png */; };
+		C1FE9F511AF698CF00FCA93E /* Request_PickUp_Button_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F471AF698CF00FCA93E /* Request_PickUp_Button_2x.png */; };
+		C1FE9F571AF6990F00FCA93E /* IOS BLACK in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F531AF6990F00FCA93E /* IOS BLACK */; };
+		C1FE9F581AF6990F00FCA93E /* IOS BLACK in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F531AF6990F00FCA93E /* IOS BLACK */; };
+		C1FE9F591AF6990F00FCA93E /* IOS POOL in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F541AF6990F00FCA93E /* IOS POOL */; };
+		C1FE9F5A1AF6990F00FCA93E /* IOS POOL in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F541AF6990F00FCA93E /* IOS POOL */; };
+		C1FE9F5B1AF6990F00FCA93E /* IOS SUV in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F551AF6990F00FCA93E /* IOS SUV */; };
+		C1FE9F5C1AF6990F00FCA93E /* IOS SUV in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F551AF6990F00FCA93E /* IOS SUV */; };
+		C1FE9F5D1AF6990F00FCA93E /* IOS XL in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F561AF6990F00FCA93E /* IOS XL */; };
+		C1FE9F5E1AF6990F00FCA93E /* IOS XL in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F561AF6990F00FCA93E /* IOS XL */; };
 		CB91E34CC875BC4F2A60361F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F838711450032AB81FFB9201 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -60,21 +95,36 @@
 		B2202E031AED93740099F6B7 /* uberhxthonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uberhxthonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2202E081AED93740099F6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2202E091AED93740099F6B7 /* uberhxthonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uberhxthonTests.m; sourceTree = "<group>"; };
-		B2202E131AED963B0099F6B7 /* DeliveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeliveryViewController.h; sourceTree = "<group>"; };
-		B2202E141AED963B0099F6B7 /* DeliveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeliveryViewController.m; sourceTree = "<group>"; };
-		B2202E161AED96520099F6B7 /* AnalyticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsViewController.h; sourceTree = "<group>"; };
-		B2202E171AED96520099F6B7 /* AnalyticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsViewController.m; sourceTree = "<group>"; };
-		B2202E191AED965F0099F6B7 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		B2202E1A1AED965F0099F6B7 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		B2202E211AEDA0CF0099F6B7 /* MHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHTabBarController.h; path = MHTabBarController/MHTabBarController.h; sourceTree = "<group>"; };
-		B2202E221AEDA0CF0099F6B7 /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHTabBarController.m; path = MHTabBarController/MHTabBarController.m; sourceTree = "<group>"; };
-		B2202E241AEDA4CB0099F6B7 /* DeliveryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryView.xib; sourceTree = "<group>"; };
-		B2202E261AEDA50A0099F6B7 /* AnalyticsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnalyticsView.xib; sourceTree = "<group>"; };
-		B2202E281AEDA51F0099F6B7 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
-		B2202E2C1AEDBD7C0099F6B7 /* LeftmostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftmostViewController.h; sourceTree = "<group>"; };
-		B2202E2D1AEDBD7C0099F6B7 /* LeftmostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftmostViewController.m; sourceTree = "<group>"; };
-		B256A4D81AEDC7520051B8EC /* LeftmostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftmostView.xib; sourceTree = "<group>"; };
 		C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C1FE9F131AF690F400FCA93E /* MHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHTabBarController.h; path = uberhxthon/TabBar/MHTabBarController/MHTabBarController.h; sourceTree = SOURCE_ROOT; };
+		C1FE9F141AF690F400FCA93E /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHTabBarController.m; path = uberhxthon/TabBar/MHTabBarController/MHTabBarController.m; sourceTree = SOURCE_ROOT; };
+		C1FE9F161AF6913E00FCA93E /* DeliveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeliveryViewController.h; path = uberhxthon/DeliveryView/Controllers/DeliveryViewController.h; sourceTree = SOURCE_ROOT; };
+		C1FE9F171AF6913E00FCA93E /* DeliveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeliveryViewController.m; path = uberhxthon/DeliveryView/Controllers/DeliveryViewController.m; sourceTree = SOURCE_ROOT; };
+		C1FE9F191AF6915400FCA93E /* AnalyticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnalyticsViewController.h; path = uberhxthon/AnalyticsView/Controllers/AnalyticsViewController.h; sourceTree = SOURCE_ROOT; };
+		C1FE9F1A1AF6915400FCA93E /* AnalyticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnalyticsViewController.m; path = uberhxthon/AnalyticsView/Controllers/AnalyticsViewController.m; sourceTree = SOURCE_ROOT; };
+		C1FE9F1C1AF6916900FCA93E /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = uberhxthon/SettingsView/Controllers/SettingsViewController.h; sourceTree = SOURCE_ROOT; };
+		C1FE9F1D1AF6916900FCA93E /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = uberhxthon/SettingsView/Controllers/SettingsViewController.m; sourceTree = SOURCE_ROOT; };
+		C1FE9F1F1AF6918A00FCA93E /* LeftmostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftmostViewController.h; path = uberhxthon/LeftMostView/Controllers/LeftmostViewController.h; sourceTree = SOURCE_ROOT; };
+		C1FE9F201AF6918A00FCA93E /* LeftmostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftmostViewController.m; path = uberhxthon/LeftMostView/Controllers/LeftmostViewController.m; sourceTree = SOURCE_ROOT; };
+		C1FE9F231AF691B700FCA93E /* LeftmostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LeftmostView.xib; path = uberhxthon/LeftMostView/Views/LeftmostView.xib; sourceTree = SOURCE_ROOT; };
+		C1FE9F261AF691C400FCA93E /* AnalyticsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AnalyticsView.xib; path = uberhxthon/AnalyticsView/Views/AnalyticsView.xib; sourceTree = SOURCE_ROOT; };
+		C1FE9F291AF691D300FCA93E /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsView.xib; path = uberhxthon/SettingsView/Views/SettingsView.xib; sourceTree = SOURCE_ROOT; };
+		C1FE9F2C1AF691EC00FCA93E /* DeliveryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DeliveryView.xib; path = uberhxthon/DeliveryView/Views/DeliveryView.xib; sourceTree = SOURCE_ROOT; };
+		C1FE9F2F1AF698AC00FCA93E /* Bamboo_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bamboo_Logo.png; sourceTree = "<group>"; };
+		C1FE9F301AF698AC00FCA93E /* Car_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Car_Icon.png; sourceTree = "<group>"; };
+		C1FE9F311AF698AC00FCA93E /* Merchant_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Merchant_Icon.png; sourceTree = "<group>"; };
+		C1FE9F321AF698AC00FCA93E /* Metrics_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Metrics_Icon.png; sourceTree = "<group>"; };
+		C1FE9F331AF698AC00FCA93E /* Receipt_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Receipt_Icon.png; sourceTree = "<group>"; };
+		C1FE9F341AF698AC00FCA93E /* Request_PickUp_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Request_PickUp_Button.png; sourceTree = "<group>"; };
+		C1FE9F431AF698CF00FCA93E /* Logo_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_2x.png; sourceTree = "<group>"; };
+		C1FE9F441AF698CF00FCA93E /* Merchant_Icon_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Merchant_Icon_2x.png; sourceTree = "<group>"; };
+		C1FE9F451AF698CF00FCA93E /* Metrics_Icon_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Metrics_Icon_2x.png; sourceTree = "<group>"; };
+		C1FE9F461AF698CF00FCA93E /* Receipt_Icon_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Receipt_Icon_2x.png; sourceTree = "<group>"; };
+		C1FE9F471AF698CF00FCA93E /* Request_PickUp_Button_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Request_PickUp_Button_2x.png; sourceTree = "<group>"; };
+		C1FE9F531AF6990F00FCA93E /* IOS BLACK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "IOS BLACK"; sourceTree = "<group>"; };
+		C1FE9F541AF6990F00FCA93E /* IOS POOL */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "IOS POOL"; sourceTree = "<group>"; };
+		C1FE9F551AF6990F00FCA93E /* IOS SUV */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "IOS SUV"; sourceTree = "<group>"; };
+		C1FE9F561AF6990F00FCA93E /* IOS XL */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "IOS XL"; sourceTree = "<group>"; };
 		D0AFD784EE723E46DA2B7261 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F838711450032AB81FFB9201 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -145,7 +195,7 @@
 		4239E7DD1AF2B9C400513C9A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B2202E241AEDA4CB0099F6B7 /* DeliveryView.xib */,
+				C1FE9F2C1AF691EC00FCA93E /* DeliveryView.xib */,
 			);
 			name = Views;
 			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/DeliveryView/Views;
@@ -154,8 +204,8 @@
 		4239E7DE1AF2B9C900513C9A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B2202E131AED963B0099F6B7 /* DeliveryViewController.h */,
-				B2202E141AED963B0099F6B7 /* DeliveryViewController.m */,
+				C1FE9F161AF6913E00FCA93E /* DeliveryViewController.h */,
+				C1FE9F171AF6913E00FCA93E /* DeliveryViewController.m */,
 			);
 			name = Controllers;
 			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/DeliveryView/Controllers;
@@ -181,7 +231,7 @@
 		4239E7E11AF2B9F300513C9A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B2202E281AEDA51F0099F6B7 /* SettingsView.xib */,
+				C1FE9F291AF691D300FCA93E /* SettingsView.xib */,
 			);
 			name = Views;
 			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/SettingsView/Views;
@@ -190,8 +240,8 @@
 		4239E7E21AF2B9F700513C9A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B2202E191AED965F0099F6B7 /* SettingsViewController.h */,
-				B2202E1A1AED965F0099F6B7 /* SettingsViewController.m */,
+				C1FE9F1C1AF6916900FCA93E /* SettingsViewController.h */,
+				C1FE9F1D1AF6916900FCA93E /* SettingsViewController.m */,
 			);
 			name = Controllers;
 			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/SettingsView/Controllers;
@@ -218,7 +268,7 @@
 		4239E7E51AF2BA2300513C9A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B2202E261AEDA50A0099F6B7 /* AnalyticsView.xib */,
+				C1FE9F261AF691C400FCA93E /* AnalyticsView.xib */,
 			);
 			name = Views;
 			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/AnalyticsView/Views;
@@ -227,8 +277,8 @@
 		4239E7E61AF2BA2700513C9A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B2202E161AED96520099F6B7 /* AnalyticsViewController.h */,
-				B2202E171AED96520099F6B7 /* AnalyticsViewController.m */,
+				C1FE9F191AF6915400FCA93E /* AnalyticsViewController.h */,
+				C1FE9F1A1AF6915400FCA93E /* AnalyticsViewController.m */,
 			);
 			name = Controllers;
 			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/AnalyticsView/Controllers;
@@ -237,8 +287,8 @@
 		4239E7E71AF2BA5800513C9A /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				B2202E211AEDA0CF0099F6B7 /* MHTabBarController.h */,
-				B2202E221AEDA0CF0099F6B7 /* MHTabBarController.m */,
+				C1FE9F131AF690F400FCA93E /* MHTabBarController.h */,
+				C1FE9F141AF690F400FCA93E /* MHTabBarController.m */,
 			);
 			name = TabBar;
 			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/TabBar;
@@ -264,7 +314,7 @@
 		4239E7EA1AF2BDAB00513C9A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B256A4D81AEDC7520051B8EC /* LeftmostView.xib */,
+				C1FE9F231AF691B700FCA93E /* LeftmostView.xib */,
 			);
 			name = Views;
 			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/LeftMostView/Views;
@@ -273,8 +323,8 @@
 		4239E7EB1AF2BDB400513C9A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B2202E2C1AEDBD7C0099F6B7 /* LeftmostViewController.h */,
-				B2202E2D1AEDBD7C0099F6B7 /* LeftmostViewController.m */,
+				C1FE9F1F1AF6918A00FCA93E /* LeftmostViewController.h */,
+				C1FE9F201AF6918A00FCA93E /* LeftmostViewController.m */,
 			);
 			name = Controllers;
 			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/LeftMostView/Controllers;
@@ -321,6 +371,7 @@
 		B2202DED1AED93720099F6B7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C1FE9F411AF698B200FCA93E /* Assets */,
 				C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */,
 				B2202DEE1AED93720099F6B7 /* Info.plist */,
 				B2202DEF1AED93720099F6B7 /* main.m */,
@@ -381,6 +432,52 @@
 				D0AFD784EE723E46DA2B7261 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C1FE9F411AF698B200FCA93E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C1FE9F5F1AF6992A00FCA93E /* UberCars */,
+				C1FE9F421AF698BD00FCA93E /* 1x */,
+				C1FE9F521AF698D300FCA93E /* 2x */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		C1FE9F421AF698BD00FCA93E /* 1x */ = {
+			isa = PBXGroup;
+			children = (
+				C1FE9F2F1AF698AC00FCA93E /* Bamboo_Logo.png */,
+				C1FE9F301AF698AC00FCA93E /* Car_Icon.png */,
+				C1FE9F311AF698AC00FCA93E /* Merchant_Icon.png */,
+				C1FE9F321AF698AC00FCA93E /* Metrics_Icon.png */,
+				C1FE9F331AF698AC00FCA93E /* Receipt_Icon.png */,
+				C1FE9F341AF698AC00FCA93E /* Request_PickUp_Button.png */,
+			);
+			name = 1x;
+			sourceTree = "<group>";
+		};
+		C1FE9F521AF698D300FCA93E /* 2x */ = {
+			isa = PBXGroup;
+			children = (
+				C1FE9F431AF698CF00FCA93E /* Logo_2x.png */,
+				C1FE9F441AF698CF00FCA93E /* Merchant_Icon_2x.png */,
+				C1FE9F451AF698CF00FCA93E /* Metrics_Icon_2x.png */,
+				C1FE9F461AF698CF00FCA93E /* Receipt_Icon_2x.png */,
+				C1FE9F471AF698CF00FCA93E /* Request_PickUp_Button_2x.png */,
+			);
+			name = 2x;
+			sourceTree = "<group>";
+		};
+		C1FE9F5F1AF6992A00FCA93E /* UberCars */ = {
+			isa = PBXGroup;
+			children = (
+				C1FE9F531AF6990F00FCA93E /* IOS BLACK */,
+				C1FE9F541AF6990F00FCA93E /* IOS POOL */,
+				C1FE9F551AF6990F00FCA93E /* IOS SUV */,
+				C1FE9F561AF6990F00FCA93E /* IOS XL */,
+			);
+			name = UberCars;
 			sourceTree = "<group>";
 		};
 		F2158B4E1C196F260D8C6736 /* Frameworks */ = {
@@ -473,14 +570,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1FE9F2D1AF691EC00FCA93E /* DeliveryView.xib in Resources */,
+				C1FE9F571AF6990F00FCA93E /* IOS BLACK in Resources */,
+				C1FE9F5B1AF6990F00FCA93E /* IOS SUV in Resources */,
+				C1FE9F371AF698AC00FCA93E /* Car_Icon.png in Resources */,
 				423234861AF479B50073255A /* ReceiptSlideOutView.xib in Resources */,
-				B2202E251AEDA4CB0099F6B7 /* DeliveryView.xib in Resources */,
+				C1FE9F3D1AF698AC00FCA93E /* Receipt_Icon.png in Resources */,
+				C1FE9F501AF698CF00FCA93E /* Request_PickUp_Button_2x.png in Resources */,
+				C1FE9F591AF6990F00FCA93E /* IOS POOL in Resources */,
+				C1FE9F241AF691B700FCA93E /* LeftmostView.xib in Resources */,
+				C1FE9F5D1AF6990F00FCA93E /* IOS XL in Resources */,
 				B2202DF91AED93730099F6B7 /* Main.storyboard in Resources */,
+				C1FE9F481AF698CF00FCA93E /* Logo_2x.png in Resources */,
+				C1FE9F391AF698AC00FCA93E /* Merchant_Icon.png in Resources */,
+				C1FE9F3F1AF698AC00FCA93E /* Request_PickUp_Button.png in Resources */,
 				B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */,
-				B256A4D91AEDC7520051B8EC /* LeftmostView.xib in Resources */,
-				B2202E291AEDA51F0099F6B7 /* SettingsView.xib in Resources */,
+				C1FE9F4A1AF698CF00FCA93E /* Merchant_Icon_2x.png in Resources */,
+				C1FE9F2A1AF691D300FCA93E /* SettingsView.xib in Resources */,
+				C1FE9F351AF698AC00FCA93E /* Bamboo_Logo.png in Resources */,
+				C1FE9F4C1AF698CF00FCA93E /* Metrics_Icon_2x.png in Resources */,
+				C1FE9F271AF691C400FCA93E /* AnalyticsView.xib in Resources */,
+				C1FE9F3B1AF698AC00FCA93E /* Metrics_Icon.png in Resources */,
 				B2202DFB1AED93730099F6B7 /* Images.xcassets in Resources */,
-				B2202E271AEDA50A0099F6B7 /* AnalyticsView.xib in Resources */,
+				C1FE9F4E1AF698CF00FCA93E /* Receipt_Icon_2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +600,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1FE9F5C1AF6990F00FCA93E /* IOS SUV in Resources */,
+				C1FE9F5E1AF6990F00FCA93E /* IOS XL in Resources */,
+				C1FE9F2E1AF691EC00FCA93E /* DeliveryView.xib in Resources */,
+				C1FE9F581AF6990F00FCA93E /* IOS BLACK in Resources */,
+				C1FE9F361AF698AC00FCA93E /* Bamboo_Logo.png in Resources */,
+				C1FE9F3C1AF698AC00FCA93E /* Metrics_Icon.png in Resources */,
+				C1FE9F3A1AF698AC00FCA93E /* Merchant_Icon.png in Resources */,
+				C1FE9F2B1AF691D300FCA93E /* SettingsView.xib in Resources */,
+				C1FE9F5A1AF6990F00FCA93E /* IOS POOL in Resources */,
+				C1FE9F4F1AF698CF00FCA93E /* Receipt_Icon_2x.png in Resources */,
+				C1FE9F511AF698CF00FCA93E /* Request_PickUp_Button_2x.png in Resources */,
+				C1FE9F491AF698CF00FCA93E /* Logo_2x.png in Resources */,
+				C1FE9F4B1AF698CF00FCA93E /* Merchant_Icon_2x.png in Resources */,
+				C1FE9F401AF698AC00FCA93E /* Request_PickUp_Button.png in Resources */,
+				C1FE9F381AF698AC00FCA93E /* Car_Icon.png in Resources */,
+				C1FE9F4D1AF698CF00FCA93E /* Metrics_Icon_2x.png in Resources */,
+				C1FE9F251AF691B700FCA93E /* LeftmostView.xib in Resources */,
+				C1FE9F281AF691C400FCA93E /* AnalyticsView.xib in Resources */,
+				C1FE9F3E1AF698AC00FCA93E /* Receipt_Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,15 +662,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2202E2E1AEDBD7C0099F6B7 /* LeftmostViewController.m in Sources */,
+				C1FE9F181AF6913E00FCA93E /* DeliveryViewController.m in Sources */,
 				B2202DF61AED93730099F6B7 /* ViewController.m in Sources */,
+				C1FE9F1B1AF6915400FCA93E /* AnalyticsViewController.m in Sources */,
 				4232348A1AF47A060073255A /* ReceiptSlideOutViewController.m in Sources */,
+				C1FE9F211AF6918A00FCA93E /* LeftmostViewController.m in Sources */,
 				B2202DF31AED93720099F6B7 /* AppDelegate.m in Sources */,
-				B2202E151AED963B0099F6B7 /* DeliveryViewController.m in Sources */,
-				B2202E1B1AED965F0099F6B7 /* SettingsViewController.m in Sources */,
-				B2202E181AED96520099F6B7 /* AnalyticsViewController.m in Sources */,
+				C1FE9F151AF690F400FCA93E /* MHTabBarController.m in Sources */,
+				C1FE9F1E1AF6916900FCA93E /* SettingsViewController.m in Sources */,
 				B2202DF01AED93720099F6B7 /* main.m in Sources */,
-				B2202E231AEDA0CF0099F6B7 /* MHTabBarController.m in Sources */,
 				4232348D1AF54D600073255A /* AppConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +679,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1FE9F221AF6918A00FCA93E /* LeftmostViewController.m in Sources */,
 				B2202E0A1AED93740099F6B7 /* uberhxthonTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
