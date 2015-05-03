@@ -26,17 +26,15 @@
     SettingsViewController *settingsVC = [[SettingsViewController alloc]init];
     LeftmostViewController *leftVC = [[LeftmostViewController alloc]init];
     
+  /*  leftVC.title = @"PROFILE";
     deliveryVC.title = @"DELIVERY";
     analyticsVC.title = @"ANALYTICS";
-    settingsVC.title = @"SETTINGS";
-    leftVC.title = @"DUMMY";
+    settingsVC.title = @"RECEIPTS";*/
     
-    /* TODO */
-    /*
-    deliveryVC.tabBarItem.image = [UIImage imageNamed:@"deliveryIcon"];
-    analyticsVC.tabBarItem.image = [UIImage imageNamed:@"analyticsIcon"];
-    settingsVC.tabBarItem.image = [UIImage imageNamed:@"settingsIcon"];
-    */
+    leftVC.tabBarItem.image = [UIImage imageNamed:@"Merchant_Icon.png"];
+    deliveryVC.tabBarItem.image = [UIImage imageNamed:@"Car_Icon.png"];
+    analyticsVC.tabBarItem.image = [UIImage imageNamed:@"Metrics_Icon.png"];
+    settingsVC.tabBarItem.image = [UIImage imageNamed:@"Receipt_Icon.png"];
     
     
     NSArray *viewControllers = @[leftVC, deliveryVC, analyticsVC, settingsVC];

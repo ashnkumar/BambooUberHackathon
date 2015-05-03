@@ -132,11 +132,12 @@ static const NSInteger TagOffset = 1000;
         if (index == 2)
         {
             logoButton.titleLabel.font = [UIFont boldSystemFontOfSize:30];
-            [logoButton setTitle:@"CASHWIN" forState:UIControlStateNormal];
-            [logoButton setImage:[UIImage imageNamed:@"cashwinlogo"] forState:UIControlStateNormal];
+           // [logoButton setTitle:@"CASHWIN" forState:UIControlStateNormal];
+            [logoButton setImage:[UIImage imageNamed:@"Bamboo_Logo.png"] forState:UIControlStateNormal];
             [logoButton setBackgroundColor:[AppConstants mainAppThemeColor]];
             
-            [self deselectTabButton:logoButton];
+            //[self deselectTabButton:logoButton];
+            logoButton.enabled = NO;
             [tabButtonsContainerView addSubview:logoButton];
         }
         
@@ -368,11 +369,7 @@ static const NSInteger TagOffset = 1000;
 
 - (void)selectTabButton:(UIButton *)button
 {
-	[button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-
-	/* CASHWIN NOTES
-     Commented out button styling of original coder -Cat
-     */
+	//Draw a green line
     
     /*
     UIImage *image = [[UIImage imageNamed:@"MHTabBarActiveTab"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
