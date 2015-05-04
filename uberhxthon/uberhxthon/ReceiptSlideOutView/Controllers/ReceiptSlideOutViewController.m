@@ -10,7 +10,10 @@
 
 #import "AppConstants.h"
 
-@interface ReceiptSlideOutViewController ()
+@interface ReceiptSlideOutViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) NSArray *dummyReceiptData;
 
 @end
 
@@ -20,6 +23,10 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [AppConstants mainAppThemeColor];
+    self.dummyReceiptData = @[@"one", @"two", @"three", @"four", @"five"];
+
+    [self.collectionView registerClass:[UICollectionViewCell class]
+            forCellWithReuseIdentifier:@"SampleCell"];
 }
 
 - (IBAction)btnMovePanelUp:(id)sender
@@ -45,5 +52,72 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UICollectionView DataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [self.dummyReceiptData count];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell"
+                                                                       forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor whiteColor];
+    
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize retVal = CGSizeMake(170, 210);
+    return retVal;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
+                        layout:(UICollectionViewLayout *)collectionViewLayout
+        insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(20, 20, 50, 20);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

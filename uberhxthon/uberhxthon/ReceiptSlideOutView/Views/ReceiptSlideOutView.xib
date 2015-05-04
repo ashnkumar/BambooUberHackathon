@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReceiptSlideOutViewController">
             <connections>
+                <outlet property="collectionView" destination="2H5-u2-MiN" id="hUX-W9-PfL"/>
                 <outlet property="panelUpButton" destination="guu-VX-LxF" id="iqP-Nf-j4s"/>
                 <outlet property="view" destination="iN0-l3-epB" id="NUm-HJ-cfv"/>
             </connections>
@@ -24,11 +25,29 @@
                         <action selector="btnMovePanelUp:" destination="-1" eventType="touchUpInside" id="Tha-I5-67h"/>
                     </connections>
                 </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2H5-u2-MiN">
+                    <rect key="frame" x="8" y="42" width="584" height="550"/>
+                    <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sxq-2A-Y4z">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Lbj-Yy-0TY"/>
+                        <outlet property="delegate" destination="-1" id="yML-ri-DuS"/>
+                    </connections>
+                </collectionView>
             </subviews>
-            <color key="backgroundColor" red="0.3843137254901961" green="0.59215686274509804" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="guu-VX-LxF" secondAttribute="centerX" id="2bh-cW-ZbZ"/>
                 <constraint firstItem="guu-VX-LxF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="BJY-bt-ut5"/>
+                <constraint firstAttribute="trailing" secondItem="2H5-u2-MiN" secondAttribute="trailing" constant="8" id="Pcj-c9-Acx"/>
+                <constraint firstItem="2H5-u2-MiN" firstAttribute="top" secondItem="guu-VX-LxF" secondAttribute="bottom" constant="8" id="Vgf-Kc-Yiz"/>
+                <constraint firstItem="2H5-u2-MiN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="YZO-Qg-n8J"/>
+                <constraint firstAttribute="bottom" secondItem="2H5-u2-MiN" secondAttribute="bottom" constant="8" id="v3N-iC-ezd"/>
             </constraints>
             <point key="canvasLocation" x="775" y="615"/>
         </view>
