@@ -16,17 +16,12 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guu-VX-LxF">
-                    <rect key="frame" x="267" y="4" width="67" height="30"/>
-                    <state key="normal" title="Touch Me">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="btnMovePanelUp:" destination="-1" eventType="touchUpInside" id="Tha-I5-67h"/>
-                    </connections>
-                </button>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dragBar2" translatesAutoresizingMaskIntoConstraints="NO" id="lsr-Cf-7Nu">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="135"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2H5-u2-MiN">
-                    <rect key="frame" x="8" y="42" width="584" height="550"/>
+                    <rect key="frame" x="0.0" y="66" width="600" height="534"/>
                     <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sxq-2A-Y4z">
                         <size key="itemSize" width="50" height="50"/>
@@ -39,17 +34,34 @@
                         <outlet property="delegate" destination="-1" id="yML-ri-DuS"/>
                     </connections>
                 </collectionView>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guu-VX-LxF">
+                    <rect key="frame" x="267" y="33" width="67" height="30"/>
+                    <state key="normal" title="Touch Me">
+                        <color key="titleColor" red="0.47450980392156861" green="0.7803921568627451" blue="0.63921568627450975" alpha="0.0" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnMovePanelUp:" destination="-1" eventType="touchUpInside" id="Tha-I5-67h"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="guu-VX-LxF" secondAttribute="centerX" id="2bh-cW-ZbZ"/>
-                <constraint firstItem="guu-VX-LxF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="BJY-bt-ut5"/>
-                <constraint firstAttribute="trailing" secondItem="2H5-u2-MiN" secondAttribute="trailing" constant="8" id="Pcj-c9-Acx"/>
-                <constraint firstItem="2H5-u2-MiN" firstAttribute="top" secondItem="guu-VX-LxF" secondAttribute="bottom" constant="8" id="Vgf-Kc-Yiz"/>
-                <constraint firstItem="2H5-u2-MiN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="YZO-Qg-n8J"/>
-                <constraint firstAttribute="bottom" secondItem="2H5-u2-MiN" secondAttribute="bottom" constant="8" id="v3N-iC-ezd"/>
+                <constraint firstItem="2H5-u2-MiN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Or-2Z-cuq"/>
+                <constraint firstAttribute="centerX" secondItem="lsr-Cf-7Nu" secondAttribute="centerX" id="6he-Tr-hxh"/>
+                <constraint firstItem="guu-VX-LxF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="33" id="CZp-xU-Nhy"/>
+                <constraint firstAttribute="centerX" secondItem="guu-VX-LxF" secondAttribute="centerX" id="PzL-fY-8wd"/>
+                <constraint firstItem="lsr-Cf-7Nu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="elN-xh-CCY"/>
+                <constraint firstAttribute="bottom" secondItem="2H5-u2-MiN" secondAttribute="bottom" id="n5j-ed-Mtd"/>
+                <constraint firstItem="2H5-u2-MiN" firstAttribute="top" secondItem="guu-VX-LxF" secondAttribute="bottom" constant="3" id="o5g-by-llP"/>
+                <constraint firstAttribute="trailing" secondItem="2H5-u2-MiN" secondAttribute="trailing" id="ptd-KP-Zi4"/>
+                <constraint firstAttribute="trailing" secondItem="lsr-Cf-7Nu" secondAttribute="trailing" id="rEP-fJ-kWf"/>
+                <constraint firstItem="lsr-Cf-7Nu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="u6t-ww-uPj"/>
             </constraints>
-            <point key="canvasLocation" x="775" y="615"/>
+            <point key="canvasLocation" x="666" y="687"/>
         </view>
     </objects>
+    <resources>
+        <image name="dragBar2" width="2048" height="135"/>
+    </resources>
 </document>

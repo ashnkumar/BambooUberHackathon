@@ -9,6 +9,7 @@
 #import "ReceiptSlideOutViewController.h"
 
 #import "AppConstants.h"
+#import "ReceiptCell.h"
 
 @interface ReceiptSlideOutViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -24,9 +25,11 @@
     
     self.view.backgroundColor = [AppConstants mainAppThemeColor];
     self.dummyReceiptData = @[@"one", @"two", @"three", @"four", @"five"];
-
-    [self.collectionView registerClass:[UICollectionViewCell class]
-            forCellWithReuseIdentifier:@"SampleCell"];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"ReceiptCell" bundle:nil] forCellWithReuseIdentifier:@"SampleCell"];
+    self.view.backgroundColor = [UIColor clearColor];
+    
+     
 }
 
 - (IBAction)btnMovePanelUp:(id)sender
@@ -65,13 +68,13 @@
     return 1;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+- (ReceiptCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell"
+    ReceiptCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell"
                                                                        forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor whiteColor];
+//    cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
 }
