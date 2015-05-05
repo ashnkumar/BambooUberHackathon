@@ -17,6 +17,22 @@
 		B2202DFB1AED93730099F6B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2202DFA1AED93730099F6B7 /* Images.xcassets */; };
 		B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202DFC1AED93740099F6B7 /* LaunchScreen.xib */; };
 		B2202E0A1AED93740099F6B7 /* uberhxthonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E091AED93740099F6B7 /* uberhxthonTests.m */; };
+		C103BCEE1AF738FE007D2DE1 /* map-vehicle-icon-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = C103BCED1AF738FE007D2DE1 /* map-vehicle-icon-sm.png */; };
+		C18B95561AF893DB00E6501E /* uber_route1.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95521AF893DB00E6501E /* uber_route1.png */; };
+		C18B95571AF893DB00E6501E /* uber_route2.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95531AF893DB00E6501E /* uber_route2.png */; };
+		C18B95581AF893DB00E6501E /* uber_route3.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95541AF893DB00E6501E /* uber_route3.png */; };
+		C18B95591AF893DB00E6501E /* uber_route4.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95551AF893DB00E6501E /* uber_route4.png */; };
+		C18B955A1AF893E100E6501E /* uber_route4.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95551AF893DB00E6501E /* uber_route4.png */; };
+		C18B955B1AF893E900E6501E /* uber_route2.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95531AF893DB00E6501E /* uber_route2.png */; };
+		C18B955C1AF893EC00E6501E /* uber_route1.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95521AF893DB00E6501E /* uber_route1.png */; };
+		C18B955D1AF893EF00E6501E /* uber_route3.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95541AF893DB00E6501E /* uber_route3.png */; };
+		C18B955E1AF893F500E6501E /* map-vehicle-icon-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = C103BCED1AF738FE007D2DE1 /* map-vehicle-icon-sm.png */; };
+		C18B955F1AF893F700E6501E /* map-vehicle-icon-uberX.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A73E3F1AF6DC48000C84E7 /* map-vehicle-icon-uberX.png */; };
+		C18B95601AF893F900E6501E /* map-vehicle-icon-uberX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A73E401AF6DC48000C84E7 /* map-vehicle-icon-uberX@2x.png */; };
+		C18B95611AF893FF00E6501E /* map-vehicle-icon-uberX@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A73E411AF6DC48000C84E7 /* map-vehicle-icon-uberX@3x.png */; };
+		C1A73E421AF6DC48000C84E7 /* map-vehicle-icon-uberX.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A73E3F1AF6DC48000C84E7 /* map-vehicle-icon-uberX.png */; };
+		C1A73E431AF6DC48000C84E7 /* map-vehicle-icon-uberX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A73E401AF6DC48000C84E7 /* map-vehicle-icon-uberX@2x.png */; };
+		C1A73E441AF6DC48000C84E7 /* map-vehicle-icon-uberX@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A73E411AF6DC48000C84E7 /* map-vehicle-icon-uberX@3x.png */; };
 		C1F0CF1D1AF1C6EB00D9F02E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */; };
 		C1FE9F151AF690F400FCA93E /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F141AF690F400FCA93E /* MHTabBarController.m */; };
 		C1FE9F181AF6913E00FCA93E /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F171AF6913E00FCA93E /* DeliveryViewController.m */; };
@@ -32,14 +48,6 @@
 		C1FE9F2B1AF691D300FCA93E /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F291AF691D300FCA93E /* SettingsView.xib */; };
 		C1FE9F2D1AF691EC00FCA93E /* DeliveryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F2C1AF691EC00FCA93E /* DeliveryView.xib */; };
 		C1FE9F2E1AF691EC00FCA93E /* DeliveryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F2C1AF691EC00FCA93E /* DeliveryView.xib */; };
-		C1FE9F791AF69CE800FCA93E /* IOS BLACK in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F751AF69CE800FCA93E /* IOS BLACK */; };
-		C1FE9F7A1AF69CE800FCA93E /* IOS BLACK in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F751AF69CE800FCA93E /* IOS BLACK */; };
-		C1FE9F7B1AF69CE800FCA93E /* IOS POOL in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F761AF69CE800FCA93E /* IOS POOL */; };
-		C1FE9F7C1AF69CE800FCA93E /* IOS POOL in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F761AF69CE800FCA93E /* IOS POOL */; };
-		C1FE9F7D1AF69CE800FCA93E /* IOS SUV in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F771AF69CE800FCA93E /* IOS SUV */; };
-		C1FE9F7E1AF69CE800FCA93E /* IOS SUV in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F771AF69CE800FCA93E /* IOS SUV */; };
-		C1FE9F7F1AF69CE800FCA93E /* IOS XL in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F781AF69CE800FCA93E /* IOS XL */; };
-		C1FE9F801AF69CE800FCA93E /* IOS XL in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F781AF69CE800FCA93E /* IOS XL */; };
 		C1FE9F871AF69D3500FCA93E /* Bamboo_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F811AF69D3500FCA93E /* Bamboo_Logo.png */; };
 		C1FE9F881AF69D3500FCA93E /* Bamboo_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F811AF69D3500FCA93E /* Bamboo_Logo.png */; };
 		C1FE9F891AF69D3500FCA93E /* Car_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1FE9F821AF69D3500FCA93E /* Car_Icon.png */; };
@@ -101,6 +109,14 @@
 		B2202E031AED93740099F6B7 /* uberhxthonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uberhxthonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2202E081AED93740099F6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2202E091AED93740099F6B7 /* uberhxthonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uberhxthonTests.m; sourceTree = "<group>"; };
+		C103BCED1AF738FE007D2DE1 /* map-vehicle-icon-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map-vehicle-icon-sm.png"; path = "Assets/IOS BLACK/map-vehicle-icon-sm.png"; sourceTree = "<group>"; };
+		C18B95521AF893DB00E6501E /* uber_route1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route1.png; path = "Assets/IOS BLACK/uber_route1.png"; sourceTree = "<group>"; };
+		C18B95531AF893DB00E6501E /* uber_route2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route2.png; path = "Assets/IOS BLACK/uber_route2.png"; sourceTree = "<group>"; };
+		C18B95541AF893DB00E6501E /* uber_route3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route3.png; path = "Assets/IOS BLACK/uber_route3.png"; sourceTree = "<group>"; };
+		C18B95551AF893DB00E6501E /* uber_route4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route4.png; path = "Assets/IOS BLACK/uber_route4.png"; sourceTree = "<group>"; };
+		C1A73E3F1AF6DC48000C84E7 /* map-vehicle-icon-uberX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map-vehicle-icon-uberX.png"; path = "Assets/IOS POOL/map-vehicle-icon-uberX.png"; sourceTree = "<group>"; };
+		C1A73E401AF6DC48000C84E7 /* map-vehicle-icon-uberX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map-vehicle-icon-uberX@2x.png"; path = "Assets/IOS POOL/map-vehicle-icon-uberX@2x.png"; sourceTree = "<group>"; };
+		C1A73E411AF6DC48000C84E7 /* map-vehicle-icon-uberX@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map-vehicle-icon-uberX@3x.png"; path = "Assets/IOS POOL/map-vehicle-icon-uberX@3x.png"; sourceTree = "<group>"; };
 		C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C1FE9F131AF690F400FCA93E /* MHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHTabBarController.h; path = uberhxthon/TabBar/MHTabBarController/MHTabBarController.h; sourceTree = SOURCE_ROOT; };
 		C1FE9F141AF690F400FCA93E /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHTabBarController.m; path = uberhxthon/TabBar/MHTabBarController/MHTabBarController.m; sourceTree = SOURCE_ROOT; };
@@ -116,10 +132,6 @@
 		C1FE9F261AF691C400FCA93E /* AnalyticsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AnalyticsView.xib; path = uberhxthon/AnalyticsView/Views/AnalyticsView.xib; sourceTree = SOURCE_ROOT; };
 		C1FE9F291AF691D300FCA93E /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsView.xib; path = uberhxthon/SettingsView/Views/SettingsView.xib; sourceTree = SOURCE_ROOT; };
 		C1FE9F2C1AF691EC00FCA93E /* DeliveryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DeliveryView.xib; path = uberhxthon/DeliveryView/Views/DeliveryView.xib; sourceTree = SOURCE_ROOT; };
-		C1FE9F751AF69CE800FCA93E /* IOS BLACK */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "IOS BLACK"; path = "Assets/IOS BLACK"; sourceTree = "<group>"; };
-		C1FE9F761AF69CE800FCA93E /* IOS POOL */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "IOS POOL"; path = "Assets/IOS POOL"; sourceTree = "<group>"; };
-		C1FE9F771AF69CE800FCA93E /* IOS SUV */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "IOS SUV"; path = "Assets/IOS SUV"; sourceTree = "<group>"; };
-		C1FE9F781AF69CE800FCA93E /* IOS XL */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "IOS XL"; path = "Assets/IOS XL"; sourceTree = "<group>"; };
 		C1FE9F811AF69D3500FCA93E /* Bamboo_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Bamboo_Logo.png; path = Assets/1x/Bamboo_Logo.png; sourceTree = "<group>"; };
 		C1FE9F821AF69D3500FCA93E /* Car_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Car_Icon.png; path = Assets/1x/Car_Icon.png; sourceTree = "<group>"; };
 		C1FE9F831AF69D3500FCA93E /* Merchant_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Merchant_Icon.png; path = Assets/1x/Merchant_Icon.png; sourceTree = "<group>"; };
@@ -484,10 +496,14 @@
 		C1FE9F5F1AF6992A00FCA93E /* UberCars */ = {
 			isa = PBXGroup;
 			children = (
-				C1FE9F751AF69CE800FCA93E /* IOS BLACK */,
-				C1FE9F761AF69CE800FCA93E /* IOS POOL */,
-				C1FE9F771AF69CE800FCA93E /* IOS SUV */,
-				C1FE9F781AF69CE800FCA93E /* IOS XL */,
+				C18B95521AF893DB00E6501E /* uber_route1.png */,
+				C18B95531AF893DB00E6501E /* uber_route2.png */,
+				C18B95541AF893DB00E6501E /* uber_route3.png */,
+				C18B95551AF893DB00E6501E /* uber_route4.png */,
+				C103BCED1AF738FE007D2DE1 /* map-vehicle-icon-sm.png */,
+				C1A73E3F1AF6DC48000C84E7 /* map-vehicle-icon-uberX.png */,
+				C1A73E401AF6DC48000C84E7 /* map-vehicle-icon-uberX@2x.png */,
+				C1A73E411AF6DC48000C84E7 /* map-vehicle-icon-uberX@3x.png */,
 			);
 			name = UberCars;
 			sourceTree = "<group>";
@@ -585,26 +601,30 @@
 				C1FE9FAC1AF6A02D00FCA93E /* Menu_Line.png in Resources */,
 				C1FE9F2D1AF691EC00FCA93E /* DeliveryView.xib in Resources */,
 				C1FE9F911AF69D3500FCA93E /* Request_PickUp_Button.png in Resources */,
+				C18B95561AF893DB00E6501E /* uber_route1.png in Resources */,
 				423234861AF479B50073255A /* ReceiptSlideOutView.xib in Resources */,
 				C1FE9F8D1AF69D3500FCA93E /* Metrics_Icon.png in Resources */,
-				C1FE9F7D1AF69CE800FCA93E /* IOS SUV in Resources */,
 				C1FE9F9D1AF69D3F00FCA93E /* Merchant_Icon@2x.png in Resources */,
+				C1A73E431AF6DC48000C84E7 /* map-vehicle-icon-uberX@2x.png in Resources */,
 				C1FE9F241AF691B700FCA93E /* LeftmostView.xib in Resources */,
 				B2202DF91AED93730099F6B7 /* Main.storyboard in Resources */,
-				C1FE9F791AF69CE800FCA93E /* IOS BLACK in Resources */,
+				C1A73E441AF6DC48000C84E7 /* map-vehicle-icon-uberX@3x.png in Resources */,
+				C18B95581AF893DB00E6501E /* uber_route3.png in Resources */,
 				C1FE9F9F1AF69D3F00FCA93E /* Metrics_Icon@2x.png in Resources */,
 				B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */,
 				C1FE9F2A1AF691D300FCA93E /* SettingsView.xib in Resources */,
 				C1FE9F8B1AF69D3500FCA93E /* Merchant_Icon.png in Resources */,
 				C1FE9F8F1AF69D3500FCA93E /* Receipt_Icon.png in Resources */,
 				C1FE9F271AF691C400FCA93E /* AnalyticsView.xib in Resources */,
+				C18B95591AF893DB00E6501E /* uber_route4.png in Resources */,
+				C103BCEE1AF738FE007D2DE1 /* map-vehicle-icon-sm.png in Resources */,
 				C1FE9F891AF69D3500FCA93E /* Car_Icon.png in Resources */,
 				C1FE9FA31AF69D3F00FCA93E /* Request_PickUp_Button@2x.png in Resources */,
-				C1FE9F7F1AF69CE800FCA93E /* IOS XL in Resources */,
+				C1A73E421AF6DC48000C84E7 /* map-vehicle-icon-uberX.png in Resources */,
 				B2202DFB1AED93730099F6B7 /* Images.xcassets in Resources */,
 				C1FE9F991AF69D3F00FCA93E /* Bamboo_Logo@2x.png in Resources */,
 				C1FE9FA91AF6A02100FCA93E /* Menu_Line@2x.png in Resources */,
-				C1FE9F7B1AF69CE800FCA93E /* IOS POOL in Resources */,
+				C18B95571AF893DB00E6501E /* uber_route2.png in Resources */,
 				C1FE9FA11AF69D3F00FCA93E /* Receipt_Icon@2x.png in Resources */,
 				C1FE9F9B1AF69D3F00FCA93E /* Car_Icon@2x.png in Resources */,
 				C1FE9F871AF69D3500FCA93E /* Bamboo_Logo.png in Resources */,
@@ -615,22 +635,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C18B955B1AF893E900E6501E /* uber_route2.png in Resources */,
+				C18B955E1AF893F500E6501E /* map-vehicle-icon-sm.png in Resources */,
 				C1FE9F2E1AF691EC00FCA93E /* DeliveryView.xib in Resources */,
 				C1FE9FAD1AF6A02D00FCA93E /* Menu_Line.png in Resources */,
+				C18B95601AF893F900E6501E /* map-vehicle-icon-uberX@2x.png in Resources */,
 				C1FE9F8A1AF69D3500FCA93E /* Car_Icon.png in Resources */,
-				C1FE9F7A1AF69CE800FCA93E /* IOS BLACK in Resources */,
 				C1FE9FA01AF69D3F00FCA93E /* Metrics_Icon@2x.png in Resources */,
+				C18B955D1AF893EF00E6501E /* uber_route3.png in Resources */,
 				C1FE9F901AF69D3500FCA93E /* Receipt_Icon.png in Resources */,
+				C18B955C1AF893EC00E6501E /* uber_route1.png in Resources */,
 				C1FE9F2B1AF691D300FCA93E /* SettingsView.xib in Resources */,
+				C18B955A1AF893E100E6501E /* uber_route4.png in Resources */,
 				C1FE9F9E1AF69D3F00FCA93E /* Merchant_Icon@2x.png in Resources */,
-				C1FE9F7C1AF69CE800FCA93E /* IOS POOL in Resources */,
 				C1FE9F8C1AF69D3500FCA93E /* Merchant_Icon.png in Resources */,
 				C1FE9F921AF69D3500FCA93E /* Request_PickUp_Button.png in Resources */,
 				C1FE9FAA1AF6A02100FCA93E /* Menu_Line@2x.png in Resources */,
-				C1FE9F7E1AF69CE800FCA93E /* IOS SUV in Resources */,
-				C1FE9F801AF69CE800FCA93E /* IOS XL in Resources */,
 				C1FE9FA41AF69D3F00FCA93E /* Request_PickUp_Button@2x.png in Resources */,
 				C1FE9F9C1AF69D3F00FCA93E /* Car_Icon@2x.png in Resources */,
+				C18B955F1AF893F700E6501E /* map-vehicle-icon-uberX.png in Resources */,
+				C18B95611AF893FF00E6501E /* map-vehicle-icon-uberX@3x.png in Resources */,
 				C1FE9F881AF69D3500FCA93E /* Bamboo_Logo.png in Resources */,
 				C1FE9F251AF691B700FCA93E /* LeftmostView.xib in Resources */,
 				C1FE9F8E1AF69D3500FCA93E /* Metrics_Icon.png in Resources */,
