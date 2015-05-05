@@ -18,6 +18,11 @@
     self.layer.shadowRadius = 3.0f;
     self.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
     self.layer.shadowOpacity = 0.5f;
+    
+    // Possible animation of border:
+    //    http://stackoverflow.com/questions/28113844/how-can-i-animate-border-width-color-of-uicollectionviewcells-during-layout-tr
+    
+    
 }
 
 @end

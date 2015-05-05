@@ -23,4 +23,7 @@
 @property (nonatomic, assign) id<ReceiptPanelViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *panelUpButton;
 
+- (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath;
+- (void)removeAllCellBorders;
+
 @end

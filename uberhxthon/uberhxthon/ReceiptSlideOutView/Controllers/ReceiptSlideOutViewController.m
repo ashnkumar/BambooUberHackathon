@@ -57,7 +57,6 @@
 }
 
 #pragma mark - UICollectionView DataSource
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [self.dummyReceiptData count];
@@ -74,10 +73,10 @@
     ReceiptCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell"
                                                                        forIndexPath:indexPath];
     
-//    cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
 }
+
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -96,7 +95,42 @@
     
 }
 
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+}
 
+
+#pragma mark - Helpers
+- (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath
+{
+    ReceiptCell *cell = (ReceiptCell *)[self.collectionView
+                                        cellForItemAtIndexPath:indexPath];
+    
+    cell.layer.borderWidth = 5;
+    cell.layer.borderColor = [AppConstants cashwinGreen].CGColor;
+    
+}
+
+- (void)removeAllCellBorders
+{
+    NSMutableArray *allCells = [self allCellsInCollectionView];
+    for (ReceiptCell *cell in allCells) {
+        cell.layer.borderColor = nil;
+        cell.layer.borderWidth = 0;
+    }
+
+}
+
+- (NSMutableArray *)allCellsInCollectionView {
+    NSMutableArray *cells = [[NSMutableArray alloc] init];
+    for (NSInteger j = 0; j < [self.collectionView numberOfSections]; ++j) {
+        for (NSInteger i = 0; i < [self.collectionView numberOfItemsInSection:j]; ++i) {
+            [cells addObject:[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:j]]];
+        }
+    }
+    return cells;
+}
 
 
 

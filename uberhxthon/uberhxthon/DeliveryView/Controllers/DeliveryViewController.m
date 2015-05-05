@@ -130,6 +130,7 @@
         if (finished) {
             self.receiptPanelViewController.panelUpButton.tag = 1;
             self.showingReceiptPanel = NO;
+            [self.receiptPanelViewController removeAllCellBorders];
         }
     }];
 }
@@ -148,6 +149,30 @@
                          self.showingReceiptPanel = YES;
                      }];
     
+}
+
+// @TODO: HACK -> this moves the panel up just one row, for the video to highlight receipt
+// @TODO: If panel is already open, don't re-open it
+- (void)movePanelUpOneRow
+{
+    [UIView animateWithDuration:SLIDE_TIMING
+                          delay:0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+     
+                     animations:^{
+                         self.receiptPanelViewController.view.frame = CGRectMake(0, 373, self.view.frame.size.width, self.view.frame.size.height);
+                         
+                     } completion:^(BOOL finished) {
+                         self.receiptPanelViewController.panelUpButton.tag = 0;
+                         self.showingReceiptPanel = YES;
+                     }];
+}
+
+- (void)highlightReceiptAtIndex:(int)receiptIndex
+{
+    NSIndexPath *indexPathToSelect = [NSIndexPath indexPathForRow:receiptIndex
+                                                        inSection:0];
+    [self.receiptPanelViewController highlightReceiptAtIndexPath:indexPathToSelect];
 }
 
 -(void)movePanel:(id)sender
@@ -290,6 +315,8 @@
     [self.view addSubview:self.loadingSpinner];
 }
 
+
+
 #pragma mark - LocationManager Delegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
@@ -303,6 +330,8 @@
 {
 //    NSLog(@"%d", status);
 }
+
+
 
 #pragma mark - MapKit Delegate
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
@@ -366,6 +395,12 @@
     renderer.strokeColor = [UIColor blueColor];
     renderer.lineWidth = 3.0;
     return renderer;
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    [self highlightReceiptAtIndex:1];
+    [self movePanelUpOneRow];
 }
 
 #pragma mark - Car Animations
