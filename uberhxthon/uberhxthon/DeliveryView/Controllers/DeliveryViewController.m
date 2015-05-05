@@ -28,12 +28,20 @@
 }
 
 @property (nonatomic, strong) ReceiptSlideOutViewController *receiptPanelViewController;
+
+// Receipt panel view
 @property (nonatomic, assign) BOOL showingReceiptPanel;
 @property (nonatomic, assign) BOOL showPanel;
+@property (nonatomic, strong) UITapGestureRecognizer *mapTapRecognizer;
 //@property (nonatomic, assign) CGPoint preVelocity;
 
+
+// Loading view / spinner
 @property (strong, nonatomic) UIVisualEffectView *blurEffectView;
 @property (strong, nonatomic) RTSpinKitView *loadingSpinner;
+
+
+// Animating cars
 @property(strong, nonatomic) MKPointAnnotation* annotation1;
 @property(strong, nonatomic) MKPointAnnotation* annotation2;
 @property(strong, nonatomic) MKPointAnnotation* annotation3;
@@ -243,14 +251,26 @@
     if (IS_OS_8_OR_LATER) {
         [self.locationManager requestAlwaysAuthorization];
     }
- 
-    
-    // Don't do anything yet when user location updates
+     
+// Don't do anything yet when user location updates
 //    [self.locationManager startUpdatingLocation];
 //    [self.mapView setShowsUserLocation:YES];
     [self.mapView setMapType:MKMapTypeStandard];
     [self.mapView setZoomEnabled:YES];
     [self.mapView setScrollEnabled:YES];
+    
+    // Add gesture recognizer to map so when user taps it, it closes
+    // the receipt panel view if it is open
+    self.mapTapRecognizer = [[UITapGestureRecognizer alloc]
+                             initWithTarget:self
+                             action:@selector(closePanelDueToMapTouch:)];
+    
+    [self.mapView addGestureRecognizer:self.mapTapRecognizer];
+}
+
+- (void)closePanelDueToMapTouch:(UITapGestureRecognizer *)recognizer
+{
+    [self movePanelToOriginalPosition];
 }
 
 
