@@ -105,9 +105,12 @@
 
 - (void)setupReceiptPanelView
 {
-    self.receiptPanelViewController = [[ReceiptSlideOutViewController alloc] initWithNibName:@"ReceiptSlideOutView" bundle:nil];
+    self.receiptPanelViewController = [[ReceiptSlideOutViewController alloc]
+                                       initWithNibName:@"ReceiptSlideOutView"
+                                       bundle:nil];
+    
     self.receiptPanelViewController.delegate = self;
-    self.receiptPanelViewController.view.frame = CGRectMake(0, 650, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height);
+    self.receiptPanelViewController.view.frame = CGRectMake(0, 630, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height);
     
     [self.view addSubview:self.receiptPanelViewController.view];
 }
@@ -122,7 +125,7 @@
 - (void)movePanelToOriginalPosition
 {
     [UIView animateWithDuration:SLIDE_TIMING delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        self.receiptPanelViewController.view.frame = CGRectMake(0, 650, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height);
+        self.receiptPanelViewController.view.frame = CGRectMake(0, 630, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height);
     } completion:^(BOOL finished) {
         if (finished) {
             self.receiptPanelViewController.panelUpButton.tag = 1;

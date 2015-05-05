@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qis-fs-cfi">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="571"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </mapView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -25,7 +25,7 @@
                 <constraint firstAttribute="bottom" secondItem="qis-fs-cfi" secondAttribute="bottom" id="J5f-wj-ndf"/>
                 <constraint firstAttribute="trailing" secondItem="qis-fs-cfi" secondAttribute="trailing" id="NOG-vR-0al"/>
                 <constraint firstItem="qis-fs-cfi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SVi-kk-zKv"/>
-                <constraint firstAttribute="bottom" secondItem="qis-fs-cfi" secondAttribute="bottom" constant="29" id="djj-XY-TeU"/>
+                <constraint firstAttribute="bottom" secondItem="qis-fs-cfi" secondAttribute="bottom" id="djj-XY-TeU"/>
                 <constraint firstItem="qis-fs-cfi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fnl-eW-Itv"/>
             </constraints>
             <variation key="default">
