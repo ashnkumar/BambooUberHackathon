@@ -12,6 +12,12 @@
 		423234861AF479B50073255A /* ReceiptSlideOutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423234851AF479B50073255A /* ReceiptSlideOutView.xib */; };
 		4232348A1AF47A060073255A /* ReceiptSlideOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423234891AF47A060073255A /* ReceiptSlideOutViewController.m */; };
 		4232348D1AF54D600073255A /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4232348C1AF54D600073255A /* AppConstants.m */; };
+		B21B3E281AFA93E5004FEDAC /* routeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B3E271AFA93E5004FEDAC /* routeGenerator.m */; };
+		B21B3E291AFA93E5004FEDAC /* routeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B3E271AFA93E5004FEDAC /* routeGenerator.m */; };
+		B21B3E2F1AFACB83004FEDAC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */; };
+		B21B3E301AFACB83004FEDAC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */; };
+		B21B3E311AFACB83004FEDAC /* route1.txt in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E2E1AFACB83004FEDAC /* route1.txt */; };
+		B21B3E321AFACB83004FEDAC /* route1.txt in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E2E1AFACB83004FEDAC /* route1.txt */; };
 		B2202DF01AED93720099F6B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DEF1AED93720099F6B7 /* main.m */; };
 		B2202DF31AED93720099F6B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DF21AED93720099F6B7 /* AppDelegate.m */; };
 		B2202DF61AED93730099F6B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DF51AED93730099F6B7 /* ViewController.m */; };
@@ -20,7 +26,6 @@
 		B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202DFC1AED93740099F6B7 /* LaunchScreen.xib */; };
 		B2202E0A1AED93740099F6B7 /* uberhxthonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E091AED93740099F6B7 /* uberhxthonTests.m */; };
 		C103BCEE1AF738FE007D2DE1 /* map-vehicle-icon-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = C103BCED1AF738FE007D2DE1 /* map-vehicle-icon-sm.png */; };
-		C115D8E71AF9C24900DD214F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C115D8E61AF9C21500DD214F /* OpenSans-Regular.ttf */; };
 		C115D8EA1AF9C71F00DD214F /* RequestUberPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C115D8E91AF9C71F00DD214F /* RequestUberPopupViewController.m */; };
 		C115D8EC1AF9C77C00DD214F /* RequestUberPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C115D8EB1AF9C77C00DD214F /* RequestUberPopupView.xib */; };
 		C115D8F31AF9C7D000DD214F /* DismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = C115D8EE1AF9C7D000DD214F /* DismissingAnimator.m */; };
@@ -108,6 +113,10 @@
 		423234891AF47A060073255A /* ReceiptSlideOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReceiptSlideOutViewController.m; path = ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m; sourceTree = "<group>"; };
 		4232348B1AF54D600073255A /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConstants.h; path = Globals/AppConstants.h; sourceTree = "<group>"; };
 		4232348C1AF54D600073255A /* AppConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppConstants.m; path = Globals/AppConstants.m; sourceTree = "<group>"; };
+		B21B3E261AFA93E5004FEDAC /* routeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = routeGenerator.h; path = DeliveryView/Models/routeGenerator.h; sourceTree = "<group>"; };
+		B21B3E271AFA93E5004FEDAC /* routeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = routeGenerator.m; path = DeliveryView/Models/routeGenerator.m; sourceTree = "<group>"; };
+		B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "Assets/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		B21B3E2E1AFACB83004FEDAC /* route1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = route1.txt; path = Assets/route1.txt; sourceTree = "<group>"; };
 		B2202DEA1AED93710099F6B7 /* uberhxthon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uberhxthon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2202DEE1AED93720099F6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2202DEF1AED93720099F6B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -122,7 +131,6 @@
 		B2202E081AED93740099F6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2202E091AED93740099F6B7 /* uberhxthonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uberhxthonTests.m; sourceTree = "<group>"; };
 		C103BCED1AF738FE007D2DE1 /* map-vehicle-icon-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map-vehicle-icon-sm.png"; path = "Assets/IOS BLACK/map-vehicle-icon-sm.png"; sourceTree = "<group>"; };
-		C115D8E61AF9C21500DD214F /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "Assets/Fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		C115D8E81AF9C71F00DD214F /* RequestUberPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RequestUberPopupViewController.h; path = uberhxthon/DeliveryView/Controllers/RequestUberPopup/RequestUberPopupViewController.h; sourceTree = SOURCE_ROOT; };
 		C115D8E91AF9C71F00DD214F /* RequestUberPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestUberPopupViewController.m; path = uberhxthon/DeliveryView/Controllers/RequestUberPopup/RequestUberPopupViewController.m; sourceTree = SOURCE_ROOT; };
 		C115D8EB1AF9C77C00DD214F /* RequestUberPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RequestUberPopupView.xib; path = uberhxthon/DeliveryView/Views/RequestUberPopupView.xib; sourceTree = SOURCE_ROOT; };
@@ -243,6 +251,8 @@
 		4239E7DC1AF2B9BE00513C9A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B21B3E261AFA93E5004FEDAC /* routeGenerator.h */,
+				B21B3E271AFA93E5004FEDAC /* routeGenerator.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -500,7 +510,8 @@
 		C1FE9F411AF698B200FCA93E /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				C115D8E61AF9C21500DD214F /* OpenSans-Regular.ttf */,
+				B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */,
+				B21B3E2E1AFACB83004FEDAC /* route1.txt */,
 				C1FE9F5F1AF6992A00FCA93E /* UberCars */,
 				C1FE9F421AF698BD00FCA93E /* 1x */,
 				C1FE9F521AF698D300FCA93E /* 2x */,
@@ -641,8 +652,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C115D8E71AF9C24900DD214F /* OpenSans-Regular.ttf in Resources */,
 				C1FE9FAC1AF6A02D00FCA93E /* Menu_Line.png in Resources */,
+				B21B3E2F1AFACB83004FEDAC /* OpenSans-Regular.ttf in Resources */,
+				B21B3E311AFACB83004FEDAC /* route1.txt in Resources */,
 				C1FE9F2D1AF691EC00FCA93E /* DeliveryView.xib in Resources */,
 				C1FE9F911AF69D3500FCA93E /* Request_PickUp_Button.png in Resources */,
 				C18B95561AF893DB00E6501E /* uber_route1.png in Resources */,
@@ -688,10 +700,12 @@
 				C18B95601AF893F900E6501E /* map-vehicle-icon-uberX@2x.png in Resources */,
 				C1FE9F8A1AF69D3500FCA93E /* Car_Icon.png in Resources */,
 				C1FE9FA01AF69D3F00FCA93E /* Metrics_Icon@2x.png in Resources */,
+				B21B3E301AFACB83004FEDAC /* OpenSans-Regular.ttf in Resources */,
 				C18B955D1AF893EF00E6501E /* uber_route3.png in Resources */,
 				C1FE9F901AF69D3500FCA93E /* Receipt_Icon.png in Resources */,
 				C18B955C1AF893EC00E6501E /* uber_route1.png in Resources */,
 				C1FE9F2B1AF691D300FCA93E /* SettingsView.xib in Resources */,
+				B21B3E321AFACB83004FEDAC /* route1.txt in Resources */,
 				C18B955A1AF893E100E6501E /* uber_route4.png in Resources */,
 				C1FE9F9E1AF69D3F00FCA93E /* Merchant_Icon@2x.png in Resources */,
 				C1FE9F8C1AF69D3500FCA93E /* Merchant_Icon.png in Resources */,
@@ -751,6 +765,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1FE9F181AF6913E00FCA93E /* DeliveryViewController.m in Sources */,
+				B21B3E281AFA93E5004FEDAC /* routeGenerator.m in Sources */,
 				B2202DF61AED93730099F6B7 /* ViewController.m in Sources */,
 				C115D8EA1AF9C71F00DD214F /* RequestUberPopupViewController.m in Sources */,
 				C1FE9F1B1AF6915400FCA93E /* AnalyticsViewController.m in Sources */,
@@ -773,6 +788,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1BD63C61AF9A2A800F528A2 /* AnalyticsViewController.m in Sources */,
+				B21B3E291AFA93E5004FEDAC /* routeGenerator.m in Sources */,
 				C1FE9F221AF6918A00FCA93E /* LeftmostViewController.m in Sources */,
 				B2202E0A1AED93740099F6B7 /* uberhxthonTests.m in Sources */,
 			);
