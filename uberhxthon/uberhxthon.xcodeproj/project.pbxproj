@@ -20,6 +20,7 @@
 		B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202DFC1AED93740099F6B7 /* LaunchScreen.xib */; };
 		B2202E0A1AED93740099F6B7 /* uberhxthonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E091AED93740099F6B7 /* uberhxthonTests.m */; };
 		C103BCEE1AF738FE007D2DE1 /* map-vehicle-icon-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = C103BCED1AF738FE007D2DE1 /* map-vehicle-icon-sm.png */; };
+		C115D8E71AF9C24900DD214F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C115D8E61AF9C21500DD214F /* OpenSans-Regular.ttf */; };
 		C18B95561AF893DB00E6501E /* uber_route1.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95521AF893DB00E6501E /* uber_route1.png */; };
 		C18B95571AF893DB00E6501E /* uber_route2.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95531AF893DB00E6501E /* uber_route2.png */; };
 		C18B95581AF893DB00E6501E /* uber_route3.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95541AF893DB00E6501E /* uber_route3.png */; };
@@ -35,6 +36,7 @@
 		C1A73E421AF6DC48000C84E7 /* map-vehicle-icon-uberX.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A73E3F1AF6DC48000C84E7 /* map-vehicle-icon-uberX.png */; };
 		C1A73E431AF6DC48000C84E7 /* map-vehicle-icon-uberX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A73E401AF6DC48000C84E7 /* map-vehicle-icon-uberX@2x.png */; };
 		C1A73E441AF6DC48000C84E7 /* map-vehicle-icon-uberX@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A73E411AF6DC48000C84E7 /* map-vehicle-icon-uberX@3x.png */; };
+		C1BD63C61AF9A2A800F528A2 /* AnalyticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F1A1AF6915400FCA93E /* AnalyticsViewController.m */; };
 		C1F0CF1D1AF1C6EB00D9F02E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */; };
 		C1FE9F151AF690F400FCA93E /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F141AF690F400FCA93E /* MHTabBarController.m */; };
 		C1FE9F181AF6913E00FCA93E /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F171AF6913E00FCA93E /* DeliveryViewController.m */; };
@@ -115,6 +117,7 @@
 		B2202E081AED93740099F6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2202E091AED93740099F6B7 /* uberhxthonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uberhxthonTests.m; sourceTree = "<group>"; };
 		C103BCED1AF738FE007D2DE1 /* map-vehicle-icon-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "map-vehicle-icon-sm.png"; path = "Assets/IOS BLACK/map-vehicle-icon-sm.png"; sourceTree = "<group>"; };
+		C115D8E61AF9C21500DD214F /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "Assets/Fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		C18B95521AF893DB00E6501E /* uber_route1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route1.png; path = "Assets/IOS BLACK/uber_route1.png"; sourceTree = "<group>"; };
 		C18B95531AF893DB00E6501E /* uber_route2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route2.png; path = "Assets/IOS BLACK/uber_route2.png"; sourceTree = "<group>"; };
 		C18B95541AF893DB00E6501E /* uber_route3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route3.png; path = "Assets/IOS BLACK/uber_route3.png"; sourceTree = "<group>"; };
@@ -466,6 +469,7 @@
 		C1FE9F411AF698B200FCA93E /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C115D8E61AF9C21500DD214F /* OpenSans-Regular.ttf */,
 				C1FE9F5F1AF6992A00FCA93E /* UberCars */,
 				C1FE9F421AF698BD00FCA93E /* 1x */,
 				C1FE9F521AF698D300FCA93E /* 2x */,
@@ -606,6 +610,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C115D8E71AF9C24900DD214F /* OpenSans-Regular.ttf in Resources */,
 				C1FE9FAC1AF6A02D00FCA93E /* Menu_Line.png in Resources */,
 				C1FE9F2D1AF691EC00FCA93E /* DeliveryView.xib in Resources */,
 				C1FE9F911AF69D3500FCA93E /* Request_PickUp_Button.png in Resources */,
@@ -731,6 +736,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1BD63C61AF9A2A800F528A2 /* AnalyticsViewController.m in Sources */,
 				C1FE9F221AF6918A00FCA93E /* LeftmostViewController.m in Sources */,
 				B2202E0A1AED93740099F6B7 /* uberhxthonTests.m in Sources */,
 			);
@@ -768,6 +774,7 @@
 /* Begin XCBuildConfiguration section */
 		B2202E0B1AED93740099F6B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3566A7A44363A2B80442F71D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -812,6 +819,7 @@
 		};
 		B2202E0C1AED93740099F6B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3566A7A44363A2B80442F71D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -891,6 +899,7 @@
 		};
 		B2202E121AED93740099F6B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3566A7A44363A2B80442F71D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

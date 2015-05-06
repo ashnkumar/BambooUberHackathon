@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AnalyticsViewController">
             <connections>
+                <outlet property="graph" destination="r6G-eX-tRm" id="T0b-hk-hDg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Jby-ZO-F6d"/>
             </connections>
         </placeholder>
@@ -14,14 +15,47 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Analytics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f29-2u-puy">
-                    <rect key="frame" x="268" y="296" width="70" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="metricsUI" translatesAutoresizingMaskIntoConstraints="NO" id="2J6-ZX-FJZ">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r6G-eX-tRm" customClass="GKLineGraph">
+                    <rect key="frame" x="15" y="20" width="685" height="267"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="350" id="Hun-ue-JuN"/>
+                        <constraint firstAttribute="width" constant="685" id="SjP-4N-2GC"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="1hJ-RW-uvW"/>
+                    </connections>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="2J6-ZX-FJZ" secondAttribute="centerX" id="0rf-IH-jVx"/>
+                <constraint firstAttribute="trailing" secondItem="2J6-ZX-FJZ" secondAttribute="trailing" id="8Tt-NW-P5f"/>
+                <constraint firstAttribute="centerY" secondItem="2J6-ZX-FJZ" secondAttribute="centerY" id="CRm-rX-lvg"/>
+                <constraint firstItem="r6G-eX-tRm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="H6B-cy-Nzl"/>
+                <constraint firstItem="2J6-ZX-FJZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="I8x-8Y-9Su"/>
+                <constraint firstAttribute="trailing" secondItem="r6G-eX-tRm" secondAttribute="trailing" constant="20" symbolic="YES" id="Jez-IV-dyJ"/>
+                <constraint firstAttribute="bottom" secondItem="r6G-eX-tRm" secondAttribute="bottom" constant="20" symbolic="YES" id="Qw1-u1-2n8"/>
+                <constraint firstItem="r6G-eX-tRm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Y64-UL-c6M"/>
+                <constraint firstItem="r6G-eX-tRm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="e5O-e6-qb1"/>
+                <constraint firstItem="r6G-eX-tRm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="fwJ-Z9-LYq"/>
+                <constraint firstItem="2J6-ZX-FJZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jlP-xg-UM4"/>
+                <constraint firstAttribute="bottom" secondItem="2J6-ZX-FJZ" secondAttribute="bottom" id="zPf-y8-GiR"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="H6B-cy-Nzl"/>
+                    <exclude reference="Jez-IV-dyJ"/>
+                    <exclude reference="Qw1-u1-2n8"/>
+                    <exclude reference="Y64-UL-c6M"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="714" y="598"/>
         </view>
     </objects>
+    <resources>
+        <image name="metricsUI" width="1024" height="706"/>
+    </resources>
 </document>
