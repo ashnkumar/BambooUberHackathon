@@ -51,7 +51,7 @@
 @property(strong, nonatomic) MKPointAnnotation* annotation2;
 @property(strong, nonatomic) MKPointAnnotation* annotation3;
 @property(strong, nonatomic) MKPointAnnotation* annotation4;
-
+@property (strong,nonatomic) routeGenerator *routeGenerator;
 @end
 
 @implementation DeliveryViewController
@@ -89,8 +89,8 @@
     zoomLocation.longitude=-122.412766;
 
     
-    //MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 7.5*METERS_PER_MILE, 7.5*METERS_PER_MILE);
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 1200, 1200);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 7.5*METERS_PER_MILE, 7.5*METERS_PER_MILE);
+    //MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 1200, 1200);
     [self.mapView setRegion:viewRegion animated:YES];
 }
 
@@ -480,7 +480,7 @@
     CLLocationCoordinate2D route4src_cl = CLLocationCoordinate2DMake(37.795250, -122.408020);
     CLLocationCoordinate2D route4dest_cl = CLLocationCoordinate2DMake(37.807483, -122.410278);
     
-        for (int i = 0; i < 4; i++)
+        /*for (int i = 0; i < 4; i++)
         {
             MKDirectionsRequest *routereq = [[MKDirectionsRequest alloc]init];
             [routereq setRequestsAlternateRoutes:NO];
@@ -539,14 +539,31 @@
                     [self showRoute:response withIndex:(i+1)];
                 }
             }];
-        }
+        }*/
     
+    self.routeGenerator = [[routeGenerator alloc]init];
+    NSMutableArray *r = [routeGenerator getRouteAtIndex:1];
+    for (int i = 0; i < [r count]; i++)
+    {
+        CLLocation *loc = [r objectAtIndex:i];
+        double lat = loc.coordinate.latitude;
+        double lon = loc.coordinate.longitude;
+        NSLog(@"lat: %f, lon: %f", lat, lon);
     }
+    [self showRoute:r withIndex:1];
+    /*for (int i = 0; i < 4; i++)
+    {
+        //Get the route
+        NSMutableArray *routeMut = [routeGenerator getRouteAtIndex:(i+1)];
+        //Show the route
+        [self showRoute:routeMut withIndex:(i+1)];
+    }*/
+}
 
-- (void)showRoute:(MKDirectionsResponse *)response withIndex:(int)intIndex {
-    NSAssert([response.routes count] == 1, @"Response.routes didn't return 1");
+- (void)showRoute:(NSMutableArray *)routeMut withIndex:(int)intIndex {
+    /*NSAssert([response.routes count] == 1, @"Response.routes didn't return 1");
     
-        MKRoute *route = response.routes.firstObject;
+       MKRoute *route = response.routes.firstObject;
     //[self.mapView addOverlay:route.polyline level:MKOverlayLevelAboveRoads];
 
        NSUInteger pointCount = route.polyline.pointCount;
@@ -559,7 +576,7 @@
     
         NSMutableArray *routeMut = [[NSMutableArray alloc]init];
         
-        NSLog(@"route %i's pointCount = %lu", intIndex, pointCount);
+        //NSLog(@"route %i's pointCount = %lu", intIndex, pointCount);
         for (int c=0; c < pointCount; c++)
         {
             NSLog(@"routeCoordinates[%i] = %f, %f", c, coordArr[c].latitude, coordArr[c].longitude);
@@ -569,55 +586,28 @@
                 [routeMut addObject:nextloc];
             }
             
-        }
-        
-        //Place the uber car at the starting point
-        CLLocationCoordinate2D uberLoc = coordArr[0];
+        }*/
     
-        if (intIndex == 1)
-        {
-            self.annotation1 = [[MKPointAnnotation alloc] init];
-            [self.annotation1 setCoordinate:uberLoc];
-            [self.annotation1 setTitle:@"1"];
-            [self.mapView addAnnotation:self.annotation1];
-            
-            intIndex_route1 = 1;
-            
-            [self manageUserMove1:routeMut];
-        }
-        else if (intIndex == 2)
-        {
-            self.annotation2 = [[MKPointAnnotation alloc] init];
-            [self.annotation2 setCoordinate:uberLoc];
-            [self.annotation2 setTitle:@"2"];
-            [self.mapView addAnnotation:self.annotation2];
-            
-            intIndex_route2 = 1;
-            
-            [self manageUserMove2:routeMut];
-        }
-        else if (intIndex == 3)
-        {
-            self.annotation3 = [[MKPointAnnotation alloc] init];
-            [self.annotation3 setCoordinate:uberLoc];
-            [self.annotation3 setTitle:@"3"];
-            [self.mapView addAnnotation:self.annotation3];
-            
-            intIndex_route3 = 1;
-            
-            [self manageUserMove3:routeMut];
-        }
-        else if (intIndex == 4)
-        {
-            self.annotation4 = [[MKPointAnnotation alloc] init];
-            [self.annotation4 setCoordinate:uberLoc];
-            [self.annotation4 setTitle:@"4"];
-            [self.mapView addAnnotation:self.annotation4];
-            
-            intIndex_route4 = 1;
-            
-            [self manageUserMove4:routeMut];
-        }
+    if (intIndex == 1)
+    {
+        intIndex_route1 = 0;
+        [self manageUserMove1:routeMut];
+    }
+    else if (intIndex == 2)
+    {
+        intIndex_route2 = 0;
+        [self manageUserMove2:routeMut];
+    }
+    else if (intIndex == 3)
+    {
+        intIndex_route3 = 0;
+        [self manageUserMove3:routeMut];
+    }
+    else if (intIndex == 4)
+    {
+        intIndex_route4 = 0;
+        [self manageUserMove4:routeMut];
+    }
     else
     {
         NSLog(@"error inside showRoute");
@@ -638,13 +628,20 @@
 
 {
     CLLocation *newLoc = [routeMut objectAtIndex:intIndex_route1];
-    
+    if (intIndex_route1 == 0) {
+        self.annotation1 = [[MKPointAnnotation alloc] init];
+        [self.annotation1 setTitle:@"1"];
+    }
     [self moveUser1:newLoc];
+    
+    if(intIndex_route1 == 0){
+        [self.mapView addAnnotation:self.annotation1];
+    }
     
     if (intIndex_route1 < (routeMut.count-1))
     {
         intIndex_route1++;
-        [self performSelector:@selector(manageUserMove1:) withObject:routeMut afterDelay:3.5];
+        [self performSelector:@selector(manageUserMove1:) withObject:routeMut afterDelay:0.1];
     }
 }
 
@@ -663,8 +660,15 @@
 
 {
     CLLocation *newLoc = [routeMut objectAtIndex:intIndex_route2];
-    
+    if (intIndex_route2 == 0) {
+        self.annotation2 = [[MKPointAnnotation alloc] init];
+        [self.annotation2 setTitle:@"2"];
+    }
     [self moveUser2:newLoc];
+    
+    if(intIndex_route2 == 0){
+        [self.mapView addAnnotation:self.annotation2];
+    }
     
     if (intIndex_route2 < (routeMut.count-1))
     {
@@ -687,14 +691,22 @@
 
 {
     CLLocation *newLoc = [routeMut objectAtIndex:intIndex_route3];
-    
+    if (intIndex_route3 == 0) {
+        self.annotation3 = [[MKPointAnnotation alloc] init];
+        [self.annotation3 setTitle:@"3"];
+    }
     [self moveUser3:newLoc];
+    
+    if(intIndex_route3 == 0){
+        [self.mapView addAnnotation:self.annotation3];
+    }
     
     if (intIndex_route3 < (routeMut.count-1))
     {
         intIndex_route3++;
         [self performSelector:@selector(manageUserMove3:) withObject:routeMut afterDelay:3.5];
     }
+
 }
 
 /* Route 4 Methods */
@@ -711,14 +723,22 @@
 
 {
     CLLocation *newLoc = [routeMut objectAtIndex:intIndex_route4];
-    
+    if (intIndex_route4 == 0) {
+        self.annotation4 = [[MKPointAnnotation alloc] init];
+        [self.annotation4 setTitle:@"4"];
+    }
     [self moveUser4:newLoc];
+    
+    if(intIndex_route4 == 0){
+        [self.mapView addAnnotation:self.annotation4];
+    }
     
     if (intIndex_route4 < (routeMut.count-1))
     {
         intIndex_route4++;
-        [self performSelector:@selector(manageUserMove4:) withObject:routeMut afterDelay:3.5];
+        [self performSelector:@selector(manageUserMove4:) withObject:routeMut afterDelay:4.5];
     }
+
 }
 
 - (IBAction)tappedRequestPickup:(id)sender

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Mapkit/Mapkit.h>
+#include "routeGenerator.h"
+
 @import CoreLocation;
 
 @interface DeliveryViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
