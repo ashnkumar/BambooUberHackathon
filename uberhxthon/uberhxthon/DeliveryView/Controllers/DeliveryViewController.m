@@ -10,15 +10,20 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <SpinKit/RTSpinKitView.h>
-#import "ReceiptSlideOutViewController.h"
+#import <POP/POP.h>
+
 #import "AppConstants.h"
+#import "ReceiptSlideOutViewController.h"
+#import "RequestUberPopupViewController.h"
+#import "PresentingAnimator.h"
+#import "DismissingAnimator.h"
 
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 #define METERS_PER_MILE 1609.344
 #define CORNER_RADIUS 4
 #define SLIDE_TIMING .25
 
-@interface DeliveryViewController () <ReceiptPanelViewControllerDelegate, UIGestureRecognizerDelegate>
+@interface DeliveryViewController () <ReceiptPanelViewControllerDelegate, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate>
 {
     int intIndex_route1;
     int intIndex_route2;
@@ -240,6 +245,36 @@
     }
 }
 
+#pragma mark - UIViewControllerTransitioningDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source
+{
+    return [PresentingAnimator new];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return [DismissingAnimator new];
+}
+
+
+
+- (void)showRequestUberPopup {
+    RequestUberPopupViewController *modalViewController = [RequestUberPopupViewController new];
+    
+    modalViewController.transitioningDelegate = self;
+    modalViewController.modalPresentationStyle = UIModalPresentationCustom;
+    
+    [self presentViewController:modalViewController
+                       animated:YES
+                     completion:^{
+                         NSLog(@"Completed presenting view controller");
+                     }];
+}
+
+
 #pragma mark - Helpers
 
 - (void)setupMapView
@@ -251,7 +286,7 @@
     if (IS_OS_8_OR_LATER) {
         [self.locationManager requestAlwaysAuthorization];
     }
-     
+    
 // Don't do anything yet when user location updates
 //    [self.locationManager startUpdatingLocation];
 //    [self.mapView setShowsUserLocation:YES];
@@ -506,13 +541,7 @@
             }];
         }
     
-    //Now create an instantiation of a car for tapping to highlight receipt
-    MKPointAnnotation *annotation_static = [[MKPointAnnotation alloc]init];
-    CLLocationCoordinate2D static_uber_coord = CLLocationCoordinate2DMake(37.799539, -122.410213);
-    [annotation_static setCoordinate:static_uber_coord];
-    [annotation_static setTitle:@"5"];
-    [self.mapView addAnnotation:annotation_static];
-}
+    }
 
 - (void)showRoute:(MKDirectionsResponse *)response withIndex:(int)intIndex {
     NSAssert([response.routes count] == 1, @"Response.routes didn't return 1");
@@ -690,6 +719,23 @@
         intIndex_route4++;
         [self performSelector:@selector(manageUserMove4:) withObject:routeMut afterDelay:3.5];
     }
+}
+
+- (IBAction)tappedRequestPickup:(id)sender
+{
+    //Display a loading swirly icon
+    //Display a message that an uber is requested
+    //Now create an instantiation of a car for tapping to highlight receipt
+    MKPointAnnotation *annotation_static = [[MKPointAnnotation alloc]init];
+    CLLocationCoordinate2D static_uber_coord = CLLocationCoordinate2DMake(37.799539, -122.410213);
+    [annotation_static setCoordinate:static_uber_coord];
+    [annotation_static setTitle:@"5"];
+    //Shift the map to where this pin is
+    //Make this animated via CurveInEaseOut
+    [self.mapView addAnnotation:annotation_static];
+    
+    //If we have time, start moving the car
+
 }
 @end
 

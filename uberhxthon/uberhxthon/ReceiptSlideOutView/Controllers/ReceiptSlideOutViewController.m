@@ -11,7 +11,7 @@
 #import "AppConstants.h"
 #import "ReceiptCell.h"
 
-@interface ReceiptSlideOutViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface ReceiptSlideOutViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ReceiptCellDelegate>
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *dummyReceiptData;
@@ -73,6 +73,7 @@
     ReceiptCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell"
                                                                        forIndexPath:indexPath];
     
+    cell.delegate = self;
     
     return cell;
 }
@@ -98,6 +99,13 @@
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+}
+
+
+#pragma mark - Receipt Cell Delegate
+- (void)requestUberForOrderNum:(int)orderNum
+{
+    [self.delegate showRequestUberPopup];
 }
 
 

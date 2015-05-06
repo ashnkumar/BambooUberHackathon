@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ReceiptCellDelegate <NSObject>
+
+- (void)requestUberForOrderNum:(int)orderNum;
+
+@end
+
+
 @interface ReceiptCell : UICollectionViewCell
+
+@property (assign, nonatomic) id<ReceiptCellDelegate> delegate;
+@property (strong, nonatomic) UIButton *requestUberButton;
+@property (weak, nonatomic) IBOutlet UILabel *orderNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orderDayDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orderTimeLabel;
 
 @end

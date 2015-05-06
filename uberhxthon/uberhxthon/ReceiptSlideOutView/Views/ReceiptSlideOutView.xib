@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dragBar2" translatesAutoresizingMaskIntoConstraints="NO" id="lsr-Cf-7Nu">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                    <rect key="frame" x="0.0" y="3" width="600" height="65"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guu-VX-LxF">
@@ -51,7 +51,7 @@
                 <constraint firstAttribute="centerX" secondItem="lsr-Cf-7Nu" secondAttribute="centerX" id="6he-Tr-hxh"/>
                 <constraint firstItem="guu-VX-LxF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="33" id="CZp-xU-Nhy"/>
                 <constraint firstAttribute="centerX" secondItem="guu-VX-LxF" secondAttribute="centerX" id="PzL-fY-8wd"/>
-                <constraint firstItem="lsr-Cf-7Nu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="elN-xh-CCY"/>
+                <constraint firstItem="lsr-Cf-7Nu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="3" id="elN-xh-CCY"/>
                 <constraint firstAttribute="bottom" secondItem="2H5-u2-MiN" secondAttribute="bottom" id="n5j-ed-Mtd"/>
                 <constraint firstItem="2H5-u2-MiN" firstAttribute="top" secondItem="guu-VX-LxF" secondAttribute="bottom" constant="3" id="o5g-by-llP"/>
                 <constraint firstAttribute="trailing" secondItem="2H5-u2-MiN" secondAttribute="trailing" id="ptd-KP-Zi4"/>

@@ -12,6 +12,7 @@
 
 - (void)movePanelToOriginalPosition;
 - (void)movePanelUp;
+- (void)showRequestUberPopup;
 
 // Delegate methods for receipt selection here
 @optional

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		42014EC81AF6FA20005787A6 /* ReceiptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42014EC71AF6FA20005787A6 /* ReceiptCell.m */; };
 		42014ECA1AF6FBD9005787A6 /* ReceiptCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42014EC91AF6FBD9005787A6 /* ReceiptCell.xib */; };
+		42215A261AF9B0AB003C548C /* RequestUberPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42215A251AF9B0AA003C548C /* RequestUberPopupViewController.m */; };
+		42215A2D1AF9B0D6003C548C /* DismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 42215A281AF9B0D6003C548C /* DismissingAnimator.m */; };
+		42215A2E1AF9B0D6003C548C /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 42215A2A1AF9B0D6003C548C /* UIColor+CustomColors.m */; };
+		42215A2F1AF9B0D6003C548C /* PresentingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 42215A2C1AF9B0D6003C548C /* PresentingAnimator.m */; };
+		42215A311AF9B746003C548C /* RequestUberPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42215A301AF9B746003C548C /* RequestUberPopupView.xib */; };
 		423234861AF479B50073255A /* ReceiptSlideOutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423234851AF479B50073255A /* ReceiptSlideOutView.xib */; };
 		4232348A1AF47A060073255A /* ReceiptSlideOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423234891AF47A060073255A /* ReceiptSlideOutViewController.m */; };
 		4232348D1AF54D600073255A /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4232348C1AF54D600073255A /* AppConstants.m */; };
@@ -96,6 +101,15 @@
 		42014EC61AF6FA20005787A6 /* ReceiptCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReceiptCell.h; path = ReceiptSlideOutView/Controllers/ReceiptCell.h; sourceTree = "<group>"; };
 		42014EC71AF6FA20005787A6 /* ReceiptCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReceiptCell.m; path = ReceiptSlideOutView/Controllers/ReceiptCell.m; sourceTree = "<group>"; };
 		42014EC91AF6FBD9005787A6 /* ReceiptCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReceiptCell.xib; path = ReceiptSlideOutView/Views/ReceiptCell.xib; sourceTree = "<group>"; };
+		42215A241AF9B0AA003C548C /* RequestUberPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RequestUberPopupViewController.h; path = RequestUberPopup/RequestUberPopupViewController.h; sourceTree = "<group>"; };
+		42215A251AF9B0AA003C548C /* RequestUberPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestUberPopupViewController.m; path = RequestUberPopup/RequestUberPopupViewController.m; sourceTree = "<group>"; };
+		42215A271AF9B0D6003C548C /* DismissingAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DismissingAnimator.h; sourceTree = "<group>"; };
+		42215A281AF9B0D6003C548C /* DismissingAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DismissingAnimator.m; sourceTree = "<group>"; };
+		42215A291AF9B0D6003C548C /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
+		42215A2A1AF9B0D6003C548C /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
+		42215A2B1AF9B0D6003C548C /* PresentingAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentingAnimator.h; sourceTree = "<group>"; };
+		42215A2C1AF9B0D6003C548C /* PresentingAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentingAnimator.m; sourceTree = "<group>"; };
+		42215A301AF9B746003C548C /* RequestUberPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequestUberPopupView.xib; sourceTree = "<group>"; };
 		423234851AF479B50073255A /* ReceiptSlideOutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReceiptSlideOutView.xib; path = ReceiptSlideOutView/Views/ReceiptSlideOutView.xib; sourceTree = "<group>"; };
 		423234881AF47A060073255A /* ReceiptSlideOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReceiptSlideOutViewController.h; path = ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.h; sourceTree = "<group>"; };
 		423234891AF47A060073255A /* ReceiptSlideOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReceiptSlideOutViewController.m; path = ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m; sourceTree = "<group>"; };
@@ -175,6 +189,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42215A231AF9B077003C548C /* RequestUberPopup */ = {
+			isa = PBXGroup;
+			children = (
+				42215A271AF9B0D6003C548C /* DismissingAnimator.h */,
+				42215A281AF9B0D6003C548C /* DismissingAnimator.m */,
+				42215A291AF9B0D6003C548C /* UIColor+CustomColors.h */,
+				42215A2A1AF9B0D6003C548C /* UIColor+CustomColors.m */,
+				42215A2B1AF9B0D6003C548C /* PresentingAnimator.h */,
+				42215A2C1AF9B0D6003C548C /* PresentingAnimator.m */,
+				42215A241AF9B0AA003C548C /* RequestUberPopupViewController.h */,
+				42215A251AF9B0AA003C548C /* RequestUberPopupViewController.m */,
+			);
+			name = RequestUberPopup;
+			sourceTree = "<group>";
+		};
 		423234811AF479400073255A /* ReceiptSlideOutView */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				C1FE9F2C1AF691EC00FCA93E /* DeliveryView.xib */,
+				42215A301AF9B746003C548C /* RequestUberPopupView.xib */,
 			);
 			name = Views;
 			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/DeliveryView/Views;
@@ -233,6 +263,7 @@
 		4239E7DE1AF2B9C900513C9A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				42215A231AF9B077003C548C /* RequestUberPopup */,
 				C1FE9F161AF6913E00FCA93E /* DeliveryViewController.h */,
 				C1FE9F171AF6913E00FCA93E /* DeliveryViewController.m */,
 			);
@@ -621,6 +652,7 @@
 				C1FE9F9F1AF69D3F00FCA93E /* Metrics_Icon@2x.png in Resources */,
 				B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */,
 				C1FE9F2A1AF691D300FCA93E /* SettingsView.xib in Resources */,
+				42215A311AF9B746003C548C /* RequestUberPopupView.xib in Resources */,
 				42014ECA1AF6FBD9005787A6 /* ReceiptCell.xib in Resources */,
 				C1FE9F8B1AF69D3500FCA93E /* Merchant_Icon.png in Resources */,
 				C1FE9F8F1AF69D3500FCA93E /* Receipt_Icon.png in Resources */,
@@ -715,13 +747,17 @@
 			files = (
 				C1FE9F181AF6913E00FCA93E /* DeliveryViewController.m in Sources */,
 				B2202DF61AED93730099F6B7 /* ViewController.m in Sources */,
+				42215A261AF9B0AB003C548C /* RequestUberPopupViewController.m in Sources */,
 				C1FE9F1B1AF6915400FCA93E /* AnalyticsViewController.m in Sources */,
 				4232348A1AF47A060073255A /* ReceiptSlideOutViewController.m in Sources */,
 				C1FE9F211AF6918A00FCA93E /* LeftmostViewController.m in Sources */,
+				42215A2E1AF9B0D6003C548C /* UIColor+CustomColors.m in Sources */,
+				42215A2F1AF9B0D6003C548C /* PresentingAnimator.m in Sources */,
 				B2202DF31AED93720099F6B7 /* AppDelegate.m in Sources */,
 				C1FE9F151AF690F400FCA93E /* MHTabBarController.m in Sources */,
 				C1FE9F1E1AF6916900FCA93E /* SettingsViewController.m in Sources */,
 				B2202DF01AED93720099F6B7 /* main.m in Sources */,
+				42215A2D1AF9B0D6003C548C /* DismissingAnimator.m in Sources */,
 				42014EC81AF6FA20005787A6 /* ReceiptCell.m in Sources */,
 				4232348D1AF54D600073255A /* AppConstants.m in Sources */,
 			);
