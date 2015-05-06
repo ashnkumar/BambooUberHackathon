@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GraphKit/GraphKit.h>
 
-@interface AnalyticsViewController : UIViewController
+@interface AnalyticsViewController : UIViewController <GKLineGraphDataSource>
+@property (strong, nonatomic) IBOutlet GKLineGraph *graph;
 
 @end
