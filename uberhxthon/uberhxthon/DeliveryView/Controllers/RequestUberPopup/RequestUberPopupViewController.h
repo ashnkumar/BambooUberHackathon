@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RequestUberPopupViewController : UIViewController
+@protocol RequestPopupViewControllerDelegate <NSObject>
 
-@property (weak, nonatomic) IBOutlet UILabel *requestStatusLabel;
+- (void)didCompleteUberRequest;
+
+@end
+
+@interface RequestUberPopupViewController : UIViewController
+@property (nonatomic, assign) id<RequestPopupViewControllerDelegate> delegate;
 
 @end

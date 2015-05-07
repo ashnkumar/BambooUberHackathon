@@ -23,7 +23,7 @@
 #define CORNER_RADIUS 4
 #define SLIDE_TIMING .25
 
-@interface DeliveryViewController () <ReceiptPanelViewControllerDelegate, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate>
+@interface DeliveryViewController () <ReceiptPanelViewControllerDelegate, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate, RequestPopupViewControllerDelegate>
 {
     int intIndex_route1;
     int intIndex_route2;
@@ -262,16 +262,22 @@
 
 
 - (void)showRequestUberPopup {
-    RequestUberPopupViewController *modalViewController = [RequestUberPopupViewController new];
+    RequestUberPopupViewController *requestUberPopupVC = [RequestUberPopupViewController new];
+    requestUberPopupVC.delegate = self;
     
-    modalViewController.transitioningDelegate = self;
-    modalViewController.modalPresentationStyle = UIModalPresentationCustom;
+    requestUberPopupVC.transitioningDelegate = self;
+    requestUberPopupVC.modalPresentationStyle = UIModalPresentationCustom;
     
-    [self presentViewController:modalViewController
+    [self presentViewController:requestUberPopupVC
                        animated:YES
                      completion:^{
                          NSLog(@"Completed presenting view controller");
                      }];
+}
+
+- (void)didCompleteUberRequest
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

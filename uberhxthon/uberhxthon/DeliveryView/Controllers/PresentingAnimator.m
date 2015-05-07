@@ -28,17 +28,22 @@
     dimmingView.layer.opacity = 0.0;
 
     UIView *toView = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey].view;
+    
+    ////////////////////////////////////////////////
+    // I manually changed the frame here!!! - ASHWIN
+    ////////////////////////////////////////////////
+    
     toView.frame = CGRectMake(0,
                               0,
-                              CGRectGetWidth(transitionContext.containerView.bounds) - 104.f,
-                              CGRectGetHeight(transitionContext.containerView.bounds) - 288.f);
-    toView.center = CGPointMake(transitionContext.containerView.center.x, -transitionContext.containerView.center.y);
+                              CGRectGetWidth(transitionContext.containerView.bounds) - 745.f,
+                              CGRectGetHeight(transitionContext.containerView.bounds) - 710.f);
+    toView.center = CGPointMake(transitionContext.containerView.center.x, -transitionContext.containerView.center.y-100);
 
     [transitionContext.containerView addSubview:dimmingView];
     [transitionContext.containerView addSubview:toView];
 
     POPSpringAnimation *positionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    positionAnimation.toValue = @(transitionContext.containerView.center.y);
+    positionAnimation.toValue = @(transitionContext.containerView.center.y-100);
     positionAnimation.springBounciness = 10;
     [positionAnimation setCompletionBlock:^(POPAnimation *anim, BOOL finished) {
         [transitionContext completeTransition:YES];
