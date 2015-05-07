@@ -18,6 +18,9 @@
 		B21B3E301AFACB83004FEDAC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */; };
 		B21B3E311AFACB83004FEDAC /* route1.txt in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E2E1AFACB83004FEDAC /* route1.txt */; };
 		B21B3E321AFACB83004FEDAC /* route1.txt in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E2E1AFACB83004FEDAC /* route1.txt */; };
+		B21B3E361AFAFDC1004FEDAC /* route2.txt in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E331AFAFDC1004FEDAC /* route2.txt */; };
+		B21B3E371AFAFDC1004FEDAC /* route3.txt in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E341AFAFDC1004FEDAC /* route3.txt */; };
+		B21B3E381AFAFDC1004FEDAC /* route4.txt in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E351AFAFDC1004FEDAC /* route4.txt */; };
 		B2202DF01AED93720099F6B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DEF1AED93720099F6B7 /* main.m */; };
 		B2202DF31AED93720099F6B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DF21AED93720099F6B7 /* AppDelegate.m */; };
 		B2202DF61AED93730099F6B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DF51AED93730099F6B7 /* ViewController.m */; };
@@ -117,6 +120,9 @@
 		B21B3E271AFA93E5004FEDAC /* routeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = routeGenerator.m; path = DeliveryView/Models/routeGenerator.m; sourceTree = "<group>"; };
 		B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "Assets/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		B21B3E2E1AFACB83004FEDAC /* route1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = route1.txt; path = Assets/route1.txt; sourceTree = "<group>"; };
+		B21B3E331AFAFDC1004FEDAC /* route2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = route2.txt; path = Assets/route2.txt; sourceTree = "<group>"; };
+		B21B3E341AFAFDC1004FEDAC /* route3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = route3.txt; path = Assets/route3.txt; sourceTree = "<group>"; };
+		B21B3E351AFAFDC1004FEDAC /* route4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = route4.txt; path = Assets/route4.txt; sourceTree = "<group>"; };
 		B2202DEA1AED93710099F6B7 /* uberhxthon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uberhxthon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2202DEE1AED93720099F6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2202DEF1AED93720099F6B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -510,8 +516,11 @@
 		C1FE9F411AF698B200FCA93E /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */,
+				B21B3E331AFAFDC1004FEDAC /* route2.txt */,
+				B21B3E341AFAFDC1004FEDAC /* route3.txt */,
+				B21B3E351AFAFDC1004FEDAC /* route4.txt */,
 				B21B3E2E1AFACB83004FEDAC /* route1.txt */,
+				B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */,
 				C1FE9F5F1AF6992A00FCA93E /* UberCars */,
 				C1FE9F421AF698BD00FCA93E /* 1x */,
 				C1FE9F521AF698D300FCA93E /* 2x */,
@@ -676,11 +685,14 @@
 				C1FE9F271AF691C400FCA93E /* AnalyticsView.xib in Resources */,
 				C18B95591AF893DB00E6501E /* uber_route4.png in Resources */,
 				C103BCEE1AF738FE007D2DE1 /* map-vehicle-icon-sm.png in Resources */,
+				B21B3E381AFAFDC1004FEDAC /* route4.txt in Resources */,
 				C1FE9F891AF69D3500FCA93E /* Car_Icon.png in Resources */,
+				B21B3E361AFAFDC1004FEDAC /* route2.txt in Resources */,
 				C1FE9FA31AF69D3F00FCA93E /* Request_PickUp_Button@2x.png in Resources */,
 				C1A73E421AF6DC48000C84E7 /* map-vehicle-icon-uberX.png in Resources */,
 				B2202DFB1AED93730099F6B7 /* Images.xcassets in Resources */,
 				C1FE9F991AF69D3F00FCA93E /* Bamboo_Logo@2x.png in Resources */,
+				B21B3E371AFAFDC1004FEDAC /* route3.txt in Resources */,
 				C1FE9FA91AF6A02100FCA93E /* Menu_Line@2x.png in Resources */,
 				C18B95571AF893DB00E6501E /* uber_route2.png in Resources */,
 				C1FE9FA11AF69D3F00FCA93E /* Receipt_Icon@2x.png in Resources */,

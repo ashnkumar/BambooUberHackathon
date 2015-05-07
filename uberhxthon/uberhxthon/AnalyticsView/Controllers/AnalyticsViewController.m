@@ -15,8 +15,14 @@
 
 @property (strong, nonatomic) NSArray *barData;
 @property (strong, nonatomic) NSArray *barLabels;
-
-
+@property (strong, nonatomic) UICountingLabel *noDeliveries;
+@property (strong, nonatomic) UICountingLabel *salePerDelivery;
+@property (strong, nonatomic) UICountingLabel *costPerDelivery;
+@property (strong, nonatomic) UICountingLabel *noDeliveriesPerHour;
+@property (strong, nonatomic) UICountingLabel *orderReceivedToCust;
+@property (strong, nonatomic) UICountingLabel *orderReceivedToUber;
+@property (strong, nonatomic) UICountingLabel *uberToCust;
+@property (strong, nonatomic) UICountingLabel *grossSales;
 @end
 
 @implementation AnalyticsViewController
@@ -30,8 +36,100 @@
     
     [self _setupBarGraph];
     
-}
+    [self setupLabels];
     
+}
+
+#pragma mark - Cashwin methods
+- (void)setupLabels {
+    
+    //Gross Sales
+    self.grossSales = [[UICountingLabel alloc]initWithFrame:CGRectMake(770, 125, 150, 50)];
+    self.grossSales.textAlignment = NSTextAlignmentCenter;
+    self.grossSales.format = @"$%d";
+    self.grossSales.method = UILabelCountingMethodLinear;
+    self.grossSales.textColor = [AppConstants specialBlack];
+    self.grossSales.font = [UIFont fontWithName:@"OpenSans" size:60];
+    [self.view addSubview:self.grossSales];
+    
+    //Number of Deliveries
+    self.noDeliveries = [[UICountingLabel alloc]initWithFrame:CGRectMake(770, 240, 150, 50)];
+    self.noDeliveries.textAlignment = NSTextAlignmentCenter;
+    self.noDeliveries.format = @"%d";
+    self.noDeliveries.method = UILabelCountingMethodLinear;
+    self.noDeliveries.textColor = [AppConstants specialBlack];
+    self.noDeliveries.font = [UIFont fontWithName:@"OpenSans" size:60];
+    [self.view addSubview:self.noDeliveries];
+    
+    //Sale per Delivery
+    self.salePerDelivery = [[UICountingLabel alloc]initWithFrame:CGRectMake(100, 450, 150, 50)];
+    self.salePerDelivery.textAlignment = NSTextAlignmentCenter;
+    self.salePerDelivery.format = @"$%d";
+    self.salePerDelivery.method = UILabelCountingMethodLinear;
+    self.salePerDelivery.textColor = [AppConstants specialBlack];
+    self.salePerDelivery.font = [UIFont fontWithName:@"OpenSans" size:35];
+    [self.view addSubview:self.salePerDelivery];
+    
+    //Cost per Delivery
+    self.costPerDelivery = [[UICountingLabel alloc]initWithFrame:CGRectMake(100, 535, 150, 50)];
+    self.costPerDelivery.textAlignment = NSTextAlignmentCenter;
+    self.costPerDelivery.format = @"$%d";
+    self.costPerDelivery.method = UILabelCountingMethodLinear;
+    self.costPerDelivery.textColor = [AppConstants specialBlack];
+    self.costPerDelivery.font = [UIFont fontWithName:@"OpenSans" size:35];
+    [self.view addSubview:self.costPerDelivery];
+    
+    //Number of Deliveries per Hour
+    self.noDeliveriesPerHour = [[UICountingLabel alloc]initWithFrame:CGRectMake(100, 610, 150, 50)];
+    self.noDeliveriesPerHour.textAlignment = NSTextAlignmentCenter;
+    self.noDeliveriesPerHour.format = @"%d";
+    self.noDeliveriesPerHour.method = UILabelCountingMethodLinear;
+    self.noDeliveriesPerHour.textColor = [AppConstants specialBlack];
+    self.noDeliveriesPerHour.font = [UIFont fontWithName:@"OpenSans" size:35];
+    [self.view addSubview:self.noDeliveriesPerHour];
+    
+    //Order Received to Customer
+    self.orderReceivedToCust = [[UICountingLabel alloc]initWithFrame:CGRectMake(770, 450, 150, 50)];
+    self.orderReceivedToCust.textAlignment = NSTextAlignmentCenter;
+    self.orderReceivedToCust.format = @"%d min.";
+    self.orderReceivedToCust.method = UILabelCountingMethodLinear;
+    self.orderReceivedToCust.textColor = [AppConstants specialBlack];
+    self.orderReceivedToCust.font = [UIFont fontWithName:@"OpenSans" size:35];
+    [self.view addSubview:self.orderReceivedToCust];
+    
+    //Order Received to Uber
+    self.orderReceivedToUber = [[UICountingLabel alloc]initWithFrame:CGRectMake(770, 535, 150, 50)];
+    self.orderReceivedToUber.textAlignment = NSTextAlignmentCenter;
+    self.orderReceivedToUber.format = @"%d min.";
+    self.orderReceivedToUber.method = UILabelCountingMethodLinear;
+    self.orderReceivedToUber.textColor = [AppConstants specialBlack];
+    self.orderReceivedToUber.font = [UIFont fontWithName:@"OpenSans" size:35];
+    [self.view addSubview:self.orderReceivedToUber];
+    
+    //Uber to Customer
+    self.uberToCust = [[UICountingLabel alloc]initWithFrame:CGRectMake(770, 610, 150, 50)];
+    self.uberToCust.textAlignment = NSTextAlignmentCenter;
+    self.uberToCust.format = @"%d min.";
+    self.uberToCust.method = UILabelCountingMethodLinear;
+    self.uberToCust.textColor = [AppConstants specialBlack];
+    self.uberToCust.font = [UIFont fontWithName:@"OpenSans" size:35];
+    [self.view addSubview:self.uberToCust];
+    
+    [self runAnalyticsNums];
+}
+
+- (void)runAnalyticsNums {
+    [self.grossSales countFrom:0 to:542 withDuration:1.5f];
+    [self.noDeliveries countFrom:0 to:8 withDuration:3.0f];
+    [self.salePerDelivery countFrom:0 to:68 withDuration:2.0f];
+    [self.costPerDelivery countFrom:0 to:14 withDuration:2.0f];
+    [self.noDeliveriesPerHour countFrom:0 to:1 withDuration:1.0f];
+    [self.orderReceivedToCust countFrom:0 to:57 withDuration:2.0f];
+    [self.orderReceivedToUber countFrom:0 to:13 withDuration:2.0f];
+    [self.uberToCust countFrom:0 to:44 withDuration:2.0f];
+}
+
+#pragma mark - Graphs
 - (void)_setupLineGraph {
     
     self.lineData = @[

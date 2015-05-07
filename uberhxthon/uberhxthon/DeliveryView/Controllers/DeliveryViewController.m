@@ -89,8 +89,8 @@
     zoomLocation.longitude=-122.412766;
 
     
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 7.5*METERS_PER_MILE, 7.5*METERS_PER_MILE);
-    //MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 1200, 1200);
+    //MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 7.5*METERS_PER_MILE, 7.5*METERS_PER_MILE);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 1100, 1100);
     [self.mapView setRegion:viewRegion animated:YES];
 }
 
@@ -461,7 +461,6 @@
 #pragma mark - Car Animations
 - (void) prepareRoutes
 {
-    // Set the routes
     /* Route 1: Aquatic Park to UN Plaza */
     CLLocationCoordinate2D route1src_cl = CLLocationCoordinate2DMake(37.807734, -122.420093);
     CLLocationCoordinate2D route1dest_cl = CLLocationCoordinate2DMake(37.780604, -122.414257);
@@ -480,114 +479,17 @@
     CLLocationCoordinate2D route4src_cl = CLLocationCoordinate2DMake(37.795250, -122.408020);
     CLLocationCoordinate2D route4dest_cl = CLLocationCoordinate2DMake(37.807483, -122.410278);
     
-        /*for (int i = 0; i < 4; i++)
-        {
-            MKDirectionsRequest *routereq = [[MKDirectionsRequest alloc]init];
-            [routereq setRequestsAlternateRoutes:NO];
-            
-            switch (i)
-            {
-                case 0:
-                {
-                    MKPlacemark *route1src_p = [[MKPlacemark alloc] initWithCoordinate:route1src_cl addressDictionary:nil];
-                    MKPlacemark *route1dest_p = [[MKPlacemark alloc] initWithCoordinate:route1dest_cl addressDictionary:nil];
-                    MKMapItem *route1src_mki = [[MKMapItem alloc] initWithPlacemark:route1src_p];
-                    MKMapItem *route1dest_mki = [[MKMapItem alloc] initWithPlacemark:route1dest_p];
-                    [routereq setSource:route1src_mki];
-                    [routereq setDestination:route1dest_mki];
-                    break;
-                }
-                case 1:
-                {
-                    MKPlacemark *route2src_p = [[MKPlacemark alloc] initWithCoordinate:route2src_cl addressDictionary:nil];
-                    MKPlacemark *route2dest_p = [[MKPlacemark alloc] initWithCoordinate:route2dest_cl addressDictionary:nil];
-                    MKMapItem *route2src_mki = [[MKMapItem alloc] initWithPlacemark:route2src_p];
-                    MKMapItem *route2dest_mki = [[MKMapItem alloc] initWithPlacemark:route2dest_p];
-                    [routereq setSource:route2src_mki];
-                    [routereq setDestination:route2dest_mki];
-                    break;
-                }
-                case 2:
-                {
-                    MKPlacemark *route3src_p = [[MKPlacemark alloc] initWithCoordinate:route3src_cl addressDictionary:nil];
-                    MKPlacemark *route3dest_p = [[MKPlacemark alloc] initWithCoordinate:route3dest_cl addressDictionary:nil];
-                    MKMapItem *route3src_mki = [[MKMapItem alloc] initWithPlacemark:route3src_p];
-                    MKMapItem *route3dest_mki = [[MKMapItem alloc] initWithPlacemark:route3dest_p];
-                    [routereq setSource:route3src_mki];
-                    [routereq setDestination:route3dest_mki];
-                    break;
-                }
-                case 3:
-                {
-                    MKPlacemark *route4src_p = [[MKPlacemark alloc] initWithCoordinate:route4src_cl addressDictionary:nil];
-                    MKPlacemark *route4dest_p = [[MKPlacemark alloc] initWithCoordinate:route4dest_cl addressDictionary:nil];
-                    MKMapItem *route4src_mki = [[MKMapItem alloc] initWithPlacemark:route4src_p];
-                    MKMapItem *route4dest_mki = [[MKMapItem alloc] initWithPlacemark:route4dest_p];
-                    [routereq setSource:route4src_mki];
-                    [routereq setDestination:route4dest_mki];
-                    break;
-                }
-                default:
-                    break;
-            }
-            MKDirections *routedirections = [[MKDirections alloc]initWithRequest:routereq];
-            [routedirections calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
-                if (error) {
-                    NSLog(@"Couldn't calculate route %i directions", i+1);
-                }
-                else {
-                    [self showRoute:response withIndex:(i+1)];
-                }
-            }];
-        }*/
-    
-    self.routeGenerator = [[routeGenerator alloc]init];
-    NSMutableArray *r = [routeGenerator getRouteAtIndex:1];
-    for (int i = 0; i < [r count]; i++)
-    {
-        CLLocation *loc = [r objectAtIndex:i];
-        double lat = loc.coordinate.latitude;
-        double lon = loc.coordinate.longitude;
-        NSLog(@"lat: %f, lon: %f", lat, lon);
-    }
-    [self showRoute:r withIndex:1];
-    /*for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
         //Get the route
+        self.routeGenerator = [[routeGenerator alloc]init];
         NSMutableArray *routeMut = [routeGenerator getRouteAtIndex:(i+1)];
         //Show the route
         [self showRoute:routeMut withIndex:(i+1)];
-    }*/
+    }
 }
 
 - (void)showRoute:(NSMutableArray *)routeMut withIndex:(int)intIndex {
-    /*NSAssert([response.routes count] == 1, @"Response.routes didn't return 1");
-    
-       MKRoute *route = response.routes.firstObject;
-    //[self.mapView addOverlay:route.polyline level:MKOverlayLevelAboveRoads];
-
-       NSUInteger pointCount = route.polyline.pointCount;
-    
-
-        //TODO: double check this allocates enough spots for all the coordinates
-        CLLocationCoordinate2D coordArr[pointCount];
-        [route.polyline getCoordinates:coordArr range:NSMakeRange(0, pointCount)];
-    
-    
-        NSMutableArray *routeMut = [[NSMutableArray alloc]init];
-        
-        //NSLog(@"route %i's pointCount = %lu", intIndex, pointCount);
-        for (int c=0; c < pointCount; c++)
-        {
-            NSLog(@"routeCoordinates[%i] = %f, %f", c, coordArr[c].latitude, coordArr[c].longitude);
-            if (c > 0)
-            {
-                CLLocation *nextloc = [[CLLocation alloc] initWithLatitude:coordArr[c].latitude longitude:coordArr[c].longitude];
-                [routeMut addObject:nextloc];
-            }
-            
-        }*/
-    
     if (intIndex == 1)
     {
         intIndex_route1 = 0;
@@ -641,7 +543,7 @@
     if (intIndex_route1 < (routeMut.count-1))
     {
         intIndex_route1++;
-        [self performSelector:@selector(manageUserMove1:) withObject:routeMut afterDelay:0.1];
+        [self performSelector:@selector(manageUserMove1:) withObject:routeMut afterDelay:0.6];
     }
 }
 
@@ -673,7 +575,7 @@
     if (intIndex_route2 < (routeMut.count-1))
     {
         intIndex_route2++;
-        [self performSelector:@selector(manageUserMove2:) withObject:routeMut afterDelay:3.5];
+        [self performSelector:@selector(manageUserMove2:) withObject:routeMut afterDelay:0.2];
     }
 }
 
@@ -704,7 +606,7 @@
     if (intIndex_route3 < (routeMut.count-1))
     {
         intIndex_route3++;
-        [self performSelector:@selector(manageUserMove3:) withObject:routeMut afterDelay:3.5];
+        [self performSelector:@selector(manageUserMove3:) withObject:routeMut afterDelay:0.2];
     }
 
 }
@@ -736,7 +638,7 @@
     if (intIndex_route4 < (routeMut.count-1))
     {
         intIndex_route4++;
-        [self performSelector:@selector(manageUserMove4:) withObject:routeMut afterDelay:4.5];
+        [self performSelector:@selector(manageUserMove4:) withObject:routeMut afterDelay:0.5];
     }
 
 }

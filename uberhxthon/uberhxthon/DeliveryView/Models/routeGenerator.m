@@ -22,9 +22,37 @@
 
 + (NSMutableArray *)getRouteAtIndex:(int)index { //Objects of type CLLocation
     NSMutableArray *arr = [[NSMutableArray alloc]init];
-       
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"route1"
-                                                     ofType:@"txt"];
+    NSString* path;
+    
+    switch (index) {
+        case 1:
+        {
+            path = [[NSBundle mainBundle] pathForResource:@"route1"
+                                                             ofType:@"txt"];
+            break;
+        }
+        case 2:
+        {
+            path = [[NSBundle mainBundle] pathForResource:@"route2"
+                                                   ofType:@"txt"];
+            break;
+        }
+        case 3:
+        {
+            path = [[NSBundle mainBundle] pathForResource:@"route3"
+                                                   ofType:@"txt"];
+            break;
+        }
+        case 4:
+        {
+            path = [[NSBundle mainBundle] pathForResource:@"route4"
+                                                   ofType:@"txt"];
+            break;
+        }
+        default:
+            break;
+    }
+    
     
     NSString* content = [NSString stringWithContentsOfFile:path
                                                   encoding:NSUTF8StringEncoding

@@ -16,5 +16,5 @@
 + (UIColor *)mainAppThemeColor;
 + (UIColor *)cashwinGreen;
 + (UIColor *)complementaryBlue;
-
++ (UIColor *)specialBlack;
 @end
