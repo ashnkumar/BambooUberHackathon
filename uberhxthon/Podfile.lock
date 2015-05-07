@@ -6,11 +6,13 @@ PODS:
   - MKFoundationKit/NSArray (1.2.3)
   - pop (1.0.7)
   - SpinKit (1.2.0)
+  - UICountingLabel (1.2.0)
 
 DEPENDENCIES:
   - GraphKit (~> 1.1.1)
   - pop (~> 1.0)
   - SpinKit (~> 1.1)
+  - UICountingLabel (~> 1.2.0)
 
 SPEC CHECKSUMS:
   FrameAccessor: 0f7ba6ce37be9a5d0302a27c731dca70af8d438b
@@ -18,5 +20,6 @@ SPEC CHECKSUMS:
   MKFoundationKit: 882d74557944790d4d9e172961ed71d6a66804b7
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   SpinKit: 65906a8b534a4e14cbfd3f8b0b6c329131faef4a
+  UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.37.1

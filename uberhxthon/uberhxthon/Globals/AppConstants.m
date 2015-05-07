@@ -26,4 +26,9 @@
     return [UIColor colorWithRed:140.0/255.0 green:168.0/255.0 blue:207.0/255.0 alpha:1.0f];
 }
 
++ (UIColor *)specialBlack
+{
+    return [UIColor colorWithRed:60.0/255.0 green:60.0/255.0 blue:60.0/255.0 alpha:1.0f];
+}
+
 @end
