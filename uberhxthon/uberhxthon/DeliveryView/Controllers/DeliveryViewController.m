@@ -9,8 +9,8 @@
 #import "DeliveryViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
-#import <SpinKit/RTSpinKitView.h>
-#import <POP/POP.h>
+#import "RTSpinKitView.h"
+#import <pop/POP.h>
 
 #import "AppConstants.h"
 #import "ReceiptSlideOutViewController.h"

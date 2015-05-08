@@ -7,7 +7,7 @@
 //
 
 #import "DismissingAnimator.h"
-#import <POP/POP.h>
+#import <pop/POP.h>
 
 @implementation DismissingAnimator
 

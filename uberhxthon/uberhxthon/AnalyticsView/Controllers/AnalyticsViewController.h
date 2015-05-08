@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <GraphKit/GraphKit.h>
+#import "GraphKit.h"
 #include "AppConstants.h"
-#import <UICountingLabel/UICountingLabel.h>
-#import <PulsingHaloLayer.h>
+#import "UICountingLabel.h"
+#import "PulsingHaloLayer.h"
 
 @interface AnalyticsViewController : UIViewController <GKLineGraphDataSource, GKBarGraphDataSource>
 @property (strong, nonatomic) IBOutlet GKLineGraph *graph;

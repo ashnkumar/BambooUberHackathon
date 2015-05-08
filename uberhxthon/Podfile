@@ -1,7 +1,0 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
-pod 'pop', '~> 1.0'
-pod 'SpinKit', '~> 1.1'  
-pod 'GraphKit', '~> 1.1.1'
-pod 'UICountingLabel', '~> 1.2.0'
-pod 'PulsingHalo', :git => 'https://github.com/shu223/PulsingHalo.git'

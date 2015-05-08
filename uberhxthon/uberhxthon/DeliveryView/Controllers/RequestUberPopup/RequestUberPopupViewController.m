@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AppConstants.h"
 #import "UIColor+CustomColors.h"
-#import <SpinKit/RTSpinKitView.h>
+#import "RTSpinKitView.h"
 
 @interface RequestUberPopupViewController ()
 @property (strong, nonatomic) UILabel *requestStatusLabel;

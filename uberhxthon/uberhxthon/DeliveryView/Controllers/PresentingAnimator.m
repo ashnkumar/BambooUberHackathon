@@ -8,7 +8,7 @@
 
 #import "PresentingAnimator.h"
 #import "UIColor+CustomColors.h"
-#import <POP/POP.h>
+#import <pop/POP.h>
 
 @implementation PresentingAnimator
 
