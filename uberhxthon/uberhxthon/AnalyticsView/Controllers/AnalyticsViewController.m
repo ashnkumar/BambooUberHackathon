@@ -123,7 +123,7 @@
     [self.noDeliveries countFrom:0 to:8 withDuration:3.0f];
     [self.salePerDelivery countFrom:0 to:68 withDuration:2.0f];
     [self.costPerDelivery countFrom:0 to:14 withDuration:2.0f];
-    [self.noDeliveriesPerHour countFrom:0 to:1 withDuration:1.0f];
+    [self.noDeliveriesPerHour countFrom:0 to:2 withDuration:1.0f];
     [self.orderReceivedToCust countFrom:0 to:57 withDuration:2.0f];
     [self.orderReceivedToUber countFrom:0 to:13 withDuration:2.0f];
     [self.uberToCust countFrom:0 to:44 withDuration:2.0f];
@@ -143,6 +143,7 @@
     self.graph.lineWidth = 3.0;
     
     self.graph.valueLabelCount = 6;
+    
     
     [self.graph draw];
 }
@@ -173,7 +174,7 @@
 }
 
 - (CFTimeInterval)animationDurationForLineAtIndex:(NSInteger)index {
-    return [[@[@11.0, @11.0, @11.0, @11.0] objectAtIndex:index] doubleValue];
+    return [[@[@4.5, @11.0, @11.0, @11.0] objectAtIndex:index] doubleValue];
 }
 
 - (NSString *)titleForLineAtIndex:(NSInteger)index {
@@ -182,13 +183,13 @@
 
 #pragma mark - GKBarGraphDataSource
 - (void)_setupBarGraph {
-    self.barData = @[@35, @70, @45, @100, @90, @155];
+    self.barData = @[@30, @40, @20, @80, @70, @100];
     self.barLabels = @[@" ", @" ", @" ", @" ", @" ", @" "];
     
     //    self.graphView.barWidth = 22;
     //self.barGraph.barHeight = 190;
     self.barGraph.marginBar = 70;
-    self.barGraph.animationDuration = 10.0;
+    self.barGraph.animationDuration = 5;
     
     self.barGraph.dataSource = self;
     [self.barGraph draw];

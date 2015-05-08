@@ -5,21 +5,33 @@ PODS:
     - MKFoundationKit/NSArray (~> 1.2.2)
   - MKFoundationKit/NSArray (1.2.3)
   - pop (1.0.7)
+  - PulsingHalo (0.0.5)
   - SpinKit (1.2.0)
   - UICountingLabel (1.2.0)
 
 DEPENDENCIES:
   - GraphKit (~> 1.1.1)
   - pop (~> 1.0)
+  - PulsingHalo (from `https://github.com/shu223/PulsingHalo.git`)
   - SpinKit (~> 1.1)
   - UICountingLabel (~> 1.2.0)
+
+EXTERNAL SOURCES:
+  PulsingHalo:
+    :git: https://github.com/shu223/PulsingHalo.git
+
+CHECKOUT OPTIONS:
+  PulsingHalo:
+    :commit: ebc6a477dac78dffe4bddb1a824fd39c1c5a4648
+    :git: https://github.com/shu223/PulsingHalo.git
 
 SPEC CHECKSUMS:
   FrameAccessor: 0f7ba6ce37be9a5d0302a27c731dca70af8d438b
   GraphKit: e2336bed87d9313020af525dedbca54b62e93533
   MKFoundationKit: 882d74557944790d4d9e172961ed71d6a66804b7
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
+  PulsingHalo: 2b56945130aee4dee594a03df9df3fd32d285373
   SpinKit: 65906a8b534a4e14cbfd3f8b0b6c329131faef4a
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.36.3
