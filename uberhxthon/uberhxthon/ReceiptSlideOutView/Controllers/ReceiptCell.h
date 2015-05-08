@@ -8,16 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, AKReceiptStatus) {
+    AKReceiptStatusRequestUber,
+    AKReceiptStatusUberRequested,
+    AKReceiptStatusOutForDelivery,
+    AKReceiptStatusDeliveryComplete
+};
+
 @protocol ReceiptCellDelegate <NSObject>
 
 - (void)requestUberForOrderNum:(int)orderNum;
 
 @end
 
-
 @interface ReceiptCell : UICollectionViewCell
 
 @property (assign, nonatomic) id<ReceiptCellDelegate> delegate;
+
+@property (assign, nonatomic) AKReceiptStatus receiptStatus;
 @property (strong, nonatomic) UIButton *requestUberButton;
 @property (weak, nonatomic) IBOutlet UILabel *orderNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *orderDayDateLabel;

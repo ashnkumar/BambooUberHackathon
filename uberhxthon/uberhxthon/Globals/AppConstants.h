@@ -11,10 +11,13 @@
 
 @interface AppConstants : NSObject
 
-
 // Colors
 + (UIColor *)mainAppThemeColor;
 + (UIColor *)cashwinGreen;
 + (UIColor *)complementaryBlue;
 + (UIColor *)specialBlack;
++ (UIColor *)receiptPink;
++ (UIColor *)receiptBlue;
++ (UIColor *)receiptGreen;
+
 @end

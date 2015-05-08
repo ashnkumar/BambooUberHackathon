@@ -12,6 +12,11 @@
 		423234861AF479B50073255A /* ReceiptSlideOutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423234851AF479B50073255A /* ReceiptSlideOutView.xib */; };
 		4232348A1AF47A060073255A /* ReceiptSlideOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 423234891AF47A060073255A /* ReceiptSlideOutViewController.m */; };
 		4232348D1AF54D600073255A /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4232348C1AF54D600073255A /* AppConstants.m */; };
+		42F45F941AFD448E0027018F /* ReceiptSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F45F931AFD448E0027018F /* ReceiptSectionHeaderView.xib */; };
+		42F45F9B1AFD44A20027018F /* ReceiptSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45F961AFD44A20027018F /* ReceiptSectionHeaderView.m */; };
+		42F45F9C1AFD44A20027018F /* ReceiptCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45F981AFD44A20027018F /* ReceiptCollectionFlowLayout.m */; };
+		42F45F9D1AFD44A20027018F /* ReceiptObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45F9A1AFD44A20027018F /* ReceiptObject.m */; };
+		42F45F9F1AFD45350027018F /* receiptData.json in Resources */ = {isa = PBXBuildFile; fileRef = 42F45F9E1AFD45350027018F /* receiptData.json */; };
 		B21B3E281AFA93E5004FEDAC /* routeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B3E271AFA93E5004FEDAC /* routeGenerator.m */; };
 		B21B3E291AFA93E5004FEDAC /* routeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B3E271AFA93E5004FEDAC /* routeGenerator.m */; };
 		B21B3E2F1AFACB83004FEDAC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */; };
@@ -229,6 +234,14 @@
 		423234891AF47A060073255A /* ReceiptSlideOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReceiptSlideOutViewController.m; path = ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m; sourceTree = "<group>"; };
 		4232348B1AF54D600073255A /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppConstants.h; path = Globals/AppConstants.h; sourceTree = "<group>"; };
 		4232348C1AF54D600073255A /* AppConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppConstants.m; path = Globals/AppConstants.m; sourceTree = "<group>"; };
+		42F45F931AFD448E0027018F /* ReceiptSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiptSectionHeaderView.xib; sourceTree = "<group>"; };
+		42F45F951AFD44A20027018F /* ReceiptSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptSectionHeaderView.h; sourceTree = "<group>"; };
+		42F45F961AFD44A20027018F /* ReceiptSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptSectionHeaderView.m; sourceTree = "<group>"; };
+		42F45F971AFD44A20027018F /* ReceiptCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptCollectionFlowLayout.h; sourceTree = "<group>"; };
+		42F45F981AFD44A20027018F /* ReceiptCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptCollectionFlowLayout.m; sourceTree = "<group>"; };
+		42F45F991AFD44A20027018F /* ReceiptObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptObject.h; sourceTree = "<group>"; };
+		42F45F9A1AFD44A20027018F /* ReceiptObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptObject.m; sourceTree = "<group>"; };
+		42F45F9E1AFD45350027018F /* receiptData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = receiptData.json; sourceTree = "<group>"; };
 		B21B3E261AFA93E5004FEDAC /* routeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = routeGenerator.h; path = DeliveryView/Models/routeGenerator.h; sourceTree = "<group>"; };
 		B21B3E271AFA93E5004FEDAC /* routeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = routeGenerator.m; path = DeliveryView/Models/routeGenerator.m; sourceTree = "<group>"; };
 		B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "Assets/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -402,6 +415,7 @@
 		423234821AF479740073255A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				42F45F931AFD448E0027018F /* ReceiptSectionHeaderView.xib */,
 				423234851AF479B50073255A /* ReceiptSlideOutView.xib */,
 				42014EC91AF6FBD9005787A6 /* ReceiptCell.xib */,
 			);
@@ -411,6 +425,12 @@
 		423234871AF479EC0073255A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				42F45F951AFD44A20027018F /* ReceiptSectionHeaderView.h */,
+				42F45F961AFD44A20027018F /* ReceiptSectionHeaderView.m */,
+				42F45F971AFD44A20027018F /* ReceiptCollectionFlowLayout.h */,
+				42F45F981AFD44A20027018F /* ReceiptCollectionFlowLayout.m */,
+				42F45F991AFD44A20027018F /* ReceiptObject.h */,
+				42F45F9A1AFD44A20027018F /* ReceiptObject.m */,
 				423234881AF47A060073255A /* ReceiptSlideOutViewController.h */,
 				423234891AF47A060073255A /* ReceiptSlideOutViewController.m */,
 				42014EC61AF6FA20005787A6 /* ReceiptCell.h */,
@@ -624,6 +644,7 @@
 		B2202DED1AED93720099F6B7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				42F45F9E1AFD45350027018F /* receiptData.json */,
 				C1FE9F411AF698B200FCA93E /* Assets */,
 				C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */,
 				B2202DEE1AED93720099F6B7 /* Info.plist */,
@@ -1031,6 +1052,7 @@
 				B21B3E311AFACB83004FEDAC /* route1.txt in Resources */,
 				C1FE9F2D1AF691EC00FCA93E /* DeliveryView.xib in Resources */,
 				C18B95561AF893DB00E6501E /* uber_route1.png in Resources */,
+				42F45F941AFD448E0027018F /* ReceiptSectionHeaderView.xib in Resources */,
 				423234861AF479B50073255A /* ReceiptSlideOutView.xib in Resources */,
 				C1FE9F8D1AF69D3500FCA93E /* Metrics_Icon.png in Resources */,
 				C1FE9F9D1AF69D3F00FCA93E /* Merchant_Icon@2x.png in Resources */,
@@ -1043,6 +1065,7 @@
 				B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */,
 				C1FE9F2A1AF691D300FCA93E /* SettingsView.xib in Resources */,
 				42014ECA1AF6FBD9005787A6 /* ReceiptCell.xib in Resources */,
+				42F45F9F1AFD45350027018F /* receiptData.json in Resources */,
 				C1FE9F8B1AF69D3500FCA93E /* Merchant_Icon.png in Resources */,
 				C1FE9F8F1AF69D3500FCA93E /* Receipt_Icon.png in Resources */,
 				C1FE9F271AF691C400FCA93E /* AnalyticsView.xib in Resources */,
@@ -1119,6 +1142,8 @@
 				C1E05D991AFC7DEB00F6CA46 /* RTSpinKitFadingCircleAltAnimation.m in Sources */,
 				C1E05D8D1AFC7DEB00F6CA46 /* RTSpinKitWaveAnimation.m in Sources */,
 				C1E05D521AFC7DAF00F6CA46 /* NSMutableArray+MK_Queue.m in Sources */,
+				42F45F9C1AFD44A20027018F /* ReceiptCollectionFlowLayout.m in Sources */,
+				42F45F9D1AFD44A20027018F /* ReceiptObject.m in Sources */,
 				C1E05D8B1AFC7DEB00F6CA46 /* RTSpinKitWordPressAnimation.m in Sources */,
 				C115D8EA1AF9C71F00DD214F /* RequestUberPopupViewController.m in Sources */,
 				C1FE9F1B1AF6915400FCA93E /* AnalyticsViewController.m in Sources */,
@@ -1129,6 +1154,7 @@
 				C1E05D5F1AFC7DC800F6CA46 /* PulsingHaloLayer.m in Sources */,
 				C1E05D431AFC7DA100F6CA46 /* GKBar.m in Sources */,
 				C1FE9F211AF6918A00FCA93E /* LeftmostViewController.m in Sources */,
+				42F45F9B1AFD44A20027018F /* ReceiptSectionHeaderView.m in Sources */,
 				C1E05D9F1AFC7DEB00F6CA46 /* RTSpinKitChasingDotsAnimation.m in Sources */,
 				C1E05D6A1AFC7DD900F6CA46 /* RTSpinKitUtils.m in Sources */,
 				C1E05D931AFC7DEB00F6CA46 /* RTSpinKitPulseAnimation.m in Sources */,

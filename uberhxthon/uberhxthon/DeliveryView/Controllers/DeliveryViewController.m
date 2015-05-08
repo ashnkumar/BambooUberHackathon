@@ -10,7 +10,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "RTSpinKitView.h"
-#import <pop/POP.h>
+#import <POP/POP.h>
 
 #import "AppConstants.h"
 #import "ReceiptSlideOutViewController.h"
@@ -29,7 +29,7 @@
     int intIndex_route2;
     int intIndex_route3;
     int intIndex_route4;
-
+    
 }
 
 @property (nonatomic, strong) ReceiptSlideOutViewController *receiptPanelViewController;
@@ -78,8 +78,8 @@
 {
     CLLocationCoordinate2D zoomLocation;
     
-//    zoomLocation.latitude = self.locationManager.location.coordinate.latitude;
-//    zoomLocation.longitude= self.locationManager.location.coordinate.longitude;
+    //    zoomLocation.latitude = self.locationManager.location.coordinate.latitude;
+    //    zoomLocation.longitude= self.locationManager.location.coordinate.longitude;
     
     // FAKE LOCATION for now in center of SF.
     //zoomLocation.latitude = 37.7316915;
@@ -87,7 +87,7 @@
     
     zoomLocation.latitude =37.800980;
     zoomLocation.longitude=-122.412766;
-
+    
     
     //MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 7.5*METERS_PER_MILE, 7.5*METERS_PER_MILE);
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 1100, 1100);
@@ -240,7 +240,7 @@
         //        } else {
         //            // NSLog(@"opposite direction");
         //        }
-        //        
+        //
         //        _preVelocity = velocity;
     }
 }
@@ -288,14 +288,14 @@
     self.mapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-
+    
     if (IS_OS_8_OR_LATER) {
         [self.locationManager requestAlwaysAuthorization];
     }
     
-// Don't do anything yet when user location updates
-//    [self.locationManager startUpdatingLocation];
-//    [self.mapView setShowsUserLocation:YES];
+    // Don't do anything yet when user location updates
+    //    [self.locationManager startUpdatingLocation];
+    //    [self.mapView setShowsUserLocation:YES];
     [self.mapView setMapType:MKMapTypeStandard];
     [self.mapView setZoomEnabled:YES];
     [self.mapView setScrollEnabled:YES];
@@ -389,7 +389,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
-//    NSLog(@"%d", status);
+    //    NSLog(@"%d", status);
 }
 
 
@@ -421,7 +421,7 @@
     if ([annotation.title isEqualToString:@"1"])
     {
         annotationView.image = [UIImage imageNamed:@"uber_route1.png"];
-
+        
     }
     else if ([annotation.title isEqualToString:@"2"])
     {
@@ -467,23 +467,23 @@
 #pragma mark - Car Animations
 - (void) prepareRoutes
 {
-    /* //Route 1: Aquatic Park to UN Plaza
+    /* Route 1: Aquatic Park to UN Plaza */
     CLLocationCoordinate2D route1src_cl = CLLocationCoordinate2DMake(37.807734, -122.420093);
     CLLocationCoordinate2D route1dest_cl = CLLocationCoordinate2DMake(37.780604, -122.414257);
-
-    //Route 2: Aquatic Park to Church of Scientology
+    
+    /* Route 2: Aquatic Park to Church of Scientology */
     CLLocationCoordinate2D route2src_cl = CLLocationCoordinate2DMake(37.795798, -122.403528);
     CLLocationCoordinate2D route2dest_cl = CLLocationCoordinate2DMake(37.807734, -122.420093);
-
     
-     //Route 3: USNaval Recruiting Station to St Brigid School
+    
+    /* Route 3: USNaval Recruiting Station to St Brigid School */
     CLLocationCoordinate2D route3src_cl = CLLocationCoordinate2DMake(37.795385, -122.424678);
     CLLocationCoordinate2D route3dest_cl = CLLocationCoordinate2DMake(37.798726, -122.398392);
-
     
-     //Route 4: Academy of Art to Chinese United Method Church
+    
+    /* Route 4: Academy of Art to Chinese United Method Church */
     CLLocationCoordinate2D route4src_cl = CLLocationCoordinate2DMake(37.795250, -122.408020);
-    CLLocationCoordinate2D route4dest_cl = CLLocationCoordinate2DMake(37.807483, -122.410278);*/
+    CLLocationCoordinate2D route4dest_cl = CLLocationCoordinate2DMake(37.807483, -122.410278);
     
     for (int i = 0; i < 4; i++)
     {
@@ -614,7 +614,7 @@
         intIndex_route3++;
         [self performSelector:@selector(manageUserMove3:) withObject:routeMut afterDelay:0.2];
     }
-
+    
 }
 
 /* Route 4 Methods */
@@ -646,7 +646,7 @@
         intIndex_route4++;
         [self performSelector:@selector(manageUserMove4:) withObject:routeMut afterDelay:0.5];
     }
-
+    
 }
 
 - (IBAction)tappedRequestPickup:(id)sender
@@ -663,7 +663,7 @@
     [self.mapView addAnnotation:annotation_static];
     
     //If we have time, start moving the car
-
+    
 }
 @end
 
