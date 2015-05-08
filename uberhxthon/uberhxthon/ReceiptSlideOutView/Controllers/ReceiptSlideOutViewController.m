@@ -296,14 +296,10 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 - (void)fakeReceiptMove:(NSUInteger)section
 {
     [self.delegate movePanelUpTwoRows];
-    [self performSelector:@selector(moveActualReceipt) withObject:self afterDelay:0.2];
-}
-
-- (void)reloadCollectionView
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.collectionView reloadData];
-    });
+    ReceiptObject *receiptObject = self.dummyReceiptData[0][0];
+    receiptObject.orderStatus = kStatusUberRequested;
+    [self.collectionView reloadData];
+    [self performSelector:@selector(moveActualReceipt) withObject:self afterDelay:0.4];
 }
 
 - (void)moveActualReceipt
@@ -314,7 +310,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         ReceiptObject *receiptToMove = receiptsInSection[0];
         
         if (receiptToMove != nil) {
-            receiptToMove.orderStatus = kStatusUberRequested;
             [receiptsInSection removeObjectAtIndex:0];
             
             NSMutableArray *receiptsInSecondSection = self.dummyReceiptData[1];
@@ -323,8 +318,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
             [self.collectionView moveItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] toIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]];
         }
     }
-    
-    [self performSelector:@selector(reloadCollectionView) withObject:self afterDelay:0.4];
+
 }
 
 
