@@ -467,23 +467,23 @@
 #pragma mark - Car Animations
 - (void) prepareRoutes
 {
-    /* Route 1: Aquatic Park to UN Plaza */
+    /* //Route 1: Aquatic Park to UN Plaza
     CLLocationCoordinate2D route1src_cl = CLLocationCoordinate2DMake(37.807734, -122.420093);
     CLLocationCoordinate2D route1dest_cl = CLLocationCoordinate2DMake(37.780604, -122.414257);
 
-    /* Route 2: Aquatic Park to Church of Scientology */
+    //Route 2: Aquatic Park to Church of Scientology
     CLLocationCoordinate2D route2src_cl = CLLocationCoordinate2DMake(37.795798, -122.403528);
     CLLocationCoordinate2D route2dest_cl = CLLocationCoordinate2DMake(37.807734, -122.420093);
 
     
-     /* Route 3: USNaval Recruiting Station to St Brigid School */
+     //Route 3: USNaval Recruiting Station to St Brigid School
     CLLocationCoordinate2D route3src_cl = CLLocationCoordinate2DMake(37.795385, -122.424678);
     CLLocationCoordinate2D route3dest_cl = CLLocationCoordinate2DMake(37.798726, -122.398392);
 
     
-     /* Route 4: Academy of Art to Chinese United Method Church */
+     //Route 4: Academy of Art to Chinese United Method Church
     CLLocationCoordinate2D route4src_cl = CLLocationCoordinate2DMake(37.795250, -122.408020);
-    CLLocationCoordinate2D route4dest_cl = CLLocationCoordinate2DMake(37.807483, -122.410278);
+    CLLocationCoordinate2D route4dest_cl = CLLocationCoordinate2DMake(37.807483, -122.410278);*/
     
     for (int i = 0; i < 4; i++)
     {

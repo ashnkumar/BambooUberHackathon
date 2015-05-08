@@ -131,8 +131,6 @@ static const NSInteger TagOffset = 1000;
         
         if (index == 2)
         {
-            logoButton.titleLabel.font = [UIFont boldSystemFontOfSize:30];
-           // [logoButton setTitle:@"CASHWIN" forState:UIControlStateNormal];
             [logoButton setImage:[UIImage imageNamed:@"Bamboo_Logo.png"] forState:UIControlStateNormal];
             [logoButton setBackgroundColor:[AppConstants mainAppThemeColor]];
             
