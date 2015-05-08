@@ -306,7 +306,7 @@ static const NSInteger TagOffset = 1000;
 			toViewController.view.frame = rect;
 			tabButtonsContainerView.userInteractionEnabled = NO;
             
-            [self transitionFromViewController:fromViewController toViewController:toViewController duration:0.3f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+            [self transitionFromViewController:fromViewController toViewController:toViewController duration:0.3f options:nil animations:^{
                     CGRect rect = fromViewController.view.frame;
                     if (oldSelectedIndex < newSelectedIndex)
                         rect.origin.x = -rect.size.width;

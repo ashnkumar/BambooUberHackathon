@@ -36,12 +36,14 @@
     
     [self _setupBarGraph];
     
-    [self setupLabels];
+    [self setupTickingNums];
+    
+    [self addPulsingHalosToMap];
     
 }
 
 #pragma mark - Cashwin methods
-- (void)setupLabels {
+- (void)setupTickingNums {
     
     //Gross Sales
     self.grossSales = [[UICountingLabel alloc]initWithFrame:CGRectMake(770, 125, 150, 50)];
@@ -127,6 +129,53 @@
     [self.orderReceivedToCust countFrom:0 to:57 withDuration:2.0f];
     [self.orderReceivedToUber countFrom:0 to:13 withDuration:2.0f];
     [self.uberToCust countFrom:0 to:44 withDuration:2.0f];
+}
+
+- (void)addPulsingHalosToMap {
+    for (int i = 0; i < 5; i++)
+    {
+        UIView *pulsingHaloView;
+        PulsingHaloLayer *halo = [PulsingHaloLayer layer];
+        switch (i) {
+            case 0:
+            {
+                pulsingHaloView = [[UIView alloc]initWithFrame:CGRectMake(110, 220, 400, 400)];
+                halo.radius = 25;
+                break;
+            }
+            case 1:
+            {
+                pulsingHaloView = [[UIView alloc]initWithFrame:CGRectMake(180, 200, 400, 400)];
+                halo.radius = 20;
+                break;
+            }
+            case 2:
+            {
+                pulsingHaloView = [[UIView alloc]initWithFrame:CGRectMake(190, 135, 400, 400)];
+                halo.radius = 40;
+                break;
+            }
+            case 3:
+            {
+                pulsingHaloView = [[UIView alloc]initWithFrame:CGRectMake(125, 170, 400, 400)];
+                halo.radius = 50;
+                break;
+            }
+            case 4:
+            {
+                pulsingHaloView = [[UIView alloc]initWithFrame:CGRectMake(175, 140, 400, 400)];
+                halo.radius = 15;
+                break;
+            }
+            default:
+                break;
+        }
+        halo.animationDuration = 1;
+        halo.position = pulsingHaloView.center;
+        halo.backgroundColor = [UIColor colorWithRed:86.0/255.0 green:127.0/255.0 blue:184.0/255.0 alpha:1.0f].CGColor; //darkest version of complementaryBlue
+        [pulsingHaloView.layer addSublayer:halo];
+        [self.view addSubview:pulsingHaloView];
+    }
 }
 
 #pragma mark - Graphs
