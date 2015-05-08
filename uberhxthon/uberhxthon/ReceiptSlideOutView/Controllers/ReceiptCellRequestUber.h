@@ -1,23 +1,23 @@
 //
-//  ReceiptCell.h
+//  ReceiptCellRequestUber.h
 //  uberhxthon
 //
-//  Created by Ashwin Kumar on 5/3/15.
+//  Created by Ashwin Kumar on 5/8/15.
 //  Copyright (c) 2015 Catherine Jue & Ashwin Kumar. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, AKReceiptStatus) {
-    AKReceiptStatusRequestUber,
-    AKReceiptStatusUberRequested,
-    AKReceiptStatusOutForDelivery,
-    AKReceiptStatusDeliveryComplete
-};
+@protocol ReceiptCellRequestUberDelegate <NSObject>
 
-@interface ReceiptCell : UICollectionViewCell
+- (void)requestUberForOrderNum:(int)orderNum;
 
-@property (assign, nonatomic) AKReceiptStatus receiptStatus;
+@end
+
+@interface ReceiptCellRequestUber : UICollectionViewCell
+
+@property (assign, nonatomic) id<ReceiptCellRequestUberDelegate> delegate;
+
 @property (strong, nonatomic) UIButton *requestUberButton;
 @property (weak, nonatomic) IBOutlet UILabel *orderNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *orderDayDateLabel;

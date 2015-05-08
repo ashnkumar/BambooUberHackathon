@@ -30,55 +30,31 @@
     [self updateCellHeading];
 }
 
-- (void)requestUberClicked:(id)sender
-{
-    // @TODO: Change this to actual order number selected
-    [self.delegate requestUberForOrderNum:1];
-}
-
 - (void)updateCellHeading
 {
-    if (self.receiptStatus == AKReceiptStatusRequestUber) {
-        self.requestUberButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 8, 150, 48)];
-        [self.requestUberButton setImage:[UIImage imageNamed:@"RequestUberButton"] forState:UIControlStateNormal];
-        
-        [self.requestUberButton addTarget:self
-                                   action:@selector(requestUberClicked:)
-                         forControlEvents:UIControlEventTouchUpInside];
-        
-        [self.contentView addSubview:self.requestUberButton];
+    UIView *cellBanner = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 170, 50)];
+    UILabel *cellBannerText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 170, 50)];
+    cellBannerText.textColor = [UIColor whiteColor];
+    cellBannerText.textAlignment = NSTextAlignmentCenter;
+    cellBannerText.font = [UIFont fontWithName:@"OpenSans" size:18.0];
+
+    if (self.receiptStatus == AKReceiptStatusUberRequested) {
+    cellBanner.backgroundColor = [AppConstants receiptPink];
+    cellBannerText.text = @"Uber Requested";
     }
-    
-    else {
-        UIView *cellBanner = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 170, 50)];
-        UILabel *cellBannerText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 170, 50)];
-        cellBannerText.textColor = [UIColor whiteColor];
-        cellBannerText.textAlignment = NSTextAlignmentCenter;
-        cellBannerText.font = [UIFont fontWithName:@"OpenSans" size:18.0];
-        
-        if (self.receiptStatus == AKReceiptStatusUberRequested) {
-            cellBanner.backgroundColor = [AppConstants receiptPink];
-            cellBannerText.text = @"Uber Requested";
-        }
-        
-        else if (self.receiptStatus == AKReceiptStatusOutForDelivery) {
-            cellBanner.backgroundColor = [AppConstants receiptBlue];
-            cellBannerText.text = @"Out for Delivery";
-        }
-        
-        else if (self.receiptStatus == AKReceiptStatusDeliveryComplete) {
-            cellBanner.backgroundColor = [AppConstants receiptGreen];
-            cellBannerText.text = @"Delivery Complete";
-        }
-        
-        [self.contentView addSubview:cellBanner];
-        [self.contentView addSubview:cellBannerText];
+
+    else if (self.receiptStatus == AKReceiptStatusOutForDelivery) {
+    cellBanner.backgroundColor = [AppConstants receiptBlue];
+    cellBannerText.text = @"Out for Delivery";
     }
-    
-    
-    
-    
-    
+
+    else if (self.receiptStatus == AKReceiptStatusDeliveryComplete) {
+    cellBanner.backgroundColor = [AppConstants receiptGreen];
+    cellBannerText.text = @"Delivery Complete";
+    }
+
+    [self.contentView addSubview:cellBanner];
+    [self.contentView addSubview:cellBannerText];
 }
 
 

@@ -17,6 +17,8 @@
 		42F45F9C1AFD44A20027018F /* ReceiptCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45F981AFD44A20027018F /* ReceiptCollectionFlowLayout.m */; };
 		42F45F9D1AFD44A20027018F /* ReceiptObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45F9A1AFD44A20027018F /* ReceiptObject.m */; };
 		42F45F9F1AFD45350027018F /* receiptData.json in Resources */ = {isa = PBXBuildFile; fileRef = 42F45F9E1AFD45350027018F /* receiptData.json */; };
+		42F45FA71AFD483E0027018F /* ReceiptCellRequestUber.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F45FA61AFD483E0027018F /* ReceiptCellRequestUber.xib */; };
+		42F45FAE1AFD486D0027018F /* ReceiptCellRequestUber.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45FAD1AFD486D0027018F /* ReceiptCellRequestUber.m */; };
 		B21B3E281AFA93E5004FEDAC /* routeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B3E271AFA93E5004FEDAC /* routeGenerator.m */; };
 		B21B3E291AFA93E5004FEDAC /* routeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B3E271AFA93E5004FEDAC /* routeGenerator.m */; };
 		B21B3E2F1AFACB83004FEDAC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */; };
@@ -242,6 +244,9 @@
 		42F45F991AFD44A20027018F /* ReceiptObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceiptObject.h; sourceTree = "<group>"; };
 		42F45F9A1AFD44A20027018F /* ReceiptObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceiptObject.m; sourceTree = "<group>"; };
 		42F45F9E1AFD45350027018F /* receiptData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = receiptData.json; sourceTree = "<group>"; };
+		42F45FA61AFD483E0027018F /* ReceiptCellRequestUber.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReceiptCellRequestUber.xib; path = ReceiptSlideOutView/Views/ReceiptCellRequestUber.xib; sourceTree = "<group>"; };
+		42F45FAC1AFD486D0027018F /* ReceiptCellRequestUber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReceiptCellRequestUber.h; path = ReceiptSlideOutView/Controllers/ReceiptCellRequestUber.h; sourceTree = "<group>"; };
+		42F45FAD1AFD486D0027018F /* ReceiptCellRequestUber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReceiptCellRequestUber.m; path = ReceiptSlideOutView/Controllers/ReceiptCellRequestUber.m; sourceTree = "<group>"; };
 		B21B3E261AFA93E5004FEDAC /* routeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = routeGenerator.h; path = DeliveryView/Models/routeGenerator.h; sourceTree = "<group>"; };
 		B21B3E271AFA93E5004FEDAC /* routeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = routeGenerator.m; path = DeliveryView/Models/routeGenerator.m; sourceTree = "<group>"; };
 		B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "Assets/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -418,6 +423,7 @@
 				42F45F931AFD448E0027018F /* ReceiptSectionHeaderView.xib */,
 				423234851AF479B50073255A /* ReceiptSlideOutView.xib */,
 				42014EC91AF6FBD9005787A6 /* ReceiptCell.xib */,
+				42F45FA61AFD483E0027018F /* ReceiptCellRequestUber.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -435,6 +441,8 @@
 				423234891AF47A060073255A /* ReceiptSlideOutViewController.m */,
 				42014EC61AF6FA20005787A6 /* ReceiptCell.h */,
 				42014EC71AF6FA20005787A6 /* ReceiptCell.m */,
+				42F45FAC1AFD486D0027018F /* ReceiptCellRequestUber.h */,
+				42F45FAD1AFD486D0027018F /* ReceiptCellRequestUber.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1072,6 +1080,7 @@
 				C18B95591AF893DB00E6501E /* uber_route4.png in Resources */,
 				C103BCEE1AF738FE007D2DE1 /* map-vehicle-icon-sm.png in Resources */,
 				B21B3E381AFAFDC1004FEDAC /* route4.txt in Resources */,
+				42F45FA71AFD483E0027018F /* ReceiptCellRequestUber.xib in Resources */,
 				C1FE9F891AF69D3500FCA93E /* Car_Icon.png in Resources */,
 				B21B3E361AFAFDC1004FEDAC /* route2.txt in Resources */,
 				C1A73E421AF6DC48000C84E7 /* map-vehicle-icon-uberX.png in Resources */,
@@ -1165,6 +1174,7 @@
 				B2202DF01AED93720099F6B7 /* main.m in Sources */,
 				C1E05D501AFC7DAF00F6CA46 /* NSMutableArray+MK_Stack.m in Sources */,
 				C1E05DA11AFC7DEB00F6CA46 /* RTSpinKitBounceAnimation.m in Sources */,
+				42F45FAE1AFD486D0027018F /* ReceiptCellRequestUber.m in Sources */,
 				C1E05D681AFC7DD900F6CA46 /* RTSpinKitView.m in Sources */,
 				C1E05D411AFC7DA100F6CA46 /* GKBarGraph.m in Sources */,
 				C1E05D971AFC7DEB00F6CA46 /* RTSpinKitFadingCircleAnimation.m in Sources */,

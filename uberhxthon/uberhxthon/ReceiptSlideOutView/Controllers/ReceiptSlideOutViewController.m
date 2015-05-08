@@ -10,6 +10,7 @@
 
 #import "AppConstants.h"
 #import "ReceiptCell.h"
+#import "ReceiptCellRequestUber.h"
 #import "ReceiptSectionHeaderView.h"
 #import "ReceiptCollectionFlowLayout.h"
 #import "ReceiptObject.h"
@@ -19,7 +20,7 @@
 #define kStatusOutForDelivery @"outForDelivery"
 #define kStatusOrderComplete @"deliveryComplete"
 
-@interface ReceiptSlideOutViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ReceiptCellDelegate>
+@interface ReceiptSlideOutViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ReceiptCellRequestUberDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *dummyReceiptData;
@@ -40,6 +41,8 @@
     self.view.backgroundColor = [UIColor clearColor];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"ReceiptCell" bundle:nil] forCellWithReuseIdentifier:@"SampleCell"];
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"ReceiptCellRequestUber" bundle:nil] forCellWithReuseIdentifier:@"SampleCell2"];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"ReceiptSectionHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeaderView"];
     
@@ -148,30 +151,40 @@
     return [receiptsInSection count];
 }
 
-- (ReceiptCell *)collectionView:(UICollectionView *)collectionView
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
          cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    UICollectionViewCell *cell = nil;
     ReceiptObject *receiptObject = self.dummyReceiptData[indexPath.section][indexPath.row];
-    
-    ReceiptCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell" forIndexPath:indexPath];
-    
-    cell.delegate = self;
-    
-    cell.orderNumberLabel.text = [NSString stringWithFormat:@"#%@", receiptObject.orderNumber];
-    cell.orderDayDateLabel.text = receiptObject.orderDayDate;
-    cell.orderTimeLabel.text = receiptObject.orderTime;
-    
     NSString *orderStatus = receiptObject.orderStatus;
-    if ([orderStatus isEqualToString:kStatusRequestUber]) {
-        cell.receiptStatus = AKReceiptStatusRequestUber;
-    } else if ([orderStatus isEqualToString:kStatusUberRequested]) {
-        cell.receiptStatus = AKReceiptStatusUberRequested;
-    } else if ([orderStatus isEqualToString:kStatusOutForDelivery]) {
-        cell.receiptStatus = AKReceiptStatusOutForDelivery;
-    } else if ([orderStatus isEqualToString:kStatusOrderComplete]) {
-        cell.receiptStatus = AKReceiptStatusDeliveryComplete;
-    }
     
+    if ([orderStatus isEqualToString:kStatusRequestUber]) {
+
+        
+        ReceiptCellRequestUber *rucell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell2" forIndexPath:indexPath];
+        rucell.orderNumberLabel.text = [NSString stringWithFormat:@"#%@", receiptObject.orderNumber];
+        rucell.orderDayDateLabel.text = receiptObject.orderDayDate;
+        rucell.orderTimeLabel.text = receiptObject.orderTime;
+        rucell.delegate = self;
+        cell = rucell;
+        
+    } else {
+        ReceiptCell *rcell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell" forIndexPath:indexPath];
+        
+        rcell.orderNumberLabel.text = [NSString stringWithFormat:@"#%@", receiptObject.orderNumber];
+        rcell.orderDayDateLabel.text = receiptObject.orderDayDate;
+        rcell.orderTimeLabel.text = receiptObject.orderTime;
+        
+        if ([orderStatus isEqualToString:kStatusUberRequested]) {
+            rcell.receiptStatus = AKReceiptStatusUberRequested;
+        } else if ([orderStatus isEqualToString:kStatusOutForDelivery]) {
+            rcell.receiptStatus = AKReceiptStatusOutForDelivery;
+        } else if ([orderStatus isEqualToString:kStatusOrderComplete]) {
+            rcell.receiptStatus = AKReceiptStatusDeliveryComplete;
+        }
+        cell = rcell;
+    }
+
     return cell;
 }
 
@@ -295,13 +308,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         if (receiptToMove != nil) {
             [receiptsInSection removeObjectAtIndex:0];
             
-            
             NSMutableArray *receiptsInSecondSection = self.dummyReceiptData[section+1];
             [receiptsInSecondSection insertObject:receiptToMove atIndex:0];
             
             [self.collectionView moveItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] toIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]];
         }
     }
+    [self.collectionView reloadData];
     
     
     
