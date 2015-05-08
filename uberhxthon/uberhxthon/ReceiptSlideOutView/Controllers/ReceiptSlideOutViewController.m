@@ -293,34 +293,41 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 #pragma mark - Object insert/remove
 
-- (IBAction)insertSomething:(id)sender {
-    [self fakeReceiptMove:0];
-}
-
 - (void)fakeReceiptMove:(NSUInteger)section
 {
-    
-    NSMutableArray *receiptsInSection = self.dummyReceiptData[section];
+    [self.delegate movePanelUpTwoRows];
+    [self performSelector:@selector(moveActualReceipt) withObject:self afterDelay:0.2];
+}
+
+- (void)reloadCollectionView
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.collectionView reloadData];
+    });
+}
+
+- (void)moveActualReceipt
+{
+    NSMutableArray *receiptsInSection = self.dummyReceiptData[0];
     
     if ([receiptsInSection count] > 0) {
-        NSString *receiptToMove = receiptsInSection[0];
+        ReceiptObject *receiptToMove = receiptsInSection[0];
         
         if (receiptToMove != nil) {
+            receiptToMove.orderStatus = kStatusUberRequested;
             [receiptsInSection removeObjectAtIndex:0];
             
-            NSMutableArray *receiptsInSecondSection = self.dummyReceiptData[section+1];
+            NSMutableArray *receiptsInSecondSection = self.dummyReceiptData[1];
             [receiptsInSecondSection insertObject:receiptToMove atIndex:0];
             
             [self.collectionView moveItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] toIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]];
         }
     }
-    [self.collectionView reloadData];
     
-    
-    
-    
-    //    [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:section+1]]];
+    [self performSelector:@selector(reloadCollectionView) withObject:self afterDelay:0.4];
 }
+
+
 
 //- (void)deleteItemAtIndexPath:(NSIndexPath *)indexPath
 //{

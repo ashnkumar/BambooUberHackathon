@@ -155,7 +155,7 @@
                         options:UIViewAnimationOptionBeginFromCurrentState
      
                      animations:^{
-                         self.receiptPanelViewController.view.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height);
+                         self.receiptPanelViewController.view.frame = CGRectMake(0, 343, self.view.frame.size.width, self.view.frame.size.height);
                          
                      } completion:^(BOOL finished) {
                          self.receiptPanelViewController.panelUpButton.tag = 0;
@@ -173,7 +173,22 @@
                         options:UIViewAnimationOptionBeginFromCurrentState
      
                      animations:^{
-                         self.receiptPanelViewController.view.frame = CGRectMake(0, 373, self.view.frame.size.width, self.view.frame.size.height);
+                         self.receiptPanelViewController.view.frame = CGRectMake(0, 343, self.view.frame.size.width, self.view.frame.size.height);
+                         
+                     } completion:^(BOOL finished) {
+                         self.receiptPanelViewController.panelUpButton.tag = 0;
+                         self.showingReceiptPanel = YES;
+                     }];
+}
+
+- (void)movePanelUpTwoRows
+{
+    [UIView animateWithDuration:SLIDE_TIMING
+                          delay:0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+     
+                     animations:^{
+                         self.receiptPanelViewController.view.frame = CGRectMake(0, 55, self.view.frame.size.width, self.view.frame.size.height);
                          
                      } completion:^(BOOL finished) {
                          self.receiptPanelViewController.panelUpButton.tag = 0;
@@ -271,13 +286,13 @@
     [self presentViewController:requestUberPopupVC
                        animated:YES
                      completion:^{
-                         NSLog(@"Completed presenting view controller");
                      }];
 }
 
 - (void)didCompleteUberRequest
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.receiptPanelViewController fakeReceiptMove:0];
 }
 
 

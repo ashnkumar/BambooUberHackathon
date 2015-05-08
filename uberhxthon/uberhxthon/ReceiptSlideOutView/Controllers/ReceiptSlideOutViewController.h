@@ -13,6 +13,7 @@
 - (void)movePanelToOriginalPosition;
 - (void)movePanelUp;
 - (void)showRequestUberPopup;
+- (void)movePanelUpTwoRows;
 
 // Delegate methods for receipt selection here
 @optional
@@ -26,5 +27,6 @@
 
 - (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath;
 - (void)removeAllCellBorders;
+- (void)fakeReceiptMove:(NSUInteger)section;
 
 @end

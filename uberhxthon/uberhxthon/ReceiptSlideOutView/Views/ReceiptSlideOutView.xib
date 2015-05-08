@@ -44,15 +44,6 @@
                         <outlet property="delegate" destination="-1" id="yML-ri-DuS"/>
                     </connections>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bV3-mS-L2z">
-                    <rect key="frame" x="370" y="21" width="39" height="30"/>
-                    <state key="normal" title="Insert">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="insertSomething:" destination="-1" eventType="touchUpInside" id="Khs-Ut-Lwg"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
