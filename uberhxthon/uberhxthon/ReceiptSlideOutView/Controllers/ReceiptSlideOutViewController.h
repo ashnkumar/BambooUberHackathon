@@ -28,5 +28,6 @@
 - (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath;
 - (void)removeAllCellBorders;
 - (void)fakeReceiptMove:(NSUInteger)section;
+- (void)scrollToSecondRow;
 
 @end

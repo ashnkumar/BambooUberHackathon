@@ -178,6 +178,7 @@
                      } completion:^(BOOL finished) {
                          self.receiptPanelViewController.panelUpButton.tag = 0;
                          self.showingReceiptPanel = YES;
+                         [self.receiptPanelViewController scrollToSecondRow];
                      }];
 }
 
@@ -198,8 +199,8 @@
 
 - (void)highlightReceiptAtIndex:(int)receiptIndex
 {
-    NSIndexPath *indexPathToSelect = [NSIndexPath indexPathForRow:receiptIndex
-                                                        inSection:0];
+    NSIndexPath *indexPathToSelect = [NSIndexPath indexPathForRow:0
+                                                        inSection:1];
     [self.receiptPanelViewController highlightReceiptAtIndexPath:indexPathToSelect];
 }
 
