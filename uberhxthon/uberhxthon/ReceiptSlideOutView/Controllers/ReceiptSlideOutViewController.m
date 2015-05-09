@@ -20,7 +20,7 @@
 #define kStatusOutForDelivery @"outForDelivery"
 #define kStatusOrderComplete @"deliveryComplete"
 
-@interface ReceiptSlideOutViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ReceiptCellRequestUberDelegate>
+@interface ReceiptSlideOutViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ReceiptCellRequestUberDelegate, ReceiptCellDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *dummyReceiptData;
@@ -182,6 +182,7 @@
         } else if ([orderStatus isEqualToString:kStatusOrderComplete]) {
             rcell.receiptStatus = AKReceiptStatusDeliveryComplete;
         }
+        rcell.delegate = self;
         cell = rcell;
     }
 
@@ -319,6 +320,47 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         }
     }
 
+}
+
+#pragma mark - ReceiptDelegate
+
+- (void)receiptWantsToExpand:(CGRect)receiptOriginalFrame buttonSender:(UIButton *)sender
+{
+    NSIndexPath *indexPath;
+
+    indexPath = [self.collectionView
+                 indexPathForItemAtPoint:[self.collectionView
+                                          convertPoint:sender.center
+                                          fromView:sender.superview]];
+    
+    ReceiptCellRequestUber *receiptCell = (ReceiptCellRequestUber *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    
+    UIView *intermediateView = [receiptCell.contentView snapshotViewAfterScreenUpdates:NO];
+    intermediateView.frame = CGRectMake(receiptOriginalFrame.origin.x, receiptOriginalFrame.origin.y+67, receiptOriginalFrame.size.width, receiptOriginalFrame.size.height);
+    [self.view addSubview:intermediateView];
+    
+    UIImageView *newView = [[UIImageView alloc] initWithFrame:CGRectMake(receiptOriginalFrame.origin.x, receiptOriginalFrame.origin.y+67, receiptOriginalFrame.size.width, receiptOriginalFrame.size.height)];
+    
+    newView.backgroundColor = [UIColor clearColor];
+    newView.image = [UIImage imageNamed:@"ReceiptBigView2"];
+    newView.layer.opacity = 0.0;
+    
+    UIView *dimmingView = [[UIView alloc] initWithFrame:CGRectMake(0, -500, 3000, 3000)];
+    dimmingView.backgroundColor = [UIColor colorWithRed:84/255.0 green:82/255.0 blue:82/255.0 alpha:1.0];
+    dimmingView.layer.opacity = 0.0;
+    
+    [self.view addSubview:dimmingView];
+    [self.view addSubview:newView];
+    
+    [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        dimmingView.layer.opacity = 0.2;
+        newView.frame = CGRectMake(180, 0, 650, 528);
+        newView.layer.opacity = 1.0;
+        intermediateView.layer.opacity = 0.0;
+    } completion:^(BOOL finished) {
+        NSLog(@"Done");
+    }];
+    
 }
 
 

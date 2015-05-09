@@ -55,6 +55,18 @@
 
     [self.contentView addSubview:cellBanner];
     [self.contentView addSubview:cellBannerText];
+    
+    
+    UIButton *magicbutton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height)];
+    
+    [magicbutton addTarget:self action:@selector(magicButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.contentView addSubview:magicbutton];
+}
+
+- (void)magicButtonPressed:(id)sender
+{
+    [self.delegate receiptWantsToExpand:self.frame buttonSender:sender];
 }
 
 
