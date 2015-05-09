@@ -44,7 +44,7 @@
     tabBarController.viewControllers = viewControllers;
     
     /* Uncomment this to select Tab 2 */
-    //tabBarController.selectedIndex = 1;
+    tabBarController.selectedIndex = 1;
     
     /* Uncomment this to select Tab 3 */
     //tabBarController.selectedIndex = 2;

@@ -31,6 +31,7 @@ static const NSInteger TagOffset = 1000;
 	UIView *tabButtonsContainerView;
 	UIView *contentContainerView;
 	UIImageView *indicatorImageView;
+    UIButton *logo;
 }
 
 - (void)viewDidLoad
@@ -55,10 +56,9 @@ static const NSInteger TagOffset = 1000;
      Add image of thin white rectangle to place under corresponding icon
      */
      
-	/*
-     indicatorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TabBarIndicator"]];
+	
+     indicatorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Menu_Line.png"]];
 	[self.view addSubview:indicatorImageView];
-     */
 
 	[self reloadTabButtons];
 }
@@ -93,6 +93,11 @@ static const NSInteger TagOffset = 1000;
 	}
 }
 
+- (void)updateViewConstraints
+{
+    
+}
+
 - (void)reloadTabButtons
 {
 	[self removeTabButtons];
@@ -106,37 +111,21 @@ static const NSInteger TagOffset = 1000;
 
 - (void)addTabButtons
 {
-    /*
-        CASHWIN NOTES:
-     Here is where the tabs get added - can add the center logo here. -Cat
-     */
-    
 	NSUInteger index = 0;
 	for (UIViewController *viewController in self.viewControllers)
 	{
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIButton *logoButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		button.tag = TagOffset + index;
-        
-        /* CASHWIN NOTES
-         Commented out styling of original coder -Cat
-         */
-        
-		/*button.titleLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-
-		UIOffset offset = viewController.tabBarItem.titlePositionAdjustment;
-		button.titleEdgeInsets = UIEdgeInsetsMake(offset.vertical, offset.horizontal, 0.0f, 0.0f);
-		button.imageEdgeInsets = viewController.tabBarItem.imageInsets;
-         */
         
         if (index == 2)
         {
-            [logoButton setImage:[UIImage imageNamed:@"Bamboo_Logo.png"] forState:UIControlStateNormal];
-            [logoButton setBackgroundColor:[AppConstants mainAppThemeColor]];
-            
-            //[self deselectTabButton:logoButton];
-            logoButton.enabled = NO;
-            [tabButtonsContainerView addSubview:logoButton];
+            logo = [UIButton buttonWithType:UIButtonTypeCustom]; //[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 45, 45)];
+            //[logo setImage:[UIImage imageNamed:@"Bamboo_Logo.png"]];
+            [logo setImage:[UIImage imageNamed:@"Bamboo_Logo.png"] forState:UIControlStateNormal];
+            logo.tag = 7;
+            logo.adjustsImageWhenHighlighted = NO;
+            logo.enabled = YES;
+            [tabButtonsContainerView addSubview:logo];
         }
         
 
@@ -360,7 +349,7 @@ static const NSInteger TagOffset = 1000;
 
 - (void)tabButtonPressed:(UIButton *)sender
 {
-	[self setSelectedIndex:sender.tag - TagOffset animated:YES];
+    [self setSelectedIndex:sender.tag - TagOffset animated:YES];
 }
 
 #pragma mark - Change these methods to customize the look of the buttons
