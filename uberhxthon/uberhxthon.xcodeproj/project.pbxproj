@@ -33,7 +33,6 @@
 		B2202DF61AED93730099F6B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DF51AED93730099F6B7 /* ViewController.m */; };
 		B2202DF91AED93730099F6B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2202DF71AED93730099F6B7 /* Main.storyboard */; };
 		B2202DFB1AED93730099F6B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2202DFA1AED93730099F6B7 /* Images.xcassets */; };
-		B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2202DFC1AED93740099F6B7 /* LaunchScreen.xib */; };
 		B2202E0A1AED93740099F6B7 /* uberhxthonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202E091AED93740099F6B7 /* uberhxthonTests.m */; };
 		C103BCEE1AF738FE007D2DE1 /* map-vehicle-icon-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = C103BCED1AF738FE007D2DE1 /* map-vehicle-icon-sm.png */; };
 		C115D8EA1AF9C71F00DD214F /* RequestUberPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C115D8E91AF9C71F00DD214F /* RequestUberPopupViewController.m */; };
@@ -50,6 +49,7 @@
 		C12D6B601AFDBD8B001896F9 /* UberEnRouteSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B5C1AFDBD8B001896F9 /* UberEnRouteSectionHeader@2x.png */; };
 		C12D6B611AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B5D1AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png */; };
 		C12D6B621AFDBD8B001896F9 /* CompletedDeliveriesSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B5E1AFDBD8B001896F9 /* CompletedDeliveriesSectionHeader@2x.png */; };
+		C12DE3D11AFE72CA002EE51F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12DE3CF1AFE72CA002EE51F /* LaunchScreen.xib */; };
 		C18B95561AF893DB00E6501E /* uber_route1.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95521AF893DB00E6501E /* uber_route1.png */; };
 		C18B95571AF893DB00E6501E /* uber_route2.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95531AF893DB00E6501E /* uber_route2.png */; };
 		C18B95581AF893DB00E6501E /* uber_route3.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95541AF893DB00E6501E /* uber_route3.png */; };
@@ -271,7 +271,6 @@
 		B2202DF51AED93730099F6B7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B2202DF81AED93730099F6B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2202DFA1AED93730099F6B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B2202DFD1AED93740099F6B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B2202E031AED93740099F6B7 /* uberhxthonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uberhxthonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2202E081AED93740099F6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2202E091AED93740099F6B7 /* uberhxthonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uberhxthonTests.m; sourceTree = "<group>"; };
@@ -293,6 +292,7 @@
 		C12D6B5C1AFDBD8B001896F9 /* UberEnRouteSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UberEnRouteSectionHeader@2x.png"; path = "Assets/2x/UberEnRouteSectionHeader@2x.png"; sourceTree = "<group>"; };
 		C12D6B5D1AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "OutstandingDeliveriesSectionHeader@2x.png"; path = "Assets/2x/OutstandingDeliveriesSectionHeader@2x.png"; sourceTree = "<group>"; };
 		C12D6B5E1AFDBD8B001896F9 /* CompletedDeliveriesSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CompletedDeliveriesSectionHeader@2x.png"; path = "Assets/2x/CompletedDeliveriesSectionHeader@2x.png"; sourceTree = "<group>"; };
+		C12DE3D01AFE72CA002EE51F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C18B95521AF893DB00E6501E /* uber_route1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route1.png; path = "Assets/IOS BLACK/uber_route1.png"; sourceTree = "<group>"; };
 		C18B95531AF893DB00E6501E /* uber_route2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route2.png; path = "Assets/IOS BLACK/uber_route2.png"; sourceTree = "<group>"; };
 		C18B95541AF893DB00E6501E /* uber_route3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route3.png; path = "Assets/IOS BLACK/uber_route3.png"; sourceTree = "<group>"; };
@@ -706,8 +706,8 @@
 		B2202E1E1AED96770099F6B7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C12DE3CF1AFE72CA002EE51F /* LaunchScreen.xib */,
 				B2202DF71AED93730099F6B7 /* Main.storyboard */,
-				B2202DFC1AED93740099F6B7 /* LaunchScreen.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1099,12 +1099,12 @@
 				C1A73E441AF6DC48000C84E7 /* map-vehicle-icon-uberX@3x.png in Resources */,
 				C18B95581AF893DB00E6501E /* uber_route3.png in Resources */,
 				C1FE9F9F1AF69D3F00FCA93E /* Metrics_Icon@2x.png in Resources */,
-				B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */,
 				C1FE9F2A1AF691D300FCA93E /* SettingsView.xib in Resources */,
 				42014ECA1AF6FBD9005787A6 /* ReceiptCell.xib in Resources */,
 				C12D6B551AFDBD6C001896F9 /* OutstandingDeliveriesSectionHeader.png in Resources */,
 				42F45F9F1AFD45350027018F /* receiptData.json in Resources */,
 				C1FE9F8B1AF69D3500FCA93E /* Merchant_Icon.png in Resources */,
+				C12DE3D11AFE72CA002EE51F /* LaunchScreen.xib in Resources */,
 				C1FE9F8F1AF69D3500FCA93E /* Receipt_Icon.png in Resources */,
 				C1FE9F271AF691C400FCA93E /* AnalyticsView.xib in Resources */,
 				C18B95591AF893DB00E6501E /* uber_route4.png in Resources */,
@@ -1287,10 +1287,10 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		B2202DFC1AED93740099F6B7 /* LaunchScreen.xib */ = {
+		C12DE3CF1AFE72CA002EE51F /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B2202DFD1AED93740099F6B7 /* Base */,
+				C12DE3D01AFE72CA002EE51F /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -1384,6 +1384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = uberhxthon/Info.plist;
@@ -1397,6 +1398,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = uberhxthon/Info.plist;

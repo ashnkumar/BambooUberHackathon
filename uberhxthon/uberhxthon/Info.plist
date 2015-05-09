@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Would you like to allow Cashwin to access your location?</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -24,24 +22,24 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>UberApp would like to use your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Would you like to allow Cashwin to access your location?</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>OpenSans-Regular.ttf</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
 	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>UberApp would like to use your location</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>OpenSans-Regular.ttf</string>
 	</array>
 </dict>
 </plist>
