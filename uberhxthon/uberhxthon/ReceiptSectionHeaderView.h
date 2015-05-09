@@ -10,7 +10,8 @@
 
 @interface ReceiptSectionHeaderView : UICollectionReusableView
 
-@property (strong, nonatomic) IBOutlet UILabel *sectionHeaderLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *sectionHeader;
+
 
 - (void)setSectionHeaderTitle:(NSString *)sectionHeaderTitle;
 

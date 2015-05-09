@@ -42,6 +42,14 @@
 		C115D8F51AF9C7D000DD214F /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = C115D8F21AF9C7D000DD214F /* UIColor+CustomColors.m */; };
 		C117DE7D1AFCFB6E00732EFB /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C117DE781AFCFB3800732EFB /* pop.framework */; };
 		C117DE7E1AFCFB6E00732EFB /* pop.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C117DE781AFCFB3800732EFB /* pop.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C12D6B531AFDBD6C001896F9 /* UberRequestedSectionHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B4F1AFDBD6C001896F9 /* UberRequestedSectionHeader.png */; };
+		C12D6B541AFDBD6C001896F9 /* UberEnRouteSectionHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B501AFDBD6C001896F9 /* UberEnRouteSectionHeader.png */; };
+		C12D6B551AFDBD6C001896F9 /* OutstandingDeliveriesSectionHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B511AFDBD6C001896F9 /* OutstandingDeliveriesSectionHeader.png */; };
+		C12D6B561AFDBD6C001896F9 /* CompletedDeliveriesSectionHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B521AFDBD6C001896F9 /* CompletedDeliveriesSectionHeader.png */; };
+		C12D6B5F1AFDBD8B001896F9 /* UberRequestedSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B5B1AFDBD8B001896F9 /* UberRequestedSectionHeader@2x.png */; };
+		C12D6B601AFDBD8B001896F9 /* UberEnRouteSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B5C1AFDBD8B001896F9 /* UberEnRouteSectionHeader@2x.png */; };
+		C12D6B611AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B5D1AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png */; };
+		C12D6B621AFDBD8B001896F9 /* CompletedDeliveriesSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B5E1AFDBD8B001896F9 /* CompletedDeliveriesSectionHeader@2x.png */; };
 		C18B95561AF893DB00E6501E /* uber_route1.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95521AF893DB00E6501E /* uber_route1.png */; };
 		C18B95571AF893DB00E6501E /* uber_route2.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95531AF893DB00E6501E /* uber_route2.png */; };
 		C18B95581AF893DB00E6501E /* uber_route3.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95541AF893DB00E6501E /* uber_route3.png */; };
@@ -277,6 +285,14 @@
 		C115D8F11AF9C7D000DD214F /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+CustomColors.h"; path = "uberhxthon/DeliveryView/Controllers/UIColor+CustomColors.h"; sourceTree = SOURCE_ROOT; };
 		C115D8F21AF9C7D000DD214F /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CustomColors.m"; path = "uberhxthon/DeliveryView/Controllers/UIColor+CustomColors.m"; sourceTree = SOURCE_ROOT; };
 		C117DE6B1AFCFB3700732EFB /* pop.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pop.xcodeproj; path = "uberhxthon/Pods/pop-master/pop.xcodeproj"; sourceTree = "<group>"; };
+		C12D6B4F1AFDBD6C001896F9 /* UberRequestedSectionHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UberRequestedSectionHeader.png; path = Assets/1x/UberRequestedSectionHeader.png; sourceTree = "<group>"; };
+		C12D6B501AFDBD6C001896F9 /* UberEnRouteSectionHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UberEnRouteSectionHeader.png; path = Assets/1x/UberEnRouteSectionHeader.png; sourceTree = "<group>"; };
+		C12D6B511AFDBD6C001896F9 /* OutstandingDeliveriesSectionHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OutstandingDeliveriesSectionHeader.png; path = Assets/1x/OutstandingDeliveriesSectionHeader.png; sourceTree = "<group>"; };
+		C12D6B521AFDBD6C001896F9 /* CompletedDeliveriesSectionHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CompletedDeliveriesSectionHeader.png; path = Assets/1x/CompletedDeliveriesSectionHeader.png; sourceTree = "<group>"; };
+		C12D6B5B1AFDBD8B001896F9 /* UberRequestedSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UberRequestedSectionHeader@2x.png"; path = "Assets/2x/UberRequestedSectionHeader@2x.png"; sourceTree = "<group>"; };
+		C12D6B5C1AFDBD8B001896F9 /* UberEnRouteSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UberEnRouteSectionHeader@2x.png"; path = "Assets/2x/UberEnRouteSectionHeader@2x.png"; sourceTree = "<group>"; };
+		C12D6B5D1AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "OutstandingDeliveriesSectionHeader@2x.png"; path = "Assets/2x/OutstandingDeliveriesSectionHeader@2x.png"; sourceTree = "<group>"; };
+		C12D6B5E1AFDBD8B001896F9 /* CompletedDeliveriesSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CompletedDeliveriesSectionHeader@2x.png"; path = "Assets/2x/CompletedDeliveriesSectionHeader@2x.png"; sourceTree = "<group>"; };
 		C18B95521AF893DB00E6501E /* uber_route1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route1.png; path = "Assets/IOS BLACK/uber_route1.png"; sourceTree = "<group>"; };
 		C18B95531AF893DB00E6501E /* uber_route2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route2.png; path = "Assets/IOS BLACK/uber_route2.png"; sourceTree = "<group>"; };
 		C18B95541AF893DB00E6501E /* uber_route3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route3.png; path = "Assets/IOS BLACK/uber_route3.png"; sourceTree = "<group>"; };
@@ -890,6 +906,10 @@
 		C1FE9F421AF698BD00FCA93E /* 1x */ = {
 			isa = PBXGroup;
 			children = (
+				C12D6B4F1AFDBD6C001896F9 /* UberRequestedSectionHeader.png */,
+				C12D6B501AFDBD6C001896F9 /* UberEnRouteSectionHeader.png */,
+				C12D6B511AFDBD6C001896F9 /* OutstandingDeliveriesSectionHeader.png */,
+				C12D6B521AFDBD6C001896F9 /* CompletedDeliveriesSectionHeader.png */,
 				C1FE9FAB1AF6A02D00FCA93E /* Menu_Line.png */,
 				C1FE9F811AF69D3500FCA93E /* Bamboo_Logo.png */,
 				C1FE9F821AF69D3500FCA93E /* Car_Icon.png */,
@@ -903,6 +923,10 @@
 		C1FE9F521AF698D300FCA93E /* 2x */ = {
 			isa = PBXGroup;
 			children = (
+				C12D6B5B1AFDBD8B001896F9 /* UberRequestedSectionHeader@2x.png */,
+				C12D6B5C1AFDBD8B001896F9 /* UberEnRouteSectionHeader@2x.png */,
+				C12D6B5D1AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png */,
+				C12D6B5E1AFDBD8B001896F9 /* CompletedDeliveriesSectionHeader@2x.png */,
 				C1FE9FA81AF6A02100FCA93E /* Menu_Line@2x.png */,
 				C1FE9F931AF69D3F00FCA93E /* Bamboo_Logo@2x.png */,
 				C1FE9F941AF69D3F00FCA93E /* Car_Icon@2x.png */,
@@ -1055,16 +1079,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12D6B621AFDBD8B001896F9 /* CompletedDeliveriesSectionHeader@2x.png in Resources */,
 				C1FE9FAC1AF6A02D00FCA93E /* Menu_Line.png in Resources */,
+				C12D6B531AFDBD6C001896F9 /* UberRequestedSectionHeader.png in Resources */,
+				C12D6B5F1AFDBD8B001896F9 /* UberRequestedSectionHeader@2x.png in Resources */,
 				B21B3E2F1AFACB83004FEDAC /* OpenSans-Regular.ttf in Resources */,
 				B21B3E311AFACB83004FEDAC /* route1.txt in Resources */,
 				C1FE9F2D1AF691EC00FCA93E /* DeliveryView.xib in Resources */,
 				C18B95561AF893DB00E6501E /* uber_route1.png in Resources */,
+				C12D6B561AFDBD6C001896F9 /* CompletedDeliveriesSectionHeader.png in Resources */,
 				42F45F941AFD448E0027018F /* ReceiptSectionHeaderView.xib in Resources */,
 				423234861AF479B50073255A /* ReceiptSlideOutView.xib in Resources */,
 				C1FE9F8D1AF69D3500FCA93E /* Metrics_Icon.png in Resources */,
 				C1FE9F9D1AF69D3F00FCA93E /* Merchant_Icon@2x.png in Resources */,
 				C1A73E431AF6DC48000C84E7 /* map-vehicle-icon-uberX@2x.png in Resources */,
+				C12D6B601AFDBD8B001896F9 /* UberEnRouteSectionHeader@2x.png in Resources */,
 				C1FE9F241AF691B700FCA93E /* LeftmostView.xib in Resources */,
 				B2202DF91AED93730099F6B7 /* Main.storyboard in Resources */,
 				C1A73E441AF6DC48000C84E7 /* map-vehicle-icon-uberX@3x.png in Resources */,
@@ -1073,11 +1102,13 @@
 				B2202DFE1AED93740099F6B7 /* LaunchScreen.xib in Resources */,
 				C1FE9F2A1AF691D300FCA93E /* SettingsView.xib in Resources */,
 				42014ECA1AF6FBD9005787A6 /* ReceiptCell.xib in Resources */,
+				C12D6B551AFDBD6C001896F9 /* OutstandingDeliveriesSectionHeader.png in Resources */,
 				42F45F9F1AFD45350027018F /* receiptData.json in Resources */,
 				C1FE9F8B1AF69D3500FCA93E /* Merchant_Icon.png in Resources */,
 				C1FE9F8F1AF69D3500FCA93E /* Receipt_Icon.png in Resources */,
 				C1FE9F271AF691C400FCA93E /* AnalyticsView.xib in Resources */,
 				C18B95591AF893DB00E6501E /* uber_route4.png in Resources */,
+				C12D6B611AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png in Resources */,
 				C103BCEE1AF738FE007D2DE1 /* map-vehicle-icon-sm.png in Resources */,
 				B21B3E381AFAFDC1004FEDAC /* route4.txt in Resources */,
 				42F45FA71AFD483E0027018F /* ReceiptCellRequestUber.xib in Resources */,
@@ -1091,6 +1122,7 @@
 				C18B95571AF893DB00E6501E /* uber_route2.png in Resources */,
 				C1FE9FA11AF69D3F00FCA93E /* Receipt_Icon@2x.png in Resources */,
 				C1FE9F9B1AF69D3F00FCA93E /* Car_Icon@2x.png in Resources */,
+				C12D6B541AFDBD6C001896F9 /* UberEnRouteSectionHeader.png in Resources */,
 				C1FE9F871AF69D3500FCA93E /* Bamboo_Logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -222,16 +222,16 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
                                                    forIndexPath:indexPath];
     switch (indexPath.section) {
         case 0:
-            [sectionHeaderView setSectionHeaderTitle:@"Waiting for Pickup"];
+            [sectionHeaderView setSectionHeaderTitle:@"OutstandingDeliveriesSectionHeader.png"];
             break;
         case 1:
-            [sectionHeaderView setSectionHeaderTitle:@"Uber Requested"];
+            [sectionHeaderView setSectionHeaderTitle:@"UberRequestedSectionHeader.png"];
             break;
         case 2:
-            [sectionHeaderView setSectionHeaderTitle:@"Out for Delivery"];
+            [sectionHeaderView setSectionHeaderTitle:@"UberEnRouteSectionHeader.png"];
             break;
         case 3:
-            [sectionHeaderView setSectionHeaderTitle:@"Delivery Complete"];
+            [sectionHeaderView setSectionHeaderTitle:@"CompletedDeliveriesSectionHeader.png"];
             break;
             
         default:

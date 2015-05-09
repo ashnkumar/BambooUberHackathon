@@ -6,15 +6,19 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>6C762DDE-867F-465D-AE5B-4F44DC4911C8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>uberhxthon</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>D02F5FD3A0AE4CFB073268FB3081B29CBBCC0633</key>
 		<string>https://github.com/ashnkumar/CashwinUberHackathon.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>uberhxthon/uberhxthon.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D02F5FD3A0AE4CFB073268FB3081B29CBBCC0633</key>
-		<string>CashwinUberHackathon/</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/ashnkumar/CashwinUberHackathon.git</string>
@@ -30,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>D02F5FD3A0AE4CFB073268FB3081B29CBBCC0633</string>
 			<key>IDESourceControlWCCName</key>
-			<string>CashwinUberHackathon</string>
+			<string>ObjC</string>
 		</dict>
 	</array>
 </dict>

@@ -12,7 +12,8 @@
 
 - (void)setSectionHeaderTitle:(NSString *)sectionHeaderTitle;
 {
-    self.sectionHeaderLabel.text = sectionHeaderTitle;
+    //self.sectionHeaderLabel.text = sectionHeaderTitle;
+    [self.sectionHeader setImage:[UIImage imageNamed:sectionHeaderTitle]];
 }
 
 @end
