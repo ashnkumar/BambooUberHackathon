@@ -19,6 +19,15 @@
 		42F45F9F1AFD45350027018F /* receiptData.json in Resources */ = {isa = PBXBuildFile; fileRef = 42F45F9E1AFD45350027018F /* receiptData.json */; };
 		42F45FA71AFD483E0027018F /* ReceiptCellRequestUber.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42F45FA61AFD483E0027018F /* ReceiptCellRequestUber.xib */; };
 		42F45FAE1AFD486D0027018F /* ReceiptCellRequestUber.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45FAD1AFD486D0027018F /* ReceiptCellRequestUber.m */; };
+		42F460071B0170FE0027018F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45FF51B0170FE0027018F /* AFHTTPRequestOperation.m */; };
+		42F460081B0170FE0027018F /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45FF71B0170FE0027018F /* AFHTTPRequestOperationManager.m */; };
+		42F460091B0170FE0027018F /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45FF91B0170FE0027018F /* AFHTTPSessionManager.m */; };
+		42F4600A1B0170FE0027018F /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45FFC1B0170FE0027018F /* AFNetworkReachabilityManager.m */; };
+		42F4600B1B0170FE0027018F /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F45FFE1B0170FE0027018F /* AFSecurityPolicy.m */; };
+		42F4600C1B0170FE0027018F /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F460001B0170FE0027018F /* AFURLConnectionOperation.m */; };
+		42F4600D1B0170FE0027018F /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F460021B0170FE0027018F /* AFURLRequestSerialization.m */; };
+		42F4600E1B0170FE0027018F /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F460041B0170FE0027018F /* AFURLResponseSerialization.m */; };
+		42F4600F1B0170FE0027018F /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F460061B0170FE0027018F /* AFURLSessionManager.m */; };
 		B21B3E281AFA93E5004FEDAC /* routeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B3E271AFA93E5004FEDAC /* routeGenerator.m */; };
 		B21B3E291AFA93E5004FEDAC /* routeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = B21B3E271AFA93E5004FEDAC /* routeGenerator.m */; };
 		B21B3E2F1AFACB83004FEDAC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */; };
@@ -255,6 +264,25 @@
 		42F45FA61AFD483E0027018F /* ReceiptCellRequestUber.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReceiptCellRequestUber.xib; path = ReceiptSlideOutView/Views/ReceiptCellRequestUber.xib; sourceTree = "<group>"; };
 		42F45FAC1AFD486D0027018F /* ReceiptCellRequestUber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReceiptCellRequestUber.h; path = ReceiptSlideOutView/Controllers/ReceiptCellRequestUber.h; sourceTree = "<group>"; };
 		42F45FAD1AFD486D0027018F /* ReceiptCellRequestUber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReceiptCellRequestUber.m; path = ReceiptSlideOutView/Controllers/ReceiptCellRequestUber.m; sourceTree = "<group>"; };
+		42F45FF41B0170FE0027018F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		42F45FF51B0170FE0027018F /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		42F45FF61B0170FE0027018F /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		42F45FF71B0170FE0027018F /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		42F45FF81B0170FE0027018F /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		42F45FF91B0170FE0027018F /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		42F45FFA1B0170FE0027018F /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		42F45FFB1B0170FE0027018F /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		42F45FFC1B0170FE0027018F /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		42F45FFD1B0170FE0027018F /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		42F45FFE1B0170FE0027018F /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		42F45FFF1B0170FE0027018F /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		42F460001B0170FE0027018F /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		42F460011B0170FE0027018F /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		42F460021B0170FE0027018F /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		42F460031B0170FE0027018F /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		42F460041B0170FE0027018F /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		42F460051B0170FE0027018F /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		42F460061B0170FE0027018F /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		B21B3E261AFA93E5004FEDAC /* routeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = routeGenerator.h; path = DeliveryView/Models/routeGenerator.h; sourceTree = "<group>"; };
 		B21B3E271AFA93E5004FEDAC /* routeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = routeGenerator.m; path = DeliveryView/Models/routeGenerator.m; sourceTree = "<group>"; };
 		B21B3E2D1AFACB83004FEDAC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "Assets/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -627,6 +655,32 @@
 			path = /Users/ashnkumar/Dropbox/Coding/Projects/UberHackathon/CashwinUberHackathon/uberhxthon/uberhxthon/LeftMostView/Controllers;
 			sourceTree = "<absolute>";
 		};
+		42F45FF31B0170FE0027018F /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				42F45FF41B0170FE0027018F /* AFHTTPRequestOperation.h */,
+				42F45FF51B0170FE0027018F /* AFHTTPRequestOperation.m */,
+				42F45FF61B0170FE0027018F /* AFHTTPRequestOperationManager.h */,
+				42F45FF71B0170FE0027018F /* AFHTTPRequestOperationManager.m */,
+				42F45FF81B0170FE0027018F /* AFHTTPSessionManager.h */,
+				42F45FF91B0170FE0027018F /* AFHTTPSessionManager.m */,
+				42F45FFA1B0170FE0027018F /* AFNetworking.h */,
+				42F45FFB1B0170FE0027018F /* AFNetworkReachabilityManager.h */,
+				42F45FFC1B0170FE0027018F /* AFNetworkReachabilityManager.m */,
+				42F45FFD1B0170FE0027018F /* AFSecurityPolicy.h */,
+				42F45FFE1B0170FE0027018F /* AFSecurityPolicy.m */,
+				42F45FFF1B0170FE0027018F /* AFURLConnectionOperation.h */,
+				42F460001B0170FE0027018F /* AFURLConnectionOperation.m */,
+				42F460011B0170FE0027018F /* AFURLRequestSerialization.h */,
+				42F460021B0170FE0027018F /* AFURLRequestSerialization.m */,
+				42F460031B0170FE0027018F /* AFURLResponseSerialization.h */,
+				42F460041B0170FE0027018F /* AFURLResponseSerialization.m */,
+				42F460051B0170FE0027018F /* AFURLSessionManager.h */,
+				42F460061B0170FE0027018F /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
 		B2202DE11AED93710099F6B7 = {
 			isa = PBXGroup;
 			children = (
@@ -658,6 +712,7 @@
 				4239E7DB1AF2B9B100513C9A /* DeliveryView */,
 				B2202E1F1AED96900099F6B7 /* Globals */,
 				B2202E1E1AED96770099F6B7 /* Views */,
+				42F45FF31B0170FE0027018F /* AFNetworking */,
 				B2202E1C1AED96680099F6B7 /* ViewControllers */,
 				B2202DFA1AED93730099F6B7 /* Images.xcassets */,
 				B2202DED1AED93720099F6B7 /* Supporting Files */,
@@ -1167,9 +1222,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42F460071B0170FE0027018F /* AFHTTPRequestOperation.m in Sources */,
 				C1E05DA31AFC7DEB00F6CA46 /* RTSpinKitArcAnimation.m in Sources */,
 				C1E05DAB1AFC7DF500F6CA46 /* UICountingLabel.m in Sources */,
 				C1FE9F181AF6913E00FCA93E /* DeliveryViewController.m in Sources */,
+				42F4600C1B0170FE0027018F /* AFURLConnectionOperation.m in Sources */,
 				B21B3E281AFA93E5004FEDAC /* routeGenerator.m in Sources */,
 				C1E05D561AFC7DAF00F6CA46 /* NSArray+MK_Misc.m in Sources */,
 				B2202DF61AED93730099F6B7 /* ViewController.m in Sources */,
@@ -1184,15 +1241,19 @@
 				C1E05D8D1AFC7DEB00F6CA46 /* RTSpinKitWaveAnimation.m in Sources */,
 				C1E05D521AFC7DAF00F6CA46 /* NSMutableArray+MK_Queue.m in Sources */,
 				42F45F9C1AFD44A20027018F /* ReceiptCollectionFlowLayout.m in Sources */,
+				42F4600D1B0170FE0027018F /* AFURLRequestSerialization.m in Sources */,
 				42F45F9D1AFD44A20027018F /* ReceiptObject.m in Sources */,
 				C1E05D8B1AFC7DEB00F6CA46 /* RTSpinKitWordPressAnimation.m in Sources */,
 				C115D8EA1AF9C71F00DD214F /* RequestUberPopupViewController.m in Sources */,
+				42F460091B0170FE0027018F /* AFHTTPSessionManager.m in Sources */,
 				C1FE9F1B1AF6915400FCA93E /* AnalyticsViewController.m in Sources */,
 				C1E05D951AFC7DEB00F6CA46 /* RTSpinKitPlaneAnimation.m in Sources */,
 				C1E05D911AFC7DEB00F6CA46 /* RTSpinKitThreeBounceAnimation.m in Sources */,
 				C1E05D351AFC7D7C00F6CA46 /* UIColor+GraphKit.m in Sources */,
 				4232348A1AF47A060073255A /* ReceiptSlideOutViewController.m in Sources */,
 				C1E05D5F1AFC7DC800F6CA46 /* PulsingHaloLayer.m in Sources */,
+				42F4600B1B0170FE0027018F /* AFSecurityPolicy.m in Sources */,
+				42F460081B0170FE0027018F /* AFHTTPRequestOperationManager.m in Sources */,
 				C1E05D431AFC7DA100F6CA46 /* GKBar.m in Sources */,
 				C1FE9F211AF6918A00FCA93E /* LeftmostViewController.m in Sources */,
 				42F45F9B1AFD44A20027018F /* ReceiptSectionHeaderView.m in Sources */,
@@ -1206,6 +1267,8 @@
 				B2202DF01AED93720099F6B7 /* main.m in Sources */,
 				C1E05D501AFC7DAF00F6CA46 /* NSMutableArray+MK_Stack.m in Sources */,
 				C1E05DA11AFC7DEB00F6CA46 /* RTSpinKitBounceAnimation.m in Sources */,
+				42F4600F1B0170FE0027018F /* AFURLSessionManager.m in Sources */,
+				42F4600A1B0170FE0027018F /* AFNetworkReachabilityManager.m in Sources */,
 				42F45FAE1AFD486D0027018F /* ReceiptCellRequestUber.m in Sources */,
 				C1E05D681AFC7DD900F6CA46 /* RTSpinKitView.m in Sources */,
 				C1E05D411AFC7DA100F6CA46 /* GKBarGraph.m in Sources */,
@@ -1216,6 +1279,7 @@
 				C1E05D581AFC7DAF00F6CA46 /* NSArray+MK_Block.m in Sources */,
 				C115D8F51AF9C7D000DD214F /* UIColor+CustomColors.m in Sources */,
 				C1E05D9D1AFC7DEB00F6CA46 /* RTSpinKitCircleAnimation.m in Sources */,
+				42F4600E1B0170FE0027018F /* AFURLResponseSerialization.m in Sources */,
 				42014EC81AF6FA20005787A6 /* ReceiptCell.m in Sources */,
 				4232348D1AF54D600073255A /* AppConstants.m in Sources */,
 			);
