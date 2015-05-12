@@ -359,7 +359,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     
     [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         dimmingView.layer.opacity = 0.2;
-        newView.frame = CGRectMake(180, -300, 650, 528);
+        newView.frame = CGRectMake(180, 0, 650, 528);
         newView.layer.opacity = 1.0;
         intermediateView.layer.opacity = 0.0;
     } completion:^(BOOL finished) {
