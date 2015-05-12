@@ -19,6 +19,8 @@
 #define kStatusUberRequested @"uberRequested"
 #define kStatusOutForDelivery @"outForDelivery"
 #define kStatusOrderComplete @"deliveryComplete"
+#define PANELCLOSED 1
+#define PANELOPEN 0
 
 @interface ReceiptSlideOutViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ReceiptCellRequestUberDelegate, ReceiptCellDelegate>
 
@@ -56,7 +58,7 @@
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.sectionInset = UIEdgeInsetsMake(10.f, 20.f, 10.f, 20.f);
     
-    layout.itemSize = CGSizeMake(170, 210);
+    layout.itemSize = CGSizeMake(170, 210); //size of receipt cell
     [layout makeBoring];
     
     self.collectionView.collectionViewLayout = layout;
@@ -120,7 +122,7 @@
     UIButton *button = sender;
     switch (button.tag) {
         case 0: {
-            [_delegate movePanelToOriginalPosition];
+            [_delegate closePanel];
             break;
         }
             
@@ -297,7 +299,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)fakeReceiptMove:(NSUInteger)section
 {
-    [self.delegate movePanelUpTwoRows];
+    [self.delegate movePanelTwoRows];
     ReceiptObject *receiptObject = self.dummyReceiptData[0][0];
     receiptObject.orderStatus = kStatusUberRequested;
     [self.collectionView reloadData];

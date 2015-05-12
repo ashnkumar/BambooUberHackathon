@@ -51,7 +51,7 @@
     self.checkView.image = [UIImage imageNamed:@"myCheckBox"];
     [self.requestingSpinner removeFromSuperview];
     [self.view addSubview:self.checkView];
-    self.requestStatusLabel.text = @"Uber en Route!";
+    self.requestStatusLabel.text = @"Uber En Route!";
     
     [self performSelector:@selector(dismissMyself) withObject:self afterDelay:1.0];
 }
