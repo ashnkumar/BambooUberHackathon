@@ -10,10 +10,11 @@
 
 @protocol ReceiptPanelViewControllerDelegate <NSObject>
 
-- (void)movePanelToOriginalPosition;
+- (void)closePanel;
 - (void)movePanelUp;
 - (void)showRequestUberPopup;
-- (void)movePanelUpTwoRows;
+- (void)movePanelOneRow;
+- (void)movePanelTwoRows;
 
 // Delegate methods for receipt selection here
 @optional

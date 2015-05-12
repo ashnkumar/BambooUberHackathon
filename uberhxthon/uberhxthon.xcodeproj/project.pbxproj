@@ -524,6 +524,7 @@
 		423234811AF479400073255A /* ReceiptSlideOutView */ = {
 			isa = PBXGroup;
 			children = (
+				C10FA9261B01ADF200B63E4D /* Models */,
 				423234871AF479EC0073255A /* Controllers */,
 				423234821AF479740073255A /* Views */,
 			);
@@ -548,8 +549,6 @@
 				42F45F961AFD44A20027018F /* ReceiptSectionHeaderView.m */,
 				42F45F971AFD44A20027018F /* ReceiptCollectionFlowLayout.h */,
 				42F45F981AFD44A20027018F /* ReceiptCollectionFlowLayout.m */,
-				42F45F991AFD44A20027018F /* ReceiptObject.h */,
-				42F45F9A1AFD44A20027018F /* ReceiptObject.m */,
 				423234881AF47A060073255A /* ReceiptSlideOutViewController.h */,
 				423234891AF47A060073255A /* ReceiptSlideOutViewController.m */,
 				42014EC61AF6FA20005787A6 /* ReceiptCell.h */,
@@ -925,6 +924,15 @@
 				4232348C1AF54D600073255A /* AppConstants.m */,
 			);
 			name = Globals;
+			sourceTree = "<group>";
+		};
+		C10FA9261B01ADF200B63E4D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				42F45F991AFD44A20027018F /* ReceiptObject.h */,
+				42F45F9A1AFD44A20027018F /* ReceiptObject.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		C117DE6C1AFCFB3700732EFB /* Products */ = {
@@ -1571,6 +1579,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = Bamboo;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -1608,6 +1617,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Bamboo;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
