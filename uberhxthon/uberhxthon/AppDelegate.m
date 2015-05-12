@@ -7,10 +7,13 @@
 //
 
 #import "AppDelegate.h"
+
 #import "DeliveryViewController.h"
 #import "AnalyticsViewController.h"
 #import "SettingsViewController.h"
 #import "LeftmostViewController.h"
+#import "BambooServer.h"
+
 
 @interface AppDelegate ()
 
@@ -53,8 +56,37 @@
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     
+    
+    ////////////
+    
+    UberKit *uberKit = [[UberKit alloc] initWithClientID:@"8wOL-4IJS1_cT5XK4Tpx7ZLA8B_LYidF" ClientSecret:@"gttp4IzxJOFY2TcY1hNk24PA8hU_2e9MKfOlS3CW" RedirectURL:@"http://localhost:5000/" ApplicationName:@"Bamboo"];
+    uberKit.delegate = self;
+    
+    [self fakeReceiptsRequest];
+//    [self fakeUberRequest];
+
+    
     return YES;
 }
+
+- (void)fakeReceiptsRequest
+{
+    [[BambooServer sharedInstance]
+        retrieveReceiptsWithCompletion:^(NSDictionary *receiptsDictionary) {
+        NSLog(@"Receipts are: %@", receiptsDictionary);
+    }];
+    
+}
+
+- (void)fakeUberRequest
+{
+    [[BambooServer sharedInstance] requestUberWithStartingLatitude:@(37.7901811)
+                                                 startingLongitude:@(122.4070723)
+                                                    endingLatitude:@(37.7901811)
+                                                   endingLongitude:@(122.4070723)];
+}
+
+
 
 -(BOOL)mh_tabBarController:(MHTabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController atIndex:(NSUInteger)index
 {
