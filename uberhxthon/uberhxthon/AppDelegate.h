@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MHTabBarController.h"
+#import "UberKit.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, MHTabBarControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, MHTabBarControllerDelegate, UberKitDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
