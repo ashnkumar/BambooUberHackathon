@@ -59,7 +59,6 @@
 		B21B3E371AFAFDC1004FEDAC /* route3.txt in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E341AFAFDC1004FEDAC /* route3.txt */; };
 		B21B3E381AFAFDC1004FEDAC /* route4.txt in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E351AFAFDC1004FEDAC /* route4.txt */; };
 		B2202DF01AED93720099F6B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DEF1AED93720099F6B7 /* main.m */; };
-		B2202DF31AED93720099F6B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DF21AED93720099F6B7 /* AppDelegate.m */; };
 		B2202DF61AED93730099F6B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DF51AED93730099F6B7 /* ViewController.m */; };
 		B2202DF91AED93730099F6B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2202DF71AED93730099F6B7 /* Main.storyboard */; };
 		B2202DFB1AED93730099F6B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2202DFA1AED93730099F6B7 /* Images.xcassets */; };
@@ -83,6 +82,8 @@
 		C188E7981B03B19800626CBF /* EmptySectionPlaceholderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C188E7971B03B19800626CBF /* EmptySectionPlaceholderCell.xib */; };
 		C188E79F1B03B55100626CBF /* EmptySectionPlaceholderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C188E79E1B03B55100626CBF /* EmptySectionPlaceholderCell.m */; };
 		C188E7A01B03B55100626CBF /* EmptySectionPlaceholderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C188E79E1B03B55100626CBF /* EmptySectionPlaceholderCell.m */; };
+		C188E7A31B04070400626CBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C188E7A11B04070400626CBF /* AppDelegate.m */; };
+		C188E7A41B04070400626CBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C188E7A11B04070400626CBF /* AppDelegate.m */; };
 		C18B95561AF893DB00E6501E /* uber_route1.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95521AF893DB00E6501E /* uber_route1.png */; };
 		C18B95571AF893DB00E6501E /* uber_route2.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95531AF893DB00E6501E /* uber_route2.png */; };
 		C18B95581AF893DB00E6501E /* uber_route3.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95541AF893DB00E6501E /* uber_route3.png */; };
@@ -369,8 +370,6 @@
 		B2202DEA1AED93710099F6B7 /* uberhxthon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uberhxthon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2202DEE1AED93720099F6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2202DEF1AED93720099F6B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B2202DF11AED93720099F6B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B2202DF21AED93720099F6B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B2202DF41AED93730099F6B7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B2202DF51AED93730099F6B7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B2202DF81AED93730099F6B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -400,6 +399,8 @@
 		C188E7971B03B19800626CBF /* EmptySectionPlaceholderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptySectionPlaceholderCell.xib; path = ReceiptSlideOutView/Views/EmptySectionPlaceholderCell.xib; sourceTree = "<group>"; };
 		C188E79D1B03B55100626CBF /* EmptySectionPlaceholderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmptySectionPlaceholderCell.h; path = ReceiptSlideOutView/Controllers/EmptySectionPlaceholderCell.h; sourceTree = "<group>"; };
 		C188E79E1B03B55100626CBF /* EmptySectionPlaceholderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmptySectionPlaceholderCell.m; path = ReceiptSlideOutView/Controllers/EmptySectionPlaceholderCell.m; sourceTree = "<group>"; };
+		C188E7A11B04070400626CBF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Globals/AppDelegate.m; sourceTree = "<group>"; };
+		C188E7A21B04070400626CBF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Globals/AppDelegate.h; sourceTree = "<group>"; };
 		C18B95521AF893DB00E6501E /* uber_route1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route1.png; path = "Assets/IOS BLACK/uber_route1.png"; sourceTree = "<group>"; };
 		C18B95531AF893DB00E6501E /* uber_route2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route2.png; path = "Assets/IOS BLACK/uber_route2.png"; sourceTree = "<group>"; };
 		C18B95541AF893DB00E6501E /* uber_route3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route3.png; path = "Assets/IOS BLACK/uber_route3.png"; sourceTree = "<group>"; };
@@ -937,8 +938,8 @@
 		B2202E1F1AED96900099F6B7 /* Globals */ = {
 			isa = PBXGroup;
 			children = (
-				B2202DF11AED93720099F6B7 /* AppDelegate.h */,
-				B2202DF21AED93720099F6B7 /* AppDelegate.m */,
+				C188E7A11B04070400626CBF /* AppDelegate.m */,
+				C188E7A21B04070400626CBF /* AppDelegate.h */,
 				4232348B1AF54D600073255A /* AppConstants.h */,
 				4232348C1AF54D600073255A /* AppConstants.m */,
 			);
@@ -1441,6 +1442,7 @@
 				4232348A1AF47A060073255A /* ReceiptSlideOutViewController.m in Sources */,
 				C1E05D5F1AFC7DC800F6CA46 /* PulsingHaloLayer.m in Sources */,
 				42F4609B1B028FB00027018F /* UberPromotion.m in Sources */,
+				C188E7A31B04070400626CBF /* AppDelegate.m in Sources */,
 				42F460A11B028FB00027018F /* NXOAuth2Account.m in Sources */,
 				42F4600B1B0170FE0027018F /* AFSecurityPolicy.m in Sources */,
 				42F460081B0170FE0027018F /* AFHTTPRequestOperationManager.m in Sources */,
@@ -1453,7 +1455,6 @@
 				C1E05D931AFC7DEB00F6CA46 /* RTSpinKitPulseAnimation.m in Sources */,
 				42F460A31B028FB00027018F /* NXOAuth2Client.m in Sources */,
 				42F4609E1B028FB00027018F /* NSString+NXOAuth2.m in Sources */,
-				B2202DF31AED93720099F6B7 /* AppDelegate.m in Sources */,
 				C1FE9F151AF690F400FCA93E /* MHTabBarController.m in Sources */,
 				C1FE9F1E1AF6916900FCA93E /* SettingsViewController.m in Sources */,
 				42F460A81B028FB00027018F /* NXOAuth2PostBodyStream.m in Sources */,
@@ -1491,6 +1492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C188E7A41B04070400626CBF /* AppDelegate.m in Sources */,
 				C1E05D601AFC7DC800F6CA46 /* PulsingHaloLayer.m in Sources */,
 				C1E05D8C1AFC7DEB00F6CA46 /* RTSpinKitWordPressAnimation.m in Sources */,
 				C1E05D901AFC7DEB00F6CA46 /* RTSpinKitWanderingCubesAnimation.m in Sources */,

@@ -181,15 +181,14 @@
          cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = nil;
-    ReceiptObject *receiptObject = self.receiptData[indexPath.section][indexPath.row]; //self.receiptData[2][0];//self.receiptData[indexPath.section][indexPath.row];
-    
-    //Test to see if there are any objects to display first
-    if (receiptObject != nil)
+    NSLog(@"INDEXPATH SECTION: %i", indexPath.section);
+    /*if ([self.receiptData[indexPath.section] count] > 0)
     {
+        ReceiptObject *receiptObject = self.receiptData[indexPath.section][indexPath.row];
         NSString *orderStatus = receiptObject.orderStatus;
         
-        if ([orderStatus isEqualToString:kStatusRequestUber]) {
-
+        if ([orderStatus isEqualToString:kStatusRequestUber])
+        {
             ReceiptCellRequestUber *rucell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell2" forIndexPath:indexPath];
             
             rucell.orderNumberLabel.text = [NSString stringWithFormat:@"#%@", receiptObject.orderNumber];
@@ -198,7 +197,9 @@
             rucell.delegate = self;
             cell = rucell;
             
-        } else {
+        }
+        else
+        {
             ReceiptCell *rcell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell" forIndexPath:indexPath];
             if ([orderStatus isEqualToString:kStatusUberRequested]) {
                 rcell.receiptStatus = AKReceiptStatusUberRequested;
@@ -219,13 +220,15 @@
             rcell.delegate = self;
             cell = rcell;
         }
+
     }
     else
-    {
+    {*/
         //Display the placeholder cell
-        EmptySectionPlaceholderCell *rucell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell2" forIndexPath:indexPath];
+        EmptySectionPlaceholderCell *rucell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell3" forIndexPath:indexPath];
         cell = rucell;
-    }
+        NSLog(@"inside placeholdercell");
+   // }
 
     return cell;
 }
