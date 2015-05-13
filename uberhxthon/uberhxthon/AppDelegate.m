@@ -62,6 +62,8 @@
 //    [self fakeUbersRetrieval];
 //    [self fakeUberRequest];
 //    [self getSingleUber];
+//    [self resetAllReceipts];
+//    [self clearAllUbers];
 
     
     return YES;
@@ -99,6 +101,15 @@
     }];
 }
 
+- (void)resetAllReceipts
+{
+    [[BambooServer sharedInstance] resetAllReceipts];
+}
+
+- (void)clearAllUbers
+{
+    [[BambooServer sharedInstance] clearAllUbers];
+}
 
 -(BOOL)mh_tabBarController:(MHTabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController atIndex:(NSUInteger)index
 {
