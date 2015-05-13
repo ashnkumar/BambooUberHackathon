@@ -71,7 +71,15 @@
 
 - (void)magicButtonPressed:(id)sender
 {
-    [self.delegate receiptWantsToExpand:self.orderDayDateLabel.text];
+    if ([self.orderNumberLabel.text length] > 1)
+    {
+        NSString *orderNumberStripped = [self.orderNumberLabel.text substringFromIndex:1];
+        [self.delegate receiptWantsToExpand:orderNumberStripped];
+    }
+    else
+    {
+        NSLog(@"error in order number label inside magic button pressed");
+    }
 }
 
 

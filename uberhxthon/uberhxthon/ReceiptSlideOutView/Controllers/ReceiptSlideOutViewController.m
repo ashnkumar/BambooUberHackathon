@@ -191,7 +191,6 @@
          cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = nil;
-    NSLog(@"index path section: %i", indexPath.section);
     if ([self.receiptData[indexPath.section] count] > 0)
     {
         ReceiptObject *receiptObject = self.receiptData[indexPath.section][indexPath.row];
@@ -446,7 +445,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSMutableArray *receiptDetails = [[NSMutableArray alloc]init];
     //Get the correct receipt
-    ReceiptObject *specifiedReceipt = [self findReceiptWithOrderNum:[orderNumber intValue] inSection:0];//TODO fix
+    ReceiptObject *specifiedReceipt = [self findReceiptWithOrderNum:[orderNumber intValue] inSection:0];//TODO fix so doesn't iterate through entire data struct
     
     if (specifiedReceipt != nil)
     {
@@ -462,7 +461,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         [receiptDetails addObject:specifiedReceipt.destinationAddressLine1];
         [receiptDetails addObject:specifiedReceipt.destinationAddressLine2];
         [receiptDetails addObject:specifiedReceipt.destinationPhoneNumber];
-        //Todo: make sure that orderDetails is okay, since it's a mutable dictionary!!
         [receiptDetails addObject:specifiedReceipt.orderDetails];
         [receiptDetails addObject:specifiedReceipt.paymentType];
         [receiptDetails addObject:specifiedReceipt.paymentLastFourDigits];
