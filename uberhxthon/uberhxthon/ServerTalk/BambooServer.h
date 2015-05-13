@@ -18,6 +18,10 @@
 // Retrieve a list of all ubers from the server as a dictionary
 - (void)retrieveUbersWithCompletion:(void (^)(NSDictionary *ubersDictionary))completion;
 
+// Retrieve a status of a single Uber (used when requesting an uber)
+- (void)retrieveSingleUberStatusWithOrderNumber:(int)orderNumber
+                                     completion:(void (^)(NSString *uberStatus))completion;
+
 
 // Request an UberX in SF (only supported product) with given coordinates
 - (void)requestUberWithStartingLatitude:(NSNumber *)startingLatitude

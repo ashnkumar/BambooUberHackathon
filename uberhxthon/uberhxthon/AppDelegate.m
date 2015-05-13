@@ -57,9 +57,11 @@
     [self.window makeKeyAndVisible];
     
     
+    // To test that BambooServer methods work:
 //    [self fakeReceiptsRetrieval];
-    [self fakeUbersRetrieval];
+//    [self fakeUbersRetrieval];
 //    [self fakeUberRequest];
+//    [self getSingleUber];
 
     
     return YES;
@@ -76,8 +78,8 @@
 - (void)fakeUbersRetrieval
 {
     [[BambooServer sharedInstance]
-     retrieveReceiptsWithCompletion:^(NSDictionary *receiptsDictionary) {
-         NSLog(@"Ubers are: %@", receiptsDictionary);
+     retrieveUbersWithCompletion:^(NSDictionary *ubersDictionary) {
+         NSLog(@"Ubers are: %@", ubersDictionary);
      }];
 }
 
@@ -90,6 +92,12 @@
                                                        orderNumber:7];
 }
 
+- (void)getSingleUber
+{
+    [[BambooServer sharedInstance] retrieveSingleUberStatusWithOrderNumber:53 completion:^(NSString *uberStatus) {
+        NSLog(@"Uber status is %@", uberStatus);
+    }];
+}
 
 
 -(BOOL)mh_tabBarController:(MHTabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController atIndex:(NSUInteger)index
