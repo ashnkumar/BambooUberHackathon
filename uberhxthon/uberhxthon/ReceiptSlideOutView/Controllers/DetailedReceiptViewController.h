@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailedReceiptViewController : UIViewController
+@interface DetailedReceiptViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray *details;
 @property (strong, nonatomic) IBOutlet UILabel *orderNumber;
@@ -16,6 +16,11 @@
 @property (strong, nonatomic) IBOutlet UILabel *orderTime;
 @property (strong, nonatomic) IBOutlet UILabel *destinationName;
 @property (strong, nonatomic) IBOutlet UILabel *destinationPhoneNum;
+@property (strong, nonatomic) IBOutlet UILabel *destinationAddressLine1;
+@property (strong, nonatomic) IBOutlet UILabel *destinationAddressLine2;
+@property (strong, nonatomic) IBOutlet UITableView *orderDetails;
+@property (strong, nonatomic) IBOutlet UILabel *paymentType;
+@property (strong, nonatomic) IBOutlet UILabel *paymentLastFourDigits;
 
 - (void) layoutDetails:(NSMutableArray *)details;
 @end

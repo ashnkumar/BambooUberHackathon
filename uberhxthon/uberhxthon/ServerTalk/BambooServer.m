@@ -50,7 +50,7 @@ static NSString * const RequestUberPath = @"fake-request-uber";
                                   initWithTitle:@"Error retrieving receipts"
                                   message:[error localizedDescription]
                                   delegate:nil
-                                  cancelButtonTitle:@"Ok"
+                                  cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
         [alertView show];
     }];

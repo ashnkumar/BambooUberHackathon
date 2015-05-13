@@ -16,6 +16,7 @@
 - (void)movePanelTwoRows;
 - (void)requestedUber;
 - (void)expandReceipt:(NSMutableArray *)details;
+- (BOOL)isReceiptPanelShowing;
 //- (void)uberStatusChanged;
 
 // Delegate methods for receipt selection here

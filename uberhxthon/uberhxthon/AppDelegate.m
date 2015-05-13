@@ -58,7 +58,7 @@
     
     
 //    [self fakeReceiptsRetrieval];
-    [self fakeUbersRetrieval];
+ //   [self fakeUbersRetrieval];
 //    [self fakeUberRequest];
 
     
