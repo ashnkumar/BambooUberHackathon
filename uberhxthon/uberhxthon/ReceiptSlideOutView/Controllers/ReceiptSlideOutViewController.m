@@ -48,6 +48,8 @@
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"ReceiptCellRequestUber" bundle:nil] forCellWithReuseIdentifier:@"SampleCell2"];
     
+    [self.collectionView registerNib:[UINib nibWithNibName:@"EmptySectionPlaceholderCell" bundle:nil] forCellWithReuseIdentifier:@"SampleCell3"];
+    
     [self.collectionView registerNib:[UINib nibWithNibName:@"ReceiptSectionHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeaderView"];
     
     //Note: should call populateReceipts when database tells me I have new ones
@@ -174,15 +176,23 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.receiptData[section] count];
+    if ([self.receiptData[section] count] > 0)
+    {
+        return [self.receiptData[section] count];
+    }
+    else
+    {
+        //Return 1, so can display placeholder cell
+        return 1;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
          cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = nil;
-    NSLog(@"INDEXPATH SECTION: %i", indexPath.section);
-    /*if ([self.receiptData[indexPath.section] count] > 0)
+    NSLog(@"index path section: %i", indexPath.section);
+    if ([self.receiptData[indexPath.section] count] > 0)
     {
         ReceiptObject *receiptObject = self.receiptData[indexPath.section][indexPath.row];
         NSString *orderStatus = receiptObject.orderStatus;
@@ -200,35 +210,34 @@
         }
         else
         {
-            ReceiptCell *rcell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell" forIndexPath:indexPath];
+            ReceiptCell *rucell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell" forIndexPath:indexPath];
             if ([orderStatus isEqualToString:kStatusUberRequested]) {
-                rcell.receiptStatus = AKReceiptStatusUberRequested;
+                rucell.receiptStatus = AKReceiptStatusUberRequested;
             } else if ([orderStatus isEqualToString:kStatusOutForDelivery]) {
-                rcell.receiptStatus = AKReceiptStatusOutForDelivery;
+                rucell.receiptStatus = AKReceiptStatusOutForDelivery;
             } else if ([orderStatus isEqualToString:kStatusOrderComplete]) {
-                rcell.receiptStatus = AKReceiptStatusDeliveryComplete;
+                rucell.receiptStatus = AKReceiptStatusDeliveryComplete;
             }
             else
             {
                 NSLog(@"error with the cell's status inside uicollectionview cellforitem");
             }
             
-            rcell.orderNumberLabel.text = [NSString stringWithFormat:@"#%@", receiptObject.orderNumber];
-            rcell.orderDayDateLabel.text = receiptObject.orderDayDate;
-            rcell.orderTimeLabel.text = receiptObject.orderTime;
+            rucell.orderNumberLabel.text = [NSString stringWithFormat:@"#%@", receiptObject.orderNumber];
+            rucell.orderDayDateLabel.text = receiptObject.orderDayDate;
+            rucell.orderTimeLabel.text = receiptObject.orderTime;
             
-            rcell.delegate = self;
-            cell = rcell;
+            rucell.delegate = self;
+            cell = rucell;
         }
 
     }
     else
-    {*/
+    {
         //Display the placeholder cell
         EmptySectionPlaceholderCell *rucell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell3" forIndexPath:indexPath];
         cell = rucell;
-        NSLog(@"inside placeholdercell");
-   // }
+    }
 
     return cell;
 }
