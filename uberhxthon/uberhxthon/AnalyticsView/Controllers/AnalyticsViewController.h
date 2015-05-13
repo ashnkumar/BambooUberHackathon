@@ -11,9 +11,8 @@
 #include "AppConstants.h"
 #import "UICountingLabel.h"
 #import "PulsingHaloLayer.h"
-#import "UberKit.h"
 
-@interface AnalyticsViewController : UIViewController <GKLineGraphDataSource, GKBarGraphDataSource, UberKitDelegate>
+@interface AnalyticsViewController : UIViewController <GKLineGraphDataSource, GKBarGraphDataSource>
 @property (strong, nonatomic) IBOutlet GKLineGraph *graph;
 @property (strong, nonatomic) IBOutlet GKBarGraph *barGraph;
 

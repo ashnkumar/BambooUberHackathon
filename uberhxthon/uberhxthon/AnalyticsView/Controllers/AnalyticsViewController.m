@@ -40,24 +40,6 @@
     
     [self addPulsingHalosToMap];
     
-    UberKit *uberKit = [[UberKit alloc] initWithClientID:@"8wOL-4IJS1_cT5XK4Tpx7ZLA8B_LYidF" ClientSecret:@"gttp4IzxJOFY2TcY1hNk24PA8hU_2e9MKfOlS3CW" RedirectURL:@"http://localhost:5000/" ApplicationName:@"Bamboo"];
-    uberKit.delegate = self;
-    NSLog(@"ASDF");
-
-    [uberKit startLoginWithViewController:self];
-    
-}
-
-- (void)uberKit:(UberKit *)uberKit didReceiveAccessToken:(NSString *)accessToken
-{
-    NSLog(@"ACCESS TOKEN: %@", accessToken);
-    
-}
-
-- (void)uberKit:(UberKit *)uberKit loginFailedWithError:(NSError *)error
-{
-    NSLog(@"NOT sup: %@", error);
-    
 }
 
 #pragma mark - Cashwin methods
