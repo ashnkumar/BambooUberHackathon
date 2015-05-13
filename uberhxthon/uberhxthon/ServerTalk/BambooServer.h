@@ -22,6 +22,12 @@
 - (void)retrieveSingleUberStatusWithOrderNumber:(int)orderNumber
                                      completion:(void (^)(NSString *uberStatus))completion;
 
+// Reset all receipts back to the original JSON dummy data
+- (void)resetAllReceipts;
+
+// Clear all ubers
+- (void)clearAllUbers;
+
 
 // Request an UberX in SF (only supported product) with given coordinates
 - (void)requestUberWithStartingLatitude:(NSNumber *)startingLatitude

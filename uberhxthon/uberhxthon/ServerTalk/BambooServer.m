@@ -17,6 +17,9 @@ static NSString * const ReceiptsPath = @"fake-get-all-receipts";
 static NSString * const UbersPath = @"fake-get-all-ubers";
 static NSString * const RequestUberPath = @"fake-request-uber";
 static NSString * const GetSingleUberPath = @"get-single-uber";
+static NSString * const ResetReceiptsPath = @"reset-all-receipts";
+static NSString * const ClearAllUberPath = @"clear-all-ubers";
+
 
 @implementation BambooServer
 
@@ -108,32 +111,6 @@ static NSString * const GetSingleUberPath = @"get-single-uber";
         NSLog(@"Error: %@", [error localizedDescription]);
     }];
     
-    
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]
-//                                         initWithRequest:request];
-//    
-//    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        
-//        NSDictionary *results = (NSDictionary *)responseObject;
-//        
-//        completion(results);
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        
-//        UIAlertView *alertView = [[UIAlertView alloc]
-//                                  initWithTitle:@"Error retrieving ubers"
-//                                  message:[error localizedDescription]
-//                                  delegate:nil
-//                                  cancelButtonTitle:@"Ok"
-//                                  otherButtonTitles:nil];
-//        [alertView show];
-//    }];
-//    
-//    [operation start];
-    
 }
 
 
@@ -167,6 +144,44 @@ static NSString * const GetSingleUberPath = @"get-single-uber";
         [alertView show];
     }];
     
+}
+
+- (void)resetAllReceipts
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, ResetReceiptsPath];
+    
+    [manager POST:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary *response = (NSDictionary *)responseObject;
+        if (response[@"Receipts reset"]) {
+            NSLog(@"All receipts have been reset to their original dummy form! Yahoo!");
+        }
+    }
+     
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"FAILURE in trying to reset all receipts for some reason. Tell ashwin.");
+    }];
+}
+
+- (void)clearAllUbers
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, ClearAllUberPath];
+    
+    [manager POST:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary *response = (NSDictionary *)responseObject;
+        if (response[@"Ubers cleared"]) {
+            NSLog(@"All ubers have been cleared! Yahoo!");
+        }
+    }
+     
+      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          NSLog(@"FAILURE in trying to clear all ubers. Tell ashwin.");
+      }];
     
 }
 
