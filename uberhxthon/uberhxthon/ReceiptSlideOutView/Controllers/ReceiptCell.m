@@ -66,7 +66,7 @@
 
 - (void)magicButtonPressed:(id)sender
 {
-    [self.delegate receiptWantsToExpand:self.frame buttonSender:sender];
+    [self.delegate receiptWantsToExpand:self.orderDayDateLabel.text];
 }
 
 

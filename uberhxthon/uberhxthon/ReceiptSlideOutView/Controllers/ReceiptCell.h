@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, AKReceiptStatus) {
 
 @protocol ReceiptCellDelegate <NSObject>
 
-- (void)receiptWantsToExpand:(CGRect)receiptOriginalFrame buttonSender:(UIButton *)sender;
+- (void)receiptWantsToExpand:(NSString *)orderNumber;
 
 @end
 

@@ -10,7 +10,8 @@
 
 @protocol ReceiptCellRequestUberDelegate <NSObject>
 
-- (void)requestUberForOrderNum:(int)orderNum;
+- (void)requestUberWithReceipt:(NSString *)orderNum;
+- (void)receiptWantsToExpand:(NSString *)orderNumber;
 
 @end
 

@@ -17,6 +17,7 @@
 #import "RequestUberPopupViewController.h"
 #import "PresentingAnimator.h"
 #import "DismissingAnimator.h"
+#import "DetailedReceiptViewController.h"
 
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 #define METERS_PER_MILE 1609.344
@@ -295,7 +296,7 @@
 
 //Move panel up all four rows
 //Used for receiptVC's manual call
-- (void)movePanelUp
+- (void)movePanelAllUp
 {
     [UIView animateWithDuration:SLIDE_TIMING delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                         //receipt panel view controller frame: (0, screenHeight-SIZEOFRECEIPTVIEW)
@@ -318,7 +319,7 @@
                      } completion:^(BOOL finished) {
                          self.receiptPanelViewController.panelUpButton.tag = PANELOPEN;
                          self.showingReceiptPanel = YES;
-                         //[self.receiptPanelViewController scrollToSecondRow];
+                         //[self.receiptPanelViewController scrollToRow:2];
                      }];
     NSLog(@"Moved panel to one row");
 
@@ -338,6 +339,77 @@
     
     NSLog(@"Moved panel to two rows");
 
+}
+
+- (void)expandReceipt:(NSMutableArray *)details
+{
+    //Details array contains: order number, date ordered, time ordered, orderer's name, orderer's address, orderer's phonenumber, order details
+    if ([details count] == 7)
+    {
+        //Display a dimming view
+        UIView *dimmingView = [[UIView alloc] initWithFrame:CGRectMake(0, -500, 3000, 3000)];
+        dimmingView.backgroundColor = [UIColor colorWithRed:84/255.0 green:82/255.0 blue:82/255.0 alpha:1.0];
+        dimmingView.layer.opacity = 0.0;
+        [self.view addSubview:dimmingView];
+        
+        //Display the xib template with the specified information
+        DetailedReceiptViewController *detailedReceipt = [[DetailedReceiptViewController alloc]init];
+        [detailedReceipt layoutDetails:details];
+        detailedReceipt.view.alpha = 0;
+        //TODO: set detailedReceipt View Frame correctly
+        detailedReceipt.view.frame = CGRectMake(0, 0, 100, 100);
+        [self.view addSubview:detailedReceipt.view];
+        
+        [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            dimmingView.layer.opacity = 0.2;
+            //TODO: set detailedReceiptViewFrame correctly
+            detailedReceipt.view.frame = CGRectMake(180, 0, 650, 528);
+            detailedReceipt.view.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            NSLog(@"displayed detailed receipt view");
+            //TODO: create a gesture recognizer for on top of the dimming view to close the detailed receipt view
+        }];
+        
+        /*NSIndexPath *indexPath;
+         
+         indexPath = [self.collectionView
+         indexPathForItemAtPoint:[self.collectionView
+         convertPoint:sender.center
+         fromView:sender.superview]];
+         
+         ReceiptCellRequestUber *receiptCell = (ReceiptCellRequestUber *)[self.collectionView cellForItemAtIndexPath:indexPath];
+         
+         UIView *intermediateView = [receiptCell.contentView snapshotViewAfterScreenUpdates:NO];
+         intermediateView.frame = CGRectMake(receiptOriginalFrame.origin.x, receiptOriginalFrame.origin.y+67, receiptOriginalFrame.size.width, receiptOriginalFrame.size.height);
+         [self.view addSubview:intermediateView];
+         
+         UIImageView *newView = [[UIImageView alloc] initWithFrame:CGRectMake(receiptOriginalFrame.origin.x, receiptOriginalFrame.origin.y+67, receiptOriginalFrame.size.width, receiptOriginalFrame.size.height)];
+         
+         newView.backgroundColor = [UIColor clearColor];
+         newView.image = [UIImage imageNamed:@"ReceiptBigView2"];
+         newView.layer.opacity = 0.0;
+         
+         UIView *dimmingView = [[UIView alloc] initWithFrame:CGRectMake(0, -500, 3000, 3000)];
+         dimmingView.backgroundColor = [UIColor colorWithRed:84/255.0 green:82/255.0 blue:82/255.0 alpha:1.0];
+         dimmingView.layer.opacity = 0.0;
+         
+         [self.view addSubview:dimmingView];
+         [self.view addSubview:newView];
+         
+         [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+         dimmingView.layer.opacity = 0.2;
+         newView.frame = CGRectMake(180, 0, 650, 528);
+         newView.layer.opacity = 1.0;
+         intermediateView.layer.opacity = 0.0;
+         } completion:^(BOOL finished) {
+         NSLog(@"Done");
+         }];*/
+    }
+    else {
+        NSLog(@"details array doesn't have correct parameters in expandReceipt");
+    }
+   
+    
 }
 
 ////////START
@@ -369,26 +441,21 @@
     [self.receiptPanelViewController highlightReceiptAtIndexPath:indexPathToSelect];
 }
 
-- (void)showRequestUberPopup {
-    //@TODO: ping request to server here
-    
+- (void)requestedUber {    
     RequestUberPopupViewController *requestUberPopupVC = [RequestUberPopupViewController new];
     requestUberPopupVC.delegate = self;
     
     requestUberPopupVC.transitioningDelegate = self;
     requestUberPopupVC.modalPresentationStyle = UIModalPresentationCustom;
     
-    [self presentViewController:requestUberPopupVC
-                       animated:YES
-                     completion:^{
-                     }];
+    [self presentViewController:requestUberPopupVC animated:YES completion:nil];
 }
 
 //@TODO
 - (void)didCompleteUberRequest
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self.receiptPanelViewController fakeReceiptMove:0];
+    //[self.receiptPanelViewController moveReceipt:0];
 }
 
 

@@ -138,6 +138,10 @@
 		C1E05DAB1AFC7DF500F6CA46 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E05DA91AFC7DF500F6CA46 /* UICountingLabel.m */; };
 		C1E05DAC1AFC7DF500F6CA46 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E05DA91AFC7DF500F6CA46 /* UICountingLabel.m */; };
 		C1F0CF1D1AF1C6EB00D9F02E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */; };
+		C1F1F41E1B0301BC00CBA3CF /* DetailedReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F1F41C1B0301BC00CBA3CF /* DetailedReceiptViewController.m */; };
+		C1F1F41F1B0301BC00CBA3CF /* DetailedReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F1F41C1B0301BC00CBA3CF /* DetailedReceiptViewController.m */; };
+		C1F1F4201B0301BC00CBA3CF /* DetailedReceiptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F1F41D1B0301BC00CBA3CF /* DetailedReceiptView.xib */; };
+		C1F1F4211B0301BC00CBA3CF /* DetailedReceiptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F1F41D1B0301BC00CBA3CF /* DetailedReceiptView.xib */; };
 		C1FE9F151AF690F400FCA93E /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F141AF690F400FCA93E /* MHTabBarController.m */; };
 		C1FE9F181AF6913E00FCA93E /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F171AF6913E00FCA93E /* DeliveryViewController.m */; };
 		C1FE9F1B1AF6915400FCA93E /* AnalyticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F1A1AF6915400FCA93E /* AnalyticsViewController.m */; };
@@ -395,6 +399,9 @@
 		C1E05DA91AFC7DF500F6CA46 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICountingLabel.m; path = Pods/UICountingLabel/UICountingLabel.m; sourceTree = "<group>"; };
 		C1E05DAA1AFC7DF500F6CA46 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICountingLabel.h; path = Pods/UICountingLabel/UICountingLabel.h; sourceTree = "<group>"; };
 		C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C1F1F41B1B0301BC00CBA3CF /* DetailedReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailedReceiptViewController.h; path = ReceiptSlideOutView/Controllers/DetailedReceiptViewController.h; sourceTree = "<group>"; };
+		C1F1F41C1B0301BC00CBA3CF /* DetailedReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailedReceiptViewController.m; path = ReceiptSlideOutView/Controllers/DetailedReceiptViewController.m; sourceTree = "<group>"; };
+		C1F1F41D1B0301BC00CBA3CF /* DetailedReceiptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailedReceiptView.xib; path = ReceiptSlideOutView/Controllers/DetailedReceiptView.xib; sourceTree = "<group>"; };
 		C1FE9F131AF690F400FCA93E /* MHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHTabBarController.h; path = uberhxthon/TabBar/MHTabBarController/MHTabBarController.h; sourceTree = SOURCE_ROOT; };
 		C1FE9F141AF690F400FCA93E /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHTabBarController.m; path = uberhxthon/TabBar/MHTabBarController/MHTabBarController.m; sourceTree = SOURCE_ROOT; };
 		C1FE9F161AF6913E00FCA93E /* DeliveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeliveryViewController.h; path = uberhxthon/DeliveryView/Controllers/DeliveryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -465,6 +472,7 @@
 		423234821AF479740073255A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C1F1F41D1B0301BC00CBA3CF /* DetailedReceiptView.xib */,
 				42F45F931AFD448E0027018F /* ReceiptSectionHeaderView.xib */,
 				423234851AF479B50073255A /* ReceiptSlideOutView.xib */,
 				42014EC91AF6FBD9005787A6 /* ReceiptCell.xib */,
@@ -482,6 +490,8 @@
 				42F45F981AFD44A20027018F /* ReceiptCollectionFlowLayout.m */,
 				423234881AF47A060073255A /* ReceiptSlideOutViewController.h */,
 				423234891AF47A060073255A /* ReceiptSlideOutViewController.m */,
+				C1F1F41B1B0301BC00CBA3CF /* DetailedReceiptViewController.h */,
+				C1F1F41C1B0301BC00CBA3CF /* DetailedReceiptViewController.m */,
 				42014EC61AF6FA20005787A6 /* ReceiptCell.h */,
 				42014EC71AF6FA20005787A6 /* ReceiptCell.m */,
 				42F45FAC1AFD486D0027018F /* ReceiptCellRequestUber.h */,
@@ -1171,6 +1181,7 @@
 				C1FE9F8F1AF69D3500FCA93E /* Receipt_Icon.png in Resources */,
 				C1FE9F271AF691C400FCA93E /* AnalyticsView.xib in Resources */,
 				C18B95591AF893DB00E6501E /* uber_route4.png in Resources */,
+				C1F1F4201B0301BC00CBA3CF /* DetailedReceiptView.xib in Resources */,
 				C12D6B611AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png in Resources */,
 				C103BCEE1AF738FE007D2DE1 /* map-vehicle-icon-sm.png in Resources */,
 				B21B3E381AFAFDC1004FEDAC /* route4.txt in Resources */,
@@ -1220,6 +1231,7 @@
 				C1FE9F281AF691C400FCA93E /* AnalyticsView.xib in Resources */,
 				C1FE9FA21AF69D3F00FCA93E /* Receipt_Icon@2x.png in Resources */,
 				C1FE9F9A1AF69D3F00FCA93E /* Bamboo_Logo@2x.png in Resources */,
+				C1F1F4211B0301BC00CBA3CF /* DetailedReceiptView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1232,6 +1244,7 @@
 			files = (
 				42F460071B0170FE0027018F /* AFHTTPRequestOperation.m in Sources */,
 				C1E05DA31AFC7DEB00F6CA46 /* RTSpinKitArcAnimation.m in Sources */,
+				C1F1F41E1B0301BC00CBA3CF /* DetailedReceiptViewController.m in Sources */,
 				C1E05DAB1AFC7DF500F6CA46 /* UICountingLabel.m in Sources */,
 				C1FE9F181AF6913E00FCA93E /* DeliveryViewController.m in Sources */,
 				42F4600C1B0170FE0027018F /* AFURLConnectionOperation.m in Sources */,
@@ -1314,6 +1327,7 @@
 				C1E05D591AFC7DAF00F6CA46 /* NSArray+MK_Block.m in Sources */,
 				B21B3E291AFA93E5004FEDAC /* routeGenerator.m in Sources */,
 				C1E05DA41AFC7DEB00F6CA46 /* RTSpinKitArcAnimation.m in Sources */,
+				C1F1F41F1B0301BC00CBA3CF /* DetailedReceiptViewController.m in Sources */,
 				C1E05DAC1AFC7DF500F6CA46 /* UICountingLabel.m in Sources */,
 				C1E05D531AFC7DAF00F6CA46 /* NSMutableArray+MK_Queue.m in Sources */,
 				C1E05D3B1AFC7D8E00F6CA46 /* GKLineGraph.m in Sources */,

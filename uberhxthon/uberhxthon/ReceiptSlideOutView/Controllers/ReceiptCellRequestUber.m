@@ -33,11 +33,19 @@
 - (void)requestUberClicked:(id)sender
 {
     // @TODO: Change this to actual order number selected
-    [self.delegate requestUberForOrderNum:1];
+    [self.delegate requestUberWithReceipt:self.orderNumberLabel.text];
 }
 
 - (void)updateCellHeading
 {
+    //Make the entire receipt touchable
+    UIButton *magicbutton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height)];
+    
+    [magicbutton addTarget:self action:@selector(magicButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.contentView addSubview:magicbutton];
+    
+    //Add another button on top for requesting an uber - TEST THAT TOUCHES WORK CORRECTLY
     self.requestUberButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 8, 150, 48)];
     [self.requestUberButton setImage:[UIImage imageNamed:@"RequestUberButton"] forState:UIControlStateNormal];
     
@@ -49,6 +57,9 @@
 
 }
 
-
+- (void)magicButtonPressed:(id)sender
+{
+    [self.delegate receiptWantsToExpand:self.orderDayDateLabel.text];
+}
 
 @end

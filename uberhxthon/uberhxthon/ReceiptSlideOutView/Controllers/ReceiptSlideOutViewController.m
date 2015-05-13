@@ -25,7 +25,7 @@
 @interface ReceiptSlideOutViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ReceiptCellRequestUberDelegate, ReceiptCellDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) NSMutableArray *dummyReceiptData;
+@property (nonatomic, strong) NSMutableArray *receiptData;
 
 - (void)addNewItemInSection:(NSUInteger)section;
 - (void)deleteItemAtIndexPath:(NSIndexPath*)indexPath;
@@ -48,8 +48,8 @@
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"ReceiptSectionHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeaderView"];
     
-    
-    [self populateDummyReceipts];
+    //Note: should call populateReceipts when database tells me I have new ones
+    //[self populateReceipts];
     
     
     ReceiptCollectionFlowLayout *layout = [[ReceiptCollectionFlowLayout alloc] init];
@@ -59,30 +59,22 @@
     layout.sectionInset = UIEdgeInsetsMake(10.f, 20.f, 10.f, 20.f);
     
     layout.itemSize = CGSizeMake(170, 210); //size of receipt cell
-    [layout makeBoring];
+    [layout makeBoring]; //default layout appearance
     
     self.collectionView.collectionViewLayout = layout;
-    
-    
 }
 
-- (void)populateDummyReceipts
+//?: use this for updating receipts too, or create a separate method?
+- (void)populateReceipts
 {
-    self.dummyReceiptData = [NSMutableArray new];
-    //    NSMutableArray *section1Arr = [[NSMutableArray alloc] initWithArray:@[@"58", @"59", @"60"]];
-    //    NSMutableArray *section2Arr = [[NSMutableArray alloc] initWithArray:@[@"61", @"62", @"63", @"64"]];
-    //    NSMutableArray *section3Arr = [[NSMutableArray alloc] initWithArray:@[@"65", @"66"]];
-    //    NSMutableArray *section4Arr = [[NSMutableArray alloc] initWithArray:@[@"65", @"66"]];
-    //    [self.dummyReceiptData addObject:section1Arr];
-    //    [self.dummyReceiptData addObject:section2Arr];
-    //    [self.dummyReceiptData addObject:section3Arr];
-    //    [self.dummyReceiptData addObject:section4Arr];
+    self.receiptData = [NSMutableArray new];
     
     NSMutableArray *requestUberArr = [NSMutableArray new];
     NSMutableArray *uberRequestedArr = [NSMutableArray new];
     NSMutableArray *outForDeliveryArr = [NSMutableArray new];
     NSMutableArray *orderCompleteArr = [NSMutableArray new];
-    
+
+    //Get data from json file here
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"receiptData" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -93,12 +85,35 @@
         NSString *orderDayDate = receiptDic[@"orderDayDate"];
         NSString *orderTime    = receiptDic[@"orderTime"];
         NSString *orderStatus  = receiptDic[@"orderStatus"];
+        NSString *destLat = receiptDic[@"destinationLatitude"];
+        NSString *destLon = receiptDic[@"destinationLatitude"];
+        NSString *destName = receiptDic[@"destinationName"];
+        NSString *destPhone = receiptDic[@"destinationPhoneNum"];
+        ////Todo: Parse order details from json's array w/in array
+        NSMutableDictionary *orderDeets;// = receiptDic[@"orderDetails"];
+        ////
+        NSString *payType = receiptDic[@"paymentType"];
+        NSString *payDigits = receiptDic[@"paymentLastFourDigits"];
         
+        //Parse destLoc into coordinates
+        float destLatitude = [destLat floatValue];
+        float destLongitude = [destLon floatValue];
+        //Instantiate a destination
+        CLLocationCoordinate2D destination = CLLocationCoordinate2DMake(destLatitude, destLongitude);
+        
+        //Instantiate the receipt object with all its parameters
         ReceiptObject *receiptObject = [[ReceiptObject alloc]
                                         initWithOrderNumber:orderNumber
                                         orderDayDate:orderDayDate
                                         orderTime:orderTime
-                                        orderStatus:orderStatus];
+                                        orderStatus:orderStatus
+                                        destinationName:destName
+                                        destinationPhone:destPhone
+                                        orderDetails:orderDeets
+                                        paymentType:payType
+                                        paymentLastDigits:payDigits];
+        
+        [receiptObject setDestination:destination];
         
         if ([orderStatus isEqualToString:kStatusRequestUber]) {
             [requestUberArr addObject:receiptObject];
@@ -111,13 +126,13 @@
         }
     }
     
-    [self.dummyReceiptData addObject:requestUberArr];
-    [self.dummyReceiptData addObject:uberRequestedArr];
-    [self.dummyReceiptData addObject:outForDeliveryArr];
-    [self.dummyReceiptData addObject:orderCompleteArr];
+    [self.receiptData addObject:requestUberArr];
+    [self.receiptData addObject:uberRequestedArr];
+    [self.receiptData addObject:outForDeliveryArr];
+    [self.receiptData addObject:orderCompleteArr];
 }
 
-- (IBAction)btnMovePanelUp:(id)sender
+/*- (IBAction)btnMovePanelUp:(id)sender
 {
     UIButton *button = sender;
     switch (button.tag) {
@@ -127,14 +142,14 @@
         }
             
         case 1: {
-            [_delegate movePanelUp];
+            [_delegate movePanelAllUp];
             break;
         }
             
         default:
             break;
     }
-}
+}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -144,20 +159,19 @@
 #pragma mark - UICollectionView DataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [self.dummyReceiptData count];
+    return [self.receiptData count];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSMutableArray *receiptsInSection = self.dummyReceiptData[section];
-    return [receiptsInSection count];
+    return [self.receiptData[section] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
          cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = nil;
-    ReceiptObject *receiptObject = self.dummyReceiptData[indexPath.section][indexPath.row];
+    ReceiptObject *receiptObject = self.receiptData[indexPath.section][indexPath.row];
     NSString *orderStatus = receiptObject.orderStatus;
     
     if ([orderStatus isEqualToString:kStatusRequestUber]) {
@@ -193,14 +207,6 @@
 
 
 #pragma mark - UICollectionViewDelegateFlowLayout
-//- (CGSize)collectionView:(UICollectionView *)collectionView
-//                  layout:(UICollectionViewLayout *)collectionViewLayout
-//  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    CGSize retVal = CGSizeMake(170, 210);
-//    return retVal;
-//}
-
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
                         layout:(UICollectionViewLayout *)collectionViewLayout
         insetForSectionAtIndex:(NSInteger)section
@@ -212,6 +218,7 @@
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    //TODO: open detailed receipt view
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
@@ -239,7 +246,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         default:
             break;
     }
-    //    [sectionHeaderView setSectionHeaderTitle:@"Waiting for Pickup"];
     return sectionHeaderView;
 }
 
@@ -251,9 +257,42 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 
 #pragma mark - Receipt Cell Delegate
-- (void)requestUberForOrderNum:(int)orderNum
+- (ReceiptObject *)findReceiptWithOrderNum:(int)orderNum
 {
-    [self.delegate showRequestUberPopup];
+    ReceiptObject *receiptFound = nil;
+    for (ReceiptObject *receipt in self.receiptData)
+    {
+        if ([receipt.orderNumber intValue] == orderNum)
+        {
+            receiptFound = receipt;
+        }
+    }
+    return receiptFound;
+}
+
+- (void)requestUberWithReceipt:(NSString *)receipt
+{
+    //Find the receipt with correct order num
+    int orderNum = [receipt intValue];
+    
+    ReceiptObject *requestedReceipt = [self findReceiptWithOrderNum:orderNum];
+    if (requestedReceipt != nil)
+    {
+        //Send a request for an Uber through Bamboo's server, specifying:
+        /*
+         product requested
+         start latitude, longitude
+         final destination latitude, longitude
+         */
+        
+        
+        //Update the Delivery View UI
+        [self.delegate requestedUber];
+    }
+    else
+    {
+        NSLog(@"couldn't find uber with specified receipt number in ReceiptSlideOutViewController's requestUberWithReceipt");
+    }
 }
 
 
@@ -261,8 +300,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 - (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Highlighting cell: %@", indexPath);
-    ReceiptCell *cell = (ReceiptCell *)[self.collectionView
-                                        cellForItemAtIndexPath:indexPath];
+    ReceiptCell *cell = (ReceiptCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
     
     cell.layer.borderWidth = 5;
     cell.layer.borderColor = [AppConstants cashwinGreen].CGColor;
@@ -271,7 +309,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)removeAllCellBorders
 {
-    
     NSMutableArray *allCells = [self allCellsInCollectionView];
     
     for (ReceiptCell *cell in allCells) {
@@ -289,85 +326,83 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
             if (cell) {
                 [cells addObject:cell];
             }
-            
         }
     }
     return cells;
 }
 
 #pragma mark - Object insert/remove
-
-- (void)fakeReceiptMove:(NSUInteger)section
+//TODO: use when a receipt's status changes
+- (void)moveReceipt:(NSUInteger)section
 {
-    [self.delegate movePanelTwoRows];
-    ReceiptObject *receiptObject = self.dummyReceiptData[0][0];
-    receiptObject.orderStatus = kStatusUberRequested;
+    //[self.delegate movePanelTwoRows];
+    //ReceiptObject *receiptObject = self.receiptData[0][0];
+    //receiptObject.orderStatus = kStatusUberRequested;
+    
+    //Reload with the updated receipt's UI
     [self.collectionView reloadData];
-    [self performSelector:@selector(moveActualReceipt) withObject:self afterDelay:0.4];
+    
+    //Now perform the receipt's move animation
+    [self performSelector:@selector(performMoveReceiptAnimation) withObject:self afterDelay:0.4];
 }
 
-- (void)moveActualReceipt
+- (void)performMoveReceiptAnimation
 {
-    NSMutableArray *receiptsInSection = self.dummyReceiptData[0];
+    //NSMutableArray *receiptsInSection = self.receiptData[0];
     
-    if ([receiptsInSection count] > 0) {
+    /*if ([receiptsInSection count] > 0) {
         ReceiptObject *receiptToMove = receiptsInSection[0];
         
         if (receiptToMove != nil) {
             [receiptsInSection removeObjectAtIndex:0];
             
-            NSMutableArray *receiptsInSecondSection = self.dummyReceiptData[1];
+            NSMutableArray *receiptsInSecondSection = self.receiptData[1];
             [receiptsInSecondSection insertObject:receiptToMove atIndex:0];
             
             [self.collectionView moveItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] toIndexPath:[NSIndexPath indexPathForItem:0 inSection:1]];
         }
-    }
+    }*/
 }
 
-- (void)scrollToSecondRow
+- (void)scrollToRow:(int)row
 {
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:1] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+    //Note that row is DECREMENTED to account for the correct index (ie whoever calls this method should choose the intuitive, non-CS idea of which row to scroll to)
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:row] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 
 #pragma mark - ReceiptDelegate
 
-- (void)receiptWantsToExpand:(CGRect)receiptOriginalFrame buttonSender:(UIButton *)sender
+- (void)receiptWantsToExpand:(NSString *)orderNumber
 {
-    NSIndexPath *indexPath;
-
-    indexPath = [self.collectionView
-                 indexPathForItemAtPoint:[self.collectionView
-                                          convertPoint:sender.center
-                                          fromView:sender.superview]];
+    NSMutableArray *receiptDetails = [[NSMutableArray alloc]init];
+    //Get the correct receipt
+    ReceiptObject *specifiedReceipt = [self findReceiptWithOrderNum:[orderNumber intValue]];
     
-    ReceiptCellRequestUber *receiptCell = (ReceiptCellRequestUber *)[self.collectionView cellForItemAtIndexPath:indexPath];
-    
-    UIView *intermediateView = [receiptCell.contentView snapshotViewAfterScreenUpdates:NO];
-    intermediateView.frame = CGRectMake(receiptOriginalFrame.origin.x, receiptOriginalFrame.origin.y+67, receiptOriginalFrame.size.width, receiptOriginalFrame.size.height);
-    [self.view addSubview:intermediateView];
-    
-    UIImageView *newView = [[UIImageView alloc] initWithFrame:CGRectMake(receiptOriginalFrame.origin.x, receiptOriginalFrame.origin.y+67, receiptOriginalFrame.size.width, receiptOriginalFrame.size.height)];
-    
-    newView.backgroundColor = [UIColor clearColor];
-    newView.image = [UIImage imageNamed:@"ReceiptBigView2"];
-    newView.layer.opacity = 0.0;
-    
-    UIView *dimmingView = [[UIView alloc] initWithFrame:CGRectMake(0, -500, 3000, 3000)];
-    dimmingView.backgroundColor = [UIColor colorWithRed:84/255.0 green:82/255.0 blue:82/255.0 alpha:1.0];
-    dimmingView.layer.opacity = 0.0;
-    
-    [self.view addSubview:dimmingView];
-    [self.view addSubview:newView];
-    
-    [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        dimmingView.layer.opacity = 0.2;
-        newView.frame = CGRectMake(180, 0, 650, 528);
-        newView.layer.opacity = 1.0;
-        intermediateView.layer.opacity = 0.0;
-    } completion:^(BOOL finished) {
-        NSLog(@"Done");
-    }];
-    
+    if (specifiedReceipt != nil)
+    {
+        //Push the info into receiptDetails in the following index order:
+        //order number, date ordered, time ordered, orderer's name, orderer's address, orderer's phonenumber, order details
+        
+        CLLocation *destAddress = [[CLLocation alloc]initWithLatitude:[specifiedReceipt getDestination].latitude longitude:[specifiedReceipt getDestination].longitude];
+        
+        [receiptDetails addObject:specifiedReceipt.orderNumber];
+        [receiptDetails addObject:specifiedReceipt.orderDayDate];
+        [receiptDetails addObject:specifiedReceipt.orderTime];
+        [receiptDetails addObject:specifiedReceipt.destinationName];
+        [receiptDetails addObject:destAddress];
+        [receiptDetails addObject:specifiedReceipt.destinationPhoneNumber];
+        //Todo: make sure that orderDetails is okay, since it's a mutable dictionary!!
+        [receiptDetails addObject:specifiedReceipt.orderDetails];
+        
+        if ([receiptDetails count] == 7)
+        {
+            [self.delegate expandReceipt:receiptDetails];
+        }
+        else
+        {
+            NSLog(@"receiptDetails was not populated correctly in ReceiptSlideOutViewController receiptWantsToExpand");
+        }
+    }
 }
 
 

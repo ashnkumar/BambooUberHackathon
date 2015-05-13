@@ -11,10 +11,12 @@
 @protocol ReceiptPanelViewControllerDelegate <NSObject>
 
 - (void)closePanel;
-- (void)movePanelUp;
-- (void)showRequestUberPopup;
+- (void)movePanelAllUp;
 - (void)movePanelOneRow;
 - (void)movePanelTwoRows;
+- (void)requestedUber;
+- (void)expandReceipt:(NSMutableArray *)details;
+//- (void)uberStatusChanged;
 
 // Delegate methods for receipt selection here
 @optional
@@ -28,7 +30,4 @@
 
 - (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath;
 - (void)removeAllCellBorders;
-- (void)fakeReceiptMove:(NSUInteger)section;
-- (void)scrollToSecondRow;
-
 @end
