@@ -52,6 +52,11 @@
     cellBanner.backgroundColor = [AppConstants receiptGreen];
     cellBannerText.text = @"Delivery Complete";
     }
+    
+    else
+    {
+        NSLog(@"receipt cell didn't have a status upon initialization");
+    }
 
     [self.contentView addSubview:cellBanner];
     [self.contentView addSubview:cellBannerText];
@@ -66,7 +71,7 @@
 
 - (void)magicButtonPressed:(id)sender
 {
-    [self.delegate receiptWantsToExpand:self.frame buttonSender:sender];
+    [self.delegate receiptWantsToExpand:self.orderDayDateLabel.text];
 }
 
 

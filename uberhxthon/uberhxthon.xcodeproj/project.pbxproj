@@ -59,7 +59,6 @@
 		B21B3E371AFAFDC1004FEDAC /* route3.txt in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E341AFAFDC1004FEDAC /* route3.txt */; };
 		B21B3E381AFAFDC1004FEDAC /* route4.txt in Resources */ = {isa = PBXBuildFile; fileRef = B21B3E351AFAFDC1004FEDAC /* route4.txt */; };
 		B2202DF01AED93720099F6B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DEF1AED93720099F6B7 /* main.m */; };
-		B2202DF31AED93720099F6B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DF21AED93720099F6B7 /* AppDelegate.m */; };
 		B2202DF61AED93730099F6B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2202DF51AED93730099F6B7 /* ViewController.m */; };
 		B2202DF91AED93730099F6B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2202DF71AED93730099F6B7 /* Main.storyboard */; };
 		B2202DFB1AED93730099F6B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2202DFA1AED93730099F6B7 /* Images.xcassets */; };
@@ -80,6 +79,11 @@
 		C12D6B611AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B5D1AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png */; };
 		C12D6B621AFDBD8B001896F9 /* CompletedDeliveriesSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C12D6B5E1AFDBD8B001896F9 /* CompletedDeliveriesSectionHeader@2x.png */; };
 		C12DE3D11AFE72CA002EE51F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12DE3CF1AFE72CA002EE51F /* LaunchScreen.xib */; };
+		C188E7981B03B19800626CBF /* EmptySectionPlaceholderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C188E7971B03B19800626CBF /* EmptySectionPlaceholderCell.xib */; };
+		C188E79F1B03B55100626CBF /* EmptySectionPlaceholderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C188E79E1B03B55100626CBF /* EmptySectionPlaceholderCell.m */; };
+		C188E7A01B03B55100626CBF /* EmptySectionPlaceholderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C188E79E1B03B55100626CBF /* EmptySectionPlaceholderCell.m */; };
+		C188E7A31B04070400626CBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C188E7A11B04070400626CBF /* AppDelegate.m */; };
+		C188E7A41B04070400626CBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C188E7A11B04070400626CBF /* AppDelegate.m */; };
 		C18B95561AF893DB00E6501E /* uber_route1.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95521AF893DB00E6501E /* uber_route1.png */; };
 		C18B95571AF893DB00E6501E /* uber_route2.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95531AF893DB00E6501E /* uber_route2.png */; };
 		C18B95581AF893DB00E6501E /* uber_route3.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95541AF893DB00E6501E /* uber_route3.png */; };
@@ -159,6 +163,10 @@
 		C1E05DAB1AFC7DF500F6CA46 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E05DA91AFC7DF500F6CA46 /* UICountingLabel.m */; };
 		C1E05DAC1AFC7DF500F6CA46 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E05DA91AFC7DF500F6CA46 /* UICountingLabel.m */; };
 		C1F0CF1D1AF1C6EB00D9F02E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */; };
+		C1F1F41E1B0301BC00CBA3CF /* DetailedReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F1F41C1B0301BC00CBA3CF /* DetailedReceiptViewController.m */; };
+		C1F1F41F1B0301BC00CBA3CF /* DetailedReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F1F41C1B0301BC00CBA3CF /* DetailedReceiptViewController.m */; };
+		C1F1F4201B0301BC00CBA3CF /* DetailedReceiptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F1F41D1B0301BC00CBA3CF /* DetailedReceiptView.xib */; };
+		C1F1F4211B0301BC00CBA3CF /* DetailedReceiptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F1F41D1B0301BC00CBA3CF /* DetailedReceiptView.xib */; };
 		C1FE9F151AF690F400FCA93E /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F141AF690F400FCA93E /* MHTabBarController.m */; };
 		C1FE9F181AF6913E00FCA93E /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F171AF6913E00FCA93E /* DeliveryViewController.m */; };
 		C1FE9F1B1AF6915400FCA93E /* AnalyticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FE9F1A1AF6915400FCA93E /* AnalyticsViewController.m */; };
@@ -362,8 +370,6 @@
 		B2202DEA1AED93710099F6B7 /* uberhxthon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uberhxthon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2202DEE1AED93720099F6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2202DEF1AED93720099F6B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B2202DF11AED93720099F6B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B2202DF21AED93720099F6B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B2202DF41AED93730099F6B7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B2202DF51AED93730099F6B7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B2202DF81AED93730099F6B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -390,6 +396,11 @@
 		C12D6B5D1AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "OutstandingDeliveriesSectionHeader@2x.png"; path = "Assets/2x/OutstandingDeliveriesSectionHeader@2x.png"; sourceTree = "<group>"; };
 		C12D6B5E1AFDBD8B001896F9 /* CompletedDeliveriesSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CompletedDeliveriesSectionHeader@2x.png"; path = "Assets/2x/CompletedDeliveriesSectionHeader@2x.png"; sourceTree = "<group>"; };
 		C12DE3D01AFE72CA002EE51F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C188E7971B03B19800626CBF /* EmptySectionPlaceholderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptySectionPlaceholderCell.xib; path = ReceiptSlideOutView/Views/EmptySectionPlaceholderCell.xib; sourceTree = "<group>"; };
+		C188E79D1B03B55100626CBF /* EmptySectionPlaceholderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmptySectionPlaceholderCell.h; path = ReceiptSlideOutView/Controllers/EmptySectionPlaceholderCell.h; sourceTree = "<group>"; };
+		C188E79E1B03B55100626CBF /* EmptySectionPlaceholderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmptySectionPlaceholderCell.m; path = ReceiptSlideOutView/Controllers/EmptySectionPlaceholderCell.m; sourceTree = "<group>"; };
+		C188E7A11B04070400626CBF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Globals/AppDelegate.m; sourceTree = "<group>"; };
+		C188E7A21B04070400626CBF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Globals/AppDelegate.h; sourceTree = "<group>"; };
 		C18B95521AF893DB00E6501E /* uber_route1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route1.png; path = "Assets/IOS BLACK/uber_route1.png"; sourceTree = "<group>"; };
 		C18B95531AF893DB00E6501E /* uber_route2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route2.png; path = "Assets/IOS BLACK/uber_route2.png"; sourceTree = "<group>"; };
 		C18B95541AF893DB00E6501E /* uber_route3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uber_route3.png; path = "Assets/IOS BLACK/uber_route3.png"; sourceTree = "<group>"; };
@@ -464,6 +475,9 @@
 		C1E05DA91AFC7DF500F6CA46 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICountingLabel.m; path = Pods/UICountingLabel/UICountingLabel.m; sourceTree = "<group>"; };
 		C1E05DAA1AFC7DF500F6CA46 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICountingLabel.h; path = Pods/UICountingLabel/UICountingLabel.h; sourceTree = "<group>"; };
 		C1F0CF1C1AF1C6EB00D9F02E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C1F1F41B1B0301BC00CBA3CF /* DetailedReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailedReceiptViewController.h; path = ReceiptSlideOutView/Controllers/DetailedReceiptViewController.h; sourceTree = "<group>"; };
+		C1F1F41C1B0301BC00CBA3CF /* DetailedReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailedReceiptViewController.m; path = ReceiptSlideOutView/Controllers/DetailedReceiptViewController.m; sourceTree = "<group>"; };
+		C1F1F41D1B0301BC00CBA3CF /* DetailedReceiptView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailedReceiptView.xib; path = ReceiptSlideOutView/Controllers/DetailedReceiptView.xib; sourceTree = "<group>"; };
 		C1FE9F131AF690F400FCA93E /* MHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MHTabBarController.h; path = uberhxthon/TabBar/MHTabBarController/MHTabBarController.h; sourceTree = SOURCE_ROOT; };
 		C1FE9F141AF690F400FCA93E /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MHTabBarController.m; path = uberhxthon/TabBar/MHTabBarController/MHTabBarController.m; sourceTree = SOURCE_ROOT; };
 		C1FE9F161AF6913E00FCA93E /* DeliveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeliveryViewController.h; path = uberhxthon/DeliveryView/Controllers/DeliveryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -534,8 +548,10 @@
 		423234821AF479740073255A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C1F1F41D1B0301BC00CBA3CF /* DetailedReceiptView.xib */,
 				42F45F931AFD448E0027018F /* ReceiptSectionHeaderView.xib */,
 				423234851AF479B50073255A /* ReceiptSlideOutView.xib */,
+				C188E7971B03B19800626CBF /* EmptySectionPlaceholderCell.xib */,
 				42014EC91AF6FBD9005787A6 /* ReceiptCell.xib */,
 				42F45FA61AFD483E0027018F /* ReceiptCellRequestUber.xib */,
 			);
@@ -551,6 +567,10 @@
 				42F45F981AFD44A20027018F /* ReceiptCollectionFlowLayout.m */,
 				423234881AF47A060073255A /* ReceiptSlideOutViewController.h */,
 				423234891AF47A060073255A /* ReceiptSlideOutViewController.m */,
+				C1F1F41B1B0301BC00CBA3CF /* DetailedReceiptViewController.h */,
+				C1F1F41C1B0301BC00CBA3CF /* DetailedReceiptViewController.m */,
+				C188E79D1B03B55100626CBF /* EmptySectionPlaceholderCell.h */,
+				C188E79E1B03B55100626CBF /* EmptySectionPlaceholderCell.m */,
 				42014EC61AF6FA20005787A6 /* ReceiptCell.h */,
 				42014EC71AF6FA20005787A6 /* ReceiptCell.m */,
 				42F45FAC1AFD486D0027018F /* ReceiptCellRequestUber.h */,
@@ -918,8 +938,8 @@
 		B2202E1F1AED96900099F6B7 /* Globals */ = {
 			isa = PBXGroup;
 			children = (
-				B2202DF11AED93720099F6B7 /* AppDelegate.h */,
-				B2202DF21AED93720099F6B7 /* AppDelegate.m */,
+				C188E7A11B04070400626CBF /* AppDelegate.m */,
+				C188E7A21B04070400626CBF /* AppDelegate.h */,
 				4232348B1AF54D600073255A /* AppConstants.h */,
 				4232348C1AF54D600073255A /* AppConstants.m */,
 			);
@@ -1320,7 +1340,9 @@
 				C1FE9F8F1AF69D3500FCA93E /* Receipt_Icon.png in Resources */,
 				C1FE9F271AF691C400FCA93E /* AnalyticsView.xib in Resources */,
 				C18B95591AF893DB00E6501E /* uber_route4.png in Resources */,
+				C1F1F4201B0301BC00CBA3CF /* DetailedReceiptView.xib in Resources */,
 				C12D6B611AFDBD8B001896F9 /* OutstandingDeliveriesSectionHeader@2x.png in Resources */,
+				C188E7981B03B19800626CBF /* EmptySectionPlaceholderCell.xib in Resources */,
 				C103BCEE1AF738FE007D2DE1 /* map-vehicle-icon-sm.png in Resources */,
 				B21B3E381AFAFDC1004FEDAC /* route4.txt in Resources */,
 				42F45FA71AFD483E0027018F /* ReceiptCellRequestUber.xib in Resources */,
@@ -1369,6 +1391,7 @@
 				C1FE9F281AF691C400FCA93E /* AnalyticsView.xib in Resources */,
 				C1FE9FA21AF69D3F00FCA93E /* Receipt_Icon@2x.png in Resources */,
 				C1FE9F9A1AF69D3F00FCA93E /* Bamboo_Logo@2x.png in Resources */,
+				C1F1F4211B0301BC00CBA3CF /* DetailedReceiptView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1382,6 +1405,7 @@
 				42F460071B0170FE0027018F /* AFHTTPRequestOperation.m in Sources */,
 				42F460A61B028FB00027018F /* NXOAuth2FileStreamWrapper.m in Sources */,
 				C1E05DA31AFC7DEB00F6CA46 /* RTSpinKitArcAnimation.m in Sources */,
+				C1F1F41E1B0301BC00CBA3CF /* DetailedReceiptViewController.m in Sources */,
 				C1E05DAB1AFC7DF500F6CA46 /* UICountingLabel.m in Sources */,
 				42F460981B028FB00027018F /* UberPrice.m in Sources */,
 				42F460A41B028FB00027018F /* NXOAuth2Connection.m in Sources */,
@@ -1418,6 +1442,7 @@
 				4232348A1AF47A060073255A /* ReceiptSlideOutViewController.m in Sources */,
 				C1E05D5F1AFC7DC800F6CA46 /* PulsingHaloLayer.m in Sources */,
 				42F4609B1B028FB00027018F /* UberPromotion.m in Sources */,
+				C188E7A31B04070400626CBF /* AppDelegate.m in Sources */,
 				42F460A11B028FB00027018F /* NXOAuth2Account.m in Sources */,
 				42F4600B1B0170FE0027018F /* AFSecurityPolicy.m in Sources */,
 				42F460081B0170FE0027018F /* AFHTTPRequestOperationManager.m in Sources */,
@@ -1430,7 +1455,6 @@
 				C1E05D931AFC7DEB00F6CA46 /* RTSpinKitPulseAnimation.m in Sources */,
 				42F460A31B028FB00027018F /* NXOAuth2Client.m in Sources */,
 				42F4609E1B028FB00027018F /* NSString+NXOAuth2.m in Sources */,
-				B2202DF31AED93720099F6B7 /* AppDelegate.m in Sources */,
 				C1FE9F151AF690F400FCA93E /* MHTabBarController.m in Sources */,
 				C1FE9F1E1AF6916900FCA93E /* SettingsViewController.m in Sources */,
 				42F460A81B028FB00027018F /* NXOAuth2PostBodyStream.m in Sources */,
@@ -1440,6 +1464,7 @@
 				C1E05D501AFC7DAF00F6CA46 /* NSMutableArray+MK_Stack.m in Sources */,
 				C1E05DA11AFC7DEB00F6CA46 /* RTSpinKitBounceAnimation.m in Sources */,
 				42F4609F1B028FB00027018F /* NSURL+NXOAuth2.m in Sources */,
+				C188E79F1B03B55100626CBF /* EmptySectionPlaceholderCell.m in Sources */,
 				42F4600F1B0170FE0027018F /* AFURLSessionManager.m in Sources */,
 				42F4600A1B0170FE0027018F /* AFNetworkReachabilityManager.m in Sources */,
 				42F45FAE1AFD486D0027018F /* ReceiptCellRequestUber.m in Sources */,
@@ -1467,6 +1492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C188E7A41B04070400626CBF /* AppDelegate.m in Sources */,
 				C1E05D601AFC7DC800F6CA46 /* PulsingHaloLayer.m in Sources */,
 				C1E05D8C1AFC7DEB00F6CA46 /* RTSpinKitWordPressAnimation.m in Sources */,
 				C1E05D901AFC7DEB00F6CA46 /* RTSpinKitWanderingCubesAnimation.m in Sources */,
@@ -1484,11 +1510,13 @@
 				C1E05D591AFC7DAF00F6CA46 /* NSArray+MK_Block.m in Sources */,
 				B21B3E291AFA93E5004FEDAC /* routeGenerator.m in Sources */,
 				C1E05DA41AFC7DEB00F6CA46 /* RTSpinKitArcAnimation.m in Sources */,
+				C1F1F41F1B0301BC00CBA3CF /* DetailedReceiptViewController.m in Sources */,
 				C1E05DAC1AFC7DF500F6CA46 /* UICountingLabel.m in Sources */,
 				C1E05D531AFC7DAF00F6CA46 /* NSMutableArray+MK_Queue.m in Sources */,
 				C1E05D3B1AFC7D8E00F6CA46 /* GKLineGraph.m in Sources */,
 				C1E05D9E1AFC7DEB00F6CA46 /* RTSpinKitCircleAnimation.m in Sources */,
 				C1E05D961AFC7DEB00F6CA46 /* RTSpinKitPlaneAnimation.m in Sources */,
+				C188E7A01B03B55100626CBF /* EmptySectionPlaceholderCell.m in Sources */,
 				C1FE9F221AF6918A00FCA93E /* LeftmostViewController.m in Sources */,
 				C1E05D441AFC7DA100F6CA46 /* GKBar.m in Sources */,
 				B2202E0A1AED93740099F6B7 /* uberhxthonTests.m in Sources */,

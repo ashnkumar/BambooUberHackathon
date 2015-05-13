@@ -54,7 +54,7 @@ static NSString * const ClearAllUberPath = @"clear-all-ubers";
                                   initWithTitle:@"Error retrieving receipts"
                                   message:[error localizedDescription]
                                   delegate:nil
-                                  cancelButtonTitle:@"Ok"
+                                  cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
         [alertView show];
     }];

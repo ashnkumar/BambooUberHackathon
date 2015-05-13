@@ -17,6 +17,7 @@
 #import "RequestUberPopupViewController.h"
 #import "PresentingAnimator.h"
 #import "DismissingAnimator.h"
+#import "DetailedReceiptViewController.h"
 
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 #define METERS_PER_MILE 1609.344
@@ -43,7 +44,10 @@
 @property (nonatomic, assign) BOOL showingReceiptPanel;
 @property (nonatomic, assign) BOOL showPanel;
 @property (nonatomic, strong) UITapGestureRecognizer *mapTapRecognizer;
-
+@property (nonatomic, strong) UITapGestureRecognizer *exitDetailedReceiptTapRecognizer;
+@property (nonatomic, strong) UIView *dimView;
+@property (nonatomic, strong) DetailedReceiptViewController *detailedReceipt;
+@property (nonatomic, assign) BOOL showingDetailedReceipt;
 
 // Loading view / spinner
 @property (strong, nonatomic) UIVisualEffectView *blurEffectView;
@@ -74,6 +78,7 @@
     [self setupMapView];
     [self setupReceiptPanelView];
     [self setupGestures];
+    [self setupDetailedReceipt];
 }
 
 -(void)viewWillLayoutSubviews {
@@ -223,9 +228,57 @@
     [self.receiptPanelViewController.view addGestureRecognizer:panRecognizer];
 }
 
+- (void)setupDetailedReceipt
+{
+    self.dimView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+    self.dimView.backgroundColor = [UIColor colorWithRed:84/255.0 green:82/255.0 blue:82/255.0 alpha:1.0];
+    self.dimView.layer.opacity = 0.0;
+    [self.view addSubview:self.dimView];
+    
+    float detailedReceiptWidth = screenWidth * 0.65;
+    float detailedReceiptHeight = screenHeight * 0.5;
+    float detailedReceiptX = screenWidth / 2 - (detailedReceiptWidth / 2);
+    
+    self.detailedReceipt = [[DetailedReceiptViewController alloc]init];
+    self.detailedReceipt.view.frame = CGRectMake(detailedReceiptX, screenHeight * 2 * -1, detailedReceiptWidth, detailedReceiptHeight);
+    self.detailedReceipt.view.layer.opacity = 0;
+    self.showingDetailedReceipt = NO;
+
+    [self.view addSubview:self.detailedReceipt.view];
+}
+
+#pragma mark - Tap Recognizers
 - (void)closePanelDueToMapTouch:(UITapGestureRecognizer *)recognizer
 {
     [self closePanel];
+}
+
+- (void)exitDetailedReceipt:(UITapGestureRecognizer *)recognizer
+{
+    if (self.showingDetailedReceipt)
+    {
+        [self.dimView removeGestureRecognizer:recognizer];
+        float detailedReceiptWidth = screenWidth * 0.65;
+        float detailedReceiptHeight = screenHeight * 0.5;
+        float detailedReceiptX = screenWidth / 2 - (detailedReceiptWidth / 2);
+    
+        [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            //TODO: check if set detailedReceiptViewFrame correctly
+            self.detailedReceipt.view.frame = CGRectMake(detailedReceiptX, screenHeight * 2 * -1, detailedReceiptWidth, detailedReceiptHeight);
+            self.dimView.layer.opacity = 0;
+            
+        } completion:^(BOOL finished) {
+            NSLog(@"displayed detailed receipt view");
+            //TODO: create a gesture recognizer for on top of the dimming view to close the detailed receipt view
+            self.detailedReceipt.view.layer.opacity = 0;
+            self.showingDetailedReceipt = NO;
+        }];
+    }
+    else
+    {
+        NSLog(@"showingDetailedReceipt not set");
+    }
+
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate
@@ -295,7 +348,7 @@
 
 //Move panel up all four rows
 //Used for receiptVC's manual call
-- (void)movePanelUp
+- (void)movePanelAllUp
 {
     [UIView animateWithDuration:SLIDE_TIMING delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                         //receipt panel view controller frame: (0, screenHeight-SIZEOFRECEIPTVIEW)
@@ -318,7 +371,7 @@
                      } completion:^(BOOL finished) {
                          self.receiptPanelViewController.panelUpButton.tag = PANELOPEN;
                          self.showingReceiptPanel = YES;
-                         //[self.receiptPanelViewController scrollToSecondRow];
+                         //[self.receiptPanelViewController scrollToRow:2];
                      }];
     NSLog(@"Moved panel to one row");
 
@@ -340,7 +393,91 @@
 
 }
 
-////////START
+- (void)expandReceipt:(NSMutableArray *)details
+{
+    //Details array contains: order number, date ordered, time ordered, orderer's name, orderer's address, orderer's phonenumber, order details
+    if ([details count] == 10 && !self.showingDetailedReceipt)
+    {
+        //Reset all the necessary views just to make sure
+        self.dimView.frame = CGRectMake(0, 0, screenWidth, screenHeight);
+
+        //Display the xib template with the specified information
+        //TODO: Check if set detailed receipt view correctly
+        float detailedReceiptWidth = screenWidth * 0.65;
+        float detailedReceiptHeight = screenHeight * 0.5;
+        float detailedReceiptX = screenWidth / 2 - (detailedReceiptWidth / 2);
+        float detailedReceiptY = screenHeight / 2 - (detailedReceiptHeight / 2);
+        
+        self.detailedReceipt.view.frame = CGRectMake(detailedReceiptX, screenHeight * 2 * -1, detailedReceiptWidth, detailedReceiptHeight);
+        self.detailedReceipt.view.layer.opacity = 1;
+        
+        //Set the details of the receipt detail
+        [self.detailedReceipt layoutDetails:details];
+        
+        [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            self.dimView.layer.opacity = 0.2;
+            //TODO: check if set detailedReceiptViewFrame correctly
+            self.detailedReceipt.view.frame = CGRectMake(detailedReceiptX, detailedReceiptY, detailedReceiptWidth, detailedReceiptHeight);
+        } completion:^(BOOL finished) {
+            NSLog(@"displayed detailed receipt view");
+            //TODO: create a gesture recognizer for on top of the dimming view to close the detailed receipt view
+            self.exitDetailedReceiptTapRecognizer = [[UITapGestureRecognizer alloc]
+                                     initWithTarget:self
+                                     action:@selector(exitDetailedReceipt:)];
+            
+            [self.dimView addGestureRecognizer:self.exitDetailedReceiptTapRecognizer];
+            
+            self.showingDetailedReceipt = YES;
+        }];
+        
+        /*NSIndexPath *indexPath;
+         
+         indexPath = [self.collectionView
+         indexPathForItemAtPoint:[self.collectionView
+         convertPoint:sender.center
+         fromView:sender.superview]];
+         
+         ReceiptCellRequestUber *receiptCell = (ReceiptCellRequestUber *)[self.collectionView cellForItemAtIndexPath:indexPath];
+         
+         UIView *intermediateView = [receiptCell.contentView snapshotViewAfterScreenUpdates:NO];
+         intermediateView.frame = CGRectMake(receiptOriginalFrame.origin.x, receiptOriginalFrame.origin.y+67, receiptOriginalFrame.size.width, receiptOriginalFrame.size.height);
+         [self.view addSubview:intermediateView];
+         
+         UIImageView *newView = [[UIImageView alloc] initWithFrame:CGRectMake(receiptOriginalFrame.origin.x, receiptOriginalFrame.origin.y+67, receiptOriginalFrame.size.width, receiptOriginalFrame.size.height)];
+         
+         newView.backgroundColor = [UIColor clearColor];
+         newView.image = [UIImage imageNamed:@"ReceiptBigView2"];
+         newView.layer.opacity = 0.0;
+         
+         UIView *dimView = [[UIView alloc] initWithFrame:CGRectMake(0, -500, 3000, 3000)];
+         dimView.backgroundColor = [UIColor colorWithRed:84/255.0 green:82/255.0 blue:82/255.0 alpha:1.0];
+         dimView.layer.opacity = 0.0;
+         
+         [self.view addSubview:dimView];
+         [self.view addSubview:newView];
+         
+         [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+         dimView.layer.opacity = 0.2;
+         newView.frame = CGRectMake(180, 0, 650, 528);
+         newView.layer.opacity = 1.0;
+         intermediateView.layer.opacity = 0.0;
+         } completion:^(BOOL finished) {
+         NSLog(@"Done");
+         }];*/
+    }
+    else {
+        NSLog(@"details array doesn't have correct parameters in expandReceipt or detailedReceiptShowing flag already true");
+    }
+}
+
+-(BOOL)isReceiptPanelShowing
+{
+    if (self.showingReceiptPanel)
+        return YES;
+    else
+        return NO;
+}
+
 //Move panel up or down by selected amount
 -(void)movePanel:(UIPanGestureRecognizer *)recognizer
 {
@@ -369,26 +506,21 @@
     [self.receiptPanelViewController highlightReceiptAtIndexPath:indexPathToSelect];
 }
 
-- (void)showRequestUberPopup {
-    //@TODO: ping request to server here
-    
+- (void)requestedUber {    
     RequestUberPopupViewController *requestUberPopupVC = [RequestUberPopupViewController new];
     requestUberPopupVC.delegate = self;
     
     requestUberPopupVC.transitioningDelegate = self;
     requestUberPopupVC.modalPresentationStyle = UIModalPresentationCustom;
     
-    [self presentViewController:requestUberPopupVC
-                       animated:YES
-                     completion:^{
-                     }];
+    [self presentViewController:requestUberPopupVC animated:YES completion:nil];
 }
 
 //@TODO
 - (void)didCompleteUberRequest
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self.receiptPanelViewController fakeReceiptMove:0];
+    //[self.receiptPanelViewController moveReceipt:0];
 }
 
 
