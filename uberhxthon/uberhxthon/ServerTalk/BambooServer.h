@@ -13,15 +13,18 @@
 + (id)sharedInstance;
 
 // Retrieve a list of all receipts from the server as a dictionary
-// (includes the current status of each receipt)
 - (void)retrieveReceiptsWithCompletion:(void (^)(NSDictionary *receiptsDictionary))completion;
+
+// Retrieve a list of all ubers from the server as a dictionary
+- (void)retrieveUbersWithCompletion:(void (^)(NSDictionary *ubersDictionary))completion;
 
 
 // Request an UberX in SF (only supported product) with given coordinates
 - (void)requestUberWithStartingLatitude:(NSNumber *)startingLatitude
                       startingLongitude:(NSNumber *)startingLongitude
                          endingLatitude:(NSNumber *)endingLatitude
-                        endingLongitude:(NSNumber *)endingLongitude;
+                        endingLongitude:(NSNumber *)endingLongitude
+                            orderNumber:(int)orderNumber;
 
 
 @end
