@@ -56,7 +56,6 @@
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     
-    
     // To test that BambooServer methods work:
 //    [self fakeReceiptsRetrieval];
 //    [self fakeUbersRetrieval];
@@ -64,9 +63,17 @@
 //    [self getSingleUber];
 //    [self resetAllReceipts];
 //    [self clearAllUbers];
+//    [self sandboxUberRequest];
+//    [self getReceiptUpdates];
 
-    
     return YES;
+}
+
+- (void)getReceiptUpdates
+{
+    [[BambooServer sharedInstance] retrieveReceiptUpdatesWithCompletion:^(NSDictionary *receiptUpdatesDic) {
+        NSLog(@"Updates are: %@", receiptUpdatesDic);
+    }];
 }
 
 - (void)fakeReceiptsRetrieval
@@ -91,7 +98,7 @@
                                                  startingLongitude:@(122.4070723)
                                                     endingLatitude:@(37.7901811)
                                                    endingLongitude:@(122.4070723)
-                                                       orderNumber:59
+                                                       orderNumber:49
                                                         completion:^(BOOL requestSuccess) {
                                                             if (requestSuccess) {
                                                                 NSLog(@"SUCCESSFULLY REQUESTED UBER");
@@ -104,9 +111,21 @@
                                                        }];
 }
 
+- (void)sandboxUberRequest
+{
+    [[BambooServer sharedInstance] requestSandboxUberWithStartingLatitude:@(37.7901811)
+                                                 startingLongitude:@(122.4070723)
+                                                    endingLatitude:@(37.7901811)
+                                                   endingLongitude:@(122.4070723)
+                                                       orderNumber:53
+                                                        completion:^(BOOL requestSuccess) {
+                                                            NSLog(@"Completed");
+                                                        }];
+}
+
 - (void)getSingleUber
 {
-    [[BambooServer sharedInstance] retrieveSingleUberStatusWithOrderNumber:59 completion:^(NSString *uberStatus) {
+    [[BambooServer sharedInstance] retrieveSingleUberStatusWithOrderNumber:48 completion:^(NSString *uberStatus) {
         NSLog(@"Uber status is %@", uberStatus);
     }];
 }

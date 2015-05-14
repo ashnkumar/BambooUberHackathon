@@ -21,6 +21,7 @@ static NSString * const GetSingleUberPath = @"get-single-uber";
 static NSString * const ResetReceiptsPath = @"reset-all-receipts";
 static NSString * const ClearAllUberPath = @"clear-all-ubers";
 BOOL succeededInConnectingToServer;
+static NSString * const GetReceiptUpdatesPath = @"get-receipt-updates";
 
 
 @implementation BambooServer
@@ -99,7 +100,6 @@ BOOL succeededInConnectingToServer;
                                      completion:(void (^)(NSString *uberStatus))completion
 {
     NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, GetSingleUberPath];
-//    NSURL *url = [NSURL URLWithString:urlString];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
@@ -163,6 +163,46 @@ BOOL succeededInConnectingToServer;
                                    orderNumber:(int)orderNumber
                                     completion:(void (^)(BOOL requestSuccess))completion
 {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *params = @{@"startingLatitude": startingLatitude,
+                             @"startingLongitude": startingLongitude,
+                             @"endingLatitude": endingLatitude,
+                             @"endingLongitude": endingLongitude,
+                             @"orderNumber": [@(orderNumber) stringValue]};
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, SandboxRequestUberPath];
+    
+    [manager POST:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary *response = (NSDictionary *)responseObject;
+        NSLog(@"Response is: %@", response);
+    }
+     
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                   initWithTitle:@"Error Requesting Uber"
+                                   message:[error localizedDescription]
+                                   delegate:nil
+                                   cancelButtonTitle:@"Ok"
+                                   otherButtonTitles:nil];
+        [alertView show];
+    }];
+    
+}
+
+- (void)retrieveReceiptUpdatesWithCompletion:(void (^)(NSDictionary *receiptUpdatesDic))completion
+{
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, GetReceiptUpdatesPath];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager GET:urlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *response = (NSDictionary *)responseObject;
+        completion(response);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", [error localizedDescription]);
+    }];
     
 }
 
