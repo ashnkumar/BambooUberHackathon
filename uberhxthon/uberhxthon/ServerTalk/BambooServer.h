@@ -22,6 +22,9 @@
 - (void)retrieveSingleUberStatusWithOrderNumber:(int)orderNumber
                                      completion:(void (^)(NSString *uberStatus))completion;
 
+- (void)retrieveReceiptUpdatesWithCompletion:(void (^)(NSDictionary *receiptUpdatesDic))completion;
+
+
 // Reset all receipts back to the original JSON dummy data
 - (void)resetAllReceipts;
 
