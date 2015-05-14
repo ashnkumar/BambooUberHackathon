@@ -91,12 +91,22 @@
                                                  startingLongitude:@(122.4070723)
                                                     endingLatitude:@(37.7901811)
                                                    endingLongitude:@(122.4070723)
-                                                       orderNumber:7];
+                                                       orderNumber:59
+                                                        completion:^(BOOL requestSuccess) {
+                                                            if (requestSuccess) {
+                                                                NSLog(@"SUCCESSFULLY REQUESTED UBER");
+                                                            }
+                                                            else {
+                                                                NSLog(@"DID NOT SUCCESSFULLY REQUEST UBER");
+                                                            }
+
+
+                                                       }];
 }
 
 - (void)getSingleUber
 {
-    [[BambooServer sharedInstance] retrieveSingleUberStatusWithOrderNumber:53 completion:^(NSString *uberStatus) {
+    [[BambooServer sharedInstance] retrieveSingleUberStatusWithOrderNumber:59 completion:^(NSString *uberStatus) {
         NSLog(@"Uber status is %@", uberStatus);
     }];
 }

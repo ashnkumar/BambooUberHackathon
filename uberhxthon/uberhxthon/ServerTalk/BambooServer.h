@@ -30,11 +30,22 @@
 
 
 // Request an UberX in SF (only supported product) with given coordinates
+// NOTE: This is requesting a fake uber (not even sandbox, completely fakery)
 - (void)requestUberWithStartingLatitude:(NSNumber *)startingLatitude
                       startingLongitude:(NSNumber *)startingLongitude
                          endingLatitude:(NSNumber *)endingLatitude
                         endingLongitude:(NSNumber *)endingLongitude
-                            orderNumber:(int)orderNumber;
+                            orderNumber:(int)orderNumber
+                             completion:(void (^)(BOOL requestSuccess))completion;
 
+
+// Request an UberX in SF (only supported product) with given coordinates
+// NOTE: This is requesting an uber through sandbox)
+- (void)requestSandboxUberWithStartingLatitude:(NSNumber *)startingLatitude
+                             startingLongitude:(NSNumber *)startingLongitude
+                                endingLatitude:(NSNumber *)endingLatitude
+                               endingLongitude:(NSNumber *)endingLongitude
+                                   orderNumber:(int)orderNumber
+                                    completion:(void (^)(BOOL requestSuccess))completion;
 
 @end

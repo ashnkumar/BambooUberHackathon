@@ -16,6 +16,7 @@ static NSString * const BaseURLString = @"https://bamboo-app.herokuapp.com/";
 static NSString * const ReceiptsPath = @"fake-get-all-receipts";
 static NSString * const UbersPath = @"fake-get-all-ubers";
 static NSString * const RequestUberPath = @"fake-request-uber";
+static NSString * const SandboxRequestUberPath = @"sandbox-request-uber";
 static NSString * const GetSingleUberPath = @"get-single-uber";
 static NSString * const ResetReceiptsPath = @"reset-all-receipts";
 static NSString * const ClearAllUberPath = @"clear-all-ubers";
@@ -119,19 +120,26 @@ static NSString * const ClearAllUberPath = @"clear-all-ubers";
                          endingLatitude:(NSNumber *)endingLatitude
                         endingLongitude:(NSNumber *)endingLongitude
                             orderNumber:(int)orderNumber
+                             completion:(void (^)(BOOL requestSuccess))completion;
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *params = @{@"startingLatitude": startingLatitude,
                              @"startingLongitude": startingLongitude,
                              @"endingLatitude": endingLatitude,
                              @"endingLongitude": endingLongitude,
-                             @"orderNumber": @(orderNumber)};
+                             @"orderNumber": [@(orderNumber) stringValue]};
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, RequestUberPath];
     
     [manager POST:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSLog(@"This is what I got: %@", responseObject);
+        NSDictionary *response = (NSDictionary *)responseObject;
+        NSLog(@"Response is: %@", response);
+        if ([response[@"uberRequest"] isEqualToString:@"success"]) {
+            completion(YES);
+        } else {
+            completion(NO);
+        }
     }
      
     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -143,6 +151,16 @@ static NSString * const ClearAllUberPath = @"clear-all-ubers";
                                   otherButtonTitles:nil];
         [alertView show];
     }];
+    
+}
+
+- (void)requestSandboxUberWithStartingLatitude:(NSNumber *)startingLatitude
+                             startingLongitude:(NSNumber *)startingLongitude
+                                endingLatitude:(NSNumber *)endingLatitude
+                               endingLongitude:(NSNumber *)endingLongitude
+                                   orderNumber:(int)orderNumber
+                                    completion:(void (^)(BOOL requestSuccess))completion
+{
     
 }
 
