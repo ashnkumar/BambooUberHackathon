@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppConstants.h"
 
 //Don't do anything special, just display the xib
 

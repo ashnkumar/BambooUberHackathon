@@ -232,11 +232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453232630.551475"
+            timestampString = "453250560.134183"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-populateReceipts"
             landmarkType = "5">
          </BreakpointContent>
@@ -280,11 +280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453249514.119242"
+            timestampString = "453251884.512406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -296,11 +296,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453249514.119242"
+            timestampString = "453251884.512406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
             landmarkName = "-receiptWantsToExpand:"
             landmarkType = "5">
          </BreakpointContent>
@@ -328,11 +328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453249514.119242"
+            timestampString = "453251884.512406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "-findReceiptWithOrderNum:inSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -344,11 +344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453249514.119242"
+            timestampString = "453251943.104304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
+            startingLineNumber = "449"
+            endingLineNumber = "449"
             landmarkName = "-receiptWantsToExpand:"
             landmarkType = "5">
          </BreakpointContent>
@@ -360,11 +360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453249514.119242"
+            timestampString = "453251943.104304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "442"
-            endingLineNumber = "442"
+            startingLineNumber = "451"
+            endingLineNumber = "451"
             landmarkName = "-receiptWantsToExpand:"
             landmarkType = "5">
          </BreakpointContent>
@@ -376,11 +376,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453249514.119242"
+            timestampString = "453251884.512406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "-findReceiptWithOrderNum:inSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -408,11 +408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453249514.119242"
+            timestampString = "453251884.512406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -424,12 +424,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453249514.119242"
+            timestampString = "453251884.512406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uberhxthon/ReceiptSlideOutView/Controllers/EmptySectionPlaceholderCell.m"
+            timestampString = "453251884.512406"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "-awakeFromNib"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

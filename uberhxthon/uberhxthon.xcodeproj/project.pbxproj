@@ -84,6 +84,7 @@
 		C188E7A01B03B55100626CBF /* EmptySectionPlaceholderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C188E79E1B03B55100626CBF /* EmptySectionPlaceholderCell.m */; };
 		C188E7A31B04070400626CBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C188E7A11B04070400626CBF /* AppDelegate.m */; };
 		C188E7A41B04070400626CBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C188E7A11B04070400626CBF /* AppDelegate.m */; };
+		C188E7A51B040E8F00626CBF /* EmptySectionPlaceholderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C188E7971B03B19800626CBF /* EmptySectionPlaceholderCell.xib */; };
 		C18B95561AF893DB00E6501E /* uber_route1.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95521AF893DB00E6501E /* uber_route1.png */; };
 		C18B95571AF893DB00E6501E /* uber_route2.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95531AF893DB00E6501E /* uber_route2.png */; };
 		C18B95581AF893DB00E6501E /* uber_route3.png in Resources */ = {isa = PBXBuildFile; fileRef = C18B95541AF893DB00E6501E /* uber_route3.png */; };
@@ -1392,6 +1393,7 @@
 				C1FE9FA21AF69D3F00FCA93E /* Receipt_Icon@2x.png in Resources */,
 				C1FE9F9A1AF69D3F00FCA93E /* Bamboo_Logo@2x.png in Resources */,
 				C1F1F4211B0301BC00CBA3CF /* DetailedReceiptView.xib in Resources */,
+				C188E7A51B040E8F00626CBF /* EmptySectionPlaceholderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
