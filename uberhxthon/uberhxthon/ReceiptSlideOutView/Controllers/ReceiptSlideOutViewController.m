@@ -182,7 +182,10 @@
 {
     UICollectionViewCell *cell = nil;
     NSLog(@"INDEXPATH SECTION: %i", indexPath.section);
-    /*if ([self.receiptData[indexPath.section] count] > 0)
+    
+    
+    
+    if ([self.receiptData[indexPath.section] count] > 0)
     {
         ReceiptObject *receiptObject = self.receiptData[indexPath.section][indexPath.row];
         NSString *orderStatus = receiptObject.orderStatus;
@@ -223,12 +226,12 @@
 
     }
     else
-    {*/
-        //Display the placeholder cell
-        EmptySectionPlaceholderCell *rucell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell3" forIndexPath:indexPath];
-        cell = rucell;
-        NSLog(@"inside placeholdercell");
-   // }
+    {
+//        Display the placeholder cell
+//        EmptySectionPlaceholderCell *rucell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SampleCell3" forIndexPath:indexPath];
+//        cell = rucell;
+//        NSLog(@"inside placeholdercell");
+    }
 
     return cell;
 }
