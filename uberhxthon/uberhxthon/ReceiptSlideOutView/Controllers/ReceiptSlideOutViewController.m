@@ -316,24 +316,61 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     return receiptFound;
 }
 
-- (void)requestUberWithReceipt:(NSString *)receipt
+- (NSIndexPath *)findIndexWithOrderNum:(int)orderNum inSection:(int)requestSection
+{
+    NSIndexPath *receiptFound = nil;
+    //TODO: fix with requestSection so don't have to iterate through entire data structure holding receipts
+    int sectionCount = 0;
+    int rowCount = 0;
+    for (NSMutableArray *arr in self.receiptData)
+    {
+        for (ReceiptObject *receipt in arr)
+        {
+            int receiptOrderNum = [receipt.orderNumber intValue];
+            NSLog(@"%i ", receiptOrderNum);
+            if (receiptOrderNum == orderNum)
+            {
+                receiptFound = [NSIndexPath indexPathForRow:rowCount inSection:sectionCount]; //TODO: Test is correct
+                return receiptFound;
+            }
+            rowCount ++;
+        }
+        sectionCount ++;
+    }
+    return receiptFound;
+}
+
+- (void)requestUberWithReceipt:(NSString *)receiptNumber
 {
     //Find the receipt with correct order num
-    int orderNum = [receipt intValue];
+    int orderNum = [receiptNumber intValue];
     
-    ReceiptObject *requestedReceipt = [self findReceiptWithOrderNum:orderNum inSection:0];//TODO fix section
-    if (requestedReceipt != nil)
+    NSIndexPath *requestedReceiptIndexPath = [self findIndexWithOrderNum:orderNum inSection:0];//TODO fix section
+    
+    if (requestedReceiptIndexPath != nil)
     {
-        //Send a request for an Uber through Bamboo's server, specifying:
-        /*
-         product requested
-         start latitude, longitude
-         final destination latitude, longitude
-         */
-        NSLog(@"requested an uber successfuly retrieved in receiptslideoutviewcontroller with order num: %@", requestedReceipt.orderNumber);
-        
-        //Update the Delivery View UI
-        //[self.delegate requestedUber];
+        //Get the receipt
+        ReceiptObject *requestedReceipt = self.receiptData[requestedReceiptIndexPath.section][requestedReceiptIndexPath.row];
+        if (requestedReceipt != nil)
+        {
+            //Send a request for an Uber through Bamboo's server, specifying:
+            /*
+             product requested
+             start latitude, longitude
+             final destination latitude, longitude
+             */
+            
+            
+            //Update the Delivery View UI
+            [self.delegate requestedUber];
+            
+            [self pingForUpdate:requestedReceiptIndexPath];
+            NSLog(@"requested an uber successfuly retrieved in receiptslideoutviewcontroller");
+        }
+        else
+        {
+            NSLog(@"error grabbing requested receipt from nsindexpath inside requestuberwithrecept");
+        }
     }
     else
     {
@@ -343,6 +380,46 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 
 #pragma mark - Helpers
+- (void)pingForUpdate:(NSIndexPath *)requestedReceiptIndexPath
+{
+    ReceiptObject *requestedReceipt = self.receiptData[requestedReceiptIndexPath.section][requestedReceiptIndexPath.row];
+    //Ping for an update for the receipt
+    BOOL updated = NO;
+    
+    //If received an update, update the receipt object and the UI
+    if (updated)
+    {
+        //TODO: test if correctly deletes and adds objects from and to mutable arrays
+        if ([requestedReceipt.orderStatus isEqualToString:kStatusRequestUber])
+        {
+            requestedReceipt.orderStatus = kStatusUberRequested;
+            
+            [self.delegate removeRequestingReceiptStatusVC];
+            
+            //Now update arrays and the UI (move the receipt)
+            [self moveReceipt:requestedReceiptIndexPath];
+        }
+        else if ([requestedReceipt.orderStatus isEqualToString:kStatusUberRequested])
+        {
+            requestedReceipt.orderStatus = kStatusOutForDelivery;
+            
+            //Now update arrays and the UI (move the receipt)
+            [self moveReceipt:requestedReceiptIndexPath];
+        }
+        else if ([requestedReceipt.orderStatus isEqualToString:kStatusOutForDelivery])
+        {
+            requestedReceipt.orderStatus = kStatusOrderComplete;
+            
+            //Now update arrays and the UI (move the receipt)
+            [self moveReceipt:requestedReceiptIndexPath];
+        }
+        else
+        {
+            NSLog(@"requestedreceipt order status error in pingForUpdate");
+        }
+    }
+}
+
 - (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Highlighting cell: %@", indexPath);
@@ -378,12 +455,18 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 }
 
 #pragma mark - Object insert/remove
-//TODO: use when a receipt's status changes
+//Move a receipt when a receipt's status changes
 - (void)moveReceipt:(NSIndexPath *)indexPath
 {
     ReceiptObject *receiptObject = self.receiptData[indexPath.section][indexPath.row];
     if (receiptObject != nil)
     {
+        if (![self.delegate isReceiptPanelShowing])
+        {
+            //Display the panel
+            [self.delegate movePanelTwoRows];
+        }
+        
         //receiptObject's orderStatus should already be moved by this point
         //Reload with the updated receipt's UI
         [self.collectionView reloadData];

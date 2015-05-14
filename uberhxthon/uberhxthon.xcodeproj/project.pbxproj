@@ -562,12 +562,12 @@
 		423234871AF479EC0073255A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				423234881AF47A060073255A /* ReceiptSlideOutViewController.h */,
+				423234891AF47A060073255A /* ReceiptSlideOutViewController.m */,
 				42F45F951AFD44A20027018F /* ReceiptSectionHeaderView.h */,
 				42F45F961AFD44A20027018F /* ReceiptSectionHeaderView.m */,
 				42F45F971AFD44A20027018F /* ReceiptCollectionFlowLayout.h */,
 				42F45F981AFD44A20027018F /* ReceiptCollectionFlowLayout.m */,
-				423234881AF47A060073255A /* ReceiptSlideOutViewController.h */,
-				423234891AF47A060073255A /* ReceiptSlideOutViewController.m */,
 				C1F1F41B1B0301BC00CBA3CF /* DetailedReceiptViewController.h */,
 				C1F1F41C1B0301BC00CBA3CF /* DetailedReceiptViewController.m */,
 				C188E79D1B03B55100626CBF /* EmptySectionPlaceholderCell.h */,

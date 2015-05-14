@@ -48,6 +48,7 @@
 @property (nonatomic, strong) UIView *dimView;
 @property (nonatomic, strong) DetailedReceiptViewController *detailedReceipt;
 @property (nonatomic, assign) BOOL showingDetailedReceipt;
+@property (nonatomic, strong) RequestUberPopupViewController *requestUberPopupVC;
 
 // Loading view / spinner
 @property (strong, nonatomic) UIVisualEffectView *blurEffectView;
@@ -373,8 +374,6 @@
                          self.showingReceiptPanel = YES;
                          //[self.receiptPanelViewController scrollToRow:2];
                      }];
-    NSLog(@"Moved panel to one row");
-
 }
 
 //Move panel up two rows
@@ -389,8 +388,6 @@
                          self.showingReceiptPanel = YES;
                      }];
     
-    NSLog(@"Moved panel to two rows");
-
 }
 
 - (void)expandReceipt:(NSMutableArray *)details
@@ -405,8 +402,8 @@
         //TODO: Check if set detailed receipt view correctly
         float detailedReceiptWidth = screenWidth * 0.65;
         float detailedReceiptHeight = screenHeight * 0.5;
-        float detailedReceiptX = screenWidth / 2 - (detailedReceiptWidth / 2);
-        float detailedReceiptY = screenHeight / 2 - (detailedReceiptHeight / 2);
+        float detailedReceiptX = screenWidth / 2 - (detailedReceiptWidth / 50);
+        float detailedReceiptY = screenHeight / 2 - (detailedReceiptHeight / 50);
         
         self.detailedReceipt.view.frame = CGRectMake(detailedReceiptX, screenHeight * 2 * -1, detailedReceiptWidth, detailedReceiptHeight);
         self.detailedReceipt.view.layer.opacity = 1;
@@ -430,40 +427,6 @@
             self.showingDetailedReceipt = YES;
         }];
         
-        /*NSIndexPath *indexPath;
-         
-         indexPath = [self.collectionView
-         indexPathForItemAtPoint:[self.collectionView
-         convertPoint:sender.center
-         fromView:sender.superview]];
-         
-         ReceiptCellRequestUber *receiptCell = (ReceiptCellRequestUber *)[self.collectionView cellForItemAtIndexPath:indexPath];
-         
-         UIView *intermediateView = [receiptCell.contentView snapshotViewAfterScreenUpdates:NO];
-         intermediateView.frame = CGRectMake(receiptOriginalFrame.origin.x, receiptOriginalFrame.origin.y+67, receiptOriginalFrame.size.width, receiptOriginalFrame.size.height);
-         [self.view addSubview:intermediateView];
-         
-         UIImageView *newView = [[UIImageView alloc] initWithFrame:CGRectMake(receiptOriginalFrame.origin.x, receiptOriginalFrame.origin.y+67, receiptOriginalFrame.size.width, receiptOriginalFrame.size.height)];
-         
-         newView.backgroundColor = [UIColor clearColor];
-         newView.image = [UIImage imageNamed:@"ReceiptBigView2"];
-         newView.layer.opacity = 0.0;
-         
-         UIView *dimView = [[UIView alloc] initWithFrame:CGRectMake(0, -500, 3000, 3000)];
-         dimView.backgroundColor = [UIColor colorWithRed:84/255.0 green:82/255.0 blue:82/255.0 alpha:1.0];
-         dimView.layer.opacity = 0.0;
-         
-         [self.view addSubview:dimView];
-         [self.view addSubview:newView];
-         
-         [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-         dimView.layer.opacity = 0.2;
-         newView.frame = CGRectMake(180, 0, 650, 528);
-         newView.layer.opacity = 1.0;
-         intermediateView.layer.opacity = 0.0;
-         } completion:^(BOOL finished) {
-         NSLog(@"Done");
-         }];*/
     }
     else {
         NSLog(@"details array doesn't have correct parameters in expandReceipt or detailedReceiptShowing flag already true");
@@ -472,10 +435,7 @@
 
 -(BOOL)isReceiptPanelShowing
 {
-    if (self.showingReceiptPanel)
-        return YES;
-    else
-        return NO;
+    return self.showingReceiptPanel;
 }
 
 //Move panel up or down by selected amount
@@ -506,21 +466,38 @@
     [self.receiptPanelViewController highlightReceiptAtIndexPath:indexPathToSelect];
 }
 
-- (void)requestedUber {    
-    RequestUberPopupViewController *requestUberPopupVC = [RequestUberPopupViewController new];
-    requestUberPopupVC.delegate = self;
-    
-    requestUberPopupVC.transitioningDelegate = self;
-    requestUberPopupVC.modalPresentationStyle = UIModalPresentationCustom;
-    
-    [self presentViewController:requestUberPopupVC animated:YES completion:nil];
+//Present the Uber-requesting popup until that receipt's status changes on the server
+- (void)requestedUber
+{
+    //Display the dimming view
+    [UIView animateWithDuration:.2 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.dimView.layer.opacity = 0.2;
+    } completion:^(BOOL finished) {
+        NSLog(@"displaying the requestuberpopup");
+        //Now display the popup
+        self.requestUberPopupVC = [[RequestUberPopupViewController alloc]init];
+        self.requestUberPopupVC.delegate = self;
+        self.requestUberPopupVC.transitioningDelegate = self;
+        self.requestUberPopupVC.modalPresentationStyle = UIModalPresentationCustom;
+        
+        [self presentViewController:self.requestUberPopupVC animated:YES completion:nil];
+    }];
 }
 
-//@TODO
-- (void)didCompleteUberRequest
+- (void)removeRequestingReceiptStatusVC
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    //[self.receiptPanelViewController moveReceipt:0];
+    [self.requestUberPopupVC uberRequestComplete];
+}
+
+//Remove the Uber-requesting popup
+- (void)dismissedRequestUberPopup
+{
+    [UIView animateWithDuration:.2 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.dimView.layer.opacity = 0;
+    } completion:^(BOOL finished) {
+        NSLog(@"removing the requestuberpopup");
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 

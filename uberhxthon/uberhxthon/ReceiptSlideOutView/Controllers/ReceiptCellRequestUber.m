@@ -32,8 +32,15 @@
 
 - (void)requestUberClicked:(id)sender
 {
-    // @TODO: Change this to actual order number selected
-    [self.delegate requestUberWithReceipt:self.orderNumberLabel.text];
+    if ([self.orderNumberLabel.text length] > 1)
+    {
+        NSString *orderNumberStripped = [self.orderNumberLabel.text substringFromIndex:1];
+        [self.delegate requestUberWithReceipt:orderNumberStripped];
+    }
+    else
+    {
+        NSLog(@"error in order number label inside requestUberClicked");
+    }
 }
 
 - (void)updateCellHeading

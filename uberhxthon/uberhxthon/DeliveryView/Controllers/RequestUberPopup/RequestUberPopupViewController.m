@@ -28,6 +28,7 @@
     self.view.layer.cornerRadius = 5;
     self.view.layer.masksToBounds = YES;
     
+    //TODO: make this dynamic to the frame of iPad
     self.requestStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 7, 200, 40)];
     self.requestStatusLabel.text = @"Requesting Uber...";
     self.requestStatusLabel.font = [UIFont fontWithName:@"OpenSans" size:20.0];
@@ -41,7 +42,7 @@
     [self.view addSubview:self.requestStatusLabel];
     [self.view addSubview:self.requestingSpinner];
     
-    [self performSelector:@selector(uberRequestComplete) withObject:self afterDelay:3.0];
+   // [self performSelector:@selector(uberRequestComplete) withObject:self afterDelay:3.0];
     
 }
 
@@ -58,7 +59,7 @@
 
 - (void)dismissMyself
 {
-    [self.delegate didCompleteUberRequest];
+    [self.delegate dismissedRequestUberPopup];
 }
 
 @end

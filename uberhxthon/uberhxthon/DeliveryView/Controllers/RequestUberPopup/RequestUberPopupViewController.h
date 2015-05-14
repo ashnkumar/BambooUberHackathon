@@ -10,11 +10,12 @@
 
 @protocol RequestPopupViewControllerDelegate <NSObject>
 
-- (void)didCompleteUberRequest;
+- (void)dismissedRequestUberPopup;
 
 @end
 
 @interface RequestUberPopupViewController : UIViewController
 @property (nonatomic, assign) id<RequestPopupViewControllerDelegate> delegate;
 
+-(void)uberRequestComplete;
 @end
