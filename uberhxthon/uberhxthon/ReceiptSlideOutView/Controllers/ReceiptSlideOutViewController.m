@@ -21,6 +21,15 @@
 #define kStatusUberRequested @"uberRequested"
 #define kStatusOutForDelivery @"outForDelivery"
 #define kStatusOrderComplete @"deliveryComplete"
+
+#define kUberStatusProcessing @"processing"
+#define kUberStatusAccepted @"accepted"
+#define kUberStatusArriving @"arriving"
+#define kUberStatusInProgress @"in_progress"
+#define kUberStatusDriverCanceled @"driver_canceled"
+#define kUberStatusCompleted @"completed"
+
+
 #define PANELCLOSED 1
 #define PANELOPEN 0
 
@@ -78,7 +87,7 @@
     NSMutableArray *outForDeliveryArr = [NSMutableArray new];
     NSMutableArray *orderCompleteArr = [NSMutableArray new];
 
-/*    [[BambooServer sharedInstance]retrieveReceiptsWithCompletion:^(NSDictionary *receiptsDictionary) {
+   [[BambooServer sharedInstance]retrieveReceiptsWithCompletion:^(NSDictionary *receiptsDictionary) {
         NSLog(@"%@", receiptsDictionary);
         for (NSString *receiptKey in [receiptsDictionary allKeys])
         {
@@ -137,8 +146,8 @@
         [self.collectionView reloadData];
     }];
     
-    if (![[BambooServer sharedInstance]succededInConnectingToServer])
-    {*/
+    /*if (![[BambooServer sharedInstance]succededInConnectingToServer])
+    {
         //Temporary, read from a static file
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"receiptData" ofType:@"json"];
         NSData *data = [NSData dataWithContentsOfFile:filePath];
@@ -200,7 +209,7 @@
         [self.receiptData addObject:orderCompleteArr];
         [self.collectionView reloadData];
 
-//    }
+    }*/
 }
 
 /*- (IBAction)btnMovePanelUp:(id)sender
@@ -418,19 +427,19 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
              start latitude, longitude
              final destination latitude, longitude
              */
-            /*float usersLat = [self.delegate getUsersLocationLatitude];
+            float usersLat = [self.delegate getUsersLocationLatitude];
             float usersLon = [self.delegate getUsersLocationLongitude];
             float requestedLat = [requestedReceipt getDestination].latitude;
             float requestedLon = [requestedReceipt getDestination].longitude;
             
-            [[BambooServer sharedInstance]requestUberWithStartingLatitude:[NSNumber numberWithFloat:usersLat] startingLongitude:[NSNumber numberWithFloat:usersLon] endingLatitude:[NSNumber numberWithFloat:requestedLat] endingLongitude:[NSNumber numberWithFloat:requestedLon] orderNumber:orderNum completion:^(BOOL requestSuccess) {*/
+            [[BambooServer sharedInstance]requestUberWithStartingLatitude:[NSNumber numberWithFloat:usersLat] startingLongitude:[NSNumber numberWithFloat:usersLon] endingLatitude:[NSNumber numberWithFloat:requestedLat] endingLongitude:[NSNumber numberWithFloat:requestedLon] orderNumber:orderNum completion:^(BOOL requestSuccess) {
                 
                 //Update the Delivery View UI that a request is in process
-                //[self.delegate requestedUber]; UNCOMMENT
+                [self.delegate requestedUber];
                 
                 [self pingForUpdate:requestedReceiptIndexPath];
                 NSLog(@"requested an uber successfuly retrieved in receiptslideoutviewcontroller");
-            //}];
+            }];
             
         }
         else
@@ -453,38 +462,46 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     NSString *originalStatus = requestedReceipt.orderStatus;
     //Ping for an update for the receipt
     
-    /*[[BambooServer sharedInstance]retrieveSingleUberStatusWithOrderNumber:orderNum completion:^(NSString *uberStatus) {
+    [[BambooServer sharedInstance]retrieveSingleUberStatusWithOrderNumber:orderNum completion:^(NSString *uberStatus) {
         NSLog(@"uberstatus: %@", uberStatus);
-        if ([uberStatus isEqualToString:kStatusUberRequested] && [originalStatus isEqualToString:kStatusRequestUber])
+        if ([uberStatus isEqualToString:@"accepted"] && [originalStatus isEqualToString:kStatusRequestUber])
         {
             NSLog(@"receipts status was updated to uberrequested");
-            //[self.delegate removeRequestingReceiptStatusVC]; UNCOMMENT
+            [self.delegate removeRequestingReceiptStatusVC];
             
             requestedReceipt.orderStatus = kStatusUberRequested;
             //Now update arrays and the UI (move the receipt)
             [self moveReceipt:requestedReceiptIndexPath];
         }
-        else if ([uberStatus isEqualToString:kStatusOutForDelivery] && [originalStatus isEqualToString:kStatusUberRequested])
+        else if ([uberStatus isEqualToString:kUberStatusAccepted] && [originalStatus isEqualToString:kStatusUberRequested])
+        {
+            //TODO: display that the uber is arriving
+        }
+        else if ([uberStatus isEqualToString:kUberStatusInProgress] && [originalStatus isEqualToString:kStatusUberRequested])
         {
             NSLog(@"receipts status was updated to outfordelivery");
             //requestedReceipt.orderStatus = kStatusOutForDelivery;
             //[self moveReceipt:requestedReceiptIndexPath];
         }
-        else if ([uberStatus isEqualToString:kStatusOrderComplete] && [originalStatus isEqualToString:kStatusOutForDelivery])
+        else if ([uberStatus isEqualToString:kUberStatusCompleted] && [originalStatus isEqualToString:kStatusOutForDelivery])
         {
             NSLog(@"receipts status was updated to ordercomplete");
             //requestedReceipt.orderStatus = kStatusOrderComplete;
             //[self moveReceipt:requestedReceiptIndexPath];
+        }
+        else if ([uberStatus isEqualToString:kUberStatusDriverCanceled])
+        {
+            //TODO: display that the driver canceled
         }
         else
         {
             NSLog(@"still processing, pinging again");
             [self performSelector:@selector(pingForUpdate:) withObject:requestedReceiptIndexPath afterDelay:1];
         }
-    }];*/
-    requestedReceipt.orderStatus = kStatusUberRequested;
+    }];
+    /*requestedReceipt.orderStatus = kStatusUberRequested;
     //Now update arrays and the UI (move the receipt)
-    [self moveReceipt:requestedReceiptIndexPath];
+    [self moveReceipt:requestedReceiptIndexPath];*/
 }
 
 - (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath
