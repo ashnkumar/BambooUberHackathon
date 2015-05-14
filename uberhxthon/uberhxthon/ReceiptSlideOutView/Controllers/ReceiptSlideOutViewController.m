@@ -78,13 +78,7 @@
     NSMutableArray *outForDeliveryArr = [NSMutableArray new];
     NSMutableArray *orderCompleteArr = [NSMutableArray new];
 
-    //Get data from json file here
-    /*NSString *filePath = [[NSBundle mainBundle] pathForResource:@"receiptData" ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    NSArray *receipts = [json objectForKey:@"receipts"];*/
-    
-    [[BambooServer sharedInstance]retrieveReceiptsWithCompletion:^(NSDictionary *receiptsDictionary) {
+/*    [[BambooServer sharedInstance]retrieveReceiptsWithCompletion:^(NSDictionary *receiptsDictionary) {
         NSLog(@"%@", receiptsDictionary);
         for (NSString *receiptKey in [receiptsDictionary allKeys])
         {
@@ -142,6 +136,71 @@
         [self.receiptData addObject:orderCompleteArr];
         [self.collectionView reloadData];
     }];
+    
+    if (![[BambooServer sharedInstance]succededInConnectingToServer])
+    {*/
+        //Temporary, read from a static file
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"receiptData" ofType:@"json"];
+        NSData *data = [NSData dataWithContentsOfFile:filePath];
+        NSDictionary *receiptsDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+        for (NSString *receiptKey in [receiptsDictionary allKeys])
+        {
+            NSDictionary *receiptDic = [receiptsDictionary valueForKey:receiptKey];
+            NSString *orderNumber  = receiptDic[@"orderNumber"];
+            NSString *orderDayDate = receiptDic[@"orderDayDate"];
+            NSString *orderTime    = receiptDic[@"orderTime"];
+            NSString *orderStatus  = receiptDic[@"orderStatus"];
+            NSString *destLat = receiptDic[@"destinationLatitude"];
+            NSString *destLon = receiptDic[@"destinationLongitude"];
+            NSString *destAddrLine1 = receiptDic[@"destinationAddressLine1"];
+            NSString *destAddrLine2 = receiptDic[@"destinationAddressLine2"];
+            NSString *destName = receiptDic[@"destinationName"];
+            NSString *destPhone = receiptDic[@"destinationPhoneNum"];
+            NSDictionary *orderDeets = receiptDic[@"orderDetails"];
+            NSString *payType = receiptDic[@"paymentType"];
+            NSString *payDigits = receiptDic[@"paymentLastFourDigits"];
+            
+            //Parse destLoc into coordinates
+            float destLatitude = [destLat floatValue];
+            float destLongitude = [destLon floatValue];
+            //Instantiate a destination
+            CLLocationCoordinate2D destination = CLLocationCoordinate2DMake(destLatitude, destLongitude);
+            
+            //Instantiate the receipt object with all its parameters
+            ReceiptObject *receiptObject = [[ReceiptObject alloc]
+                                            initWithOrderNumber:orderNumber
+                                            orderDayDate:orderDayDate
+                                            orderTime:orderTime
+                                            orderStatus:orderStatus
+                                            destinationName:destName
+                                            destinationAddressLine1:destAddrLine1
+                                            destinationAddressLine2:destAddrLine2
+                                            destinationPhone:destPhone
+                                            orderDetails:orderDeets
+                                            paymentType:payType
+                                            paymentLastDigits:payDigits];
+            
+            [receiptObject setDestination:destination];
+            
+            if ([orderStatus isEqualToString:kStatusRequestUber]) {
+                [requestUberArr addObject:receiptObject];
+            } else if ([orderStatus isEqualToString:kStatusUberRequested]) {
+                [uberRequestedArr addObject:receiptObject];
+            } else if ([orderStatus isEqualToString:kStatusOutForDelivery]) {
+                [outForDeliveryArr addObject:receiptObject];
+            } else if ([orderStatus isEqualToString:kStatusOrderComplete]) {
+                [orderCompleteArr addObject:receiptObject];
+            }
+        }
+        
+        [self.receiptData addObject:requestUberArr];
+        [self.receiptData addObject:uberRequestedArr];
+        [self.receiptData addObject:outForDeliveryArr];
+        [self.receiptData addObject:orderCompleteArr];
+        [self.collectionView reloadData];
+
+//    }
 }
 
 /*- (IBAction)btnMovePanelUp:(id)sender
@@ -176,15 +235,15 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if ([self.receiptData[section] count] > 0)
-    {
+    //if ([self.receiptData[section] count] > 0)
+    //{
         return [self.receiptData[section] count];
-    }
+    /*}
     else
     {
         //Return 1, so can display placeholder cell
         return 1;
-    }
+    }*/
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -359,13 +418,20 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
              start latitude, longitude
              final destination latitude, longitude
              */
+            /*float usersLat = [self.delegate getUsersLocationLatitude];
+            float usersLon = [self.delegate getUsersLocationLongitude];
+            float requestedLat = [requestedReceipt getDestination].latitude;
+            float requestedLon = [requestedReceipt getDestination].longitude;
             
+            [[BambooServer sharedInstance]requestUberWithStartingLatitude:[NSNumber numberWithFloat:usersLat] startingLongitude:[NSNumber numberWithFloat:usersLon] endingLatitude:[NSNumber numberWithFloat:requestedLat] endingLongitude:[NSNumber numberWithFloat:requestedLon] orderNumber:orderNum completion:^(BOOL requestSuccess) {*/
+                
+                //Update the Delivery View UI that a request is in process
+                //[self.delegate requestedUber]; UNCOMMENT
+                
+                [self pingForUpdate:requestedReceiptIndexPath];
+                NSLog(@"requested an uber successfuly retrieved in receiptslideoutviewcontroller");
+            //}];
             
-            //Update the Delivery View UI
-            [self.delegate requestedUber];
-            
-            [self pingForUpdate:requestedReceiptIndexPath];
-            NSLog(@"requested an uber successfuly retrieved in receiptslideoutviewcontroller");
         }
         else
         {
@@ -383,41 +449,42 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 - (void)pingForUpdate:(NSIndexPath *)requestedReceiptIndexPath
 {
     ReceiptObject *requestedReceipt = self.receiptData[requestedReceiptIndexPath.section][requestedReceiptIndexPath.row];
+    int orderNum = [requestedReceipt.orderNumber intValue];
+    NSString *originalStatus = requestedReceipt.orderStatus;
     //Ping for an update for the receipt
-    BOOL updated = NO;
     
-    //If received an update, update the receipt object and the UI
-    if (updated)
-    {
-        //TODO: test if correctly deletes and adds objects from and to mutable arrays
-        if ([requestedReceipt.orderStatus isEqualToString:kStatusRequestUber])
+    /*[[BambooServer sharedInstance]retrieveSingleUberStatusWithOrderNumber:orderNum completion:^(NSString *uberStatus) {
+        NSLog(@"uberstatus: %@", uberStatus);
+        if ([uberStatus isEqualToString:kStatusUberRequested] && [originalStatus isEqualToString:kStatusRequestUber])
         {
+            NSLog(@"receipts status was updated to uberrequested");
+            //[self.delegate removeRequestingReceiptStatusVC]; UNCOMMENT
+            
             requestedReceipt.orderStatus = kStatusUberRequested;
-            
-            [self.delegate removeRequestingReceiptStatusVC];
-            
             //Now update arrays and the UI (move the receipt)
             [self moveReceipt:requestedReceiptIndexPath];
         }
-        else if ([requestedReceipt.orderStatus isEqualToString:kStatusUberRequested])
+        else if ([uberStatus isEqualToString:kStatusOutForDelivery] && [originalStatus isEqualToString:kStatusUberRequested])
         {
-            requestedReceipt.orderStatus = kStatusOutForDelivery;
-            
-            //Now update arrays and the UI (move the receipt)
-            [self moveReceipt:requestedReceiptIndexPath];
+            NSLog(@"receipts status was updated to outfordelivery");
+            //requestedReceipt.orderStatus = kStatusOutForDelivery;
+            //[self moveReceipt:requestedReceiptIndexPath];
         }
-        else if ([requestedReceipt.orderStatus isEqualToString:kStatusOutForDelivery])
+        else if ([uberStatus isEqualToString:kStatusOrderComplete] && [originalStatus isEqualToString:kStatusOutForDelivery])
         {
-            requestedReceipt.orderStatus = kStatusOrderComplete;
-            
-            //Now update arrays and the UI (move the receipt)
-            [self moveReceipt:requestedReceiptIndexPath];
+            NSLog(@"receipts status was updated to ordercomplete");
+            //requestedReceipt.orderStatus = kStatusOrderComplete;
+            //[self moveReceipt:requestedReceiptIndexPath];
         }
         else
         {
-            NSLog(@"requestedreceipt order status error in pingForUpdate");
+            NSLog(@"still processing, pinging again");
+            [self performSelector:@selector(pingForUpdate:) withObject:requestedReceiptIndexPath afterDelay:1];
         }
-    }
+    }];*/
+    requestedReceipt.orderStatus = kStatusUberRequested;
+    //Now update arrays and the UI (move the receipt)
+    [self moveReceipt:requestedReceiptIndexPath];
 }
 
 - (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath
@@ -461,11 +528,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     ReceiptObject *receiptObject = self.receiptData[indexPath.section][indexPath.row];
     if (receiptObject != nil)
     {
-        if (![self.delegate isReceiptPanelShowing])
-        {
-            //Display the panel
-            [self.delegate movePanelTwoRows];
-        }
+        NSLog(@"receipt object's status is: %@", receiptObject.orderStatus); //Test to see if its status was updated
         
         //receiptObject's orderStatus should already be moved by this point
         //Reload with the updated receipt's UI
@@ -489,12 +552,15 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         ReceiptObject *receiptToMove = receiptsInSection[indexPath.row];
         
         if (receiptToMove != nil) {
-            [receiptsInSection removeObjectAtIndex:indexPath.row]; //todo: test
+            [receiptsInSection removeObjectAtIndex:indexPath.row];
             
-            NSMutableArray *receiptsInSecondSection = self.receiptData[indexPath.section + 1]; //todo: test
+            NSMutableArray *receiptsInSecondSection = self.receiptData[indexPath.section + 1];
             [receiptsInSecondSection insertObject:receiptToMove atIndex:0];
             
-            [self.collectionView moveItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.row inSection:indexPath.section] toIndexPath:[NSIndexPath indexPathForItem:0 inSection:indexPath.section + 1]]; //todo:test
+            [self.collectionView moveItemAtIndexPath:indexPath toIndexPath:[NSIndexPath indexPathForItem:0 inSection:indexPath.section + 1]];
+            
+            //Scroll to correct row (+1 because scrollToRow uses intuitive definition of which row to scroll to)
+            [self scrollToRow:indexPath.section + 1];
         }
         else
         {
@@ -509,7 +575,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)scrollToRow:(int)row
 {
-    //Note that row is DECREMENTED to account for the correct index (ie whoever calls this method should choose the intuitive, non-CS idea of which row to scroll to)
+    //Note that row is the CS definition of which row to move to
     
     if ([self.delegate isReceiptPanelShowing])
     {

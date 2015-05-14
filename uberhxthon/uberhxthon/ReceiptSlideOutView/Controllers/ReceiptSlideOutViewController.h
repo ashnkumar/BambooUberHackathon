@@ -18,7 +18,8 @@
 - (void)expandReceipt:(NSMutableArray *)details;
 - (BOOL)isReceiptPanelShowing;
 - (void)removeRequestingReceiptStatusVC;
-//- (void)uberStatusChanged;
+- (float)getUsersLocationLatitude;
+- (float)getUsersLocationLongitude;
 
 // Delegate methods for receipt selection here
 @optional

@@ -368,7 +368,7 @@
 {
     [UIView animateWithDuration:SLIDE_TIMING delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                         //receipt panel view controller frame: (0, screenHeight-SIZEOFONEROW), frameHeight = screenHeight-ONEROW
-                         self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-140-300, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height-325);
+                         self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-140-300, self.receiptPanelViewController.view.frame.size.width, self.view.frame.size.height);// self.receiptPanelViewController.view.frame.size.height-325);
                      } completion:^(BOOL finished) {
                          self.receiptPanelViewController.panelUpButton.tag = PANELOPEN;
                          self.showingReceiptPanel = YES;
@@ -382,7 +382,7 @@
 {
     [UIView animateWithDuration:SLIDE_TIMING delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                         //receipt panel view controller frame: (0, screenHeight-SIZEOFTWOROWS), frameHeight = screenHeight-TWOROWS
-                        self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-725, self.view.frame.size.width, self.view.frame.size.height-40);
+        self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-725, self.view.frame.size.width, self.view.frame.size.height);// self.view.frame.size.height-40);
                      } completion:^(BOOL finished) {
                          self.receiptPanelViewController.panelUpButton.tag = PANELOPEN;
                          self.showingReceiptPanel = YES;
@@ -452,6 +452,14 @@
     {
         recognizer.view.center = CGPointMake(self.view.center.x, recognizer.view.center.y + translation.y);
         [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+        if (self.receiptPanelViewController.view.frame.origin.y >= screenHeight - 428) //Set showing as NO until shows at least one row
+        {
+            self.showingReceiptPanel = NO;
+        }
+        else
+        {
+            self.showingReceiptPanel = YES;
+        }
     }
 }
 
@@ -502,6 +510,18 @@
 
 
 #pragma mark - MapKit Annotations/Move Users
+- (float)getUsersLocationLatitude
+{
+    //TODO
+    return 37.784296;
+}
+
+- (float)getUsersLocationLongitude
+{
+    //TODO
+    return -122.413997;
+}
+
 //@Todo
 - (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation
 {

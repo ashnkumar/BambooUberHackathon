@@ -48,4 +48,5 @@
                                    orderNumber:(int)orderNumber
                                     completion:(void (^)(BOOL requestSuccess))completion;
 
+- (BOOL)succededInConnectingToServer;
 @end

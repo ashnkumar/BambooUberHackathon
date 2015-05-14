@@ -20,6 +20,7 @@ static NSString * const SandboxRequestUberPath = @"sandbox-request-uber";
 static NSString * const GetSingleUberPath = @"get-single-uber";
 static NSString * const ResetReceiptsPath = @"reset-all-receipts";
 static NSString * const ClearAllUberPath = @"clear-all-ubers";
+BOOL succeededInConnectingToServer;
 
 
 @implementation BambooServer
@@ -44,7 +45,8 @@ static NSString * const ClearAllUberPath = @"clear-all-ubers";
     
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+        succeededInConnectingToServer = YES; //CJ
+        
         NSDictionary *results = (NSDictionary *)responseObject;
         
         completion(results);
@@ -201,6 +203,11 @@ static NSString * const ClearAllUberPath = @"clear-all-ubers";
           NSLog(@"FAILURE in trying to clear all ubers. Tell ashwin.");
       }];
     
+}
+
+- (BOOL)succededInConnectingToServer
+{
+    return succeededInConnectingToServer;
 }
 
 @end
