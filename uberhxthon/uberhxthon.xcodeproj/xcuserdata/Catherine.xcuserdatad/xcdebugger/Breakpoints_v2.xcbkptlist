@@ -237,7 +237,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
             endingLineNumber = "81"
-            landmarkName = "-populateReceipts"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -301,7 +301,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "610"
             endingLineNumber = "610"
-            landmarkName = "-receiptWantsToExpand:"
+            landmarkName = "-performMoveReceiptAnimation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -333,8 +333,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "366"
             endingLineNumber = "366"
-            landmarkName = "-findReceiptWithOrderNum:inSection:"
-            landmarkType = "5">
+            landmarkName = "@implementation ReceiptSlideOutViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -349,7 +349,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "614"
             endingLineNumber = "614"
-            landmarkName = "-receiptWantsToExpand:"
+            landmarkName = "-performMoveReceiptAnimation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -365,7 +365,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "616"
             endingLineNumber = "616"
-            landmarkName = "-receiptWantsToExpand:"
+            landmarkName = "-performMoveReceiptAnimation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -541,7 +541,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "412"
             endingLineNumber = "412"
-            landmarkName = "-requestUberWithReceipt:"
+            landmarkName = "-findIndexWithOrderNum:inSection:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -557,7 +557,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "411"
             endingLineNumber = "411"
-            landmarkName = "-requestUberWithReceipt:"
+            landmarkName = "-findIndexWithOrderNum:inSection:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -589,8 +589,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "458"
             endingLineNumber = "458"
-            landmarkName = "-pingForUpdate:"
-            landmarkType = "5">
+            landmarkName = "@implementation ReceiptSlideOutViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -605,7 +605,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "543"
             endingLineNumber = "543"
-            landmarkName = "-moveReceipt:"
+            landmarkName = "-pingForUpdate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -653,7 +653,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "563"
             endingLineNumber = "563"
-            landmarkName = "-performMoveReceiptAnimation:"
+            landmarkName = "-removeAllCellBorders"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -670,38 +670,6 @@
             startingLineNumber = "455"
             endingLineNumber = "455"
             landmarkName = "-movePanel:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453266449.664994"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "593"
-            endingLineNumber = "593"
-            landmarkName = "-scrollToRow:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453266626.944326"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
-            landmarkName = "-pingForUpdate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -749,7 +717,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "552"
             endingLineNumber = "552"
-            landmarkName = "-moveReceipt:"
+            landmarkName = "-highlightReceiptAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -765,23 +733,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "542"
             endingLineNumber = "542"
-            landmarkName = "-moveReceipt:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "uberhxthon/ReceiptSlideOutView/Controllers/ReceiptSlideOutViewController.m"
-            timestampString = "453267463.869292"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "575"
-            endingLineNumber = "575"
-            landmarkName = "-performMoveReceiptAnimation:"
+            landmarkName = "-pingForUpdate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
