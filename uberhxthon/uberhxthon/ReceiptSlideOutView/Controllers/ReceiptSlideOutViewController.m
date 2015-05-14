@@ -37,6 +37,7 @@
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *receiptData;
+@property (nonatomic, assign) BOOL pingingForAllUpdatesOn;
 
 - (void)addNewItemInSection:(NSUInteger)section;
 - (void)deleteItemAtIndexPath:(NSIndexPath*)indexPath;
@@ -60,6 +61,8 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"EmptySectionPlaceholderCell" bundle:nil] forCellWithReuseIdentifier:@"SampleCell3"];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"ReceiptSectionHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeaderView"];
+    
+    self.pingingForAllUpdatesOn = NO;
     
     //Note: should call populateReceipts when database tells me I have new ones
     [self populateReceipts];
@@ -455,6 +458,38 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 
 #pragma mark - Helpers
+- (void)compareServerDictionary:(NSDictionary *)receiptsDictionary
+{
+    for (NSString *receiptKey in [receiptsDictionary allKeys])
+    {
+        NSDictionary *receiptDic = [receiptsDictionary valueForKey:receiptKey];
+        NSString *orderNumber  = receiptDic[@"orderNumber"];
+        NSString *orderStatus  = receiptDic[@"orderStatus"];
+        
+        for (NSMutableArray *arr in self.receiptData)
+        {
+            for (ReceiptObject *receipt in arr)
+            {
+                if ([receipt.orderNumber isEqualToString:orderNumber])
+                {
+                    if ([receipt.orderStatus isEqualToString:orderStatus])
+                    {
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+- (void)pingRegularlyForUpdates
+{
+    [[BambooServer sharedInstance]retrieveReceiptsWithCompletion:^(NSDictionary *receiptsDictionary) {
+        //Compare receiptsDictionary to own to determine updates
+        [self compareServerDictionary:receiptsDictionary];
+    }];
+}
+
 - (void)pingForUpdate:(NSIndexPath *)requestedReceiptIndexPath
 {
     ReceiptObject *requestedReceipt = self.receiptData[requestedReceiptIndexPath.section][requestedReceiptIndexPath.row];
@@ -463,8 +498,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     //Ping for an update for the receipt
     
     [[BambooServer sharedInstance]retrieveSingleUberStatusWithOrderNumber:orderNum completion:^(NSString *uberStatus) {
-        NSLog(@"uberstatus: %@", uberStatus);
-        if ([uberStatus isEqualToString:@"accepted"] && [originalStatus isEqualToString:kStatusRequestUber])
+        if ([uberStatus isEqualToString:kUberStatusAccepted] && [originalStatus isEqualToString:kStatusRequestUber])
         {
             NSLog(@"receipts status was updated to uberrequested");
             [self.delegate removeRequestingReceiptStatusVC];
@@ -472,6 +506,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
             requestedReceipt.orderStatus = kStatusUberRequested;
             //Now update arrays and the UI (move the receipt)
             [self moveReceipt:requestedReceiptIndexPath];
+            
+            //start pinging regularly if the app isn't currently
+            if (!self.pingingForAllUpdatesOn)
+            {
+                [self pingRegularlyForUpdates]; //TODO: do it regularly
+                self.pingingForAllUpdatesOn = YES;
+            }
         }
         else if ([uberStatus isEqualToString:kUberStatusAccepted] && [originalStatus isEqualToString:kStatusUberRequested])
         {
@@ -593,7 +634,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 - (void)scrollToRow:(int)row
 {
     //Note that row is the CS definition of which row to move to
-    
     if ([self.delegate isReceiptPanelShowing])
     {
         //TODO: Test that this works if more than one panel is showing
