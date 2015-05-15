@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface LeftmostViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *merchantHome;
+- (IBAction)uberLoginButton:(id)sender;
+- (IBAction)squareLoginButton:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *uberButton;
+@property (strong, nonatomic) IBOutlet UIButton *squareButton;
 
 @end

@@ -260,6 +260,7 @@
     self.showingDetailedReceipt = NO;
     self.detailedReceipt.view.layer.cornerRadius = 8;
     self.detailedReceipt.view.layer.masksToBounds = YES;
+    self.detailedReceipt.view.clipsToBounds = YES;
 
     [self.view addSubview:self.detailedReceipt.view];
 }
@@ -340,7 +341,7 @@
     
     MKPointAnnotation *testCar = [[MKPointAnnotation alloc]init];
     [testCar setCoordinate:CLLocationCoordinate2DMake(37.7833, -122.4167)];
-    [testCar setTitle:@"56"];
+    [testCar setTitle:@"47"];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.mapView addAnnotation:testCar];
     });
@@ -417,7 +418,7 @@
 - (void)expandReceipt:(NSMutableArray *)details
 {
     //Details array contains: order number, date ordered, time ordered, orderer's name, orderer's address, orderer's phonenumber, order details
-    if ([details count] == 10 && !self.showingDetailedReceipt)
+    if ([details count] == 11 && !self.showingDetailedReceipt)
     {
         //Reset all the necessary views just to make sure
         self.dimView.frame = CGRectMake(0, 0, screenWidth, screenHeight);
@@ -436,7 +437,7 @@
         [self.detailedReceipt layoutDetails:details];
         
         [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            self.dimView.layer.opacity = 0.2;
+            self.dimView.layer.opacity = 0.5;
             //TODO: check if set detailedReceiptViewFrame correctly
             self.detailedReceipt.view.frame = CGRectMake(detailedReceiptX, detailedReceiptY, detailedReceiptWidth, detailedReceiptHeight);
         } completion:^(BOOL finished) {
@@ -505,7 +506,7 @@
 {
     //Display the dimming view
     [UIView animateWithDuration:.2 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        self.dimView.layer.opacity = 0.2;
+        self.dimView.layer.opacity = 0.5;
     } completion:^(BOOL finished) {
         NSLog(@"displaying the requestuberpopup");
         //Now display the popup

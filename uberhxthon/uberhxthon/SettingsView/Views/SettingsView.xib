@@ -2,10 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
             <connections>
+                <outlet property="receiptTableView" destination="fay-kp-cz8" id="nKi-vo-lkK"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Roz-4w-Qk1"/>
             </connections>
         </placeholder>
@@ -14,14 +16,38 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wL7-2O-vrc">
-                    <rect key="frame" x="242" y="284" width="63" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fay-kp-cz8">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="600" id="8VK-oX-YRA"/>
+                        <constraint firstAttribute="width" secondItem="fay-kp-cz8" secondAttribute="height" multiplier="187:203" id="9ZC-GO-Oqu"/>
+                        <constraint firstAttribute="width" constant="535" id="CzD-Qm-hBJ"/>
+                        <constraint firstAttribute="height" constant="600" id="T7h-Qx-QwR"/>
+                        <constraint firstAttribute="width" constant="374" id="b7S-f7-dd9"/>
+                        <constraint firstAttribute="height" constant="406" id="ldF-ZX-2vC"/>
+                        <constraint firstAttribute="height" constant="564" id="wkR-M5-FOO"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="9ZC-GO-Oqu"/>
+                            <exclude reference="CzD-Qm-hBJ"/>
+                            <exclude reference="b7S-f7-dd9"/>
+                            <exclude reference="ldF-ZX-2vC"/>
+                            <exclude reference="wkR-M5-FOO"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Ern-Jf-PhH"/>
+                        <outlet property="delegate" destination="-1" id="KSw-Xf-dEC"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="fay-kp-cz8" secondAttribute="centerY" id="fJM-NH-gYA"/>
+                <constraint firstAttribute="centerX" secondItem="fay-kp-cz8" secondAttribute="centerX" id="fwm-co-TMg"/>
+            </constraints>
         </view>
     </objects>
 </document>

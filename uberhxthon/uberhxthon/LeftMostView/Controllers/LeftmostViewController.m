@@ -16,7 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.merchantHome setImage:[UIImage imageNamed:@"merchanthome"]];
+    self.uberButton.layer.cornerRadius = 5.0f;
+    self.uberButton.clipsToBounds = YES;
+    self.squareButton.layer.cornerRadius = 5.0f;
+    self.squareButton.clipsToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,4 +38,13 @@
 }
 */
 
+- (IBAction)uberLoginButton:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Logging out not yet supported!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+}
+
+- (IBAction)squareLoginButton:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"Logging out not yet supported!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+}
 @end

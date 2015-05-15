@@ -393,6 +393,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
             }
             rowCount ++;
         }
+        rowCount = 0;
         sectionCount ++;
     }
     return receiptAndIndex;
@@ -621,19 +622,32 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         else
         {
             NSLog(@"still processing, pinging again");
-            [self performSelector:@selector(pingForUpdate:) withObject:requestedReceiptIndexPath afterDelay:1];
+            [self performSelector:@selector(pingForUpdate:) withObject:requestedReceiptIndexPath afterDelay:3];
         }
     }];
 }
 
 - (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Highlighting cell: %@", indexPath);
-    ReceiptCell *cell = (ReceiptCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    NSLog(@"collectionview in section 0: %i section 1: %i, section 2: %i, section 3:%i", [self.collectionView numberOfItemsInSection:0], [self.collectionView numberOfItemsInSection:1], [self.collectionView numberOfItemsInSection:2], [self.collectionView numberOfItemsInSection:3]);
+    NSLog(@"indexpath section: %i, row: %i", indexPath.section, indexPath.row);
     
-    cell.layer.borderWidth = 5;
-    cell.layer.borderColor = [AppConstants cashwinGreen].CGColor;
+    NSLog(@"%@", [self allCellsInCollectionView]);
     
+    if (indexPath.section == 0)
+    {
+        ReceiptCellRequestUber *cell = (ReceiptCellRequestUber *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        cell.layer.borderWidth = 5;
+        cell.layer.borderColor = [AppConstants cashwinGreen].CGColor;
+    }
+    else
+    {
+        ReceiptCell *cell = (ReceiptCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        NSLog(@"Highlighting cell: ordernum: %@", cell.orderNumberLabel.text);
+        
+        cell.layer.borderWidth = 5;
+        cell.layer.borderColor = [AppConstants cashwinGreen].CGColor;
+    }
 }
 
 - (void)removeAllCellBorders
@@ -644,19 +658,23 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         cell.layer.borderColor = nil;
         cell.layer.borderWidth = 0;
     }
+    NSLog(@"removed all cell borders");
 }
 
 - (NSMutableArray *)allCellsInCollectionView {
     NSMutableArray *cells = [[NSMutableArray alloc] init];
-    for (NSInteger j = 0; j < [self.collectionView numberOfSections]; ++j) {
-        for (NSInteger i = 0; i < [self.collectionView numberOfItemsInSection:j]; ++i) {
+    for (NSInteger j = 0; j < [self.collectionView numberOfSections]; j++) {
+        NSLog(@"%i", [self.collectionView numberOfItemsInSection:j]);
+        for (NSInteger i = 0; i < [self.collectionView numberOfItemsInSection:j]; i++) {
             ReceiptCell *cell = (ReceiptCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:j]];
             
+            NSLog(@"hi");
             if (cell) {
                 [cells addObject:cell];
             }
         }
     }
+    NSLog(@"number of sections %i", [self.collectionView numberOfSections]);
     return cells;
 }
 
@@ -752,7 +770,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     if (specifiedReceipt != nil)
     {
         //Push the info into receiptDetails in the following index order:
-        //order number, date ordered, time ordered, orderer's name, orderer's address line 1, orderer's address line 2, orderer's phonenumber, order details
+        //order number, date ordered, time ordered, orderer's name, orderer's address line 1, orderer's address line 2, orderer's phonenumber, order details, payment type, payment last four digits, order status
         
         //CLLocation *destAddress = [[CLLocation alloc]initWithLatitude:[specifiedReceipt getDestination].latitude longitude:[specifiedReceipt getDestination].longitude];
         
@@ -766,8 +784,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         [receiptDetails addObject:specifiedReceipt.orderDetails];
         [receiptDetails addObject:specifiedReceipt.paymentType];
         [receiptDetails addObject:specifiedReceipt.paymentLastFourDigits];
+        [receiptDetails addObject:specifiedReceipt.orderStatus];
         
-        if ([receiptDetails count] == 10)
+        if ([receiptDetails count] == 11)
         {
             [self.delegate expandReceipt:receiptDetails];
         }

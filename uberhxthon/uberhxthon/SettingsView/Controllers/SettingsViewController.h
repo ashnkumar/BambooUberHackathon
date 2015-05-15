@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppConstants.h"
 
-@interface SettingsViewController : UIViewController
+//This is actually the receipt table view (rightmost tab)
+
+@interface SettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *receiptTableView;
 
 @end

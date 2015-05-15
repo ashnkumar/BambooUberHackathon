@@ -19,5 +19,6 @@
 + (UIColor *)receiptPink;
 + (UIColor *)receiptBlue;
 + (UIColor *)receiptGreen;
-
++ (UIColor *)receiptOrange;
++ (UIColor *)specialWhite;
 @end

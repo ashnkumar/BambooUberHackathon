@@ -16,7 +16,10 @@
 
 
 @interface AppDelegate ()
-
+@property (strong, nonatomic) DeliveryViewController *deliveryVC;
+@property (strong, nonatomic) AnalyticsViewController *analyticsVC;
+@property (strong, nonatomic) SettingsViewController *settingsVC;
+@property (strong, nonatomic) LeftmostViewController *leftVC;
 @end
 
 @implementation AppDelegate
@@ -24,23 +27,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    DeliveryViewController *deliveryVC = [[DeliveryViewController alloc]init];
-    AnalyticsViewController *analyticsVC = [[AnalyticsViewController alloc]init];
-    SettingsViewController *settingsVC = [[SettingsViewController alloc]init];
-    LeftmostViewController *leftVC = [[LeftmostViewController alloc]init];
+    self.deliveryVC = [[DeliveryViewController alloc]init];
+    self.analyticsVC = [[AnalyticsViewController alloc]init];
+    self.settingsVC = [[SettingsViewController alloc]init];
+    self.leftVC = [[LeftmostViewController alloc]init];
     
   /*  leftVC.title = @"PROFILE";
     deliveryVC.title = @"DELIVERY";
     analyticsVC.title = @"ANALYTICS";
     settingsVC.title = @"RECEIPTS";*/
     
-    leftVC.tabBarItem.image = [UIImage imageNamed:@"Merchant_Icon.png"];
-    deliveryVC.tabBarItem.image = [UIImage imageNamed:@"Car_Icon.png"];
-    analyticsVC.tabBarItem.image = [UIImage imageNamed:@"Metrics_Icon.png"];
-    settingsVC.tabBarItem.image = [UIImage imageNamed:@"Receipt_Icon.png"];
+    self.leftVC.tabBarItem.image = [UIImage imageNamed:@"Merchant_Icon.png"];
+    self.deliveryVC.tabBarItem.image = [UIImage imageNamed:@"Car_Icon.png"];
+    self.analyticsVC.tabBarItem.image = [UIImage imageNamed:@"Metrics_Icon.png"];
+    self.settingsVC.tabBarItem.image = [UIImage imageNamed:@"Receipt_Icon.png"];
     
     
-    NSArray *viewControllers = @[leftVC, deliveryVC, analyticsVC, settingsVC];
+    NSArray *viewControllers = @[self.leftVC, self.deliveryVC, self.analyticsVC, self.settingsVC];
     MHTabBarController *tabBarController = [[MHTabBarController alloc]init];
     
     tabBarController.delegate = self;

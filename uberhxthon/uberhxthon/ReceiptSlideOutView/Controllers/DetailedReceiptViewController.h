@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppConstants.h"
 
 @interface DetailedReceiptViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *orderDetails;
 @property (strong, nonatomic) IBOutlet UILabel *paymentType;
 @property (strong, nonatomic) IBOutlet UILabel *paymentLastFourDigits;
-
+@property (strong, nonatomic) IBOutlet UIView *headerView;
+@property (strong, nonatomic) IBOutlet UILabel *receiptStatus;
 - (void) layoutDetails:(NSMutableArray *)details;
 @end

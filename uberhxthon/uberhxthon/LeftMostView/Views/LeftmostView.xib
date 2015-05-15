@@ -3,9 +3,20 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeftmostViewController">
             <connections>
+                <outlet property="merchantHome" destination="TsT-ZN-zi4" id="i3V-Dr-Bb0"/>
+                <outlet property="squareButton" destination="scH-BD-RoF" id="X8p-hp-cct"/>
+                <outlet property="uberButton" destination="NFf-Pk-oHa" id="6dT-2l-XhE"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Ex6-pU-Yqp"/>
             </connections>
         </placeholder>
@@ -14,14 +25,118 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leftmost View" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaB-PT-6Ab">
-                    <rect key="frame" x="265" y="332" width="109" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGGED IN TO UBER AS JUSTIN'S CAKES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBb-cO-Q2V">
+                    <rect key="frame" x="109" y="365" width="382" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="1jB-zh-S18"/>
+                        <constraint firstAttribute="width" constant="382" id="Dh4-Sa-gIe"/>
+                        <constraint firstAttribute="width" constant="248" id="W7f-5Z-XGV"/>
+                        <constraint firstAttribute="height" constant="24" id="xV8-Kv-Cch"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="W7f-5Z-XGV"/>
+                            <exclude reference="xV8-Kv-Cch"/>
+                        </mask>
+                    </variation>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOGGED IN TO SQUARE AS JUSTIN'S CAKES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpc-Mk-AzF">
+                    <rect key="frame" x="109" y="481" width="382" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="248" id="hAv-ix-fdx"/>
+                        <constraint firstAttribute="width" constant="382" id="iaz-1r-nSk"/>
+                        <constraint firstAttribute="height" constant="24" id="wSC-rx-4Sn"/>
+                        <constraint firstAttribute="height" constant="24" id="xZG-pf-Kr9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="hAv-ix-fdx"/>
+                            <exclude reference="xZG-pf-Kr9"/>
+                        </mask>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFf-Pk-oHa">
+                    <rect key="frame" x="130" y="397" width="339" height="60"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="248" id="37t-bR-xiD"/>
+                        <constraint firstAttribute="height" constant="60" id="IOA-jf-WUd"/>
+                        <constraint firstAttribute="height" constant="44" id="THe-xX-aGd"/>
+                        <constraint firstAttribute="width" constant="339" id="vGL-Ql-dZT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="24"/>
+                    <state key="normal" title="Log Out of Uber">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="37t-bR-xiD"/>
+                            <exclude reference="THe-xX-aGd"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="uberLoginButton:" destination="-1" eventType="touchUpInside" id="xjB-ea-GcI"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TsT-ZN-zi4">
+                    <rect key="frame" x="176" y="80" width="248" height="248"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="248" id="Uzk-Hh-2ep"/>
+                        <constraint firstAttribute="height" constant="248" id="aYJ-Ej-EN7"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scH-BD-RoF">
+                    <rect key="frame" x="130" y="513" width="339" height="60"/>
+                    <color key="backgroundColor" red="0.16078431372549021" green="0.58823529411764708" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="339" id="CAt-p6-BJH"/>
+                        <constraint firstAttribute="height" constant="60" id="Spg-Hl-VHf"/>
+                        <constraint firstAttribute="width" constant="248" id="aV6-95-BBD"/>
+                        <constraint firstAttribute="height" constant="44" id="hSo-GO-4cx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="24"/>
+                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Log Out of Square">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="aV6-95-BBD"/>
+                            <exclude reference="hSo-GO-4cx"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="squareLoginButton:" destination="-1" eventType="touchUpInside" id="7r4-pG-wQ8"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="TsT-ZN-zi4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="0aS-m5-VwB"/>
+                <constraint firstAttribute="centerX" secondItem="KBb-cO-Q2V" secondAttribute="centerX" id="6t2-O1-OQe"/>
+                <constraint firstAttribute="centerX" secondItem="scH-BD-RoF" secondAttribute="centerX" id="76B-Rb-In4"/>
+                <constraint firstItem="scH-BD-RoF" firstAttribute="top" secondItem="Cpc-Mk-AzF" secondAttribute="bottom" constant="8" id="Fzi-og-Igw"/>
+                <constraint firstAttribute="centerX" secondItem="NFf-Pk-oHa" secondAttribute="centerX" id="IiS-fK-Lx0"/>
+                <constraint firstItem="KBb-cO-Q2V" firstAttribute="top" secondItem="TsT-ZN-zi4" secondAttribute="bottom" constant="37" id="LpV-Fw-h76"/>
+                <constraint firstItem="KBb-cO-Q2V" firstAttribute="top" secondItem="TsT-ZN-zi4" secondAttribute="bottom" constant="37" id="ZGM-u8-SFn"/>
+                <constraint firstItem="Cpc-Mk-AzF" firstAttribute="top" secondItem="NFf-Pk-oHa" secondAttribute="bottom" constant="24" id="cMo-f6-Rmn"/>
+                <constraint firstAttribute="centerX" secondItem="Cpc-Mk-AzF" secondAttribute="centerX" id="geo-a8-9zH"/>
+                <constraint firstAttribute="centerX" secondItem="TsT-ZN-zi4" secondAttribute="centerX" id="glJ-PG-9DO"/>
+                <constraint firstItem="NFf-Pk-oHa" firstAttribute="top" secondItem="KBb-cO-Q2V" secondAttribute="bottom" constant="8" id="sdn-AK-JhA"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="LpV-Fw-h76"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>
