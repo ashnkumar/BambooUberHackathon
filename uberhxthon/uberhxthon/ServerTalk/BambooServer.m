@@ -176,6 +176,11 @@ static NSString * const GetReceiptUpdatesPath = @"get-receipt-updates";
         
         NSDictionary *response = (NSDictionary *)responseObject;
         NSLog(@"Response is: %@", response);
+        if ([response[@"uberRequest"] isEqualToString:@"success"]) {
+            completion(YES);
+        } else {
+            completion(NO);
+        }
     }
      
     failure:^(AFHTTPRequestOperation *operation, NSError *error) {

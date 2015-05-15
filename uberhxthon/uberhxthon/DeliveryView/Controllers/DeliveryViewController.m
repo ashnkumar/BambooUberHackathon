@@ -339,12 +339,12 @@
     [self.loadingSpinner removeFromSuperview];
     self.receiptPanelViewController.view.alpha = 1.0f;
     
-    MKPointAnnotation *testCar = [[MKPointAnnotation alloc]init];
+    /*MKPointAnnotation *testCar = [[MKPointAnnotation alloc]init];
     [testCar setCoordinate:CLLocationCoordinate2DMake(37.7833, -122.4167)];
     [testCar setTitle:@"47"];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.mapView addAnnotation:testCar];
-    });
+    });*/
 
 }
 
@@ -441,11 +441,6 @@
             //TODO: check if set detailedReceiptViewFrame correctly
             self.detailedReceipt.view.frame = CGRectMake(detailedReceiptX, detailedReceiptY, detailedReceiptWidth, detailedReceiptHeight);
         } completion:^(BOOL finished) {
-            NSLog(@"displayed detailed receipt view");
-            NSLog(@"screen width: %f, screen height: %f", screenWidth, screenHeight);
-            NSLog(@"detailedReceiptY: %f", detailedReceiptY);
-
-            //TODO: create a gesture recognizer for on top of the dimming view to close the detailed receipt view
             self.exitDetailedReceiptTapRecognizer = [[UITapGestureRecognizer alloc]
                                      initWithTarget:self
                                      action:@selector(exitDetailedReceipt:)];
@@ -508,7 +503,6 @@
     [UIView animateWithDuration:.2 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.dimView.layer.opacity = 0.5;
     } completion:^(BOOL finished) {
-        NSLog(@"displaying the requestuberpopup");
         //Now display the popup
         self.requestUberPopupVC = [[RequestUberPopupViewController alloc]init];
         self.requestUberPopupVC.delegate = self;
@@ -530,7 +524,6 @@
     [UIView animateWithDuration:.2 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.dimView.layer.opacity = 0;
     } completion:^(BOOL finished) {
-        NSLog(@"removing the requestuberpopup");
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
@@ -545,7 +538,11 @@
 - (void)receivedCarLocationsUpdate:(NSDictionary *)ubersDictionary
 {
     NSLog(@"inside receivedCarLocationsUpdate for Delivery View Controller");
-    [self.receiptPanelViewController receivedCarLocationsUpdate:ubersDictionary];
+    //[self.receiptPanelViewController receivedCarLocationsUpdate:ubersDictionary];
+    if (ubersDictionary != nil)
+    {
+        [self updateCarLocations:ubersDictionary];
+    }
 }
 
 
@@ -648,75 +645,6 @@
     }*/
 }
 
-/*- (void) prepareRoutes
-{
-    for (int i = 0; i < 4; i++)
-    {
-        //Get the route
-        self.routeGenerator = [[routeGenerator alloc]init];
-        NSMutableArray *routeMut = [routeGenerator getRouteAtIndex:(i+1)];
-        //Show the route
-        [self showRoute:routeMut withIndex:(i+1)];
-    }
-}
-
-- (void)showRoute:(NSMutableArray *)routeMut withIndex:(int)intIndex {
-    if (intIndex == 1)
-    {
-        intIndex_route1 = 0;
-        [self manageUserMove1:routeMut];
-    }
-    else if (intIndex == 2)
-    {
-        intIndex_route2 = 0;
-        [self manageUserMove2:routeMut];
-    }
-    else if (intIndex == 3)
-    {
-        intIndex_route3 = 0;
-        [self manageUserMove3:routeMut];
-    }
-    else if (intIndex == 4)
-    {
-        intIndex_route4 = 0;
-        [self manageUserMove4:routeMut];
-    }
-    else
-    {
-        NSLog(@"error inside showRoute");
-    }
-}
-
-// Route 1 Methods
-- (void)moveUser1:(CLLocation*)newLoc
-{
-    CLLocationCoordinate2D coords;
-    coords.latitude = newLoc.coordinate.latitude;
-    coords.longitude = newLoc.coordinate.longitude;
-    
-    [self.annotation1 setCoordinate:coords];
-}
-
--(void)manageUserMove1:(NSMutableArray *)routeMut
-
-{
-    CLLocation *newLoc = [routeMut objectAtIndex:intIndex_route1];
-    if (intIndex_route1 == 0) {
-        self.annotation1 = [[MKPointAnnotation alloc] init];
-        [self.annotation1 setTitle:@"1"];
-    }
-    [self moveUser1:newLoc];
-    
-    if(intIndex_route1 == 0){
-        [self.mapView addAnnotation:self.annotation1];
-    }
-    
-    if (intIndex_route1 < (routeMut.count-1))
-    {
-        intIndex_route1++;
-        [self performSelector:@selector(manageUserMove1:) withObject:routeMut afterDelay:0.6];
-    }
-}*/
 @end
 
 

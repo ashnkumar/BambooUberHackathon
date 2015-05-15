@@ -63,7 +63,7 @@
     
     [JCNotificationCenter sharedCenter].presenter = [JCNotificationBannerPresenterSmokeStyle new];
 
-    NSString* alert = @"This is a test and my head feels funny";
+    NSString* alert = @"Check the receipt panel for your latest outstanding orders.";
     [JCNotificationCenter
      enqueueNotificationWithTitle:nil
      message:alert

@@ -424,15 +424,16 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
             float requestedLat = [requestedReceipt getDestination].latitude;
             float requestedLon = [requestedReceipt getDestination].longitude;
             
-            [[BambooServer sharedInstance]requestUberWithStartingLatitude:[NSNumber numberWithFloat:usersLat] startingLongitude:[NSNumber numberWithFloat:usersLon] endingLatitude:[NSNumber numberWithFloat:requestedLat] endingLongitude:[NSNumber numberWithFloat:requestedLon] orderNumber:orderNum completion:^(BOOL requestSuccess) {
+            [[BambooServer sharedInstance]requestSandboxUberWithStartingLatitude:[NSNumber numberWithFloat:usersLat] startingLongitude:[NSNumber numberWithFloat:usersLon] endingLatitude:[NSNumber numberWithFloat:requestedLat] endingLongitude:[NSNumber numberWithFloat:requestedLon] orderNumber:orderNum completion:^(BOOL requestSuccess) {
                 
                 //Update the Delivery View UI that a request is in process
                 [self.delegate requestedUber];
                 
                 [self pingForUpdate:requestedReceiptIndexPath];
                 NSLog(@"requested an uber successfuly retrieved in receiptslideoutviewcontroller");
+                
             }];
-            
+    
         }
         else
         {
@@ -467,14 +468,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
-- (void)updateCarLocations:(NSDictionary *)ubersDictionary
+/*- (void)updateCarLocations:(NSDictionary *)ubersDictionary
 {
     if (ubersDictionary != nil)
     {
         //Update the annotations
         [self.delegate updateCarLocations:ubersDictionary];
     }
-}
+}*/
 
 - (void)compareServerDictionary:(NSDictionary *)receiptsDictionary
 {
@@ -553,7 +554,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
-- (void)receivedCarLocationsUpdate:(NSDictionary *)ubersDictionary
+/*- (void)receivedCarLocationsUpdate:(NSDictionary *)ubersDictionary
 {
     if (ubersDictionary != nil)
     {
@@ -565,7 +566,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     {
         NSLog(@"ubersdictionary empty in slideoutVC");
     }
-}
+}*/
 
 - (void)pingForUpdate:(NSIndexPath *)requestedReceiptIndexPath
 {
