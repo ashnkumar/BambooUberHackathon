@@ -97,10 +97,12 @@
 {
     UILabel *label = [[UILabel alloc] init];
     label.text=@"Order Details";
-    label.backgroundColor=[AppConstants cashwinGreen];
+    label.backgroundColor=[AppConstants specialWhite];
     label.textColor = [AppConstants specialWhite];
     label.font = [label.font fontWithSize:18];
     label.textAlignment= NSTextAlignmentCenter;
+    label.layer.borderColor = [AppConstants specialBlack].CGColor;
+    label.layer.borderWidth = 2.0;
     return label;
 }
 

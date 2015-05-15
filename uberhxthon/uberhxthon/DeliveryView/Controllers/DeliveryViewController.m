@@ -96,8 +96,8 @@
     //zoomLocation.latitude = self.locationManager.location.coordinate.latitude;
     //zoomLocation.longitude= self.locationManager.location.coordinate.longitude;
     
-    zoomLocation.latitude = 37.784296;
-    zoomLocation.longitude = -122.413997;
+    zoomLocation.latitude = 37.775871;
+    zoomLocation.longitude = -122.417961;
 
     
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 7.5*METERS_PER_MILE, 7.5*METERS_PER_MILE);
@@ -112,7 +112,7 @@
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     localNotification.alertBody = @"You have new deliveries to fill! Check your receipt panel for details.";
     localNotification.fireDate = nil;
-    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    localNotification.soundName = @"";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
@@ -535,18 +535,31 @@
     }];
 }
 
+#pragma mark - pings
+- (void)receivedReceiptUpdate:(NSDictionary *)receiptsDictionary
+{
+    NSLog(@"inside receivedReceiptUpdate for Delivery View Controller");
+    [self.receiptPanelViewController receivedReceiptUpdate:receiptsDictionary];
+}
+
+- (void)receivedCarLocationsUpdate:(NSDictionary *)ubersDictionary
+{
+    NSLog(@"inside receivedCarLocationsUpdate for Delivery View Controller");
+    [self.receiptPanelViewController receivedCarLocationsUpdate:ubersDictionary];
+}
+
 
 #pragma mark - MapKit Annotations/Move Users
 - (float)getUsersLocationLatitude
 {
     //TODO
-    return 37.784296;
+    return 37.775871;
 }
 
 - (float)getUsersLocationLongitude
 {
     //TODO
-    return -122.413997;
+    return -122.417961;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation

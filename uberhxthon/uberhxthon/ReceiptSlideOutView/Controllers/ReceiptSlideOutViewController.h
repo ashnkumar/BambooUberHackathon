@@ -35,4 +35,7 @@
 - (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath;
 - (void)removeAllCellBorders;
 - (void)scrollToOrderNum:(int)orderNum andHighlight:(BOOL)shouldhighlight;
+- (void)receivedReceiptUpdate:(NSDictionary *)receiptsDictionary;
+- (void)receivedCarLocationsUpdate:(NSDictionary *)ubersDictionary;
+
 @end

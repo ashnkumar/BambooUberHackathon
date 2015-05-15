@@ -15,4 +15,8 @@
 @interface DeliveryViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+
+- (void)receivedReceiptUpdate:(NSDictionary *)receiptsDictionary;
+- (void)receivedCarLocationsUpdate:(NSDictionary *)ubersDictionary;
+
 @end

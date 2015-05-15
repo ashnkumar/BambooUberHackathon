@@ -477,6 +477,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)compareServerDictionary:(NSDictionary *)receiptsDictionary
 {
+    NSLog(@"inside compareserverdictionary");
     //Receive notifications for uberstatusdrivercancelled and uberstatusarriving here
     for (NSString *orderNumber in [receiptsDictionary allKeys])
     {
@@ -487,7 +488,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         }
         else if ([newStatus isEqualToString:kUberStatusDriverCanceled])
         {
-            [self createNotificationWithMessage:[NSString stringWithFormat:@"Your Uber driver for order number %@ cancelled - please re-request pick-up for that order.", orderNumber]];
+            [self createNotificationWithMessage:[NSString stringWithFormat:@"Your Uber driver for order number %@ has cancelled. Please re-request pick-up for that order.", orderNumber]];
             [self uberCancelled:orderNumber];
         }
         else
@@ -518,7 +519,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     localNotification.alertBody = message;
     localNotification.fireDate = [NSDate date];
-    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    localNotification.soundName = @"";
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
@@ -544,26 +545,33 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     
 }
 
-- (void)pingRegularlyForReceiptUpdates
+#pragma mark - pings
+- (void)receivedReceiptUpdate:(NSDictionary *)receiptsDictionary
 {
-    [[BambooServer sharedInstance]retrieveReceiptUpdatesWithCompletion:^(NSDictionary *receiptsDictionary) {
-       if (receiptsDictionary != nil)
-       {
-           //Compare receiptsDictionary to own to determine updates
-           [self compareServerDictionary:receiptsDictionary];
-       }
-    }];
+    if (receiptsDictionary != nil)
+    {
+        NSLog(@"inside receivedReceiptUpdate for ReceiptSlideOutViewController");
+        //Compare receiptsDictionary to own to determine updates
+        [self compareServerDictionary:receiptsDictionary];
+    }
+    else
+    {
+        NSLog(@"receiptsdictionary empty in slideoutVC");
+    }
 }
 
-- (void)pingRegularlyForCarlocations
+- (void)receivedCarLocationsUpdate:(NSDictionary *)ubersDictionary
 {
-    [[BambooServer sharedInstance]retrieveUbersWithCompletion:^(NSDictionary *ubersDictionary) {
-        if (ubersDictionary != nil)
-        {
-            //Compare receiptsDictionary to own to determine updates
-            [self updateCarLocations:ubersDictionary];
-        }
-    }];
+    if (ubersDictionary != nil)
+    {
+        NSLog(@"inside receivedCarLocationsUpdate for ReceiptSlideOutViewController");
+        //Compare receiptsDictionary to own to determine updates
+        [self updateCarLocations:ubersDictionary];
+    }
+    else
+    {
+        NSLog(@"ubersdictionary empty in slideoutVC");
+    }
 }
 
 - (void)pingForUpdate:(NSIndexPath *)requestedReceiptIndexPath
@@ -584,7 +592,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
             [self moveReceipt:requestedReceiptIndexPath];
             
             //start pinging regularly if the app isn't currently
-            if (!self.pingingForAllReceiptUpdatesOn)
+            /*if (!self.pingingForAllReceiptUpdatesOn)
             {
                 [self pingRegularlyForReceiptUpdates]; //TODO: do it regularly
                 self.pingingForAllReceiptUpdatesOn = YES;
@@ -593,7 +601,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
             {
                 [self pingRegularlyForCarlocations]; //TODO: do it regularly
                 self.pingingForAllCarLocationsOn = YES;
-            }
+            }*/
         }
         else if ([uberStatus isEqualToString:kUberStatusAccepted] && [originalStatus isEqualToString:kStatusUberRequested])
         {

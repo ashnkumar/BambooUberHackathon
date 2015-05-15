@@ -20,10 +20,14 @@
 @property (strong, nonatomic) AnalyticsViewController *analyticsVC;
 @property (strong, nonatomic) SettingsViewController *settingsVC;
 @property (strong, nonatomic) LeftmostViewController *leftVC;
+@property (strong, nonatomic) MHTabBarController *tabBarController;
 @end
 
 @implementation AppDelegate
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -44,25 +48,27 @@
     
     
     NSArray *viewControllers = @[self.leftVC, self.deliveryVC, self.analyticsVC, self.settingsVC];
-    MHTabBarController *tabBarController = [[MHTabBarController alloc]init];
+    self.tabBarController = [[MHTabBarController alloc]init];
     
-    tabBarController.delegate = self;
-    tabBarController.viewControllers = viewControllers;
+    self.tabBarController.delegate = self;
+    self.tabBarController.viewControllers = viewControllers;
     
-    /* Uncomment this to select Tab 2 */
-    tabBarController.selectedIndex = 1;
-    
-    /* Uncomment this to select Tab 3 */
-    //tabBarController.selectedIndex = 2;
+    self.tabBarController.selectedIndex = 1;
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
-    self.window.rootViewController = tabBarController;
+    self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
-    // Override point for customization after application launch.
+    
+    //Start pinging for receipt updates
+    //[NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(pingForReceiptUpdates) userInfo:nil repeats:YES];
+     
+    //Start pinging for car location updates
+    //[NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(pingForCarLocations) userInfo:nil repeats:YES];
+    
     return YES;
     
     // To test that BambooServer methods work:
@@ -78,9 +84,54 @@
     return YES;
 }
 
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+- (void)pingForReceiptUpdates
 {
-    // Play a sound and show an alert only if the application is active, to avoid doubly notifiying the user.
+    NSLog(@"inside pingForReceiptUpdates");
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        [[BambooServer sharedInstance]retrieveReceiptUpdatesWithCompletion:^(NSDictionary *receiptUpdatesDic) {
+            if (receiptUpdatesDic != nil)
+            {
+                NSLog(@"receiptUpdatesDic is not nil");
+                dispatch_async(dispatch_get_main_queue(), ^(void){
+                    [self.deliveryVC receivedReceiptUpdate:receiptUpdatesDic];
+                    if (self.tabBarController.selectedIndex == 0 || self.tabBarController.selectedIndex == 2 || self.tabBarController.selectedIndex == 3)
+                    {
+                        //Display a special notice that something has changed in the delivery view
+                        UILocalNotification *notify = [[UILocalNotification alloc]init];
+                        notify.fireDate = nil;
+                        notify.timeZone = [NSTimeZone defaultTimeZone];
+                        notify.repeatInterval = 0;
+                        notify.soundName = @"";
+                        notify.alertBody = [NSString stringWithFormat:@"%i receipts have updated statuses. Check the delivery view for details.", [receiptUpdatesDic count]];
+                        UIApplication *app = [UIApplication sharedApplication];
+                        [app scheduleLocalNotification:notify];
+                    }
+                });
+            }
+        }];
+    });
+    
+}
+
+- (void)pingForCarLocations
+{
+    NSLog(@"inside pingForCarLocations");
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        [[BambooServer sharedInstance]retrieveUbersWithCompletion:^(NSDictionary *ubersDictionary) {
+            if (ubersDictionary != nil)
+            {
+                NSLog(@"ubersDictionary is not nil");
+                dispatch_async(dispatch_get_main_queue(), ^(void){
+                    [self.deliveryVC receivedCarLocationsUpdate:ubersDictionary];
+                    
+                });
+            }
+        }];
+    });
+}
+
+/*- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
     //if ([application applicationState] == UIApplicationStateActive)
     //{
         // Initialize the alert view.
@@ -91,7 +142,7 @@
                                                   otherButtonTitles:nil];
             [alert show];
    // }
-}
+}*/
 
 - (void)getReceiptUpdates
 {
@@ -190,7 +241,12 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    /*UIApplication  *app = [UIApplication sharedApplication];
+    NSArray *oldNotifications = [app scheduledLocalNotifications];
+    if ([oldNotifications count] > 0)
+    {
+        [app cancelAllLocalNotifications];
+    }*/
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
