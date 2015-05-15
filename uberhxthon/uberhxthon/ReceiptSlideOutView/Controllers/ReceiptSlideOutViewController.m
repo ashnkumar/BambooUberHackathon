@@ -94,7 +94,7 @@
     NSMutableArray *orderCompleteArr = [NSMutableArray new];
 
    [[BambooServer sharedInstance]retrieveReceiptsWithCompletion:^(NSDictionary *receiptsDictionary) {
-        NSLog(@"%@", receiptsDictionary);
+//        NSLog(@"%@", receiptsDictionary);
         for (NSString *receiptKey in [receiptsDictionary allKeys])
         {
             NSDictionary *receiptDic = [receiptsDictionary valueForKey:receiptKey];
@@ -250,22 +250,17 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    //if ([self.receiptData[section] count] > 0)
-    //{
-        return [self.receiptData[section] count];
-    /*}
-    else
-    {
-        //Return 1, so can display placeholder cell
-        return 1;
-    }*/
+    NSMutableArray *sectionArr = self.receiptData[section];
+    return sectionArr.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
          cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = nil;
-    if ([self.receiptData[indexPath.section] count] > 0)
+    NSMutableArray *sectionArr = self.receiptData[indexPath.section];
+    
+    if (sectionArr.count > 0)
     {
         ReceiptObject *receiptObject = self.receiptData[indexPath.section][indexPath.row];
         NSString *orderStatus = receiptObject.orderStatus;
@@ -424,7 +419,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
             float requestedLat = [requestedReceipt getDestination].latitude;
             float requestedLon = [requestedReceipt getDestination].longitude;
             
-            [[BambooServer sharedInstance]requestSandboxUberWithStartingLatitude:[NSNumber numberWithFloat:usersLat] startingLongitude:[NSNumber numberWithFloat:usersLon] endingLatitude:[NSNumber numberWithFloat:requestedLat] endingLongitude:[NSNumber numberWithFloat:requestedLon] orderNumber:orderNum completion:^(BOOL requestSuccess) {
+            [[BambooServer sharedInstance]requestUberWithStartingLatitude:[NSNumber numberWithFloat:usersLat] startingLongitude:[NSNumber numberWithFloat:usersLon] endingLatitude:[NSNumber numberWithFloat:requestedLat] endingLongitude:[NSNumber numberWithFloat:requestedLon] orderNumber:orderNum completion:^(BOOL requestSuccess) {
                 
                 //Update the Delivery View UI that a request is in process
                 [self.delegate requestedUber];
@@ -479,7 +474,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)compareServerDictionary:(NSDictionary *)receiptsDictionary
 {
-    NSLog(@"inside compareserverdictionary");
+//    NSLog(@"inside compareserverdictionary");
     //Receive notifications for uberstatusdrivercancelled and uberstatusarriving here
     for (NSString *orderNumber in [receiptsDictionary allKeys])
     {
@@ -544,7 +539,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (receiptsDictionary != nil)
     {
-        NSLog(@"inside receivedReceiptUpdate for ReceiptSlideOutViewController");
+//        NSLog(@"inside receivedReceiptUpdate for ReceiptSlideOutViewController");
         //Compare receiptsDictionary to own to determine updates
         [self compareServerDictionary:receiptsDictionary];
     }
@@ -666,17 +661,18 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 - (NSMutableArray *)allCellsInCollectionView {
     NSMutableArray *cells = [[NSMutableArray alloc] init];
     for (NSInteger j = 0; j < [self.collectionView numberOfSections]; j++) {
-        NSLog(@"%i", [self.collectionView numberOfItemsInSection:j]);
+//        NSLog(@"%i", [self.collectionView numberOfItemsInSection:j]);
         for (NSInteger i = 0; i < [self.collectionView numberOfItemsInSection:j]; i++) {
             ReceiptCell *cell = (ReceiptCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:j]];
             
-            NSLog(@"hi");
+//            NSLog(@"hi");
+            
             if (cell) {
                 [cells addObject:cell];
             }
         }
     }
-    NSLog(@"number of sections %i", [self.collectionView numberOfSections]);
+//    NSLog(@"number of sections %i", [self.collectionView numberOfSections]);
     return cells;
 }
 

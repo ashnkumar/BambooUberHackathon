@@ -531,13 +531,13 @@
 #pragma mark - pings
 - (void)receivedReceiptUpdate:(NSDictionary *)receiptsDictionary
 {
-    NSLog(@"inside receivedReceiptUpdate for Delivery View Controller");
+//    NSLog(@"inside receivedReceiptUpdate for Delivery View Controller");
     [self.receiptPanelViewController receivedReceiptUpdate:receiptsDictionary];
 }
 
 - (void)receivedCarLocationsUpdate:(NSDictionary *)ubersDictionary
 {
-    NSLog(@"inside receivedCarLocationsUpdate for Delivery View Controller");
+//    NSLog(@"inside receivedCarLocationsUpdate for Delivery View Controller");
     //[self.receiptPanelViewController receivedCarLocationsUpdate:ubersDictionary];
     if (ubersDictionary != nil)
     {

@@ -84,8 +84,6 @@
     //Start pinging for car location updates
     //[NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(pingForCarLocations) userInfo:nil repeats:YES];
     
-    return YES;
-    
     // To test that BambooServer methods work:
 //    [self fakeReceiptsRetrieval];
 //    [self fakeUbersRetrieval];
@@ -93,7 +91,7 @@
 //    [self getSingleUber];
 //    [self resetAllReceipts];
 //    [self clearAllUbers];
-//    [self sandboxUberRequest];
+//    [self uberRequest];
 //    [self getReceiptUpdates];
 
     return YES;
@@ -110,12 +108,12 @@
 
 - (void)pingForReceiptUpdates
 {
-    NSLog(@"inside pingForReceiptUpdates");
+//    NSLog(@"inside pingForReceiptUpdates");
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         [[BambooServer sharedInstance]retrieveReceiptUpdatesWithCompletion:^(NSDictionary *receiptUpdatesDic) {
             if (receiptUpdatesDic != nil)
             {
-                NSLog(@"receiptUpdatesDic is not nil");
+//                NSLog(@"receiptUpdatesDic is not nil");
                 dispatch_async(dispatch_get_main_queue(), ^(void){
                     [self.deliveryVC receivedReceiptUpdate:receiptUpdatesDic];
                     if (self.tabBarController.selectedIndex == 0 || self.tabBarController.selectedIndex == 2 || self.tabBarController.selectedIndex == 3)
@@ -139,7 +137,7 @@
 
 - (void)pingForCarLocations
 {
-    NSLog(@"inside pingForCarLocations");
+//    NSLog(@"inside pingForCarLocations");
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         [[BambooServer sharedInstance]retrieveUbersWithCompletion:^(NSDictionary *ubersDictionary) {
             if (ubersDictionary != nil)
@@ -193,10 +191,10 @@
 
 - (void)fakeUberRequest
 {
-    [[BambooServer sharedInstance] requestUberWithStartingLatitude:@(37.7901811)
-                                                 startingLongitude:@(122.4070723)
-                                                    endingLatitude:@(37.7901811)
-                                                   endingLongitude:@(122.4070723)
+    [[BambooServer sharedInstance] requestUberWithStartingLatitude:@(37.775871)
+                                                 startingLongitude:@(-122.417961)
+                                                    endingLatitude:@(37.7860229)
+                                                   endingLongitude:@(-122.4413374)
                                                        orderNumber:49
                                                         completion:^(BOOL requestSuccess) {
                                                             if (requestSuccess) {
@@ -210,12 +208,12 @@
                                                        }];
 }
 
-- (void)sandboxUberRequest
+- (void)uberRequest
 {
-    [[BambooServer sharedInstance] requestSandboxUberWithStartingLatitude:@(37.7901811)
-                                                 startingLongitude:@(122.4070723)
-                                                    endingLatitude:@(37.7901811)
-                                                   endingLongitude:@(122.4070723)
+    [[BambooServer sharedInstance] requestUberWithStartingLatitude:@(37.775871)
+                                                 startingLongitude:@(-122.417961)
+                                                    endingLatitude:@(37.7860229)
+                                                   endingLongitude:@(-122.4413374)
                                                        orderNumber:53
                                                         completion:^(BOOL requestSuccess) {
                                                             NSLog(@"Completed");
