@@ -14,6 +14,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+// CHANGE THIS FOR PRODUCTION /////////
+@property BOOL RUN_IN_PRODUCTION;
+// CHANGE THIS FOR PRODUCTION /////////
+
 - (void)showInAppBannerWithMessage:(NSString *)message;
 @end
 

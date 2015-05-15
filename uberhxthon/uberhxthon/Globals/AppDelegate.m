@@ -33,6 +33,13 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // CHANGE THIS FOR PRODUCTION /////////
+    self.RUN_IN_PRODUCTION = NO;
+    // CHANGE THIS FOR PRODUCTION /////////
+    
+    
+    
     // Override point for customization after application launch.
     self.deliveryVC = [[DeliveryViewController alloc]init];
     self.analyticsVC = [[AnalyticsViewController alloc]init];
