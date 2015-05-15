@@ -30,7 +30,6 @@
     
     //TODO: make this dynamic to the frame of iPad
     self.requestStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 7, 200, 40)];
-    self.requestStatusLabel.text = @"Requesting Uber...";
     self.requestStatusLabel.font = [UIFont fontWithName:@"OpenSans" size:20.0];
     self.requestStatusLabel.textAlignment = NSTextAlignmentLeft;
     
@@ -46,13 +45,18 @@
     
 }
 
-- (void)uberRequestComplete
+- (void)setFirstStatus:(NSString *)firstStatus
+{
+    self.requestStatusLabel.text = firstStatus;
+}
+
+- (void)uberRequestComplete:(NSString *)message
 {
     self.checkView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 6.5, 40, 40)];
     self.checkView.image = [UIImage imageNamed:@"myCheckBox"];
     [self.requestingSpinner removeFromSuperview];
     [self.view addSubview:self.checkView];
-    self.requestStatusLabel.text = @"Uber En Route!";
+    self.requestStatusLabel.text = message;
     
     [self performSelector:@selector(dismissMyself) withObject:self afterDelay:1.0];
 }

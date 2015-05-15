@@ -16,6 +16,6 @@
 
 @interface RequestUberPopupViewController : UIViewController
 @property (nonatomic, assign) id<RequestPopupViewControllerDelegate> delegate;
-
--(void)uberRequestComplete;
+-(void)setFirstStatus:(NSString *)firstStatus;
+-(void)uberRequestComplete:(NSString *)message;
 @end

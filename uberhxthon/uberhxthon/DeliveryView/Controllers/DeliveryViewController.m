@@ -50,11 +50,12 @@
 @property (nonatomic, strong) DetailedReceiptViewController *detailedReceipt;
 @property (nonatomic, assign) BOOL showingDetailedReceipt;
 @property (nonatomic, strong) RequestUberPopupViewController *requestUberPopupVC;
+@property (nonatomic, strong) RequestUberPopupViewController *loginPopup;
 @property (nonatomic, strong) NSMutableDictionary *ubersCars;
 
 // Loading view / spinner
 @property (strong, nonatomic) UIVisualEffectView *blurEffectView;
-@property (strong, nonatomic) RTSpinKitView *loadingSpinner;
+//@property (strong, nonatomic) RTSpinKitView *loadingSpinner;
 
 
 // Animating cars
@@ -113,14 +114,15 @@
     screenWidth = screenRect.size.width;
     screenHeight = screenRect.size.height;
     
-    self.loadingSpinner = [[RTSpinKitView alloc]
+    /*self.loadingSpinner = [[RTSpinKitView alloc]
                            initWithStyle:RTSpinKitViewStyleBounce
                            color:[AppConstants cashwinGreen]];
     
     float spinnerx = screenWidth / 2 - 10;
     float spinnery = screenHeight / 2 - 10;
     CGRect newFrame = CGRectMake(spinnerx, spinnery, 20, 20);
-    self.loadingSpinner.frame = newFrame;
+    self.loadingSpinner.frame = newFrame;*/
+    
 }
 
 
@@ -181,7 +183,8 @@
     }
     
     // Add the spinner
-    [self.view addSubview:self.loadingSpinner];
+    //[self.view addSubview:self.loadingSpinner];
+    
 }
 
 - (void)setupMapView
@@ -324,7 +327,8 @@
                        fullyRendered:(BOOL)fullyRendered
 {
     [self.blurEffectView removeFromSuperview];
-    [self.loadingSpinner removeFromSuperview];
+    
+    //[self.loadingSpinner removeFromSuperview];
     self.receiptPanelViewController.view.alpha = 1.0f;
 }
 
@@ -492,6 +496,7 @@
         self.dimView.layer.opacity = 0.5;
     } completion:^(BOOL finished) {
         self.requestUberPopupVC = [[RequestUberPopupViewController alloc]init];
+        [self.requestUberPopupVC setFirstStatus:@"Requesting Uber..."];
         self.requestUberPopupVC.delegate = self;
         self.requestUberPopupVC.transitioningDelegate = self;
         self.requestUberPopupVC.modalPresentationStyle = UIModalPresentationCustom;
@@ -502,7 +507,7 @@
 
 - (void)removeRequestingReceiptStatusVC
 {
-    [self.requestUberPopupVC uberRequestComplete];
+    [self.requestUberPopupVC uberRequestComplete:@"Uber En Route!"];
 }
 
 //Remove the Uber-requesting popup
