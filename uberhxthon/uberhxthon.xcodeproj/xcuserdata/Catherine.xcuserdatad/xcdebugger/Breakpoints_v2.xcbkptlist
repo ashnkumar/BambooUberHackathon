@@ -184,13 +184,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401260.476614"
+            timestampString = "453409543.479313"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "@implementation DeliveryViewController"
-            landmarkType = "3">
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-setupVariables"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
             landmarkName = "-movePanel:"
             landmarkType = "5">
          </BreakpointContent>
@@ -216,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
             landmarkName = "-movePanel:"
             landmarkType = "5">
          </BreakpointContent>
@@ -344,11 +344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
             landmarkName = "-expandReceipt:"
             landmarkType = "5">
          </BreakpointContent>
@@ -440,11 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "498"
-            endingLineNumber = "498"
+            startingLineNumber = "503"
+            endingLineNumber = "503"
             landmarkName = "-requestedUber"
             landmarkType = "5">
          </BreakpointContent>
@@ -456,11 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "497"
-            endingLineNumber = "497"
+            startingLineNumber = "502"
+            endingLineNumber = "502"
             landmarkName = "-requestedUber"
             landmarkType = "5">
          </BreakpointContent>
@@ -568,11 +568,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "-movePanel:"
             landmarkType = "5">
          </BreakpointContent>
@@ -584,12 +584,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "517"
-            endingLineNumber = "517"
-            landmarkName = "-dismissedRequestUberPopup"
+            startingLineNumber = "523"
+            endingLineNumber = "523"
+            landmarkName = "-receivedReceiptUpdate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -600,11 +600,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/RequestUberPopup/RequestUberPopupViewController.m"
-            timestampString = "453266667.951974"
+            timestampString = "453410423.31947"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "-uberRequestComplete:"
             landmarkType = "5">
          </BreakpointContent>
@@ -765,8 +765,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
             endingLineNumber = "145"
-            landmarkName = "@implementation AppDelegate"
-            landmarkType = "3">
+            landmarkName = "-pingForCarLocations"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -776,11 +776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
             landmarkName = "-expandReceipt:"
             landmarkType = "5">
          </BreakpointContent>
@@ -856,11 +856,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "631"
-            endingLineNumber = "631"
+            startingLineNumber = "637"
+            endingLineNumber = "637"
             landmarkName = "-mapView:didSelectAnnotationView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -872,12 +872,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401260.476614"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "-setupMapView"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "-setupReceiptPanelView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -888,11 +888,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "553"
-            endingLineNumber = "553"
+            startingLineNumber = "559"
+            endingLineNumber = "559"
             landmarkName = "-mapView:viewForAnnotation:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1046,11 +1046,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "639"
-            endingLineNumber = "639"
+            startingLineNumber = "645"
+            endingLineNumber = "645"
             landmarkName = "-updateCarLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1062,12 +1062,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "uberhxthon/DeliveryView/Controllers/DeliveryViewController.m"
-            timestampString = "453401641.260347"
+            timestampString = "453409692.45012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "644"
-            endingLineNumber = "644"
+            startingLineNumber = "650"
+            endingLineNumber = "650"
             landmarkName = "-updateCarLocations:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uberhxthon/DeliveryView/Controllers/RequestUberPopup/RequestUberPopupViewController.m"
+            timestampString = "453410423.31947"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uberhxthon/DeliveryView/Controllers/RequestUberPopup/RequestUberPopupViewController.m"
+            timestampString = "453409677.846965"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uberhxthon/DeliveryView/Controllers/RequestUberPopup/RequestUberPopupViewController.m"
+            timestampString = "453410423.31947"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uberhxthon/DeliveryView/Controllers/RequestUberPopup/RequestUberPopupViewController.m"
+            timestampString = "453410026.324909"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-setFirstStatus:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uberhxthon/DeliveryView/Controllers/RequestUberPopup/RequestUberPopupViewController.m"
+            timestampString = "453410026.324909"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-setFirstStatus:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
