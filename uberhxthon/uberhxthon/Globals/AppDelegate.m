@@ -72,10 +72,10 @@
      }];
     
     //Start pinging for receipt updates
-    //[NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(pingForReceiptUpdates) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(pingForReceiptUpdates) userInfo:nil repeats:YES];
      
     //Start pinging for car location updates
-   // [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(pingForCarLocations) userInfo:nil repeats:YES];
+   [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(pingForCarLocations) userInfo:nil repeats:YES];
     
     return YES;
     

@@ -254,8 +254,6 @@
     self.detailedReceipt.view.clipsToBounds = YES;
 
     [self.view addSubview:self.detailedReceipt.view];
-    
-    [self movePanelOneRow];
 }
 
 #pragma mark - Tap Recognizers
@@ -446,7 +444,6 @@
 -(void)movePanel:(UIPanGestureRecognizer *)recognizer
 {
     CGPoint translation = [recognizer translationInView:self.view];
-    NSLog(@"translation y: %f", translation.y);
 
     //End at max y translation if recognizer goes past map view's bounds or below bottom of screen
     float scrollUpY = self.receiptPanelViewController.view.frame.origin.y + translation.y;
@@ -469,7 +466,6 @@
         //Set the collectionview frame
         //Convert translation to its absolute value to determine collectionview frame height
         float absTranslation = fabsf(translation.y);
-        NSLog(@"absolute value translation: %f", absTranslation);
         
         //Check if going up or down
         CGPoint velocity = [recognizer velocityInView:self.view];
@@ -477,18 +473,14 @@
         //If going up
         if(velocity.y < 0)
         {
-            NSLog(@"old height: %f", self.receiptPanelViewController.view.frame.size.height);
             //Gesture went down so increase receipt panel by the translation amount
             self.receiptPanelViewController.view.frame = CGRectMake(self.receiptPanelViewController.view.frame.origin.x, self.receiptPanelViewController.view.frame.origin.y, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height + absTranslation);
-            NSLog(@"new height: %f", self.receiptPanelViewController.view.frame.size.height);
         }
         //Else, is going down
         else
         {
-            NSLog(@"old height: %f", self.receiptPanelViewController.view.frame.size.height);
             //Gesture went up so decrease receipt panel by the translation amount
             self.receiptPanelViewController.view.frame = CGRectMake(self.receiptPanelViewController.view.frame.origin.x, self.receiptPanelViewController.view.frame.origin.y, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height - absTranslation);
-            NSLog(@"new height: %f", self.receiptPanelViewController.view.frame.size.height);
         }
     }
 }
