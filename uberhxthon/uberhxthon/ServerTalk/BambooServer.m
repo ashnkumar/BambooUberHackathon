@@ -88,7 +88,7 @@ static NSString * const GetReceiptUpdatesPath = @"get-receipt-updates";
                                   initWithTitle:@"Error retrieving ubers"
                                   message:[error localizedDescription]
                                   delegate:nil
-                                  cancelButtonTitle:@"Ok"
+                                  cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
         [alertView show];
     }];
@@ -149,7 +149,7 @@ static NSString * const GetReceiptUpdatesPath = @"get-receipt-updates";
                                   initWithTitle:@"Error Requesting Uber"
                                   message:[error localizedDescription]
                                   delegate:nil
-                                  cancelButtonTitle:@"Ok"
+                                  cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
         [alertView show];
     }];
@@ -183,7 +183,7 @@ static NSString * const GetReceiptUpdatesPath = @"get-receipt-updates";
                                    initWithTitle:@"Error Requesting Uber"
                                    message:[error localizedDescription]
                                    delegate:nil
-                                   cancelButtonTitle:@"Ok"
+                                   cancelButtonTitle:@"OK"
                                    otherButtonTitles:nil];
         [alertView show];
     }];

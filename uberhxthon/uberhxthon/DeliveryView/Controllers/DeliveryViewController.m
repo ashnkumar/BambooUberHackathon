@@ -49,6 +49,7 @@
 @property (nonatomic, strong) DetailedReceiptViewController *detailedReceipt;
 @property (nonatomic, assign) BOOL showingDetailedReceipt;
 @property (nonatomic, strong) RequestUberPopupViewController *requestUberPopupVC;
+@property (nonatomic, strong) NSMutableDictionary *ubersCars;
 
 // Loading view / spinner
 @property (strong, nonatomic) UIVisualEffectView *blurEffectView;
@@ -80,6 +81,7 @@
     [self setupReceiptPanelView];
     [self setupGestures];
     [self setupDetailedReceipt];
+    [self createNotification]; //TODO: post after logging in
 }
 
 -(void)viewWillLayoutSubviews {
@@ -105,6 +107,15 @@
 
 
 #pragma mark - Helpers
+- (void) createNotification
+{
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.alertBody = @"You have new deliveries to fill! Check your receipt panel for details.";
+    localNotification.fireDate = nil;
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+}
 - (void)setupVariables
 {
     screenRect = [[UIScreen mainScreen] bounds];
@@ -206,6 +217,9 @@
                              action:@selector(closePanelDueToMapTouch:)];
     
     [self.mapView addGestureRecognizer:self.mapTapRecognizer];
+    
+    self.ubersCars = [[NSMutableDictionary alloc]init];
+    
 }
 
 - (void)setupReceiptPanelView
@@ -237,13 +251,15 @@
     [self.view addSubview:self.dimView];
     
     float detailedReceiptWidth = screenWidth * 0.65;
-    float detailedReceiptHeight = screenHeight * 0.5;
+    float detailedReceiptHeight = screenHeight * 0.75;
     float detailedReceiptX = screenWidth / 2 - (detailedReceiptWidth / 2);
     
     self.detailedReceipt = [[DetailedReceiptViewController alloc]init];
     self.detailedReceipt.view.frame = CGRectMake(detailedReceiptX, screenHeight * 2 * -1, detailedReceiptWidth, detailedReceiptHeight);
     self.detailedReceipt.view.layer.opacity = 0;
     self.showingDetailedReceipt = NO;
+    self.detailedReceipt.view.layer.cornerRadius = 8;
+    self.detailedReceipt.view.layer.masksToBounds = YES;
 
     [self.view addSubview:self.detailedReceipt.view];
 }
@@ -260,7 +276,7 @@
     {
         [self.dimView removeGestureRecognizer:recognizer];
         float detailedReceiptWidth = screenWidth * 0.65;
-        float detailedReceiptHeight = screenHeight * 0.5;
+        float detailedReceiptHeight = screenHeight * 0.75;
         float detailedReceiptX = screenWidth / 2 - (detailedReceiptWidth / 2);
     
         [UIView animateWithDuration:.3 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
@@ -269,7 +285,7 @@
             self.dimView.layer.opacity = 0;
             
         } completion:^(BOOL finished) {
-            NSLog(@"displayed detailed receipt view");
+            NSLog(@"exited detailed receipt view");
             //TODO: create a gesture recognizer for on top of the dimming view to close the detailed receipt view
             self.detailedReceipt.view.layer.opacity = 0;
             self.showingDetailedReceipt = NO;
@@ -321,6 +337,14 @@
     [self.blurEffectView removeFromSuperview];
     [self.loadingSpinner removeFromSuperview];
     self.receiptPanelViewController.view.alpha = 1.0f;
+    
+    MKPointAnnotation *testCar = [[MKPointAnnotation alloc]init];
+    [testCar setCoordinate:CLLocationCoordinate2DMake(37.7833, -122.4167)];
+    [testCar setTitle:@"56"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.mapView addAnnotation:testCar];
+    });
+
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
@@ -401,9 +425,9 @@
         //Display the xib template with the specified information
         //TODO: Check if set detailed receipt view correctly
         float detailedReceiptWidth = screenWidth * 0.65;
-        float detailedReceiptHeight = screenHeight * 0.5;
-        float detailedReceiptX = screenWidth / 2 - (detailedReceiptWidth / 50);
-        float detailedReceiptY = screenHeight / 2 - (detailedReceiptHeight / 50);
+        float detailedReceiptHeight = screenHeight * 0.75;
+        float detailedReceiptX = screenWidth / 2 - (detailedReceiptWidth / 2);
+        float detailedReceiptY = screenHeight / 2 - (detailedReceiptHeight / 1.8); //TODO: why is this 1.8 and not 2??
         
         self.detailedReceipt.view.frame = CGRectMake(detailedReceiptX, screenHeight * 2 * -1, detailedReceiptWidth, detailedReceiptHeight);
         self.detailedReceipt.view.layer.opacity = 1;
@@ -417,6 +441,9 @@
             self.detailedReceipt.view.frame = CGRectMake(detailedReceiptX, detailedReceiptY, detailedReceiptWidth, detailedReceiptHeight);
         } completion:^(BOOL finished) {
             NSLog(@"displayed detailed receipt view");
+            NSLog(@"screen width: %f, screen height: %f", screenWidth, screenHeight);
+            NSLog(@"detailedReceiptY: %f", detailedReceiptY);
+
             //TODO: create a gesture recognizer for on top of the dimming view to close the detailed receipt view
             self.exitDetailedReceiptTapRecognizer = [[UITapGestureRecognizer alloc]
                                      initWithTarget:self
@@ -463,7 +490,6 @@
     }
 }
 
-//////////////////////////////////////////////////////// DO LATER
 - (void)highlightReceiptAtIndex:(int)receiptIndex
 {
     //@TODO: find section to highlight
@@ -522,7 +548,6 @@
     return -122.413997;
 }
 
-//@Todo
 - (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation
 {
     static NSString *AnnotationViewID = @"annotationViewID";
@@ -533,57 +558,81 @@
     {
         annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
     }
+    annotationView.image = [UIImage imageNamed:@"uber_route1.png"]; //TODO: set with correct bearing
     
-    if ([annotation.title isEqualToString:@"1"])
-    {
-        annotationView.image = [UIImage imageNamed:@"uber_route1.png"];
-        
-    }
-    else if ([annotation.title isEqualToString:@"2"])
-    {
-        annotationView.image = [UIImage imageNamed:@"uber_route2.png"];
-    }
-    else if ([annotation.title isEqualToString:@"3"])
-    {
-        annotationView.image = [UIImage imageNamed:@"uber_route3.png"];
-    }
-    else if ([annotation.title isEqualToString:@"4"])
-    {
-        annotationView.image = [UIImage imageNamed:@"uber_route4.png"];
-    }
-    else if ([annotation.title isEqualToString:@"5"])
-    {
-        annotationView.image = [UIImage imageNamed:@"map-vehicle-icon-sm.png"];
-    }
-    else
-    {
-        NSLog(@"couldn't find annotation title");
-    }
     annotationView.annotation = annotation;
-    //annotationView.centerOffset = CGPointMake(0, -annotationView.image.size.height / 2);
-    
     return annotationView;
 }
 
-//@Todo
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
- /*   [self highlightReceiptAtIndex:1];
-    [self movePanelUpOneRow];
-  */
+    MKPointAnnotation *car = view.annotation;
+    int orderNum = [car.title intValue];
+    [self.receiptPanelViewController scrollToOrderNum:orderNum andHighlight:YES];
 }
 
-//@Todo
-- (void)moveUser:(CLLocation*)newLoc
+//@Todo - test - simplify it by simply setting mapview addAnnotations to entire ubersdictoinaries (can remove all self.uberscars)
+- (void) updateCarLocations:(NSDictionary *)ubersDictionary
 {
-    CLLocationCoordinate2D coords;
-    coords.latitude = newLoc.coordinate.latitude;
-    coords.longitude = newLoc.coordinate.longitude;
+    if ([ubersDictionary count] > 0)
+    {
+        NSMutableArray *cars = [[NSMutableArray alloc]init];
+        for (NSString *orderNum in [ubersDictionary allKeys])
+        {
+            MKPointAnnotation *car = [[MKPointAnnotation alloc]init];
+            car.title = orderNum;
+            NSString *uberLatitude = ubersDictionary[@"uberLatitude"];
+            NSString *uberLongitude = ubersDictionary[@"uberLatitude"];
+            
+            [car setCoordinate:CLLocationCoordinate2DMake([uberLatitude floatValue], [uberLongitude floatValue])];
+            //todo - Set the bearing
+            [cars addObject:car];
+        }
+        [self.mapView addAnnotations:cars];
+    }
     
-    [self.annotation1 setCoordinate:coords];
+    /*
+        If app's uber dictionary is empty, just push them all
+        Else if not empty, search for the order number and if found, update the location
+            Else if not found, push a new object with its location
+     */
+    /*if ([self.ubersCars count] == 0)
+    {
+        for (NSString *orderNum in [ubersDictionary allKeys])
+        {
+            //Add the objects
+            MKPointAnnotation *car = [[MKPointAnnotation alloc]init];
+            [car setCoordinate:CLLocationCoordinate2DMake(0, 0)];//Set based on how Ashwin returns the coordinates
+            //TODO: set the bearing
+            [car setTitle:[NSString stringWithFormat:@"%@", orderNum]];
+            [self.ubersCars setObject:car forKey:orderNum];
+        }
+        [self.mapView addAnnotations:[self.ubersCars allValues]];
+    }
+    else
+    {
+        for (NSString *orderNum in [ubersDictionary allKeys])
+        {
+            if ([self.ubersCars objectForKey:orderNum] != nil)
+            {
+                //Update the location
+                MKPointAnnotation *car = [self.ubersCars objectForKey:orderNum];
+                [car setCoordinate:CLLocationCoordinate2DMake(0, 0)]; //Set based on how Ashwin returns the coordinates
+                //TODO: set the bearing
+            }
+            else
+            {
+                //Instantiate a new mkpointannotation for that car
+                MKPointAnnotation *car = [[MKPointAnnotation alloc]init];
+                [car setCoordinate:CLLocationCoordinate2DMake(0, 0)];//Set based on how Ashwin returns the coordinates
+                //TODO: set the bearing
+                [car setTitle:[NSString stringWithFormat:@"%@", orderNum]];
+                
+                [self.mapView addAnnotation:car];
+            }
+        }
+    }*/
 }
-////////////////////////////////////////////////////////
-
 
 /*- (void) prepareRoutes
 {
@@ -653,102 +702,6 @@
         intIndex_route1++;
         [self performSelector:@selector(manageUserMove1:) withObject:routeMut afterDelay:0.6];
     }
-}
-
-
-// Route 2 Methods
-- (void)moveUser2:(CLLocation *)newLoc
-{
-    CLLocationCoordinate2D coords;
-    coords.latitude = newLoc.coordinate.latitude;
-    coords.longitude = newLoc.coordinate.longitude;
-    
-    [self.annotation2 setCoordinate:coords];
-}
-
--(void)manageUserMove2:(NSMutableArray *)routeMut
-
-{
-    CLLocation *newLoc = [routeMut objectAtIndex:intIndex_route2];
-    if (intIndex_route2 == 0) {
-        self.annotation2 = [[MKPointAnnotation alloc] init];
-        [self.annotation2 setTitle:@"2"];
-    }
-    [self moveUser2:newLoc];
-    
-    if(intIndex_route2 == 0){
-        [self.mapView addAnnotation:self.annotation2];
-    }
-    
-    if (intIndex_route2 < (routeMut.count-1))
-    {
-        intIndex_route2++;
-        [self performSelector:@selector(manageUserMove2:) withObject:routeMut afterDelay:0.2];
-    }
-}
-
-//Route 3 Methods
-- (void)moveUser3:(CLLocation *)newLoc
-{
-    CLLocationCoordinate2D coords;
-    coords.latitude = newLoc.coordinate.latitude;
-    coords.longitude = newLoc.coordinate.longitude;
-    
-    [self.annotation3 setCoordinate:coords];
-}
-
--(void)manageUserMove3:(NSMutableArray *)routeMut
-
-{
-    CLLocation *newLoc = [routeMut objectAtIndex:intIndex_route3];
-    if (intIndex_route3 == 0) {
-        self.annotation3 = [[MKPointAnnotation alloc] init];
-        [self.annotation3 setTitle:@"3"];
-    }
-    [self moveUser3:newLoc];
-    
-    if(intIndex_route3 == 0){
-        [self.mapView addAnnotation:self.annotation3];
-    }
-    
-    if (intIndex_route3 < (routeMut.count-1))
-    {
-        intIndex_route3++;
-        [self performSelector:@selector(manageUserMove3:) withObject:routeMut afterDelay:0.2];
-    }
-    
-}
-
-// Route 4 Methods 
-- (void)moveUser4:(CLLocation *)newLoc
-{
-    CLLocationCoordinate2D coords;
-    coords.latitude = newLoc.coordinate.latitude;
-    coords.longitude = newLoc.coordinate.longitude;
-    
-    [self.annotation4 setCoordinate:coords];
-}
-
--(void)manageUserMove4:(NSMutableArray *)routeMut
-
-{
-    CLLocation *newLoc = [routeMut objectAtIndex:intIndex_route4];
-    if (intIndex_route4 == 0) {
-        self.annotation4 = [[MKPointAnnotation alloc] init];
-        [self.annotation4 setTitle:@"4"];
-    }
-    [self moveUser4:newLoc];
-    
-    if(intIndex_route4 == 0){
-        [self.mapView addAnnotation:self.annotation4];
-    }
-    
-    if (intIndex_route4 < (routeMut.count-1))
-    {
-        intIndex_route4++;
-        [self performSelector:@selector(manageUserMove4:) withObject:routeMut afterDelay:0.5];
-    }
-    
 }*/
 @end
 

@@ -29,9 +29,8 @@
     //Details array contains: order number, date ordered, time ordered, orderer's name, orderer's address line 1, orderer's address line 2, orderer's phonenumber, order details, paymentType, paymentLastFourDigits
     if ([details count] == 10)
     {
-        self.orderNumber.text = details[0];
-        self.orderDate.text = details[1];
-        self.orderTime.text = details[2];
+        self.orderNumber.text = [NSString stringWithFormat:@"#%@", details[0]];
+        self.orderDate.text = [NSString stringWithFormat:@"%@ - %@", details[1], details[2]];
         self.destinationName.text = details[3];
         self.destinationAddressLine1.text = details[4];
         self.destinationAddressLine2.text = details[5];
@@ -39,7 +38,7 @@
         //TODO: layout order details, paymentType, paymentLastFourDigits
         self.orderDetailsDict = details[7];
         self.paymentType.text = details[8];
-        self.paymentLastFourDigits.text = details[9];
+        self.paymentLastFourDigits.text = [NSString stringWithFormat:@"****%@", details[9]];
     }
     else
     {

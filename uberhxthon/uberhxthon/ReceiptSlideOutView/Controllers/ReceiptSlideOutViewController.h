@@ -20,6 +20,7 @@
 - (void)removeRequestingReceiptStatusVC;
 - (float)getUsersLocationLatitude;
 - (float)getUsersLocationLongitude;
+- (void)updateCarLocations:(NSDictionary *)ubersDictionary;
 
 // Delegate methods for receipt selection here
 @optional
@@ -33,4 +34,5 @@
 
 - (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath;
 - (void)removeAllCellBorders;
+- (void)scrollToOrderNum:(int)orderNum andHighlight:(BOOL)shouldhighlight;
 @end

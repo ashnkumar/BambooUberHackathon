@@ -13,7 +13,6 @@
 @property (strong, nonatomic) NSMutableArray *details;
 @property (strong, nonatomic) IBOutlet UILabel *orderNumber;
 @property (strong, nonatomic) IBOutlet UILabel *orderDate;
-@property (strong, nonatomic) IBOutlet UILabel *orderTime;
 @property (strong, nonatomic) IBOutlet UILabel *destinationName;
 @property (strong, nonatomic) IBOutlet UILabel *destinationPhoneNum;
 @property (strong, nonatomic) IBOutlet UILabel *destinationAddressLine1;

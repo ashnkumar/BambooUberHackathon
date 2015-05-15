@@ -37,7 +37,8 @@
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *receiptData;
-@property (nonatomic, assign) BOOL pingingForAllUpdatesOn;
+@property (nonatomic, assign) BOOL pingingForAllReceiptUpdatesOn;
+@property (nonatomic, assign) BOOL pingingForAllCarLocationsOn;
 
 - (void)addNewItemInSection:(NSUInteger)section;
 - (void)deleteItemAtIndexPath:(NSIndexPath*)indexPath;
@@ -62,7 +63,8 @@
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"ReceiptSectionHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SectionHeaderView"];
     
-    self.pingingForAllUpdatesOn = NO;
+    self.pingingForAllReceiptUpdatesOn = NO;
+    self.pingingForAllCarLocationsOn = NO;
     
     //Note: should call populateReceipts when database tells me I have new ones
     [self populateReceipts];
@@ -368,7 +370,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - Receipt Cell Delegate
 - (NSMutableArray *)findReceiptWithOrderNum:(int)orderNum inSection:(int)requestSection
 {
-    NSMutableArray *receiptAndIndex = nil;
+    NSMutableArray *receiptAndIndex = [[NSMutableArray alloc]init];
     ReceiptObject *receiptFound = nil;
     NSIndexPath *indexFound = nil;
     
@@ -395,30 +397,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     }
     return receiptAndIndex;
 }
-
-/*- (NSIndexPath *)findIndexWithOrderNum:(int)orderNum inSection:(int)requestSection
-{
-    NSIndexPath *receiptFound = nil;
-    //TODO: fix with requestSection so don't have to iterate through entire data structure holding receipts
-    int sectionCount = 0;
-    int rowCount = 0;
-    for (NSMutableArray *arr in self.receiptData)
-    {
-        for (ReceiptObject *receipt in arr)
-        {
-            int receiptOrderNum = [receipt.orderNumber intValue];
-            NSLog(@"%i ", receiptOrderNum);
-            if (receiptOrderNum == orderNum)
-            {
-                receiptFound = [NSIndexPath indexPathForRow:rowCount inSection:sectionCount]; //TODO: Test is correct
-                return receiptFound;
-            }
-            rowCount ++;
-        }
-        sectionCount ++;
-    }
-    return receiptFound;
-}*/
 
 - (void)requestUberWithReceipt:(NSString *)receiptNumber
 {
@@ -466,37 +444,124 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 }
 
 
-#pragma mark - Helpers
-- (void)compareServerDictionary:(NSDictionary *)receiptsDictionary
+#pragma mark - Car and Server dictionaries
+- (void)scrollToOrderNum:(int)orderNum andHighlight:(BOOL)shouldhighlight
 {
-    for (NSString *orderNumber in [receiptsDictionary allKeys])
+    
+    //Find the receipt's index path and scroll to it
+    NSMutableArray *receiptAndIndex = [self findReceiptWithOrderNum:orderNum inSection:0];
+    if ([receiptAndIndex count] == 2)
     {
-        NSString *newStatus = [receiptsDictionary objectForKey:orderNumber];
-        NSMutableArray *receiptAndIndex = [self findReceiptWithOrderNum:[orderNumber intValue] inSection:0];
-        if ([receiptAndIndex count] == 2)
+        NSIndexPath *foundIndex = [receiptAndIndex lastObject];
+        [self scrollToRow:foundIndex.section];
+        if (shouldhighlight)
         {
-            ReceiptObject *foundReceipt = [receiptAndIndex  firstObject];
-            if (![foundReceipt.orderStatus isEqualToString:newStatus])
-            {
-                //Move the receipt and update the UI
-                foundReceipt.orderStatus = newStatus;
-                NSIndexPath *requestedReceiptIndexPath = [receiptAndIndex lastObject];//TODO fix section
-                [self moveReceipt:requestedReceiptIndexPath];
-                [self.collectionView reloadData];
-            }
-            else
-            {
-                NSLog(@"new order status is the same as previously");
-            }
+            [self highlightReceiptAtIndexPath:foundIndex];
         }
+    }
+    else
+    {
+        NSLog(@"receiptandindex count error");
     }
 }
 
-- (void)pingRegularlyForUpdates
+- (void)updateCarLocations:(NSDictionary *)ubersDictionary
+{
+    if (ubersDictionary != nil)
+    {
+        //Update the annotations
+        [self.delegate updateCarLocations:ubersDictionary];
+    }
+}
+
+- (void)compareServerDictionary:(NSDictionary *)receiptsDictionary
+{
+    //Receive notifications for uberstatusdrivercancelled and uberstatusarriving here
+    for (NSString *orderNumber in [receiptsDictionary allKeys])
+    {
+        NSString *newStatus = [receiptsDictionary objectForKey:orderNumber];
+        if ([newStatus isEqualToString:kUberStatusArriving])
+        {
+            [self createNotificationWithMessage:[NSString stringWithFormat:@"Your Uber for order number %@ is arriving.", orderNumber]];
+        }
+        else if ([newStatus isEqualToString:kUberStatusDriverCanceled])
+        {
+            [self createNotificationWithMessage:[NSString stringWithFormat:@"Your Uber driver for order number %@ cancelled - please re-request pick-up for that order.", orderNumber]];
+            [self uberCancelled:orderNumber];
+        }
+        else
+        {
+            NSMutableArray *receiptAndIndex = [self findReceiptWithOrderNum:[orderNumber intValue] inSection:0];
+            if ([receiptAndIndex count] == 2)
+            {
+                ReceiptObject *foundReceipt = [receiptAndIndex  firstObject];
+                if (![foundReceipt.orderStatus isEqualToString:newStatus])
+                {
+                    //Move the receipt and update the UI
+                    foundReceipt.orderStatus = newStatus;
+                    NSIndexPath *requestedReceiptIndexPath = [receiptAndIndex lastObject];//TODO fix section
+                    [self moveReceipt:requestedReceiptIndexPath];
+                }
+                else
+                {
+                    NSLog(@"new order status is the same as previously");
+                }
+            }
+        }
+    }
+    [self.collectionView reloadData];
+}
+
+- (void)createNotificationWithMessage:(NSString *)message
+{
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.alertBody = message;
+    localNotification.fireDate = [NSDate date];
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+}
+
+- (void)uberCancelled:(NSString *)orderNumber
+{
+    //Update the data structure and UI -- TEST!
+    NSMutableArray *foundArr = [self findReceiptWithOrderNum:[orderNumber intValue] inSection:0];
+    if ([foundArr count] == 2)
+    {
+        ReceiptObject *foundReceipt = [foundArr firstObject];
+        NSIndexPath *foundIndexpath = [foundArr lastObject];
+        
+        foundReceipt.orderStatus = kStatusRequestUber;
+        [self.receiptData[foundIndexpath.section] removeObjectAtIndex:foundIndexpath.row];
+        [self.receiptData[0] insertObject:foundReceipt atIndex:0];
+        [self.collectionView reloadData];
+    }
+    else
+    {
+        NSLog(@"error in uber cancelled");
+    }
+    
+}
+
+- (void)pingRegularlyForReceiptUpdates
 {
     [[BambooServer sharedInstance]retrieveReceiptUpdatesWithCompletion:^(NSDictionary *receiptsDictionary) {
-        //Compare receiptsDictionary to own to determine updates
-        [self compareServerDictionary:receiptsDictionary];
+       if (receiptsDictionary != nil)
+       {
+           //Compare receiptsDictionary to own to determine updates
+           [self compareServerDictionary:receiptsDictionary];
+       }
+    }];
+}
+
+- (void)pingRegularlyForCarlocations
+{
+    [[BambooServer sharedInstance]retrieveUbersWithCompletion:^(NSDictionary *ubersDictionary) {
+        if (ubersDictionary != nil)
+        {
+            //Compare receiptsDictionary to own to determine updates
+            [self updateCarLocations:ubersDictionary];
+        }
     }];
 }
 
@@ -514,18 +579,19 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
             [self.delegate removeRequestingReceiptStatusVC];
             
             requestedReceipt.orderStatus = kStatusUberRequested;
-            //Now update arrays
+            //Now update arrays & move animation
             [self moveReceipt:requestedReceiptIndexPath];
-            [self.collectionView reloadData];
-
-            //Now perform the receipt's move animation
-            [self performSelector:@selector(performMoveReceiptAnimation:) withObject:requestedReceiptIndexPath afterDelay:0.4];
             
             //start pinging regularly if the app isn't currently
-            if (!self.pingingForAllUpdatesOn)
+            if (!self.pingingForAllReceiptUpdatesOn)
             {
-                [self pingRegularlyForUpdates]; //TODO: do it regularly
-                self.pingingForAllUpdatesOn = YES;
+                [self pingRegularlyForReceiptUpdates]; //TODO: do it regularly
+                self.pingingForAllReceiptUpdatesOn = YES;
+            }
+            if (!self.pingingForAllCarLocationsOn)
+            {
+                [self pingRegularlyForCarlocations]; //TODO: do it regularly
+                self.pingingForAllCarLocationsOn = YES;
             }
         }
         else if ([uberStatus isEqualToString:kUberStatusAccepted] && [originalStatus isEqualToString:kStatusUberRequested])
@@ -604,11 +670,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         NSLog(@"receipt object's status is: %@", receiptObject.orderStatus); //Test to see if its status was updated
         
         //receiptObject's orderStatus should already be moved by this point
-        //Update app's internal data structure
-        NSMutableArray *receiptsInSection = self.receiptData[indexPath.section];
-        [receiptsInSection removeObjectAtIndex:indexPath.row];
-        NSMutableArray *receiptsInSecondSection = self.receiptData[indexPath.section + 1];
-        [receiptsInSecondSection insertObject:receiptObject atIndex:0];
+        [self.collectionView reloadData];
+        [self performSelector:@selector(performMoveReceiptAnimation:) withObject:indexPath afterDelay:0.4];
+
     }
     else
     {
@@ -618,54 +682,64 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)performMoveReceiptAnimation:(NSIndexPath *)indexPath
 {
+    NSMutableArray *receiptsInSection = self.receiptData[indexPath.section];
+     
+     if ([receiptsInSection count] > 0)
+     {
+         //Todo: test if grabs the correct receiptObject
+         ReceiptObject *receiptToMove = receiptsInSection[indexPath.row];
+     
+         if (receiptToMove != nil)
+         {
+             [receiptsInSection removeObjectAtIndex:indexPath.row];
+     
+             NSMutableArray *receiptsInSecondSection = self.receiptData[indexPath.section + 1];
+             [receiptsInSecondSection insertObject:receiptToMove atIndex:0];
+             //Reload the collection view again to now display the updated receipt in its correct row
+             [self.collectionView reloadData];
+     
+             //[self.collectionView moveItemAtIndexPath:indexPath toIndexPath:[NSIndexPath indexPathForItem:0 inSection:indexPath.section + 1]];
+     
+             //Scroll to correct row (+1 because scrollToRow uses intuitive definition of which row to scroll to)
+            //[self scrollToRow:indexPath.section + 1];
+         }
+        else
+        {
+         NSLog(@"error getting receiptobject in  performMoveReceiptAnimation");
+        }
+     }
+     else
+     {
+         NSLog(@"no receipts in indexpath's section inside performMoveReceiptAnimation");
+     }
+    /*ReceiptObject *receiptObject = self.receiptData[indexPath.section][indexPath.row];
+
     if (indexPath != nil)
     {
+        NSLog(@"indexpath section: %i, row:%i", indexPath.section, indexPath.row);
+        //Update app's internal data structure
+        NSMutableArray *receiptsInSection = self.receiptData[indexPath.section];
+        [receiptsInSection removeObjectAtIndex:indexPath.row];
+        NSMutableArray *receiptsInSecondSection = self.receiptData[indexPath.section + 1];
+        [receiptsInSecondSection insertObject:receiptObject atIndex:0];
+        
         [self.collectionView moveItemAtIndexPath:indexPath toIndexPath:[NSIndexPath indexPathForItem:0 inSection:indexPath.section + 1]];
         
         //Scroll to correct row (+1 because scrollToRow uses intuitive definition of which row to scroll to)
         [self scrollToRow:indexPath.section + 1];
-    }
-    /*NSMutableArray *receiptsInSection = self.receiptData[indexPath.section];
-    
-    if ([receiptsInSection count] > 0) {
-        //Todo: test if grabs the correct receiptObject
-        ReceiptObject *receiptToMove = receiptsInSection[indexPath.row];
-        
-        if (receiptToMove != nil) {
-            [receiptsInSection removeObjectAtIndex:indexPath.row];
-            
-            NSMutableArray *receiptsInSecondSection = self.receiptData[indexPath.section + 1];
-            [receiptsInSecondSection insertObject:receiptToMove atIndex:0];
-            
-            [self.collectionView moveItemAtIndexPath:indexPath toIndexPath:[NSIndexPath indexPathForItem:0 inSection:indexPath.section + 1]];
-            
-            //Scroll to correct row (+1 because scrollToRow uses intuitive definition of which row to scroll to)
-            [self scrollToRow:indexPath.section + 1];
-        }
-        else
-        {
-            NSLog(@"error getting receiptobject in  performMoveReceiptAnimation");
-        }
-    }
-    else
-    {
-        NSLog(@"no receipts in indexpath's section inside performMoveReceiptAnimation");
     }*/
 }
 
 - (void)scrollToRow:(int)row
 {
     //Note that row is the CS definition of which row to move to
-    if ([self.delegate isReceiptPanelShowing])
-    {
-        //TODO: Test that this works if more than one panel is showing
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:row] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
-    }
-    else
+    if (![self.delegate isReceiptPanelShowing])
     {
         [self.delegate movePanelOneRow];
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:row] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
     }
+   
+    //TODO: Test that this works if more than one panel is showing
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:row] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 
 #pragma mark - ReceiptDelegate

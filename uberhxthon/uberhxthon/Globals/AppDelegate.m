@@ -56,6 +56,12 @@
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
+    // Override point for customization after application launch.
+    return YES;
+    
     // To test that BambooServer methods work:
 //    [self fakeReceiptsRetrieval];
 //    [self fakeUbersRetrieval];
@@ -67,6 +73,21 @@
 //    [self getReceiptUpdates];
 
     return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    // Play a sound and show an alert only if the application is active, to avoid doubly notifiying the user.
+    //if ([application applicationState] == UIApplicationStateActive)
+    //{
+        // Initialize the alert view.
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:notification.alertBody
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+   // }
 }
 
 - (void)getReceiptUpdates
