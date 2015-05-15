@@ -44,12 +44,12 @@
 
 // Request an UberX in SF (only supported product) with given coordinates
 // NOTE: This is requesting an uber through sandbox)
-- (void)requestSandboxUberWithStartingLatitude:(NSNumber *)startingLatitude
-                             startingLongitude:(NSNumber *)startingLongitude
-                                endingLatitude:(NSNumber *)endingLatitude
-                               endingLongitude:(NSNumber *)endingLongitude
-                                   orderNumber:(int)orderNumber
-                                    completion:(void (^)(BOOL requestSuccess))completion;
+//- (void)requestSandboxUberWithStartingLatitude:(NSNumber *)startingLatitude
+//                             startingLongitude:(NSNumber *)startingLongitude
+//                                endingLatitude:(NSNumber *)endingLatitude
+//                               endingLongitude:(NSNumber *)endingLongitude
+//                                   orderNumber:(int)orderNumber
+//                                    completion:(void (^)(BOOL requestSuccess))completion;
 
 - (BOOL)succededInConnectingToServer;
 @end

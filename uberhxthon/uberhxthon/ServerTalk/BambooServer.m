@@ -10,12 +10,13 @@
 
 #import "AFNetworking.h"
 #import "ReceiptObject.h"
+#import "AppDelegate.h"
 
 
 static NSString * const BaseURLString = @"https://bamboo-app.herokuapp.com/";
 static NSString * const ReceiptsPath = @"fake-get-all-receipts";
-static NSString * const UbersPath = @"fake-get-all-ubers";
-static NSString * const RequestUberPath = @"fake-request-uber";
+static NSString * const FakeUbersPath = @"fake-get-all-ubers";
+static NSString * const FakeRequestUberPath = @"fake-request-uber";
 static NSString * const SandboxRequestUberPath = @"sandbox-request-uber";
 static NSString * const GetSingleUberPath = @"get-single-uber";
 static NSString * const ResetReceiptsPath = @"reset-all-receipts";
@@ -23,6 +24,9 @@ static NSString * const ClearAllUberPath = @"clear-all-ubers";
 BOOL succeededInConnectingToServer;
 static NSString * const GetReceiptUpdatesPath = @"get-receipt-updates";
 
+// Production
+static NSString * const ProdUbersPath = @"prod-get-all-ubers";
+static NSString * const ProdRequestUberPath = @"prod-request-uber";
 
 @implementation BambooServer
 
@@ -68,7 +72,19 @@ static NSString * const GetReceiptUpdatesPath = @"get-receipt-updates";
 
 - (void)retrieveUbersWithCompletion:(void (^)(NSDictionary *ubersDictionary))completion
 {
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, UbersPath];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    bool runInProd = appDelegate.RUN_IN_PRODUCTION;
+    
+    NSString *urlString = [[NSString alloc] init];
+    
+    if (runInProd) {
+        urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, ProdUbersPath];
+    }
+    
+    else {
+        urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, FakeUbersPath];
+    }
+
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -131,7 +147,20 @@ static NSString * const GetReceiptUpdatesPath = @"get-receipt-updates";
                              @"endingLongitude": endingLongitude,
                              @"orderNumber": [@(orderNumber) stringValue]};
     
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, RequestUberPath];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    bool runInProd = appDelegate.RUN_IN_PRODUCTION;
+    
+    NSString *urlString = [[NSString alloc] init];
+    
+    if (runInProd) {
+        urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, ProdRequestUberPath];
+    }
+    
+    else {
+        urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, SandboxRequestUberPath];
+    }
+    
+
     
     [manager POST:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -156,44 +185,44 @@ static NSString * const GetReceiptUpdatesPath = @"get-receipt-updates";
     
 }
 
-- (void)requestSandboxUberWithStartingLatitude:(NSNumber *)startingLatitude
-                             startingLongitude:(NSNumber *)startingLongitude
-                                endingLatitude:(NSNumber *)endingLatitude
-                               endingLongitude:(NSNumber *)endingLongitude
-                                   orderNumber:(int)orderNumber
-                                    completion:(void (^)(BOOL requestSuccess))completion
-{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *params = @{@"startingLatitude": startingLatitude,
-                             @"startingLongitude": startingLongitude,
-                             @"endingLatitude": endingLatitude,
-                             @"endingLongitude": endingLongitude,
-                             @"orderNumber": [@(orderNumber) stringValue]};
-    
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, SandboxRequestUberPath];
-    
-    [manager POST:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSDictionary *response = (NSDictionary *)responseObject;
-        NSLog(@"Response is: %@", response);
-        if ([response[@"uberRequest"] isEqualToString:@"success"]) {
-            completion(YES);
-        } else {
-            completion(NO);
-        }
-    }
-     
-    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                   initWithTitle:@"Error Requesting Uber"
-                                   message:[error localizedDescription]
-                                   delegate:nil
-                                   cancelButtonTitle:@"OK"
-                                   otherButtonTitles:nil];
-        [alertView show];
-    }];
-    
-}
+//- (void)requestSandboxUberWithStartingLatitude:(NSNumber *)startingLatitude
+//                             startingLongitude:(NSNumber *)startingLongitude
+//                                endingLatitude:(NSNumber *)endingLatitude
+//                               endingLongitude:(NSNumber *)endingLongitude
+//                                   orderNumber:(int)orderNumber
+//                                    completion:(void (^)(BOOL requestSuccess))completion
+//{
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    NSDictionary *params = @{@"startingLatitude": startingLatitude,
+//                             @"startingLongitude": startingLongitude,
+//                             @"endingLatitude": endingLatitude,
+//                             @"endingLongitude": endingLongitude,
+//                             @"orderNumber": [@(orderNumber) stringValue]};
+//    
+//    NSString *urlString = [NSString stringWithFormat:@"%@%@", BaseURLString, SandboxRequestUberPath];
+//    
+//    [manager POST:urlString parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
+//        NSDictionary *response = (NSDictionary *)responseObject;
+//        NSLog(@"Response is: %@", response);
+//        if ([response[@"uberRequest"] isEqualToString:@"success"]) {
+//            completion(YES);
+//        } else {
+//            completion(NO);
+//        }
+//    }
+//     
+//    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        UIAlertView *alertView = [[UIAlertView alloc]
+//                                   initWithTitle:@"Error Requesting Uber"
+//                                   message:[error localizedDescription]
+//                                   delegate:nil
+//                                   cancelButtonTitle:@"OK"
+//                                   otherButtonTitles:nil];
+//        [alertView show];
+//    }];
+//    
+//}
 
 - (void)retrieveReceiptUpdatesWithCompletion:(void (^)(NSDictionary *receiptUpdatesDic))completion
 {
@@ -240,7 +269,7 @@ static NSString * const GetReceiptUpdatesPath = @"get-receipt-updates";
         
         NSDictionary *response = (NSDictionary *)responseObject;
         if (response[@"Ubers cleared"]) {
-            NSLog(@"All ubers have been cleared! Yahoo!");
+//            NSLog(@"All ubers have been cleared! Yahoo!");
         }
     }
      
