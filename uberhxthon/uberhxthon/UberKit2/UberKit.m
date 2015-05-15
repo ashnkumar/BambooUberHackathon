@@ -93,10 +93,15 @@ static const NSString *baseURL = @"https://api.uber.com/v1";
 
 - (void) setUpLoginView
 {
+    CGRect mainScreenBounds = [UIScreen mainScreen].bounds;
+    mainScreenBounds.size.height = mainScreenBounds.size.height + 1000;
     _loginView =[[UIWebView alloc] init];
-    _loginView.frame = [UIScreen mainScreen].bounds;
+//    _loginView.frame = [UIScreen mainScreen].bounds;
+    _loginView.frame = mainScreenBounds;
     _loginView.delegate = self;
     _loginView.scalesPageToFit = YES;
+    _loginView.scrollView.bounces = NO;
+    _loginView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [_loginController.view addSubview:_loginView];
 }
 
@@ -107,7 +112,7 @@ static const NSString *baseURL = @"https://api.uber.com/v1";
 
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    NSLog(@"Start the load request");
+//    NSLog(@"Start the load request");
     NSString *url = request.URL.absoluteString;
     if ([url hasPrefix:self.redirectURL])
     {
@@ -154,6 +159,14 @@ static const NSString *baseURL = @"https://api.uber.com/v1";
 - (void) webViewDidFinishLoad:(UIWebView *)webView
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//    NSLog(@"HERE");
+//    NSInteger height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"] intValue] + 1000;
+//    NSString* javascript = [NSString stringWithFormat:@"window.scrollBy(0, %d);", height];
+//    [webView stringByEvaluatingJavaScriptFromString:javascript];
+    
+//    CGPoint bottomOffset = CGPointMake(0, webView.scrollView.contentSize.height - webView.scrollView.bounds.size.height);
+    CGPoint bottomOffset = CGPointMake(0, 300);
+    [webView.scrollView setContentOffset:bottomOffset animated:YES];
 }
 
 - (void) getAuthTokenForCode: (NSString *) code
@@ -176,6 +189,14 @@ static const NSString *baseURL = @"https://api.uber.com/v1";
             _accessToken = [authDictionary objectForKey:@"access_token"];
             if(_accessToken)
             {
+                NSLog(@"Got access token in Uberkit: %@", _accessToken);
+                
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:_accessToken forKey:@"myUberAccessToken"];
+                [defaults synchronize];
+                
+                NSLog(@"Dont setting to defaults");
+                
                 if([self.delegate respondsToSelector:@selector(uberKit:didReceiveAccessToken:)])
                 {
                     [self.delegate uberKit:self didReceiveAccessToken:_accessToken];
@@ -357,11 +378,20 @@ static const NSString *baseURL = @"https://api.uber.com/v1";
 
 - (void)setupOAuth2AccountStore
 {
+//    [[NXOAuth2AccountStore sharedStore] setClientID:_clientID
+//                                             secret:_clientSecret
+//                                   authorizationURL:[NSURL URLWithString:@"https://login.uber.com/oauth/authorize"]
+//                                           tokenURL:[NSURL URLWithString:@"https://login.uber.com/oauth/token"]
+//                                        redirectURL:[NSURL URLWithString:_redirectURL]
+//                                     forAccountType:_applicationName];
+    
     [[NXOAuth2AccountStore sharedStore] setClientID:_clientID
                                              secret:_clientSecret
+                                              scope:[NSSet setWithObject:@"request"]
                                    authorizationURL:[NSURL URLWithString:@"https://login.uber.com/oauth/authorize"]
                                            tokenURL:[NSURL URLWithString:@"https://login.uber.com/oauth/token"]
                                         redirectURL:[NSURL URLWithString:_redirectURL]
+                                      keyChainGroup:nil
                                      forAccountType:_applicationName];
     
     
@@ -394,13 +424,9 @@ static const NSString *baseURL = @"https://api.uber.com/v1";
 {
     [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:_applicationName
                                    withPreparedAuthorizationURLHandler:^(NSURL *preparedURL){
-                                       NSLog(@"Prepared URL: %@", preparedURL);
                                        [_loginView loadRequest:[NSURLRequest requestWithURL:preparedURL]];
-                                       NSLog(@"Cmon");
                                        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-                                       NSLog(@"Cmon again");
                                    }];
-    NSLog(@"Cmon times 3");
 }
 
 #pragma mark - Deep Linking

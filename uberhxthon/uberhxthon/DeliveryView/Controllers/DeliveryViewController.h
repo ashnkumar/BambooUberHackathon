@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Mapkit/Mapkit.h>
 #include "routeGenerator.h"
+#import "UberKit.h"
 
 @import CoreLocation;
 
-@interface DeliveryViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
+@interface DeliveryViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, UberKitDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 

@@ -18,12 +18,17 @@
 #import "JCNotificationBannerPresenterIOSStyle.h"
 #import "JCNotificationBannerPresenterIOS7Style.h"
 
+
+
+
 @interface AppDelegate ()
 @property (strong, nonatomic) DeliveryViewController *deliveryVC;
 @property (strong, nonatomic) AnalyticsViewController *analyticsVC;
 @property (strong, nonatomic) SettingsViewController *settingsVC;
 @property (strong, nonatomic) LeftmostViewController *leftVC;
 @property (strong, nonatomic) MHTabBarController *tabBarController;
+
+
 @end
 
 @implementation AppDelegate
@@ -33,7 +38,11 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setObject:nil forKey:@"myUberAccessToken"];
+
+
     // CHANGE THIS FOR PRODUCTION /////////
     self.RUN_IN_PRODUCTION = NO;
     // CHANGE THIS FOR PRODUCTION /////////

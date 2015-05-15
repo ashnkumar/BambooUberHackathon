@@ -23,6 +23,7 @@ static NSString * const ResetReceiptsPath = @"reset-all-receipts";
 static NSString * const ClearAllUberPath = @"clear-all-ubers";
 BOOL succeededInConnectingToServer;
 static NSString * const GetReceiptUpdatesPath = @"get-receipt-updates";
+static NSString * const UberAccessTokenKey = @"myUberAccessToken";
 
 // Production
 static NSString * const ProdUbersPath = @"prod-get-all-ubers";
@@ -141,11 +142,16 @@ static NSString * const ProdRequestUberPath = @"prod-request-uber";
                              completion:(void (^)(BOOL requestSuccess))completion;
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSString *currentAccessToken = [[NSUserDefaults standardUserDefaults] objectForKey:UberAccessTokenKey];
+    
+    
     NSDictionary *params = @{@"startingLatitude": startingLatitude,
                              @"startingLongitude": startingLongitude,
                              @"endingLatitude": endingLatitude,
                              @"endingLongitude": endingLongitude,
-                             @"orderNumber": [@(orderNumber) stringValue]};
+                             @"orderNumber": [@(orderNumber) stringValue],
+                             @"accessToken": currentAccessToken};
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     bool runInProd = appDelegate.RUN_IN_PRODUCTION;

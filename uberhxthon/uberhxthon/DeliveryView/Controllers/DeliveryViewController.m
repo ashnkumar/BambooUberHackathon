@@ -27,6 +27,13 @@
 #define PANELCLOSED 1
 #define PANELOPEN 0
 
+static NSString * const ClientID = @"8wOL-4IJS1_cT5XK4Tpx7ZLA8B_LYidF";
+static NSString * const ServerToken = @"j9279YhmA_ab1K1Ly85LFyqeIBJnSzFh9YrKrHzu";
+static NSString * const ClientSecret = @"gttp4IzxJOFY2TcY1hNk24PA8hU_2e9MKfOlS3CW";
+static NSString * const AppName = @"Bamboo";
+static NSString * const RedirectURI = @"https://bamboo-app.herokuapp.com/";
+static NSString * const UberAccessTokenKey = @"myUberAccessToken";
+
 @interface DeliveryViewController () <ReceiptPanelViewControllerDelegate, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate, RequestPopupViewControllerDelegate>
 {
     int intIndex_route1;
@@ -38,6 +45,9 @@
     CGFloat screenHeight;
     
 }
+
+// OAUTH
+@property (nonatomic, strong) UberKit *uberKit;
 
 @property (nonatomic, strong) ReceiptSlideOutViewController *receiptPanelViewController;
 
@@ -77,12 +87,62 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.uberKit = [[UberKit alloc] initWithClientID:ClientID
+                                        ClientSecret:ClientSecret
+                                         RedirectURL:RedirectURI
+                                     ApplicationName:AppName];
+    
+    self.uberKit.delegate = self;
+    
+    [self doAuthStuff];
+    
     [self setupVariables];
     [self addLoadingView];
     [self setupMapView];
     [self setupReceiptPanelView];
     [self setupGestures];
     [self setupDetailedReceipt];
+}
+
+- (void)doAuthStuff
+{
+    NSLog(@"Performing auth ....");
+    NSString *currentAccessToken = [[NSUserDefaults standardUserDefaults] objectForKey:UberAccessTokenKey];
+
+    if (!currentAccessToken) {
+        NSLog(@"We do NOT have access token, do login ...");
+        [self.uberKit startLoginWithViewController:self];
+    }
+    
+    else {
+        NSLog(@"We have an access token! it is: %@", currentAccessToken);
+    }
+}
+
+- (void)uberKit:(UberKit *)uberKit didReceiveAccessToken:(NSString *)accessToken
+{
+    NSLog(@"We got the access token: %@", accessToken);
+    
+    if (accessToken) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:accessToken forKey:UberAccessTokenKey];
+        [defaults synchronize];
+    }
+}
+
+- (void) uberKit: (UberKit *) uberKit loginFailedWithError: (NSError *) error
+{
+    NSString *currentAccessToken = [[NSUserDefaults standardUserDefaults] objectForKey:UberAccessTokenKey];
+    
+    if (!currentAccessToken) {
+        NSLog(@"We do NOT have access token, do login ...");
+        [self.uberKit startLoginWithViewController:self];
+    }
+    
+    else {
+        NSLog(@"We have an access token! it is: %@", currentAccessToken);
+    }
+
 }
 
 -(void)viewWillLayoutSubviews {
@@ -102,7 +162,7 @@
 
     
     //MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 7.5*METERS_PER_MILE, 7.5*METERS_PER_MILE);
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 1100, 1100);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 10000, 10000);
     [self.mapView setRegion:viewRegion animated:YES];
 }
 
