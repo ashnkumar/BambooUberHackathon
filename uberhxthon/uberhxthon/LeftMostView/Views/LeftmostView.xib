@@ -61,9 +61,9 @@
                         </mask>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFf-Pk-oHa">
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFf-Pk-oHa">
                     <rect key="frame" x="130" y="397" width="339" height="60"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="248" id="37t-bR-xiD"/>
                         <constraint firstAttribute="height" constant="60" id="IOA-jf-WUd"/>
@@ -72,7 +72,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="24"/>
                     <state key="normal" title="Log Out of Uber">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -81,9 +81,6 @@
                             <exclude reference="THe-xX-aGd"/>
                         </mask>
                     </variation>
-                    <connections>
-                        <action selector="uberLoginButton:" destination="-1" eventType="touchUpInside" id="xjB-ea-GcI"/>
-                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TsT-ZN-zi4">
                     <rect key="frame" x="176" y="80" width="248" height="248"/>
@@ -94,7 +91,7 @@
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scH-BD-RoF">
                     <rect key="frame" x="130" y="513" width="339" height="60"/>
-                    <color key="backgroundColor" red="0.16078431372549021" green="0.58823529411764708" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="339" id="CAt-p6-BJH"/>
                         <constraint firstAttribute="height" constant="60" id="Spg-Hl-VHf"/>
@@ -104,7 +101,7 @@
                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="24"/>
                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Log Out of Square">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.88235294119999996" green="0.88235294119999996" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -113,9 +110,6 @@
                             <exclude reference="hSo-GO-4cx"/>
                         </mask>
                     </variation>
-                    <connections>
-                        <action selector="squareLoginButton:" destination="-1" eventType="touchUpInside" id="7r4-pG-wQ8"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
