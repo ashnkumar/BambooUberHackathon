@@ -12,6 +12,7 @@
 #import "RTSpinKitView.h"
 #import <POP/POP.h>
 
+
 #import "AppConstants.h"
 #import "ReceiptSlideOutViewController.h"
 #import "RequestUberPopupViewController.h"
@@ -81,7 +82,6 @@
     [self setupReceiptPanelView];
     [self setupGestures];
     [self setupDetailedReceipt];
-    [self createNotification]; //TODO: post after logging in
 }
 
 -(void)viewWillLayoutSubviews {
@@ -100,22 +100,13 @@
     zoomLocation.longitude = -122.417961;
 
     
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 7.5*METERS_PER_MILE, 7.5*METERS_PER_MILE);
-    //MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 1100, 1100);
+    //MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 7.5*METERS_PER_MILE, 7.5*METERS_PER_MILE);
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 1100, 1100);
     [self.mapView setRegion:viewRegion animated:YES];
 }
 
 
 #pragma mark - Helpers
-- (void) createNotification
-{
-    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    localNotification.alertBody = @"You have new deliveries to fill! Check your receipt panel for details.";
-    localNotification.fireDate = nil;
-    localNotification.soundName = @"";
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-}
 - (void)setupVariables
 {
     screenRect = [[UIScreen mainScreen] bounds];
@@ -231,7 +222,7 @@
     self.receiptPanelViewController.delegate = self;
     
     //view.frame = (0, screenHeight - HEIGHTOFPULL-YTHING)
-    self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-140, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height);
+    self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-140, self.receiptPanelViewController.view.frame.size.width, 0); //CJ //self.receiptPanelViewController.view.frame.size.height);
     self.receiptPanelViewController.view.alpha = 0.0f;
     [self.view addSubview:self.receiptPanelViewController.view];
 }
@@ -263,6 +254,8 @@
     self.detailedReceipt.view.clipsToBounds = YES;
 
     [self.view addSubview:self.detailedReceipt.view];
+    
+    [self movePanelOneRow];
 }
 
 #pragma mark - Tap Recognizers
@@ -286,15 +279,13 @@
             self.dimView.layer.opacity = 0;
             
         } completion:^(BOOL finished) {
-            NSLog(@"exited detailed receipt view");
-            //TODO: create a gesture recognizer for on top of the dimming view to close the detailed receipt view
             self.detailedReceipt.view.layer.opacity = 0;
             self.showingDetailedReceipt = NO;
         }];
     }
     else
     {
-        NSLog(@"showingDetailedReceipt not set");
+        NSLog(@"error - showingDetailedReceipt not set");
     }
 
 }
@@ -318,7 +309,6 @@
     CLLocation* loc = [locations lastObject]; // locations is guaranteed to have at least one object
     float latitude = loc.coordinate.latitude;
     float longitude = loc.coordinate.longitude;
-    NSLog(@"Lat: %.8f | Lon: %.8f",latitude, longitude);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -338,14 +328,6 @@
     [self.blurEffectView removeFromSuperview];
     [self.loadingSpinner removeFromSuperview];
     self.receiptPanelViewController.view.alpha = 1.0f;
-    
-    /*MKPointAnnotation *testCar = [[MKPointAnnotation alloc]init];
-    [testCar setCoordinate:CLLocationCoordinate2DMake(37.7833, -122.4167)];
-    [testCar setTitle:@"47"];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.mapView addAnnotation:testCar];
-    });*/
-
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
@@ -362,7 +344,7 @@
 - (void)closePanel
 {
     [UIView animateWithDuration:SLIDE_TIMING delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-140, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height);
+        self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-140, self.receiptPanelViewController.view.frame.size.width, 0); //self.receiptPanelViewController.view.frame.size.height);
     } completion:^(BOOL finished) {
         if (finished) {
             self.receiptPanelViewController.panelUpButton.tag = PANELCLOSED;
@@ -393,11 +375,10 @@
 {
     [UIView animateWithDuration:SLIDE_TIMING delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                         //receipt panel view controller frame: (0, screenHeight-SIZEOFONEROW), frameHeight = screenHeight-ONEROW
-                         self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-140-300, self.receiptPanelViewController.view.frame.size.width, self.view.frame.size.height);// self.receiptPanelViewController.view.frame.size.height-325);
+                         self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-140-30-20-20-210, self.receiptPanelViewController.view.frame.size.width, 30 + 20 + 20 + 210); //CJ self.view.frame.size.height);// self.receiptPanelViewController.view.frame.size.height-325);
                      } completion:^(BOOL finished) {
                          self.receiptPanelViewController.panelUpButton.tag = PANELOPEN;
                          self.showingReceiptPanel = YES;
-                         //[self.receiptPanelViewController scrollToRow:2];
                      }];
 }
 
@@ -407,7 +388,7 @@
 {
     [UIView animateWithDuration:SLIDE_TIMING delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                         //receipt panel view controller frame: (0, screenHeight-SIZEOFTWOROWS), frameHeight = screenHeight-TWOROWS
-        self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-725, self.view.frame.size.width, self.view.frame.size.height);// self.view.frame.size.height-40);
+        self.receiptPanelViewController.view.frame = CGRectMake(0, screenHeight-140-20-20-20-20-20-210-210, self.view.frame.size.width, 20 + 20 + 20 + 20 + 20 + 210 + 210); //self.view.frame.size.height);// self.view.frame.size.height-40);
                      } completion:^(BOOL finished) {
                          self.receiptPanelViewController.panelUpButton.tag = PANELOPEN;
                          self.showingReceiptPanel = YES;
@@ -465,6 +446,7 @@
 -(void)movePanel:(UIPanGestureRecognizer *)recognizer
 {
     CGPoint translation = [recognizer translationInView:self.view];
+    NSLog(@"translation y: %f", translation.y);
 
     //End at max y translation if recognizer goes past map view's bounds or below bottom of screen
     float scrollUpY = self.receiptPanelViewController.view.frame.origin.y + translation.y;
@@ -483,27 +465,40 @@
         {
             self.showingReceiptPanel = YES;
         }
+        
+        //Set the collectionview frame
+        //Convert translation to its absolute value to determine collectionview frame height
+        float absTranslation = fabsf(translation.y);
+        NSLog(@"absolute value translation: %f", absTranslation);
+        
+        //Check if going up or down
+        CGPoint velocity = [recognizer velocityInView:self.view];
+        
+        //If going up
+        if(velocity.y < 0)
+        {
+            NSLog(@"old height: %f", self.receiptPanelViewController.view.frame.size.height);
+            //Gesture went down so increase receipt panel by the translation amount
+            self.receiptPanelViewController.view.frame = CGRectMake(self.receiptPanelViewController.view.frame.origin.x, self.receiptPanelViewController.view.frame.origin.y, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height + absTranslation);
+            NSLog(@"new height: %f", self.receiptPanelViewController.view.frame.size.height);
+        }
+        //Else, is going down
+        else
+        {
+            NSLog(@"old height: %f", self.receiptPanelViewController.view.frame.size.height);
+            //Gesture went up so decrease receipt panel by the translation amount
+            self.receiptPanelViewController.view.frame = CGRectMake(self.receiptPanelViewController.view.frame.origin.x, self.receiptPanelViewController.view.frame.origin.y, self.receiptPanelViewController.view.frame.size.width, self.receiptPanelViewController.view.frame.size.height - absTranslation);
+            NSLog(@"new height: %f", self.receiptPanelViewController.view.frame.size.height);
+        }
     }
-}
-
-- (void)highlightReceiptAtIndex:(int)receiptIndex
-{
-    //@TODO: find section to highlight
-    int section = 1;
-    
-    NSIndexPath *indexPathToSelect = [NSIndexPath indexPathForRow:0
-                                                        inSection:section];
-    [self.receiptPanelViewController highlightReceiptAtIndexPath:indexPathToSelect];
 }
 
 //Present the Uber-requesting popup until that receipt's status changes on the server
 - (void)requestedUber
 {
-    //Display the dimming view
-    [UIView animateWithDuration:.2 delay:.1 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+    [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.dimView.layer.opacity = 0.5;
     } completion:^(BOOL finished) {
-        //Now display the popup
         self.requestUberPopupVC = [[RequestUberPopupViewController alloc]init];
         self.requestUberPopupVC.delegate = self;
         self.requestUberPopupVC.transitioningDelegate = self;
@@ -538,11 +533,7 @@
 - (void)receivedCarLocationsUpdate:(NSDictionary *)ubersDictionary
 {
     NSLog(@"inside receivedCarLocationsUpdate for Delivery View Controller");
-    //[self.receiptPanelViewController receivedCarLocationsUpdate:ubersDictionary];
-    if (ubersDictionary != nil)
-    {
-        [self updateCarLocations:ubersDictionary];
-    }
+    [self updateCarLocations:ubersDictionary];
 }
 
 
@@ -562,14 +553,76 @@
 - (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation
 {
     static NSString *AnnotationViewID = @"annotationViewID";
-    
     MKAnnotationView *annotationView = (MKAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
     
     if (annotationView == nil)
     {
         annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
     }
-    annotationView.image = [UIImage imageNamed:@"uber_route1.png"]; //TODO: set with correct bearing
+    NSString *bearingString = annotation.subtitle;
+    float bearing = [bearingString floatValue];
+    
+    if (bearing == 0)
+    {
+
+    }
+    else if (bearing > 0 && bearing < 30)
+    {
+        annotationView.image = [UIImage imageNamed:@"uber12"];
+    }
+    else if (bearing >= 30 && bearing < 60)
+    {
+        annotationView.image = [UIImage imageNamed:@"uber1"];
+    }
+    else if (bearing >= 60 && bearing < 90)
+    {
+        annotationView.image = [UIImage imageNamed:@"uber2"];
+    }
+    else if (bearing == 90)
+    {
+        annotationView.image = [UIImage imageNamed:@"map-vehicle-icon-sm.png"];
+    }
+    else if (bearing > 90 && bearing < 120)
+    {
+        annotationView.image = [UIImage imageNamed:@"uber4"];
+    }
+    else if (bearing >= 120 && bearing < 150)
+    {
+        annotationView.image = [UIImage imageNamed:@"uber5"];
+    }
+    else if (bearing >= 150 && bearing < 180)
+    {
+        annotationView.image = [UIImage imageNamed:@"uber6"];
+    }
+    else if (bearing < 0 && bearing >= -30)
+    {
+        //Go counterclockwise backward
+        annotationView.image = [UIImage imageNamed:@"uber11"];
+    }
+    else if (bearing < -30 && bearing >= -60)
+    {
+        annotationView.image = [UIImage imageNamed:@"uber10"];
+    }
+    else if (bearing < -60 && bearing >= -90)
+    {
+        annotationView.image = [UIImage imageNamed:@"uber9"];
+    }
+    else if (bearing < -90 && bearing >= -120)
+    {
+        annotationView.image = [UIImage imageNamed:@"uber8"];
+    }
+    else if (bearing < -120 && bearing >= -150)
+    {
+        annotationView.image = [UIImage imageNamed:@"uber7"];
+    }
+    else if (bearing < -150 && bearing >= -180)
+    {
+        annotationView.image = [UIImage imageNamed:@"uber6"];
+    }
+    else
+    {
+        annotationView.image = [UIImage imageNamed:@"map-vehicle-icon-sm.png"];
+    }
     
     annotationView.annotation = annotation;
     return annotationView;
@@ -582,67 +635,33 @@
     [self.receiptPanelViewController scrollToOrderNum:orderNum andHighlight:YES];
 }
 
-//@Todo - test - simplify it by simply setting mapview addAnnotations to entire ubersdictoinaries (can remove all self.uberscars)
-- (void) updateCarLocations:(NSDictionary *)ubersDictionary
+//Set the car annotations
+- (void)updateCarLocations:(NSDictionary *)ubersDictionary
 {
     if ([ubersDictionary count] > 0)
     {
+        [self.mapView removeAnnotations:self.mapView.annotations];
         NSMutableArray *cars = [[NSMutableArray alloc]init];
         for (NSString *orderNum in [ubersDictionary allKeys])
         {
             MKPointAnnotation *car = [[MKPointAnnotation alloc]init];
             car.title = orderNum;
-            NSString *uberLatitude = ubersDictionary[@"uberLatitude"];
-            NSString *uberLongitude = ubersDictionary[@"uberLatitude"];
+            NSString* uberLatitude = [[ubersDictionary objectForKey:orderNum] objectForKey:@"uberLatitude"];
+            NSString* uberLongitude = [[ubersDictionary objectForKey:orderNum] objectForKey:@"uberLongitude"];
+            NSString* bearing = [[ubersDictionary objectForKey:orderNum] objectForKey:@"uberBearing"];
+            NSLog(@"NSSTRING UBERLATITUDE: %@, UBERLONGITUDE: %@", uberLatitude, uberLongitude);
+            car.subtitle = bearing;
+            NSLog(@"bearing: %@", car.subtitle);
             
             [car setCoordinate:CLLocationCoordinate2DMake([uberLatitude floatValue], [uberLongitude floatValue])];
-            //todo - Set the bearing
             [cars addObject:car];
         }
         [self.mapView addAnnotations:cars];
     }
-    
-    /*
-        If app's uber dictionary is empty, just push them all
-        Else if not empty, search for the order number and if found, update the location
-            Else if not found, push a new object with its location
-     */
-    /*if ([self.ubersCars count] == 0)
-    {
-        for (NSString *orderNum in [ubersDictionary allKeys])
-        {
-            //Add the objects
-            MKPointAnnotation *car = [[MKPointAnnotation alloc]init];
-            [car setCoordinate:CLLocationCoordinate2DMake(0, 0)];//Set based on how Ashwin returns the coordinates
-            //TODO: set the bearing
-            [car setTitle:[NSString stringWithFormat:@"%@", orderNum]];
-            [self.ubersCars setObject:car forKey:orderNum];
-        }
-        [self.mapView addAnnotations:[self.ubersCars allValues]];
-    }
     else
     {
-        for (NSString *orderNum in [ubersDictionary allKeys])
-        {
-            if ([self.ubersCars objectForKey:orderNum] != nil)
-            {
-                //Update the location
-                MKPointAnnotation *car = [self.ubersCars objectForKey:orderNum];
-                [car setCoordinate:CLLocationCoordinate2DMake(0, 0)]; //Set based on how Ashwin returns the coordinates
-                //TODO: set the bearing
-            }
-            else
-            {
-                //Instantiate a new mkpointannotation for that car
-                MKPointAnnotation *car = [[MKPointAnnotation alloc]init];
-                [car setCoordinate:CLLocationCoordinate2DMake(0, 0)];//Set based on how Ashwin returns the coordinates
-                //TODO: set the bearing
-                [car setTitle:[NSString stringWithFormat:@"%@", orderNum]];
-                
-                [self.mapView addAnnotation:car];
-            }
-        }
-    }*/
+        [self.mapView removeAnnotations:self.mapView.annotations];
+    }
 }
 
 @end

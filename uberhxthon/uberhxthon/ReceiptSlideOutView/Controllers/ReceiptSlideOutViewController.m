@@ -468,15 +468,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
-/*- (void)updateCarLocations:(NSDictionary *)ubersDictionary
-{
-    if (ubersDictionary != nil)
-    {
-        //Update the annotations
-        [self.delegate updateCarLocations:ubersDictionary];
-    }
-}*/
-
 - (void)compareServerDictionary:(NSDictionary *)receiptsDictionary
 {
     NSLog(@"inside compareserverdictionary");
@@ -554,20 +545,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
-/*- (void)receivedCarLocationsUpdate:(NSDictionary *)ubersDictionary
-{
-    if (ubersDictionary != nil)
-    {
-        NSLog(@"inside receivedCarLocationsUpdate for ReceiptSlideOutViewController");
-        //Compare receiptsDictionary to own to determine updates
-        [self updateCarLocations:ubersDictionary];
-    }
-    else
-    {
-        NSLog(@"ubersdictionary empty in slideoutVC");
-    }
-}*/
-
 - (void)pingForUpdate:(NSIndexPath *)requestedReceiptIndexPath
 {
     ReceiptObject *requestedReceipt = self.receiptData[requestedReceiptIndexPath.section][requestedReceiptIndexPath.row];
@@ -631,11 +608,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)highlightReceiptAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"collectionview in section 0: %i section 1: %i, section 2: %i, section 3:%i", [self.collectionView numberOfItemsInSection:0], [self.collectionView numberOfItemsInSection:1], [self.collectionView numberOfItemsInSection:2], [self.collectionView numberOfItemsInSection:3]);
-    NSLog(@"indexpath section: %i, row: %i", indexPath.section, indexPath.row);
-    
-    NSLog(@"%@", [self allCellsInCollectionView]);
-    
     if (indexPath.section == 0)
     {
         ReceiptCellRequestUber *cell = (ReceiptCellRequestUber *)[self.collectionView cellForItemAtIndexPath:indexPath];
@@ -645,7 +617,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     else
     {
         ReceiptCell *cell = (ReceiptCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-        NSLog(@"Highlighting cell: ordernum: %@", cell.orderNumberLabel.text);
         
         cell.layer.borderWidth = 5;
         cell.layer.borderColor = [AppConstants cashwinGreen].CGColor;
@@ -660,23 +631,19 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         cell.layer.borderColor = nil;
         cell.layer.borderWidth = 0;
     }
-    NSLog(@"removed all cell borders");
 }
 
 - (NSMutableArray *)allCellsInCollectionView {
     NSMutableArray *cells = [[NSMutableArray alloc] init];
     for (NSInteger j = 0; j < [self.collectionView numberOfSections]; j++) {
-        NSLog(@"%i", [self.collectionView numberOfItemsInSection:j]);
         for (NSInteger i = 0; i < [self.collectionView numberOfItemsInSection:j]; i++) {
             ReceiptCell *cell = (ReceiptCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:j]];
             
-            NSLog(@"hi");
             if (cell) {
                 [cells addObject:cell];
             }
         }
     }
-    NSLog(@"number of sections %i", [self.collectionView numberOfSections]);
     return cells;
 }
 
@@ -687,8 +654,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     ReceiptObject *receiptObject = self.receiptData[indexPath.section][indexPath.row];
     if (receiptObject != nil)
     {
-        NSLog(@"receipt object's status is: %@", receiptObject.orderStatus); //Test to see if its status was updated
-        
         //receiptObject's orderStatus should already be moved by this point
         [self.collectionView reloadData];
         [self performSelector:@selector(performMoveReceiptAnimation:) withObject:indexPath afterDelay:0.4];

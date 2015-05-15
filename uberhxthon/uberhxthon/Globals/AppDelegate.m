@@ -75,7 +75,7 @@
     //[NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(pingForReceiptUpdates) userInfo:nil repeats:YES];
      
     //Start pinging for car location updates
-    //[NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(pingForCarLocations) userInfo:nil repeats:YES];
+   // [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(pingForCarLocations) userInfo:nil repeats:YES];
     
     return YES;
     
@@ -135,14 +135,9 @@
     NSLog(@"inside pingForCarLocations");
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         [[BambooServer sharedInstance]retrieveUbersWithCompletion:^(NSDictionary *ubersDictionary) {
-            if (ubersDictionary != nil)
-            {
-                NSLog(@"ubersDictionary is not nil");
-                dispatch_async(dispatch_get_main_queue(), ^(void){
-                    [self.deliveryVC receivedCarLocationsUpdate:ubersDictionary];
-                    
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                [self.deliveryVC receivedCarLocationsUpdate:ubersDictionary];
                 });
-            }
         }];
     });
 }

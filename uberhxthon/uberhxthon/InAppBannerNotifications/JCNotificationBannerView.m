@@ -102,7 +102,8 @@ const CGFloat kJCNotificationBannerViewMarginY = 5.0;
     self.titleLabel.frame = CGRectMake(currentX, currentY, contentWidth, 22.0);
     currentY += 22.0;
   }
-    self.messageLabel.frame = CGRectMake(currentX, currentY, contentWidth, (self.frame.size.height - borderY) - currentY);
+    float xStart = [[UIScreen mainScreen]bounds].size.width / 2 - contentWidth / 2;
+    self.messageLabel.frame = CGRectMake(xStart, currentY, contentWidth, (self.frame.size.height - borderY) - currentY);
   [self.messageLabel sizeToFit];
   CGRect messageFrame = self.messageLabel.frame;
   CGFloat spillY = (currentY + messageFrame.size.height + kJCNotificationBannerViewMarginY) - self.frame.size.height;
