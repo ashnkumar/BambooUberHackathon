@@ -65,7 +65,7 @@ static NSString * const UberAccessTokenKey = @"myUberAccessToken";
 
 // Loading view / spinner
 @property (strong, nonatomic) UIVisualEffectView *blurEffectView;
-//@property (strong, nonatomic) RTSpinKitView *loadingSpinner;
+@property (strong, nonatomic) RTSpinKitView *loadingSpinner;
 
 
 // Animating cars
@@ -174,14 +174,14 @@ static NSString * const UberAccessTokenKey = @"myUberAccessToken";
     screenWidth = screenRect.size.width;
     screenHeight = screenRect.size.height;
     
-    /*self.loadingSpinner = [[RTSpinKitView alloc]
+    self.loadingSpinner = [[RTSpinKitView alloc]
                            initWithStyle:RTSpinKitViewStyleBounce
                            color:[AppConstants cashwinGreen]];
     
     float spinnerx = screenWidth / 2 - 10;
     float spinnery = screenHeight / 2 - 10;
     CGRect newFrame = CGRectMake(spinnerx, spinnery, 20, 20);
-    self.loadingSpinner.frame = newFrame;*/
+    self.loadingSpinner.frame = newFrame;
     
 }
 
