@@ -523,14 +523,19 @@
 #pragma mark - pings
 - (void)receivedReceiptUpdate:(NSDictionary *)receiptsDictionary
 {
-    NSLog(@"inside receivedReceiptUpdate for Delivery View Controller");
+//    NSLog(@"inside receivedReceiptUpdate for Delivery View Controller");
     [self.receiptPanelViewController receivedReceiptUpdate:receiptsDictionary];
 }
 
 - (void)receivedCarLocationsUpdate:(NSDictionary *)ubersDictionary
 {
-    NSLog(@"inside receivedCarLocationsUpdate for Delivery View Controller");
+//    NSLog(@"inside receivedCarLocationsUpdate for Delivery View Controller");
     [self updateCarLocations:ubersDictionary];
+
+    if (ubersDictionary != nil)
+    {
+        [self updateCarLocations:ubersDictionary];
+    }
 }
 
 
@@ -646,9 +651,9 @@
             NSString* uberLatitude = [[ubersDictionary objectForKey:orderNum] objectForKey:@"uberLatitude"];
             NSString* uberLongitude = [[ubersDictionary objectForKey:orderNum] objectForKey:@"uberLongitude"];
             NSString* bearing = [[ubersDictionary objectForKey:orderNum] objectForKey:@"uberBearing"];
-            NSLog(@"NSSTRING UBERLATITUDE: %@, UBERLONGITUDE: %@", uberLatitude, uberLongitude);
+//            NSLog(@"NSSTRING UBERLATITUDE: %@, UBERLONGITUDE: %@", uberLatitude, uberLongitude);
             car.subtitle = bearing;
-            NSLog(@"bearing: %@", car.subtitle);
+//            NSLog(@"bearing: %@", car.subtitle);
             
             [car setCoordinate:CLLocationCoordinate2DMake([uberLatitude floatValue], [uberLongitude floatValue])];
             [cars addObject:car];
