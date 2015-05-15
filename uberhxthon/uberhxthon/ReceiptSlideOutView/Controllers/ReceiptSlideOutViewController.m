@@ -8,6 +8,7 @@
 
 #import "ReceiptSlideOutViewController.h"
 
+#import "AppDelegate.h"
 #import "AppConstants.h"
 #import "ReceiptCell.h"
 #import "ReceiptCellRequestUber.h"
@@ -484,11 +485,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         NSString *newStatus = [receiptsDictionary objectForKey:orderNumber];
         if ([newStatus isEqualToString:kUberStatusArriving])
         {
-            [self createNotificationWithMessage:[NSString stringWithFormat:@"Your Uber for order number %@ is arriving.", orderNumber]];
+            NSString *message = [NSString stringWithFormat:@"Your Uber for order number %@ is arriving.", orderNumber];
+            [[[UIApplication sharedApplication] delegate] performSelector:@selector(showInAppBannerWithMessage:) withObject:message];
         }
         else if ([newStatus isEqualToString:kUberStatusDriverCanceled])
         {
-            [self createNotificationWithMessage:[NSString stringWithFormat:@"Your Uber driver for order number %@ has cancelled. Please re-request pick-up for that order.", orderNumber]];
+            NSString *message = [NSString stringWithFormat:@"Your Uber driver for order number %@ has cancelled. Please re-request pick-up for that order.", orderNumber];
+            [[[UIApplication sharedApplication] delegate] performSelector:@selector(showInAppBannerWithMessage:) withObject:message];
             [self uberCancelled:orderNumber];
         }
         else
@@ -512,16 +515,6 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
         }
     }
     [self.collectionView reloadData];
-}
-
-- (void)createNotificationWithMessage:(NSString *)message
-{
-    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    localNotification.alertBody = message;
-    localNotification.fireDate = [NSDate date];
-    localNotification.soundName = @"";
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
 - (void)uberCancelled:(NSString *)orderNumber

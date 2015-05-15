@@ -13,7 +13,10 @@
 #import "SettingsViewController.h"
 #import "LeftmostViewController.h"
 #import "BambooServer.h"
-
+#import "JCNotificationCenter.h"
+#import "JCNotificationBannerPresenterSmokeStyle.h"
+#import "JCNotificationBannerPresenterIOSStyle.h"
+#import "JCNotificationBannerPresenterIOS7Style.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) DeliveryViewController *deliveryVC;
@@ -35,11 +38,6 @@
     self.analyticsVC = [[AnalyticsViewController alloc]init];
     self.settingsVC = [[SettingsViewController alloc]init];
     self.leftVC = [[LeftmostViewController alloc]init];
-    
-  /*  leftVC.title = @"PROFILE";
-    deliveryVC.title = @"DELIVERY";
-    analyticsVC.title = @"ANALYTICS";
-    settingsVC.title = @"RECEIPTS";*/
     
     self.leftVC.tabBarItem.image = [UIImage imageNamed:@"Merchant_Icon.png"];
     self.deliveryVC.tabBarItem.image = [UIImage imageNamed:@"Car_Icon.png"];
@@ -63,6 +61,16 @@
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
     
+    [JCNotificationCenter sharedCenter].presenter = [JCNotificationBannerPresenterSmokeStyle new];
+
+    NSString* alert = @"This is a test and my head feels funny";
+    [JCNotificationCenter
+     enqueueNotificationWithTitle:nil
+     message:alert
+     tapHandler:^{
+         NSLog(@"Received tap on notification banner!");
+     }];
+    
     //Start pinging for receipt updates
     //[NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(pingForReceiptUpdates) userInfo:nil repeats:YES];
      
@@ -82,6 +90,15 @@
 //    [self getReceiptUpdates];
 
     return YES;
+}
+
+- (void)showInAppBannerWithMessage:(NSString *)message
+{
+    NSString* alert = message;
+    [JCNotificationCenter
+     enqueueNotificationWithTitle:nil
+     message:alert
+     tapHandler:nil];
 }
 
 - (void)pingForReceiptUpdates

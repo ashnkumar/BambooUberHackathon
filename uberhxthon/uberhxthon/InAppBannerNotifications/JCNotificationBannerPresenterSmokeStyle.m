@@ -8,7 +8,7 @@
 - (id) init {
   if (self = [super init]) {
     self.minimumHorizontalMargin = 10.0;
-    self.bannerMaxWidth = 350.0;
+    self.bannerMaxWidth = 750.0;
     self.bannerHeight = 60.0;
   }
   return self;

@@ -14,5 +14,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+- (void)showInAppBannerWithMessage:(NSString *)message;
 @end
 

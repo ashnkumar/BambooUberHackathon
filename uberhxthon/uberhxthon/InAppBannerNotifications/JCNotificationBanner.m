@@ -11,7 +11,7 @@
                                 message:(NSString*)_message
                              tapHandler:(JCNotificationBannerTapHandlingBlock)_tapHandler {
   
-  return [self initWithTitle:_title message:_message timeout:5.0 tapHandler:_tapHandler];
+  return [self initWithTitle:_title message:_message timeout:2.0 tapHandler:_tapHandler];
 }
 
 
