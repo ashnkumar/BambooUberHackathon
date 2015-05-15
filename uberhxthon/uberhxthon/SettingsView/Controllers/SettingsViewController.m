@@ -9,14 +9,14 @@
 #import "SettingsViewController.h"
 
 @interface SettingsViewController ()
-
+@property (strong, nonatomic) NSMutableArray *completedUberReceipts;
 @end
 
 @implementation SettingsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.completedUberReceipts = [[NSMutableArray alloc]initWithObjects:@"Order Number: 40 - $8.56", @"Order Number: 41 - $15.44", @"Order Number: 58 - $33.76", @"Order Number: 38 - $12.12", @"Order Number: 39 - $6.10", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +49,7 @@
 
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self.completedUberReceipts count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -67,8 +67,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    NSString *text = nil;
-    cell.textLabel.text = text;
+    cell.textLabel.text = [self.completedUberReceipts objectAtIndex:indexPath.row];
+    cell.textLabel.font = [ UIFont fontWithName: @"Open Sans" size: 24.0 ];
     return cell;
 }
 

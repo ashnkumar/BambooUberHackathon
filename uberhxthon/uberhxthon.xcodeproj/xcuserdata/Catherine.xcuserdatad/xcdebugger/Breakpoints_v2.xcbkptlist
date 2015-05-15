@@ -189,8 +189,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
             endingLineNumber = "114"
-            landmarkName = "@implementation DeliveryViewController"
-            landmarkType = "3">
+            landmarkName = "-setupVariables"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -589,7 +589,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "523"
             endingLineNumber = "523"
-            landmarkName = "-dismissedRequestUberPopup"
+            landmarkName = "-receivedReceiptUpdate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -765,8 +765,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
             endingLineNumber = "145"
-            landmarkName = "@implementation AppDelegate"
-            landmarkType = "3">
+            landmarkName = "-pingForCarLocations"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -877,7 +877,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "225"
             endingLineNumber = "225"
-            landmarkName = "-setupMapView"
+            landmarkName = "-setupReceiptPanelView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1083,7 +1083,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "-setFirstStatus:"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
