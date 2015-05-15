@@ -183,6 +183,12 @@ static NSString * const UberAccessTokenKey = @"myUberAccessToken";
     CGRect newFrame = CGRectMake(spinnerx, spinnery, 20, 20);
     self.loadingSpinner.frame = newFrame;
     
+    self.loginPopup = [[RequestUberPopupViewController alloc]init];
+    [self.loginPopup setFirstStatus:@"Logging into Uber as Justin's Cakes"];
+    self.loginPopup.delegate = self;
+    self.loginPopup.transitioningDelegate = self;
+    self.loginPopup.modalPresentationStyle = UIModalPresentationCustom;
+    
 }
 
 
