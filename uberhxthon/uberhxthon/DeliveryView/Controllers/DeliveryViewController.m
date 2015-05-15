@@ -85,6 +85,11 @@
     [self setupDetailedReceipt];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self presentViewController:self.loginPopup animated:YES completion:nil]; //CJ
+}
+
 -(void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     self.mapView.frame = self.view.bounds;
@@ -122,7 +127,11 @@
     float spinnery = screenHeight / 2 - 10;
     CGRect newFrame = CGRectMake(spinnerx, spinnery, 20, 20);
     self.loadingSpinner.frame = newFrame;*/
-    
+    self.loginPopup = [[RequestUberPopupViewController alloc]init];
+    [self.loginPopup setFirstStatus:@"Logging into Uber as Justin's Cakes"];
+    self.loginPopup.delegate = self;
+    self.loginPopup.transitioningDelegate = self;
+    self.loginPopup.modalPresentationStyle = UIModalPresentationCustom;
 }
 
 
@@ -184,7 +193,6 @@
     
     // Add the spinner
     //[self.view addSubview:self.loadingSpinner];
-    
 }
 
 - (void)setupMapView
@@ -329,6 +337,7 @@
     [self.blurEffectView removeFromSuperview];
     
     //[self.loadingSpinner removeFromSuperview];
+    [self.loginPopup uberRequestComplete:@"Logged into Justin's Cakes!"];
     self.receiptPanelViewController.view.alpha = 1.0f;
 }
 

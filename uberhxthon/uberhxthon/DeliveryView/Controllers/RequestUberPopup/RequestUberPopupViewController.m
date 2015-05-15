@@ -29,24 +29,29 @@
     self.view.layer.masksToBounds = YES;
     
     //TODO: make this dynamic to the frame of iPad
-    self.requestStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 7, 200, 40)];
-    self.requestStatusLabel.font = [UIFont fontWithName:@"OpenSans" size:20.0];
-    self.requestStatusLabel.textAlignment = NSTextAlignmentLeft;
+    self.requestStatusLabel.textAlignment = NSTextAlignmentCenter;
     
     self.requestingSpinner = [[RTSpinKitView alloc]
                            initWithStyle:RTSpinKitViewStyleArc
                            color:[AppConstants cashwinGreen]];
-    self.requestingSpinner.frame = CGRectMake(20, 7, 20, 20);
+    self.requestingSpinner.frame = CGRectMake(10, 7, 20, 20);
     
     [self.view addSubview:self.requestStatusLabel];
     [self.view addSubview:self.requestingSpinner];
-    
-   // [self performSelector:@selector(uberRequestComplete) withObject:self afterDelay:3.0];
-    
 }
 
 - (void)setFirstStatus:(NSString *)firstStatus
 {
+    if ([firstStatus isEqualToString:@"Requesting Uber..."])
+    {
+        self.requestStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, 7, 250, 40)];
+        self.requestStatusLabel.font = [UIFont fontWithName:@"OpenSans" size:17];
+    }
+    else
+    {
+        self.requestStatusLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, 7, 250, 40)];
+        self.requestStatusLabel.font = [UIFont fontWithName:@"OpenSans" size:13];
+    }
     self.requestStatusLabel.text = firstStatus;
 }
 
