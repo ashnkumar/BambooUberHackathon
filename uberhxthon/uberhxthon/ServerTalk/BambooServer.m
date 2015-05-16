@@ -65,7 +65,8 @@ static NSString * const ProdRequestUberPath = @"prod-request-uber";
                                   delegate:nil
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
-        [alertView show];
+//        [alertView show];
+        NSLog(@"Error retrieving receipts");
     }];
     
     [operation start];
@@ -107,7 +108,8 @@ static NSString * const ProdRequestUberPath = @"prod-request-uber";
                                   delegate:nil
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
-        [alertView show];
+//        [alertView show];
+        NSLog(@"Error retrieving ubers");
     }];
     
     [operation start];
@@ -172,11 +174,19 @@ static NSString * const ProdRequestUberPath = @"prod-request-uber";
         
         NSDictionary *response = (NSDictionary *)responseObject;
         NSLog(@"Response is: %@", response);
-        if ([response[@"uberRequest"] isEqualToString:@"success"]) {
-            completion(YES);
-        } else {
+        
+        if (response[@"error"] && [response[@"error"] isEqualToString:@"rateLimited"]) {
             completion(NO);
         }
+        
+        else {
+            if ([response[@"uberRequest"] isEqualToString:@"success"]) {
+                completion(YES);
+            } else {
+                completion(NO);
+            }
+        }
+
     }
      
     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -186,7 +196,8 @@ static NSString * const ProdRequestUberPath = @"prod-request-uber";
                                   delegate:nil
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
-        [alertView show];
+//        [alertView show];
+        NSLog(@"Error requesting uber!");
     }];
     
 }

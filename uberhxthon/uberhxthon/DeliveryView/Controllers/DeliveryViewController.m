@@ -62,18 +62,13 @@ static NSString * const UberAccessTokenKey = @"myUberAccessToken";
 @property (nonatomic, strong) RequestUberPopupViewController *requestUberPopupVC;
 @property (nonatomic, strong) RequestUberPopupViewController *loginPopup;
 @property (nonatomic, strong) NSMutableDictionary *ubersCars;
+@property float userLatitude;
+@property float userLongitude;
 
 // Loading view / spinner
 @property (strong, nonatomic) UIVisualEffectView *blurEffectView;
 @property (strong, nonatomic) RTSpinKitView *loadingSpinner;
 
-
-// Animating cars
-@property(strong, nonatomic) MKPointAnnotation* annotation1;
-@property(strong, nonatomic) MKPointAnnotation* annotation2;
-@property(strong, nonatomic) MKPointAnnotation* annotation3;
-@property(strong, nonatomic) MKPointAnnotation* annotation4;
-@property (strong,nonatomic) routeGenerator *routeGenerator;
 @end
 
 @implementation DeliveryViewController
@@ -154,11 +149,13 @@ static NSString * const UberAccessTokenKey = @"myUberAccessToken";
 {
     CLLocationCoordinate2D zoomLocation;
     
-    //zoomLocation.latitude = self.locationManager.location.coordinate.latitude;
-    //zoomLocation.longitude= self.locationManager.location.coordinate.longitude;
+//    zoomLocation.latitude = self.locationManager.location.coordinate.latitude;
+//    zoomLocation.longitude= self.locationManager.location.coordinate.longitude;
+    zoomLocation.latitude = self.userLatitude;
+    zoomLocation.longitude = self.userLongitude;
     
-    zoomLocation.latitude = 37.775871;
-    zoomLocation.longitude = -122.417961;
+//    zoomLocation.latitude = 37.775871;
+//    zoomLocation.longitude = -122.417961;
 
     
     //MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 7.5*METERS_PER_MILE, 7.5*METERS_PER_MILE);
@@ -264,8 +261,8 @@ static NSString * const UberAccessTokenKey = @"myUberAccessToken";
     }
     
     // Don't do anything yet when user location updates
-    //    [self.locationManager startUpdatingLocation];
-    //    [self.mapView setShowsUserLocation:YES];
+    [self.locationManager startUpdatingLocation];
+    [self.mapView setShowsUserLocation:YES];
     [self.mapView setMapType:MKMapTypeStandard];
     [self.mapView setZoomEnabled:YES];
     [self.mapView setScrollEnabled:YES];
@@ -374,13 +371,26 @@ static NSString * const UberAccessTokenKey = @"myUberAccessToken";
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     CLLocation* loc = [locations lastObject]; // locations is guaranteed to have at least one object
-    float latitude = loc.coordinate.latitude;
-    float longitude = loc.coordinate.longitude;
+    self.userLatitude = loc.coordinate.latitude;
+    self.userLongitude = loc.coordinate.longitude;
+    NSLog(@"New location is %@", loc);
+    [self setNewZoomLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
     //    NSLog(@"%d", status);
+}
+
+- (void)setNewZoomLocation
+{
+    CLLocationCoordinate2D zoomLocation;
+    
+    zoomLocation.latitude = self.userLatitude;
+    zoomLocation.longitude = self.userLongitude;
+
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 10000, 10000);
+    [self.mapView setRegion:viewRegion animated:YES];
 }
 
 #pragma mark - MapKit Delegate
@@ -608,14 +618,20 @@ static NSString * const UberAccessTokenKey = @"myUberAccessToken";
 #pragma mark - MapKit Annotations/Move Users
 - (float)getUsersLocationLatitude
 {
-    //TODO
-    return 37.775871;
+    if (self.userLatitude) {
+        return self.userLatitude;
+    } else {
+        return 37.780862;
+    }
 }
 
 - (float)getUsersLocationLongitude
 {
-    //TODO
-    return -122.417961;
+    if (self.userLongitude) {
+        return self.userLongitude;
+    } else {
+        return -122.4172647;
+    }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)map viewForAnnotation:(id <MKAnnotation>)annotation
