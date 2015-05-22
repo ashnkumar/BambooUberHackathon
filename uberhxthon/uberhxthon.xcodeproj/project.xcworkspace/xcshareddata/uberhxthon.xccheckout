@@ -9,15 +9,15 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>D02F5FD3A0AE4CFB073268FB3081B29CBBCC0633</key>
-		<string>https://github.com/ashnkumar/CashwinUberHackathon.git</string>
+		<string>https://github.com/ashnkumar/BambooUberHackathon.git</string>
 	</dict>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D02F5FD3A0AE4CFB073268FB3081B29CBBCC0633</key>
-		<string>CashwinUberHackathon/</string>
+		<string>BambooUberHackathon/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/ashnkumar/CashwinUberHackathon.git</string>
+	<string>https://github.com/ashnkumar/BambooUberHackathon.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -30,7 +30,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>D02F5FD3A0AE4CFB073268FB3081B29CBBCC0633</string>
 			<key>IDESourceControlWCCName</key>
-			<string>CashwinUberHackathon</string>
+			<string>BambooUberHackathon</string>
 		</dict>
 	</array>
 </dict>

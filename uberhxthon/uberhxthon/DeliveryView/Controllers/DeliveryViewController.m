@@ -373,7 +373,7 @@ static NSString * const UberAccessTokenKey = @"myUberAccessToken";
     CLLocation* loc = [locations lastObject]; // locations is guaranteed to have at least one object
     self.userLatitude = loc.coordinate.latitude;
     self.userLongitude = loc.coordinate.longitude;
-    NSLog(@"New location is %@", loc);
+//    NSLog(@"New location is %@", loc);
     [self setNewZoomLocation];
 }
 
