@@ -44,7 +44,7 @@
 
 
     // CHANGE THIS FOR PRODUCTION /////////
-    self.RUN_IN_PRODUCTION = YES;
+    self.RUN_IN_PRODUCTION = NO;
     // CHANGE THIS FOR PRODUCTION /////////
     
     
